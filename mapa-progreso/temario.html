@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temario Priorizado ENARM 2025 - ENARMaps</title>
+    
+    <link rel="stylesheet" href="temario.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.imgur.com/UYcNKHK.png" alt="ENARMaps Logo" class="logo">
+            <h1>Temario Priorizado ENARM 2025</h1>
+            <p>Tu mapa de progreso interactivo para el Examen Nacional de Aspirantes a Residencias Médicas</p>
+        </div>
+        <div class="progress-section">
+            <h2>Mi Progreso General</h2>
+            <div class="progress-container general-progress">
+                <div class="progress-bar-container">
+                    <div id="progress-bar-fill-general"></div>
+                </div>
+                <span id="progress-text-general">0%</span>
+            </div>
+
+            <hr class="progress-divider">
+
+            <h3>Progreso por Prioridad</h3>
+            <div class="priority-progress-container">
+                <div class="priority-progress-item">
+                    <label class="priority-label alta">Alta</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-alta" class="progress-fill-alta"></div>
+                    </div>
+                    <span id="progress-text-alta">0/0</span>
+                </div>
+                <div class="priority-progress-item">
+                    <label class="priority-label media">Media</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-media" class="progress-fill-media"></div>
+                    </div>
+                    <span id="progress-text-media">0/0</span>
+                </div>
+                <div class="priority-progress-item">
+                    <label class="priority-label baja">Baja</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-baja" class="progress-fill-baja"></div>
+                    </div>
+                    <span id="progress-text-baja">0/0</span>
+                </div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">482</div>
+                <div class="stat-label">Temas Priorizados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">53</div>
+                <div class="stat-label">Subespecialidades</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Especialidades</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Cobertura ENARM</div>
+            </div>
+        </div>
+
+        <div class="methodology-section">
+            <h2 class="methodology-title">Metodología de Priorización</h2>
+            <p class="methodology-description">
+                Basado en análisis de documentación oficial mexicana (GPC/NOM), inteligencia competitiva de exámenes anteriores, 
+                y síntesis de experiencia comunitaria de ex-presentantes exitosos.
+            </p>
+            <div class="priority-legend">
+                <div class="legend-item">
+                    <span class="legend-badge priority-alta">Alta</span>
+                    <span>Muy preguntado en ENARM</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge priority-media">Media</span>
+                    <span>Importante para cobertura</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge priority-baja">Baja</span>
+                    <span>Complementario</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Buscar tema específico..." id="searchInput">
+        </div>
+
+        <div id="specialties-container">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>ENARMaps - Temario Priorizado 2025</strong></p>
+            <small>Metodología basada en documentación oficial mexicana, inteligencia competitiva y síntesis comunitaria</small>
+        </div>
+    </div>
+        <script src="temario.js"></script>
+</body>
+</html>

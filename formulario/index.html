@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENARMaps - Itinerario Personalizado</title>
+    <!-- Enlace a la hoja de estilos CSS que crearemos después -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Enlace a las fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div id="form-wrapper">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/UYcNKHK.png" alt="ENARMaps Logo" class="logo">
+            </div>
+            <h1 class="main-title">Crea tu Itinerario Personalizado</h1>
+            <p class="intro-text">
+                Tu preparación para el ENARM es una de las etapas más importantes de tu carrera. Este no es un formulario más; es el mapa que construiremos juntos para tu éxito.
+            </p>
+            <form id="enarmForm" class="enarm-form">
+                
+                <!-- SECCIÓN DATOS PERSONALES -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Datos Personales
+                    </h2>
+                    <div class="form-grid grid-col-3">
+                        <div class="form-section"><label for="nombre">Nombre completo</label><input type="text" id="nombre" name="nombre" required></div>
+                        <div class="form-section"><label for="email">Correo electrónico</label><input type="email" id="email" name="email" required></div>
+                        <div class="form-section">
+                            <label for="telefono">Teléfono móvil (10 dígitos)</label>
+                            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" required>
+                            <small id="phone-validation-message" class="validation-message"></small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN METAS Y OBJETIVOS -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        Metas y Objetivos
+                    </h2>
+                    <div class="form-grid">
+                        <div class="form-section">
+                            <label for="target_specialty">¿A qué especialidad aspiras?</label>
+                            <select id="target_specialty" name="target_specialty" required><option value="">Selecciona una especialidad...</option></select>
+                        </div>
+                        <div class="form-section">
+                            <label for="target_score">Puntaje Objetivo (2024)</label>
+                            <input type="number" id="target_score" name="target_score" placeholder="Selecciona una especialidad para ver sugerencia" step="0.01" required>
+                        </div>
+                        <div class="form-section">
+                            <label for="start_date">
+                                Fecha exacta de tu ENARM
+                                <span class="tooltip">
+                                    <span class="tooltiptext">Saber el día exacto nos permite calcular tu tiempo de preparación al minuto y ajustar la intensidad del plan.</span>
+                                </span>
+                            </label>
+                            <select id="start_date" name="start_date" required>
+                                <option value="" disabled selected>Selecciona la fecha de tu examen...</option>
+                                <option value="2025-09-23">Martes, 23 de septiembre de 2025</option>
+                                <option value="2025-09-24">Miércoles, 24 de septiembre de 2025</option>
+                                <option value="2025-09-25">Jueves, 25 de septiembre de 2025</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN DISPONIBILIDAD DE ESTUDIO -->
+                <div class="fieldset-card">
+                    <h2>
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                         Disponibilidad de Estudio
+                    </h2>
+                    <div class="form-grid">
+                        <div class="form-section"><label for="horas_lv">Horas por día (L-V)</label><input type="number" id="horas_lv" name="horas_lv" min="0" max="24" required></div>
+                        <div class="form-section"><label for="horas_sabado">Horas el Sábado</label><input type="number" id="horas_sabado" name="horas_sabado" min="0" max="24" required></div>
+                        <div class="form-section"><label for="horas_domingo">Horas el Domingo</label><input type="number" id="horas_domingo" name="horas_domingo" min="0" max="24" required></div>
+                    </div>
+                    <div id="hours-suggestion"></div>
+                </div>
+
+                <!-- SECCIÓN DE SIMULACROS DINÁMICA -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32-17.32"/><path d="M3 21S7 17 12 17s9 4 9 4"/></svg>
+                         Días de Simulacro
+                    </h2>
+                     <p class="subtitle">Indícanos si tienes días fijos para simulacros para integrar tu rutina a nuestro plan.</p>
+                    <div id="simulation-days-container">
+                        <!-- Las entradas de simulacro se añadirán aquí dinámicamente -->
+                    </div>
+                    <button type="button" id="add-simulation-day-btn">+ Agregar día de simulacro</button>
+                </div>
+                
+                <!-- SECCIÓN EXPERIENCIA PREVIA -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        Experiencia Previa
+                    </h2>
+                    <div class="form-section"><label>¿Has presentado el ENARM antes?</label><div class="level-selector"><input type="radio" id="exp-no" name="previous_experience" value="No" checked><label for="exp-no">No</label><input type="radio" id="exp-yes" name="previous_experience" value="Sí"><label for="exp-yes">Sí</label></div></div>
+                    <div id="previous-experience-details">
+                        <div class="form-grid">
+                            <div class="form-section"><label for="previous_score">Puntaje anterior</label><input type="number" id="previous_score" name="previous_score" step="0.01"></div>
+                            <div class="form-section"><label for="best_specialty">Área con mejor puntaje</label><input type="text" id="best_specialty" name="best_specialty" placeholder="Ej: Pediatría"></div>
+                            <div class="form-section"><label for="worst_specialty">Área con menor puntaje</label><input type="text" id="worst_specialty" name="worst_specialty" placeholder="Ej: Cirugía General"></div>
+                            <div class="form-section"><label for="section_scores">Puntajes por sección (opcional)</label><textarea id="section_scores" name="section_scores" placeholder="Ej: MI: 7.5, Ped: 8.2..."></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SECCIÓN PLATAFORMAS DE ESTUDIO -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/></svg>
+                        Plataformas de Estudio Actuales
+                    </h2>
+                    <p class="subtitle">Saber qué material ya utilizas nos ayuda a complementar tu estudio y no repetir contenido.</p>
+                    <div class="form-section">
+                        <label for="platform_input">Añade el nombre de una plataforma que ya uses:</label>
+                        <div class="platform-adder">
+                            <input type="text" id="platform_input" placeholder="Ej: AMIR, CTO...">
+                            <button type="button" id="add-platform-btn">Añadir</button>
+                        </div>
+                        <div id="platform-tags-container"></div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN DOMINIO POR TEMA -->
+                <div class="fieldset-card">
+                    <h2>
+                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.3 10.7 18 9.7 18 8.5c0-1.4-1.1-2.5-2.5-2.5S13 7.1 13 8.5c0 .7.3 1.3.6 1.8"/><path d="M2 14v-1c0-2.8 2.2-5 5-5s5 2.2 5 5v1"/><path d="M2 20v-1c0-2.8 2.2-5 5-5s5 2.2 5 5v1"/><path d="M16 19h6"/><path d="M19 16v6"/></svg>
+                         Nivel de Dominio por Tema
+                    </h2>
+                    <div class="temario-explanation">
+                        <p><strong>Inicia tu Diagnóstico Estratégico</strong></p>
+                        <p>Este es el paso más importante. Completarlo te tomará unos 15 minutos, pero es la clave para que la IA diseñe tu itinerario a medida. Tu honestidad aquí convierte un buen plan en un plan excepcional.</p>
+                        <p><em>(Todo está en 'Normal' por defecto, solo ajusta los temas que dominas o necesitas reforzar.)</em></p>
+                        <hr style="border: none; border-top: 1px solid var(--color-border); margin: 15px 0;">
+                        <ul>
+                            <li><strong>Reforzar:</strong> Dedicaremos más tiempo y profundidad a estos temas.</li>
+                            <li><strong>Normal:</strong> Asignaremos el tiempo estándar, optimizado según la prioridad del tema.</li>
+                            <li><strong>Dominado:</strong> Programaremos repasos rápidos y espaciados para mantener el conocimiento fresco.</li>
+                        </ul>
+                    </div>
+                    <div id="temario-container"></div>
+                </div>
+
+                <!-- SECCIÓN CÓMO NOS CONOCISTE -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Marketing
+                    </h2>
+                    <div class="form-section">
+                        <label for="how_found_us">¿Cómo conociste ENARMaps?</label>
+                        <select id="how_found_us" name="how_found_us" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="google_search">Búsqueda en Google</option>
+                            <option value="friend_recommendation">Recomendación de amigo/colega</option>
+                            <option value="medical_forum">Foro médico o grupo de estudio</option>
+                            <option value="university">Universidad</option>
+                            <option value="prep_course">Curso de preparación</option>
+                            <option value="medical_conference">Congreso o conferencia médica</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN COMENTARIOS ADICIONALES -->
+                <div class="fieldset-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+                        Comentarios Adicionales
+                    </h2>
+                    <div class="form-section"><label for="detalles_dificultad">Detalles sobre tus dificultades específicas</label><textarea id="detalles_dificultad" name="detalles_dificultad" placeholder="Ej: En 'Cardiopatía isquémica', me cuesta diferenciar los tipos de infarto en el EKG."></textarea></div>
+                </div>
+                
+                <button type="button" class="submit-btn" id="generateReportBtn">Crear mi Itinerario Estratégico</button>
+            </form>
+        </div>
+        <div id="success-wrapper" style="display: none;">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/UYcNKHK.png" alt="ENARMaps Logo" class="logo">
+            </div>
+            <h1 class="main-title">¡Todo listo!</h1>
+            <p class="intro-text">
+                Hemos recibido tu perfil estratégico correctamente. Estamos procesando tu información para construir tu itinerario personalizado.
+            </p>
+            <p class="intro-text">
+                Recibirás un correo electrónico y un mensaje de WhatsApp en las próximas 24 horas con tus siguientes pasos. ¡El camino hacia tu residencia ha comenzado!
+            </p>
+        </div>
+        <div id="report-wrapper"></div>
+        <div id="alertModal" class="modal-overlay">
+            <div class="modal-content">
+                <p id="alertMessage"></p>
+                <button id="closeModalBtn" class="modal-close-btn">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript que crearemos después -->
+    <script src="script.js"></script>
+</body>
+</html>
