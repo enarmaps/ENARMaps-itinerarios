@@ -48,5 +48,39 @@ document.querySelectorAll('.fade-in-up').forEach(el => {
 // Form submission (placeholder)
 document.querySelector('.lead-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('¡Gracias! Te enviaremos tu demo de itinerario personalizado a tu email.');
+    const form = e.target;
+    const emailInput = form.querySelector('input[type="email"]');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    // --- ¡IMPORTANTE! Pega aquí la URL de tu nuevo webhook ---
+    const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn ';
+
+    if (!emailInput.value) {
+        alert('Por favor, ingresa un correo electrónico.');
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: emailInput.value })
+    })
+    .then(response => {
+        if (response.ok) {
+            form.innerHTML = '<p style="color: white; font-weight: bold; text-align: center;">¡Gracias! Revisa tu bandeja de entrada para confirmar tu correo y acceder al demo.</p>';
+        } else {
+            throw new Error('Error en la respuesta del servidor.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        submitButton.disabled = false;
+        submitButton.textContent = 'Obtener Demo Gratis';
+        alert('Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo.');
+    });
 });
