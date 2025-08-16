@@ -72,7 +72,13 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
     })
     .then(response => {
         if (response.ok) {
-            form.innerHTML = '<p style="color: white; font-weight: bold; text-align: center;">¡Gracias! Revisa tu bandeja de entrada para confirmar tu correo y acceder al demo.</p>';
+           form.innerHTML = `
+                <div class="form-success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>¡Revisa tu correo!</h3>
+                    <p>Te hemos enviado un enlace de confirmación para acceder al demo.</p>
+                </div>
+            `;
         } else {
             throw new Error('Error en la respuesta del servidor.');
         }
