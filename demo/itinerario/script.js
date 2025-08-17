@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const timePerPriority = { high: 1.5, medium: 1.0, low: 0.5 };
     const itineraryData = [
         { day: 0, type: 'study', specialty: 'Ginecología y Obstetricia', tasks: [ { priority: 'high', topic: 'Enfermedad Hipertensiva del Embarazo', description: 'Ver videoclase y leer GPC.' }, { priority: 'medium', topic: 'Hemorragia Obstétrica', description: 'Hacer banco de preguntas.' }, { priority: 'low', topic: 'Vaginosis Bacteriana', description: 'Repaso rápido con flashcards.'} ] },
         { day: 1, type: 'study', specialty: 'Cirugía General', tasks: [ { priority: 'high', topic: 'Apendicitis Aguda', description: 'Leer GPC y hacer banco de preguntas.' }, { priority: 'medium', topic: 'Patología Biliar', description: 'Ver videoclase.' }, { priority: 'low', topic: 'Hernia Inguinal', description: 'Repaso rápido con flashcards.'} ] },
@@ -33,27 +34,41 @@ document.addEventListener('DOMContentLoaded', () => {
             dayCard.className = 'day-card';
             dayCard.setAttribute('data-date', dateISO);
             
-            if(dayDate < today) dayCard.classList.add('is-past');
-            if(dayDate.getFullYear() === today.getFullYear() &&
-               dayDate.getMonth() === today.getMonth() &&
-               dayDate.getDate() === today.getDate()) {
+            if (dayDate.getFullYear() === today.getFullYear() && dayDate.getMonth() === today.getMonth() && dayDate.getDate() === today.getDate()) {
                 dayCard.classList.add('is-today');
+            } else if (dayDate < today) {
+                dayCard.classList.add('is-past');
             }
+            
             if(item.type === 'review') dayCard.classList.add('is-special-day');
             
             let tasksHtml = '';
+            let recommendedTime = 0;
+
             if (item.type === 'review') {
                 tasksHtml = `<button class="review-button">Generar Repaso (Función Premium)</button>`;
+                recommendedTime = 4;
             } else {
+                item.tasks.forEach((task) => {
+                    recommendedTime += timePerPriority[task.priority] || 0;
+                });
                 tasksHtml = `<ul class="tasks-list">${generateTasksHtml(item.tasks, dateISO)}</ul>`;
             }
+            
+            const userHours = getUserHoursForDay(dayDate.getDay());
+            const timeManagementHtml = createTimeManagementHtml(recommendedTime, userHours);
+            const noteId = `note-${dateISO}`;
+            const savedNote = localStorage.getItem(noteId) || '';
+            const notesHtml = `<div class="notes-section"><label for="${noteId}">Mis Notas del Día:</label><textarea id="${noteId}" placeholder="Anota aquí tus dudas, perlas o datos clave...">${savedNote}</textarea></div>`;
 
             dayCard.innerHTML = `
                 <div class="day-header">
                     <h2>${item.specialty}</h2>
                     <span class="date">${dateString}</span>
                 </div>
-                ${tasksHtml}`;
+                ${timeManagementHtml}
+                ${tasksHtml}
+                ${notesHtml}`;
             container.appendChild(dayCard);
         });
     }
@@ -76,6 +91,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return html;
     }
+
+    function createTimeManagementHtml(recommended, available) {
+        if (recommended === 0) return '';
+        const availablePercentage = recommended > 0 ? Math.min((available / recommended) * 100, 100) : 100;
+        let suggestionHtml = '';
+        if (available < recommended) {
+            suggestionHtml = `<div class="time-suggestion">Tu tiempo es limitado. ¡Enfócate en las tareas de prioridad alta!</div>`;
+        }
+        return `
+            <div class="time-management">
+                <div class="time-bar-wrapper">
+                    <span class="time-label">Tiempo Recomendado: ${recommended.toFixed(1)}h</span>
+                    <div class="time-bar recommended-bar"><div style="width: 100%;"></div></div>
+                </div>
+                <div class="time-bar-wrapper">
+                    <span class="time-label">Tu Tiempo Disponible: ${available.toFixed(1)}h</span>
+                    <div class="time-bar available-bar"><div style="width: ${availablePercentage}%;"></div></div>
+                </div>
+                ${suggestionHtml}
+            </div>`;
+    }
+
+    function getUserHoursForDay(dayOfWeek) {
+        if (dayOfWeek === 6) return parseFloat(document.getElementById('sim-horas-sabado').value) || 0;
+        if (dayOfWeek === 0) return parseFloat(document.getElementById('sim-horas-domingo').value) || 0;
+        return parseFloat(document.getElementById('sim-horas-lv').value) || 0;
+    }
     
     function updateProgressAndStreak() {
          const allCheckboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
@@ -89,10 +131,16 @@ document.addEventListener('DOMContentLoaded', () => {
          streakDaysSpan.textContent = Math.floor(checkedCount / 3);
     }
 
+    document.getElementById('hours-simulation-form').addEventListener('input', renderAllDays);
     container.addEventListener('change', (e) => { 
         if (e.target.matches('input[type="checkbox"]')) { 
             localStorage.setItem(e.target.id, e.target.checked); 
             updateProgressAndStreak(); 
+        } 
+    });
+    container.addEventListener('input', (e) => { 
+        if (e.target.matches('.notes-section textarea')) { 
+            localStorage.setItem(e.target.id, e.target.value); 
         } 
     });
     
@@ -104,4 +152,3 @@ document.addEventListener('DOMContentLoaded', () => {
         todayCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
     }
 });
-
