@@ -97,3 +97,10 @@ header p { font-size: 1.1em; color: var(--color-text-secondary); margin-top: 5px
 .instruction-item.repaso { border-top-color: var(--color-accent-cyan); }
 .instruction-item.simula { border-top-color: var(--color-accent-green); }
 
+/* --- AÑADE UN FONDO SUTIL AL TIMELINE --- */
+.timeline {
+    background-color: #F0F4FF; /* Un azul muy claro */
+    padding: 25px;
+    border-radius: 16px;
+    margin-top: 30px;
+}
