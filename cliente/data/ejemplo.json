@@ -1,0 +1,24 @@
+{
+    "userData": {
+        "nombre": "Dr. René Hinojosa",
+        "especialidad": "Infectología"
+    },
+    "itinerary": [
+        {
+            "startDate": "2025-08-15",
+            "type": "study",
+            "specialty": "Ginecología y Obstetricia",
+            "tasks": [
+                { "priority": "high", "topic": "Preeclampsia y Eclampsia", "description": "Leer GPC 058-11 y hacer 20 preguntas del banco." },
+                { "priority": "medium", "topic": "Control Prenatal", "description": "Ver videoclase sobre NOM-007." }
+            ]
+        },
+        {
+            "type": "study",
+            "specialty": "Cirugía General",
+            "tasks": [
+                { "priority": "high", "topic": "Apendicitis Aguda", "description": "Repasar escalas (Alvarado) y hacer 15 preguntas." }
+            ]
+        }
+    ]
+}
