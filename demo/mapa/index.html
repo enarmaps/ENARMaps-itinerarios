@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo del Mapa de Progreso - ENARMaps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../../landing-page/images/logo-enarmaps.png" alt="ENARMaps Logo" class="logo">
+            <h1>Demo del Mapa de Progreso</h1>
+            <p>Interactúa con el temario de Ginecología y Obstetricia para descubrir cómo funciona la herramienta.</p>
+        </div>
+        <div class="progress-section">
+            <h2>Mi Progreso (Demo)</h2>
+            <div class="progress-container general-progress">
+                <div class="progress-bar-container">
+                    <div id="progress-bar-fill-general"></div>
+                </div>
+                <span id="progress-text-general">0%</span>
+            </div>
+            <hr class="progress-divider">
+            <h3>Progreso por Prioridad</h3>
+            <div class="priority-progress-container">
+                <div class="priority-progress-item">
+                    <label class="priority-label alta">Alta</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-alta" class="progress-fill-alta"></div>
+                    </div>
+                    <span id="progress-text-alta">0/0</span>
+                </div>
+                <div class="priority-progress-item">
+                    <label class="priority-label media">Media</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-media" class="progress-fill-media"></div>
+                    </div>
+                    <span id="progress-text-media">0/0</span>
+                </div>
+                <div class="priority-progress-item">
+                    <label class="priority-label baja">Baja</label>
+                    <div class="progress-bar-container">
+                        <div id="progress-bar-fill-baja" class="progress-fill-baja"></div>
+                    </div>
+                    <span id="progress-text-baja">0/0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Buscar tema en Ginecología..." id="searchInput">
+        </div>
+
+        <div id="specialties-container">
+            </div>
+
+        <div class="cta-section">
+            <h2>¿Te gustó esta herramienta?</h2>
+            <p>Esto es solo una pequeña muestra. El producto completo incluye las 9 grandes especialidades con 482 temas priorizados para que tomes el control total de tu preparación.</p>
+            <a href="../../" class="cta-button">Obtener mi Plan de Lanzamiento Completo</a>
+        </div>
+
+        <div class="footer">
+            <p><strong>ENARMaps - Demo Interactivo 2025</strong></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
