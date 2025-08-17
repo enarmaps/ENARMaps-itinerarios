@@ -1,10 +1,17 @@
 :root {
-    --color-primary-dark: #0D1B4E;
+   --color-primary-dark: #0D1B4E;
     --color-primary-light: #1A5A96;
+    --color-accent-orange: #F5A623;
+    --color-accent-green: #2E8B57;
+    --color-accent-cyan: #00A0B0;
+
     --color-text-primary: #212529;
     --color-text-secondary: #495057;
     --color-background: #F8F9FA;
     --color-paper: #FFFFFF;
+    --color-border: #DEE2E6;
+
+    /* Tipografía de la Marca */
     --font-headings: 'Roboto Slab', serif;
     --font-body: 'Open Sans', sans-serif;
 }
@@ -120,3 +127,4 @@ p {
     opacity: 0.9;
 
 }
+
