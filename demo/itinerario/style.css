@@ -26,14 +26,11 @@ body {
 
 .itinerary-container { max-width: 1200px; margin: 0 auto; }
 header { text-align: center; margin-bottom: 30px; }
-
 header h1 {
     font-family: var(--font-headings);
     font-size: 2.5em;
     color: var(--color-primary-dark);
-    font-weight: 700;
 }
-
 header p {
     font-size: 1.1em;
     color: var(--color-text-secondary);
@@ -52,7 +49,8 @@ header p {
     border-radius: 10px; overflow: hidden; margin-top: 5px;
 }
 .progress-bar {
-    height: 100%; width: 0%; background-color: var(--color-accent-green);
+    height: 100%; width: 0%;
+    background-color: var(--color-accent-green);
     border-radius: 10px; transition: width 0.5s ease;
 }
 .progress-label { font-size: 0.9em; font-weight: 600; color: var(--color-text-secondary); }
@@ -60,15 +58,14 @@ header p {
     display: flex; align-items: center; gap: 8px;
     background-color: var(--color-background); padding: 8px 15px;
     border-radius: 20px; font-weight: 700;
-    color: var(--color-accent-orange); font-size: 1.1em;
+    color: var(--color-accent-orange);
+    font-size: 1.1em;
 }
+.streak-counter span:first-child { filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.7)); }
 
-/* Usando el estilo .ui-card de la Guía de Marca */
 .instructions-container.ui-card {
     background-color: var(--color-paper);
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 30px;
+    border-radius: 16px; padding: 24px; margin-bottom: 30px;
     border-left: 6px solid var(--color-primary-light);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
@@ -115,10 +112,7 @@ header p {
 .day-header .date { font-size: 1em; color: var(--color-text-secondary); font-weight: 600; }
 
 .tasks-list { list-style: none; padding: 0; margin: 0; }
-.task-item {
-    display: flex; align-items: flex-start;
-    padding: 15px 0; border-bottom: 1px solid #f2f4f7;
-}
+.task-item { display: flex; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid #f2f4f7; }
 .task-item:last-child { border-bottom: none; }
 .task-item input[type="checkbox"] {
     -webkit-appearance: none; appearance: none;
@@ -140,14 +134,8 @@ header p {
 
 .task-details { flex-grow: 1; }
 .task-details .topic { font-weight: 600; font-size: 1.1em; display: flex; align-items: center; }
-.task-details .description {
-    font-size: 0.95em; color: var(--color-text-secondary);
-    margin-top: 5px; padding-left: 28px;
-}
-.priority-badge {
-    display: inline-block; width: 10px; height: 10px;
-    border-radius: 50%; margin-right: 8px; flex-shrink: 0;
-}
+.task-details .description { font-size: 0.95em; color: var(--color-text-secondary); margin-top: 5px; padding-left: 28px; }
+.priority-badge { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
 .priority-high { background-color: var(--priority-high); }
 .priority-medium { background-color: var(--priority-medium); }
 .priority-low { background-color: var(--priority-low); }
@@ -160,27 +148,4 @@ header p {
 }
 .review-button:hover { background-color: #081231; }
 
-
 @media (min-width: 768px) { body { padding: 40px; } }
-
-/* --- AJUSTES DE COLOR PARA AÑADIR ENERGÍA --- */
-
-/* El contador de racha ahora usa el naranja de acento */
-.streak-counter {
-    color: var(--color-accent-orange);
-    font-weight: 700;
-}
-.streak-counter span:first-child {
-    filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.7));
-}
-
-/* La barra de progreso ahora usa el verde de acento */
-.progress-bar {
-    background-color: var(--color-accent-green);
-}
-
-/* El día de hoy se resalta con el naranja de acento */
-.day-card.is-today {
-    border-left-color: var(--color-accent-orange);
-    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.3);
-}
