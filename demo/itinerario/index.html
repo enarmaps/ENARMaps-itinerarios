@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo de Itinerario - ENARMaps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="demo-itinerario-style.css">
+</head>
+<body>
+
+    <div class="itinerary-container">
+        <header>
+            <h1>Demo de Itinerario ENARMaps</h1>
+            <p>Una muestra interactiva de tu futura hoja de ruta</p>
+        </header>
+        
+        <div class="stats-container">
+             <div class="progress-section">
+                <span class="progress-label">Progreso de este Demo</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="general-progress-bar"></div>
+                </div>
+            </div>
+            <div class="streak-counter" id="streak-counter">
+                <span>🔥</span>
+                <span id="streak-days">0</span> días de racha
+            </div>
+        </div>
+        
+        <div class="instructions-container ui-card">
+             <div class="instructions-header">
+                <img src="images/logo-enarmaps.png" alt="Logo de ENARMaps" class="logo">
+                <h2>¡Bienvenido a tu Plan de Batalla!</h2>
+            </div>
+            <p>Esta es una muestra de tu hoja de ruta diaria. En la versión completa, cada día está diseñado para maximizar tu rendimiento, enfocándose en los temas más rentables para ti.</p>
+        </div>
+        
+        <div class="timeline" id="timeline-container">
+            </div>
+    </div>
+
+    <script src="demo-itinerario-script.js"></script>
+</body>
+</html>
