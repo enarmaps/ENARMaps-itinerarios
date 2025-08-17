@@ -160,4 +160,27 @@ header p {
 }
 .review-button:hover { background-color: #081231; }
 
+
 @media (min-width: 768px) { body { padding: 40px; } }
+
+/* --- AJUSTES DE COLOR PARA AÑADIR ENERGÍA --- */
+
+/* El contador de racha ahora usa el naranja de acento */
+.streak-counter {
+    color: var(--color-accent-orange);
+    font-weight: 700;
+}
+.streak-counter span:first-child {
+    filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.7));
+}
+
+/* La barra de progreso ahora usa el verde de acento */
+.progress-bar {
+    background-color: var(--color-accent-green);
+}
+
+/* El día de hoy se resalta con el naranja de acento */
+.day-card.is-today {
+    border-left-color: var(--color-accent-orange);
+    box-shadow: 0 8px 25px rgba(245, 166, 35, 0.3);
+}
