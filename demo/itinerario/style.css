@@ -78,3 +78,22 @@ header p { font-size: 1.1em; color: var(--color-text-secondary); margin-top: 5px
 .review-button { width: 100%; background-color: var(--color-primary-dark); color: var(--color-paper); border: none; padding: 15px; font-size: 1.1em; font-weight: 700; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease; margin-bottom: 15px; }
 .review-button:hover { background-color: #081231; }
 @media (min-width: 768px) { body { padding: 40px; } }
+
+/* --- AJUSTES FINALES DE COLOR PARA TARJETAS DE INSTRUCCIONES --- */
+.instruction-item {
+    border-top: 4px solid var(--color-border);
+    padding-top: 25px;
+    transition: all 0.3s ease;
+}
+
+.instruction-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Asignamos un color de acento a cada tarjeta */
+.instruction-item.semanal { border-top-color: var(--color-primary-light); }
+.instruction-item.prioridades { border-top-color: var(--color-accent-orange); }
+.instruction-item.repaso { border-top-color: var(--color-accent-cyan); }
+.instruction-item.simula { border-top-color: var(--color-accent-green); }
+
