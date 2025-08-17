@@ -31,11 +31,34 @@
         </div>
         
         <div class="instructions-container ui-card">
-             <div class="instructions-header">
-                <img src="../../landing-page/images/logo-enarmaps.png" alt="Logo de ENARMaps" class="logo">
+            <div class="instructions-header">
+                <img src="../../images/logo-enarmaps.png" alt="Logo de ENARMaps" class="logo">
                 <h2>¡Bienvenido a tu Plan de Batalla!</h2>
             </div>
-            <p>Esta es una muestra de tu hoja de ruta diaria. En la versión completa, cada día está diseñado para maximizar tu rendimiento, enfocándose en los temas más rentables para ti.</p>
+            <p>Esta es una muestra de tu hoja de ruta diaria. En la versión completa, cada día está diseñado para maximizar tu rendimiento.</p>
+            <div class="instructions-grid">
+                <div class="instruction-item">
+                    <h3>Prioridades de Estudio</h3>
+                    <p>Cada tarea tiene un indicador de color para que sepas dónde enfocar tu energía:</p>
+                     <ul>
+                        <li><span class="priority-badge priority-high"></span> <strong>Alta:</strong> Temas más rentables.</li>
+                        <li><span class="priority-badge priority-medium"></span> <strong>Media:</strong> Temas importantes.</li>
+                        <li><span class="priority-badge priority-low"></span> <strong>Baja:</strong> Repasos rápidos.</li>
+                     </ul>
+                </div>
+                <div class="instruction-item">
+                    <h3>Simula tus Horas</h3>
+                    <p>Compara el tiempo recomendado con tus horas disponibles para saber cuándo priorizar.</p>
+                    <div id="hours-simulation-form">
+                        <label for="sim-horas-lv">L-V:</label>
+                        <input type="number" id="sim-horas-lv" value="2" min="0" max="24">
+                        <label for="sim-horas-sabado">Sáb:</label>
+                        <input type="number" id="sim-horas-sabado" value="4" min="0" max="24">
+                        <label for="sim-horas-domingo">Dom:</label>
+                        <input type="number" id="sim-horas-domingo" value="0" min="0" max="24">
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="timeline" id="timeline-container">
