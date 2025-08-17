@@ -783,3 +783,41 @@ p { font-size: 1.1rem; color: var(--color-text-secondary); }
         padding: 80px 0;
     }
 }
+
+/* --- ESTILOS PARA MENSAJE DE ÉXITO DEL FORMULARIO DEMO --- */
+.form-success-message {
+    background-color: rgba(255, 255, 255, 0.98);
+    color: var(--color-text-primary);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+.form-success-message .success-icon {
+    font-size: 2.5rem;
+    color: var(--color-accent-green);
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.form-success-message h3 {
+    font-family: var(--font-headings);
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.form-success-message p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Pequeña animación para la aparición */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
