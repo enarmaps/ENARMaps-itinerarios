@@ -128,3 +128,24 @@ p {
 
 }
 
+/* --- ESTILOS PARA BOTONES CON ICONOS --- */
+.ui-button {
+    text-align: left;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.button-content svg {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.button-text span {
+    opacity: 0.8;
+}
+
