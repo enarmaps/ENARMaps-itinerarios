@@ -34,7 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
             dayCard.setAttribute('data-date', dateISO);
             
             if(dayDate < today) dayCard.classList.add('is-past');
-            if(dayDate.getTime() === today.getTime()) dayCard.classList.add('is-today');
+            if(dayDate.getFullYear() === today.getFullYear() &&
+               dayDate.getMonth() === today.getMonth() &&
+               dayDate.getDate() === today.getDate()) {
+                dayCard.classList.add('is-today');
+            }
             if(item.type === 'review') dayCard.classList.add('is-special-day');
             
             let tasksHtml = '';
@@ -100,3 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
         todayCard.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
     }
 });
+
