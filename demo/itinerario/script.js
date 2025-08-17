@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- BASE DE DATOS DEL ITINERARIO (VERSIÓN DEMO) ---
     const itineraryData = [
-        // Semana 1
         { day: 0, type: 'study', specialty: 'Ginecología y Obstetricia', tasks: [ { priority: 'high', topic: 'Enfermedad Hipertensiva del Embarazo', description: 'Ver videoclase y leer GPC.' }, { priority: 'medium', topic: 'Hemorragia Obstétrica', description: 'Hacer banco de preguntas.' }, { priority: 'low', topic: 'Vaginosis Bacteriana', description: 'Repaso rápido con flashcards.'} ] },
         { day: 1, type: 'study', specialty: 'Cirugía General', tasks: [ { priority: 'high', topic: 'Apendicitis Aguda', description: 'Leer GPC y hacer banco de preguntas.' }, { priority: 'medium', topic: 'Patología Biliar', description: 'Ver videoclase.' }, { priority: 'low', topic: 'Hernia Inguinal', description: 'Repaso rápido con flashcards.'} ] },
         { day: 2, type: 'study', specialty: 'Medicina Interna', tasks: [ { priority: 'high', topic: 'Diabetes Mellitus 2', description: 'Leer GPC y hacer banco de preguntas.'}, { priority: 'medium', topic: 'EPOC', description: 'Repaso con videoclase.'}, { priority: 'low', topic: 'Gota', description: 'Lectura rápida.'} ] },
@@ -9,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 4, type: 'study', specialty: 'Urgencias y Especialidades', tasks: [ { priority: 'high', topic: 'Manejo del Politraumatizado (ATLS)', description: 'Ver videoclase y hacer flashcards del ABCDE.'}, { priority: 'medium', topic: 'EVC', description: 'Hacer banco de preguntas.'}, { priority: 'low', topic: 'Cefaleas primarias', description: 'Lectura rápida.'} ] },
         { day: 5, type: 'study', specialty: 'Medicina Interna (Refuerzo)', tasks: [ { priority: 'high', topic: 'Cardiopatía Isquémica (SICA)', description: 'Ver videoclase y hacer flashcards.' }, { priority: 'medium', topic: 'Insuficiencia Cardiaca', description: 'Hacer banco de preguntas.'}, { priority: 'low', topic: 'Fibrilación Auricular', description: 'Lectura rápida.'} ] },
         { day: 6, type: 'review', specialty: 'Repaso Inteligente y Simulacro' },
-
-        // Semana 2
         { day: 7, type: 'study', specialty: 'Ginecología y Obstetricia', tasks: [ { priority: 'high', topic: 'Control Prenatal', description: 'Leer NOM-007 y hacer preguntas.'}, { priority: 'medium', topic: 'Cáncer Cervicouterino', description: 'Repasar NOM-014 y videoclase.'}, { priority: 'low', topic: 'Miomatosis Uterina', description: 'Repaso con flashcards.'} ] },
         { day: 8, type: 'study', specialty: 'Cirugía General', tasks: [ { priority: 'high', topic: 'TCE y Escala de Glasgow', description: 'Hacer banco de preguntas.'}, { priority: 'medium', topic: 'Manejo de Quemaduras', description: 'Ver videoclase (Fórmula de Parkland).'}, { priority: 'low', topic: 'Enfermedad diverticular', description: 'Lectura rápida.'} ] },
         { day: 9, type: 'study', specialty: 'Medicina Interna', tasks: [ { priority: 'high', topic: 'Tuberculosis', description: 'Leer NOM-006 y hacer preguntas.'}, { priority: 'medium', topic: 'Neumonía Adquirida en Comunidad', description: 'Ver videoclase (CURB-65).'}, { priority: 'low', topic: 'Artritis Reumatoide', description: 'Repaso con flashcards.'} ] },
@@ -22,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.getElementById('timeline-container');
     const startDate = new Date(); 
-    startDate.setDate(startDate.getDate() - 3); // Empezamos hace 3 días para mostrar el estado "is-past"
+    startDate.setDate(startDate.getDate() - 3);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -86,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
          const totalTasks = allCheckboxes.length;
          const percentage = (checkedCount / totalTasks) * 100;
          progressBar.style.width = `${percentage}%`;
-         // Streak logic (simplified for demo)
          streakDaysSpan.textContent = Math.floor(checkedCount / 3);
     }
 
