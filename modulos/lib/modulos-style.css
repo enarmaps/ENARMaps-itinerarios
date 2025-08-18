@@ -54,7 +54,7 @@ body {
 }
 
 .layout-document .page {
-    padding: 25mm 20mm 80mm; /* Espacio adicional para lead magnet */
+    padding: 25mm 20mm 25mm; /* Espacio adicional para lead magnet */
     box-sizing: border-box;
     display: block; /* Forzar flujo de una columna */
     width: 100%; /* Asegurar que ocupe el ancho completo */
@@ -340,6 +340,7 @@ ul, ol {
         width: 100%;
     }
 }
+
 
 
 
