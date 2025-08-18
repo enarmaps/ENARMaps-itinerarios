@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Mental: Tratamiento EVC Isquémico (Guías AHA)</title>
+    <title>Mapa Mental: Tratamiento EVC Isquémico (Guías AHA + GPC México)</title>
     
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
     
-    <link rel="stylesheet" href="../../lib/modulos-style.css">
-    <link rel="stylesheet" href="../../lib/map-style.css">
+    <link rel="stylesheet" href="/modulos/lib/modulos-style.css">
+    <link rel="stylesheet" href="/modulos/lib/map-style.css">
 </head>
 <body>
 
 <div class="map-container">
-    <h1>Mapa Mental: Tratamiento del EVC Isquémico (Guías AHA)</h1>
+    <h1>Mapa Mental: Tratamiento del EVC Isquémico (AHA + GPC México)</h1>
     <p class="description">Navega este mapa mental interactivo para explorar las guías de tratamiento. Haz clic en los nodos para expandir y contraer las ramas de conocimiento.</p>
     
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
-    <p class="credit">Información basada en guías generales de la AHA. Consulta siempre las guías más recientes y completas.</p>
+    <p class="credit">Información basada en guías AHA y GPC mexicanas. Consulta siempre las fuentes oficiales más recientes.</p>
 </div>
 
 <section class="lead-magnet-interno">
@@ -38,7 +38,7 @@
 </section>
 
 <script type="text/template" id="markdown-mapa">
-# Tratamiento EVC Isquémico (GPC México + AHA)
+# Tratamiento EVC Isquémico (AHA + GPC México)
 
 ## Fase Aguda (Reperfusión y Manejo Inicial)
 - **Terapia de Reperfusión (Tiempo es Cerebro)**
@@ -88,7 +88,7 @@
     - **Aspirina + Clopidogrel:**
       - Indicación: EVC isquémico menor (NIHSS ≤3-5) o AIT de alto riesgo (ABCD² ≥4).
       - Duración: Iniciar en 24h, continuar por 21-90 días.
-- **Anticoagulación (EVC Cardioembólico, ej. FA)**
+- **AnticoagulACIÓN (EVC Cardioembólico, ej. FA)**
   - **(GPC México)** Preferir Anticoagulantes Orales Directos (ACODs) sobre Warfarina.
 - **Manejo de Lípidos (Estatinas)**
   - **(GPC México)** Iniciar estatinas de alta intensidad.
@@ -104,13 +104,11 @@
   - Objetivo hospitalario: 140-180 mg/dL. Evitar hipoglucemia.
 </script>
 
-<script src="../../lib/map-logic.js"></script>
+<script src="/modulos/lib/map-logic.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Obtenemos el contenido del mapa desde la etiqueta de script
         const markdownContent = document.getElementById('markdown-mapa').text;
-        // Llamamos a la función de renderizado de nuestra librería
         renderMarkmap(markdownContent);
     });
 </script>
