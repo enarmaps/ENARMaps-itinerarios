@@ -1,29 +1,37 @@
 /* =================================================================== */
-/* CSS MAESTRO PARA MÓDULOS TIPO DOCUMENTO (v5.0 - Final Corregido) */
+/* CSS MAESTRO PARA MÓDULOS TIPO DOCUMENTO (v6.0 - Mejorado)           */
 /* =================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
+    /* Paleta de Colores de la Marca ENARMaps */
     --color-primary-dark: #0D1B4E;
     --color-primary-light: #1A5A96;
     --color-accent-orange: #F5A623;
+    --color-accent-green: #2E8B57;
+    --color-success: #2E7D32;
+    --color-error: #C62828;
     --color-text-primary: #212529;
     --color-text-secondary: #495057;
     --color-background: #F8F9FA;
     --color-paper: #FFFFFF;
     --color-border: #DEE2E6;
-    --color-success: #2E7D32;
-    --color-error: #C62828;
     --font-headings: 'Roboto Slab', serif;
     --font-body: 'Open Sans', sans-serif;
+}
+
+/* --- RESETS Y BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     background-color: var(--color-background);
     font-family: var(--font-body);
     color: var(--color-text-primary);
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
 }
 
 /* --- LAYOUT TIPO DOCUMENTO (Una Columna Garantizada) --- */
@@ -31,18 +39,22 @@ body.layout-document {
     display: flex;
     justify-content: center;
     padding: 20px 0;
+    min-height: 100vh;
 }
 
 .layout-document .report-container {
-    width: 210mm;
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px; /* Ancho óptimo para una columna */
     background-color: var(--color-paper);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
 }
 
 .layout-document .page {
-    padding: 25mm 20mm;
+    padding: 25mm 20mm 80mm; /* Espacio adicional para lead magnet */
     box-sizing: border-box;
+    display: block; /* Forzar flujo de una columna */
+    width: 100%;
 }
 
 /* --- ESTILOS COMUNES DE TEXTO --- */
@@ -84,15 +96,126 @@ p, li {
 
 ul, ol {
     padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA STORYTELLING --- */
+.story-step {
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid #d1c4e9;
+    border-radius: 8px;
+    background-color: #f3e5f5;
+    border-left: 6px solid #4a148c;
+    transition: all 0.3s ease;
+}
+
+.story-step:hover {
+    box-shadow: 0 4px 12px rgba(74, 20, 140, 0.1);
+}
+
+.story-step h3 {
+    color: #4a148c;
+    border-bottom: 2px solid #8e24aa;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.hidden-scene {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.reveal-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    background-color: var(--color-accent-orange);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reveal-button:hover {
+    transform: translateY(-2px);
+    background-color: #e65100;
+}
+
+.cascade-diagram {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cascade-diagram .cascade-item {
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    width: 80%;
+    background-color: var(--color-paper);
+}
+
+.cascade-diagram .cascade-arrow {
+    font-size: 24px;
+    color: var(--color-accent-orange);
+    text-align: center;
+}
+
+.cascade-diagram .drop-zone {
+    border: 2px dashed var(--color-accent-orange);
+    min-height: 60px;
+    margin: 10px auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-secondary);
+    transition: background-color 0.2s;
+    padding: 5px;
+}
+
+.cascade-diagram .drop-zone.dragover {
+    background-color: #e8f5e9;
+}
+
+#drag-options {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eceff1;
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+.drag-item {
+    padding: 10px;
+    background-color: var(--color-primary-dark);
+    color: white;
+    border-radius: 4px;
+    cursor: grab;
+    margin: 5px;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.drag-item.dragging {
+    opacity: 0.5;
 }
 
 /* --- FORMULARIO DE CAPTURA --- */
 .lead-magnet-interno {
     padding: 60px 20px;
-    margin-top: 40px;
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
     color: white;
     text-align: center;
+    margin-top: 40px;
 }
 
 .lead-magnet-interno .container {
@@ -119,7 +242,7 @@ ul, ol {
     max-width: 500px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* Cambio a columna para una sola fila */
     gap: 15px;
     justify-content: center;
 }
@@ -131,6 +254,13 @@ ul, ol {
     border: none;
     border-radius: 8px;
     font-size: 1rem;
+    font-family: var(--font-body);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.lead-magnet-interno input:focus {
+    outline: 2px solid var(--color-primary-light);
+    background-color: white;
 }
 
 .lead-magnet-interno .btn-interno {
@@ -143,6 +273,7 @@ ul, ol {
     transition: all 0.2s ease;
     background: var(--color-accent-orange);
     color: var(--color-text-primary);
+    width: 100%; /* Asegura que ocupe todo el ancho */
 }
 
 .lead-magnet-interno .btn-interno:hover {
@@ -154,4 +285,53 @@ ul, ol {
     background-color: #ccc;
     cursor: not-allowed;
     transform: none;
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+@media (max-width: 768px) {
+    .layout-document .page {
+        padding: 15mm 10mm 60mm; /* Reducir padding en móviles */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p, li {
+        font-size: 14px;
+    }
+
+    .story-step {
+        padding: 15px;
+    }
+
+    .cascade-diagram .cascade-item,
+    .cascade-diagram .drop-zone {
+        width: 90%;
+    }
+
+    .lead-magnet-interno {
+        padding: 40px 15px;
+    }
+
+    .lead-magnet-interno .lead-form-interno {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .lead-magnet-interno input {
+        min-width: 100%;
+    }
+
+    .lead-magnet-interno .btn-interno {
+        width: 100%;
+    }
 }
