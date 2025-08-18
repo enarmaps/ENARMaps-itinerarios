@@ -54,7 +54,9 @@ body.layout-document {
     padding: 25mm 20mm 80mm; /* Espacio adicional para lead magnet */
     box-sizing: border-box;
     display: block; /* Forzar flujo de una columna */
-    width: 100%;
+    width: 100%; /* Asegurar que ocupe el ancho completo */
+    max-width: 100%; /* Prevenir desbordamiento */
+    margin: 0 auto; /* Centrar contenido */
 }
 
 /* --- ESTILOS COMUNES DE TEXTO --- */
@@ -335,3 +337,4 @@ ul, ol {
         width: 100%;
     }
 }
+
