@@ -68,27 +68,21 @@
     <div class="page">
         <h1>Capítulo 1: La Caída del Reino</h1>
         <p>En el vasto y complejo "Reino del Cuerpo", la vida depende de un flujo constante y vigoroso a través de sus ríos: los vasos sanguíneos. Este flujo, conocido como <strong>presión arterial</strong>, debe mantenerse en un equilibrio perfecto. Pero un día, el Reino sufre una crisis: una hemorragia, una deshidratación... y la presión comienza a caer peligrosamente.</p>
-        
         <div class="story-step">
             <h3>El Guardián del Flujo</h3>
             <p>En lo profundo del Reino se encuentran los <strong>Riñones</strong>, dos sabios y antiguos guardianes. Son los primeros en detectar que el flujo de sangre que les llega es peligrosamente bajo. Al sentir el peligro, el Riñón libera a su mensajero secreto: una enzima llamada <strong>Renina</strong>.</p>
             <button class="reveal-button" onclick="revealScene('scene2')">Continuar la historia...</button>
         </div>
-
         <div id="scene2" class="story-step hidden-scene">
             <h3>El Despertar del Gigante</h3>
             <p>Flotando pacíficamente en la sangre, producido por el Hígado, yace un gigante inactivo: el <strong>Angiotensinógeno</strong>. El mensajero Renina lo encuentra y, con un toque enzimático, lo transforma. El gigante despierta, pero aún es débil. Ahora es <strong>Angiotensina I</strong>.</p>
             <button class="reveal-button" onclick="revealScene('scene3')">¿Qué sucede después?</button>
         </div>
-    </div>
-
-    <div class="page">
-         <div id="scene3" class="story-step hidden-scene">
+        <div id="scene3" class="story-step hidden-scene">
             <h1>Capítulo 2: El Héroe de la Presión</h1>
             <p>La débil Angiotensina I viaja hasta los grandes fuelles del Reino: los <strong>Pulmones</strong>. Allí, un poderoso alquimista la espera: la <strong>Enzima Convertidora de Angiotensina (ECA)</strong>. Cuando la Angiotensina I pasa por su taller, la ECA la transforma en su forma final y todopoderosa: la <strong>Angiotensina II</strong>. Nuestro héroe ha nacido, y tiene un plan maestro con tres acciones.</p>
             <button class="reveal-button" onclick="revealScene('scene4')">Revelar las acciones del héroe...</button>
         </div>
-
         <div id="scene4" class="story-step hidden-scene">
             <h3>Las Tres Acciones del Héroe</h3>
             <ol>
@@ -98,13 +92,9 @@
             </ol>
             <button class="reveal-button" onclick="revealScene('scene5')">Ir al Epílogo...</button>
         </div>
-    </div>
-    
-    <div class="page">
         <div id="scene5" class="story-step hidden-scene">
             <h1>Epílogo: El Héroe, el Villano y los Saboteadores</h1>
             <p>En la hipertensión crónica, este héroe se convierte en villano. Aquí es donde la medicina interviene. <strong>Demuestra tu conocimiento:</strong></p>
-
             <div class="cascade-diagram" style="text-align: center;">
                 <div class="cascade-item">Angiotensina I</div>
                 <div class="cascade-arrow">↓</div>
@@ -114,7 +104,6 @@
                 <div class="cascade-arrow">↓</div>
                 <div class="drop-zone" data-target="ara2"><strong>(Receptores AT1)</strong><br>Arrastra el fármaco que actúa aquí</div>
             </div>
-
             <div id="drag-options">
                 <div class="drag-item" draggable="true" data-target="ieca">IECA (ej. Captopril)</div>
                 <div class="drag-item" draggable="true" data-target="ara2">ARA II (ej. Losartán)</div>
@@ -122,7 +111,17 @@
             <button id="reset-drag-button" class="reveal-button" style="background-color: var(--color-primary-light);">Reiniciar</button>
         </div>
     </div>
-</div>
+    <section class="lead-magnet-interno">
+        <div class="container">
+            <h2>¿Te gustó este módulo? Esto es solo el comienzo.</h2>
+            <p>Recibe notificaciones cuando lancemos nuevos módulos interactivos y obtén acceso prioritario a la versión completa de ENARMaps.</p>
+            <form class="lead-form-interno" action="#" method="POST">
+                <input type="email" placeholder="Tu mejor email" required>
+                <button type="submit" class="btn-interno">Mantenerme Actualizado</button>
+            </form>
+        </section>
+    </div>
+</body>
 
 <section class="lead-magnet-interno">
     <div class="container">
@@ -139,3 +138,4 @@
 
 </body>
 </html>
+
