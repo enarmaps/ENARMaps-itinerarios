@@ -45,9 +45,9 @@ body.layout-document {
 .layout-document .report-container {
     width: 100%;
     max-width: 800px; /* Ancho óptimo para una columna */
+    margin: 0 auto;
     background-color: var(--color-paper);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
 }
 
 .layout-document .page {
@@ -337,4 +337,5 @@ ul, ol {
         width: 100%;
     }
 }
+
 
