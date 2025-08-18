@@ -1,5 +1,5 @@
 /* =================================================================== */
-/* CSS MAESTRO PARA MÓDULOS TIPO DOCUMENTO (v5.0 - Final)      */
+/* CSS MAESTRO PARA MÓDULOS TIPO DOCUMENTO (v5.0 - Final Corregido) */
 /* =================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
 
@@ -26,7 +26,7 @@ body {
     padding: 0;
 }
 
-/* --- LAYOUT TIPO DOCUMENTO (Una Columna) --- */
+/* --- LAYOUT TIPO DOCUMENTO (Una Columna Garantizada) --- */
 body.layout-document {
     display: flex;
     justify-content: center;
@@ -86,7 +86,7 @@ ul, ol {
     padding-left: 25px;
 }
 
-/* --- FORMULARIO DE CAPTURA (Estilo único para todos) --- */
+/* --- FORMULARIO DE CAPTURA --- */
 .lead-magnet-interno {
     padding: 60px 20px;
     margin-top: 40px;
