@@ -1,58 +1,157 @@
 /* =================================================================== */
-/* CSS MAESTRO PARA TODOS LOS MÓDULOS ENARMAPS (v4.0 - Final)    */
-/* Contiene layouts para 'documento' y estilos comunes.         */
+/* CSS MAESTRO PARA MÓDULOS TIPO DOCUMENTO (v5.0 - Final)      */
 /* =================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
-    --color-primary-dark: #0D1B4E; --color-primary-light: #1A5A96; --color-accent-orange: #F5A623;
-    --color-text-primary: #212529; --color-text-secondary: #495057; --color-background: #F8F9FA;
-    --color-paper: #FFFFFF; --color-border: #DEE2E6; --color-success: #2E7D32; --color-error: #C62828;
-    --font-headings: 'Roboto Slab', serif; --font-body: 'Open Sans', sans-serif;
+    --color-primary-dark: #0D1B4E;
+    --color-primary-light: #1A5A96;
+    --color-accent-orange: #F5A623;
+    --color-text-primary: #212529;
+    --color-text-secondary: #495057;
+    --color-background: #F8F9FA;
+    --color-paper: #FFFFFF;
+    --color-border: #DEE2E6;
+    --color-success: #2E7D32;
+    --color-error: #C62828;
+    --font-headings: 'Roboto Slab', serif;
+    --font-body: 'Open Sans', sans-serif;
 }
 
 body {
     background-color: var(--color-background);
     font-family: var(--font-body);
     color: var(--color-text-primary);
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-/* --- LAYOUT TIPO DOCUMENTO --- */
+/* --- LAYOUT TIPO DOCUMENTO (Una Columna) --- */
 body.layout-document {
     display: flex;
     justify-content: center;
     padding: 20px 0;
 }
+
 .layout-document .report-container {
     width: 210mm;
     max-width: 100%;
     background-color: var(--color-paper);
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
 .layout-document .page {
     padding: 25mm 20mm;
     box-sizing: border-box;
 }
 
 /* --- ESTILOS COMUNES DE TEXTO --- */
-h1, h2, h3, h4 { font-family: var(--font-headings); color: var(--color-primary-dark); }
-h1 { font-size: 32px; border-bottom: 2px solid var(--color-primary-dark); padding-bottom: 10px; margin-bottom: 25px; margin-top:0; }
-h2 { font-size: 24px; border-bottom: 1px solid var(--color-border); padding-bottom: 8px; margin-top: 40px; margin-bottom: 20px;}
-h3 { font-size: 18px; color: var(--color-primary-light); margin-top: 30px; margin-bottom: 15px; font-weight: 700; }
-p, li { font-size: 16px; line-height: 1.8; color: var(--color-text-secondary); text-align: justify; }
-ul, ol { padding-left: 25px; }
+h1, h2, h3, h4 {
+    font-family: var(--font-headings);
+    color: var(--color-primary-dark);
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 2px solid var(--color-primary-dark);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 24px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    color: var(--color-primary-light);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+p, li {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    text-align: justify;
+}
+
+ul, ol {
+    padding-left: 25px;
+}
 
 /* --- FORMULARIO DE CAPTURA (Estilo único para todos) --- */
 .lead-magnet-interno {
     padding: 60px 20px;
-    margin-top: 40px; /* Espacio entre el fin del contenido y el formulario */
+    margin-top: 40px;
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
-    color: white; text-align: center;
+    color: white;
+    text-align: center;
 }
-.lead-magnet-interno .container { max-width: 800px; margin: 0 auto; }
-.lead-magnet-interno h2 { color: white; margin-bottom: 20px; font-size: 2rem; border: none; }
-.lead-magnet-interno p { color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; text-align: center; }
-.lead-magnet-interno .lead-form-interno { max-width: 500px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-.lead-magnet-interno input { flex-grow: 1; min-width: 250px; padding: 14px 18px; border: none; border-radius: 8px; font-size: 1rem; }
-.lead-magnet-interno .btn-interno { padding: 14px 28px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; background: var(--color-accent-orange); color: var(--color-text-primary); }
+
+.lead-magnet-interno .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.lead-magnet-interno h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-bottom: none;
+}
+
+.lead-magnet-interno p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.lead-magnet-interno .lead-form-interno {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.lead-magnet-interno input {
+    flex-grow: 1;
+    min-width: 250px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.lead-magnet-interno .btn-interno {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--color-accent-orange);
+    color: var(--color-text-primary);
+}
+
+.lead-magnet-interno .btn-interno:hover {
+    background-color: #e0930f;
+    transform: translateY(-2px);
+}
+
+.lead-magnet-interno .btn-interno:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
