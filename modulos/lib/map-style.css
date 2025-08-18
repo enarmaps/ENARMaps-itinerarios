@@ -56,4 +56,22 @@ svg.markmap {
     color: var(--color-text-secondary);
     margin: 15px 0;
     text-align: center;
+
+}
+
+.map-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    z-index: 10; /* Asegura que esté por encima del mapa */
+}
+
+/* Ajustar el padding del contenedor del mapa si es necesario */
+.map-container {
+    position: relative; /* Para que el logo se posicione relativamente a este contenedor */
+    /* ... otros estilos ... */
+    padding-top: 30px; /* Ejemplo para dar espacio al logo */
+    padding-left: 100px; /* Ejemplo para dar espacio al logo */
 }
