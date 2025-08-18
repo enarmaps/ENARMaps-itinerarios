@@ -3,40 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Mental: Tratamiento EVC Isquémico (Guías AHA + GPC México)</title>
+    <title>Mapa Mental: Tratamiento EVC Isquémico (AHA + GPC México)</title>
     
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
     
-    <link rel="stylesheet" href="/modulos/lib/modulos-style.css">
-    <link rel="stylesheet" href="/modulos/lib/map-style.css">
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/map-style.css">
 </head>
 <body>
 
-<div class="map-container">
-    <img src="/images/enarmaps-logo-small.png" alt="Logo ENARMaps" class="map-logo">
-    <h1>Mapa Mental: Tratamiento del EVC Isquémico (AHA + GPC México)</h1>
-    <p class="description">Navega este mapa mental interactivo para explorar las guías de tratamiento. Haz clic en los nodos para expandir y contraer las ramas de conocimiento.</p>
-    
-    <div id="mindmap-container">
-        <svg id="markmap-svg" class="markmap"></svg>
-    </div>
-    
-    <p class="credit">Información basada en guías AHA y GPC mexicanas. Consulta siempre las fuentes oficiales más recientes.</p>
-</div>
-
-<section class="lead-magnet-interno">
-    <div class="container">
-        <h2>¿Te gustó este módulo? Esto es solo el comienzo.</h2>
-        <p>Recibe notificaciones cuando lancemos nuevos módulos interactivos y obtén acceso prioritario a la versión completa de ENARMaps. Únete a nuestra comunidad de aspirantes de alto rendimiento.</p>
+<div class="main-container">
+    <div class="map-container">
+        <div class="map-header">
+            <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+            
+            <h1>Mapa Mental: Tratamiento del EVC Isquémico</h1>
+            <p>(Basado en Guías AHA y GPC México)</p>
+        </div>
         
-        <form class="lead-form-interno" action="#" method="POST">
-            <input type="email" placeholder="Tu mejor email" required>
-            <button type="submit" class="btn-interno">Mantenerme Actualizado</button>
-        </form>
+        <div id="mindmap-container">
+            <svg id="markmap-svg" class="markmap"></svg>
+        </div>
+        
+        <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
     </div>
-</section>
+
+    <section class="lead-magnet-interno">
+        <div class="container">
+            <h2>¿Te gustó este módulo? Esto es solo el comienzo.</h2>
+            <p>Recibe notificaciones cuando lancemos nuevos módulos interactivos y obtén acceso prioritario a la versión completa de ENARMaps.</p>
+            
+            <form class="lead-form-interno" action="#" method="POST">
+                <input type="email" placeholder="Tu mejor email" required>
+                <button type="submit" class="btn-interno">Mantenerme Actualizado</button>
+            </form>
+        </div>
+    </section>
+</div>
 
 <script type="text/template" id="markdown-mapa">
 # Tratamiento EVC Isquémico (AHA + GPC México)
@@ -105,7 +110,7 @@
   - Objetivo hospitalario: 140-180 mg/dL. Evitar hipoglucemia.
 </script>
 
-<script src="/modulos/lib/map-logic.js"></script>
+<script src="../../lib/map-logic.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -116,4 +121,3 @@
 
 </body>
 </html>
-
