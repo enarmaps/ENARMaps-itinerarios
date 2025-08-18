@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolor Torácico: Un Ejercicio de Entrelazado (Interleaving)</title>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+</head>
+<body>
+
+<div class="report-container">
+    <div class="page">
+        <h1>Mini-Simulacro: El Reto del Dolor Torácico</h1>
+        <p>El método de Entrelazado (Interleaving) consiste en mezclar diferentes temas para forzar a tu cerebro a elegir la estrategia correcta en cada momento. A continuación, se presentan 4 casos de dolor torácico. Lee cada viñeta y elige el diagnóstico más probable. ¡Mucha suerte!</p>
+
+        <div class="quiz-container">
+            <div class="question-block" data-question="1">
+                <h3>Caso 1</h3>
+                <p class="vignette" style="font-style: italic; color: var(--color-text-secondary);">Paciente masculino de 58 años, diabético e hipertenso, acude por dolor retroesternal opresivo de 2 horas de evolución, irradiado a brazo izquierdo, acompañado de diaforesis y náuseas.</p>
+                <button class="mcq-option" data-correct="true">Síndrome Coronario Agudo</button>
+                <button class="mcq-option">Tromboembolia Pulmonar</button>
+                <button class="mcq-option">Espasmo Esofágico Difuso</button>
+                <div class="explanation">
+                    <p><strong>Correcto.</strong> La presentación clásica de dolor opresivo, irradiación, síntomas neurovegetativos y factores de riesgo cardiovascular hacen del Síndrome Coronario Agudo el diagnóstico más probable.</p>
+                </div>
+            </div>
+
+            <div class="question-block" data-question="2">
+                <h3>Caso 2</h3>
+                <p class="vignette" style="font-style: italic; color: var(--color-text-secondary);">Mujer de 35 años, en postoperatorio de cirugía de cadera hace 1 semana, presenta inicio súbito de disnea y dolor torácico de tipo pleurítico. A la exploración: taquicardia y taquipnea.</p>
+                <button class="mcq-option">Enfermedad por Reflujo Gastroesofágico</button>
+                <button class="mcq-option">Síndrome Coronario Agudo</button>
+                <button class="mcq-option" data-correct="true">Tromboembolia Pulmonar</button>
+                <div class="explanation">
+                    <p><strong>Correcto.</strong> El inicio súbito de disnea, el dolor pleurítico y los factores de riesgo para trombosis venosa profunda (cirugía reciente, inmovilización) apuntan fuertemente a una Tromboembolia Pulmonar.</p>
+                </div>
+            </div>
+            
+            </div>
+
+        <div id="quiz-results" style="display: none; margin-top: 30px; padding: 25px; background-color: #e3f2fd; border: 2px solid var(--color-primary-dark); text-align: center; border-radius: 8px;">
+            <h3 style="margin-top: 0;">Resultados del Ejercicio</h3>
+            <p id="score-text">Has completado el ejercicio.</p>
+        </div>
+    </div>
+</div>
+
+<section class="lead-magnet-interno">
+    </section>
+
+<script src="../../lib/interleaving-logic.js"></script>
+
+</body>
+</html>

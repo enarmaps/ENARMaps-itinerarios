@@ -1,0 +1,63 @@
+// =================================================================== //
+// LIBRERÍA DE LÓGICA COMÚN PARA MÓDulos FEYNMAN (feynman-logic.js)    //
+// =================================================================== //
+
+// --- Función para la Lógica de Preguntas de Múltiple Opción (MCQ) ---
+// Esta función es genérica y funcionará para cualquier MCQ en cualquier módulo.
+function setupMCQ() {
+    const mcqContainers = document.querySelectorAll('.interactive-simulator[id^="q"]');
+    mcqContainers.forEach(container => {
+        const options = container.querySelectorAll('.mcq-option');
+        const explanation = container.querySelector('.explanation');
+        if (!options.length) return;
+
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(btn => btn.disabled = true);
+                if (this.dataset.correct === 'true') {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('incorrect');
+                    const correctOption = container.querySelector('[data-correct="true"]');
+                    if (correctOption) correctOption.classList.add('correct');
+                }
+                if (explanation) explanation.style.display = 'block';
+            });
+        });
+    });
+}
+
+// --- Script Genérico para la Captura de Correos ---
+// Este también es genérico y se usa en todos los módulos.
+function setupLeadCapture() {
+    const leadForm = document.querySelector('.lead-form-interno');
+    if (!leadForm) return;
+
+    leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        const submitButton = this.querySelector('button[type="submit"]');
+        const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput.value, source: window.location.pathname })
+        })
+        .then(response => {
+            if (response.ok) {
+                this.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Gracias! Estás en la lista.</p>';
+            } else { throw new Error('Error en el envío.'); }
+        })
+        .catch(error => { /* ... manejo de errores ... */ });
+    });
+}
+
+// --- Inicializador que llama a las funciones COMUNES ---
+document.addEventListener('DOMContentLoaded', function () {
+    setupMCQ();
+    setupLeadCapture();
+});
