@@ -36,7 +36,7 @@ body {
 
 /* --- LAYOUT TIPO DOCUMENTO (Una Columna Garantizada) --- */
 .layout-document .page {
-    padding: 25mm 20mm 80mm;
+    padding: 25mm 20mm;
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -340,6 +340,7 @@ ul, ol {
         width: 100%;
     }
 }
+
 
 
 
