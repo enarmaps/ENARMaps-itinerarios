@@ -12,23 +12,19 @@
     <link rel="stylesheet" href="../lib/modulos-style.css">
     <link rel="stylesheet" href="../lib/map-style.css">
 </head>
-<body>
+<body class="layout-fullscreen">
 
 <div class="main-container">
-    <div class="map-content">
-        <div class="map-header">
-            <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
-            
-            <h1>Mapa Mental: Tratamiento del EVC Isquémico</h1>
-            <p class="description">(Basado en Guías AHA y GPC México)</p>
-        </div>
-        
-        <div id="mindmap-container">
-            <svg id="markmap-svg" class="markmap"></svg>
-        </div>
-        
-        <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Mapa Mental: Tratamiento del EVC Isquémico</h1>
+    <p class="description">(Basado en Guías AHA y GPC México)</p>
+    
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
     </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
 
     <section class="lead-magnet-interno">
         <div class="container">
@@ -111,7 +107,6 @@
 </script>
 
 <script src="../lib/map-logic.js"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const markdownContent = document.getElementById('markdown-mapa').text;
