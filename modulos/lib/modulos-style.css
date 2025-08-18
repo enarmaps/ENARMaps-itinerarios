@@ -35,19 +35,22 @@ body {
 }
 
 /* --- LAYOUT TIPO DOCUMENTO (Una Columna Garantizada) --- */
-body.layout-document {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    min-height: 100vh;
+.layout-document .page {
+    padding: 25mm 20mm 80mm;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .layout-document .report-container {
     width: 100%;
-    max-width: 800px; /* Ancho óptimo para una columna */
+    max-width: 800px;
     margin: 0 auto;
     background-color: var(--color-paper);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: block; /* Forzar un solo contenedor */
 }
 
 .layout-document .page {
@@ -337,5 +340,6 @@ ul, ol {
         width: 100%;
     }
 }
+
 
 
