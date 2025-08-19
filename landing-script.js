@@ -76,7 +76,10 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
                 <div class="form-success-message">
                     <div class="success-icon">✓</div>
                     <h3>¡Revisa tu correo!</h3>
-                    <p>Te hemos enviado un enlace de confirmación para acceder al demo.</p>
+                    <p>Te hemos enviado el enlace para acceder al demo interactivo.</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 15px;">
+                        <strong>Importante:</strong> Si no lo ves en tu bandeja de entrada, ¡no olvides revisar tu carpeta de correo no deseado (spam)!
+                    </p>
                 </div>
             `;
         } else {
@@ -89,4 +92,5 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
         submitButton.textContent = 'Obtener Demo Gratis';
         alert('Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo.');
     });
+
 });
