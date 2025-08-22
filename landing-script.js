@@ -53,7 +53,7 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
     const submitButton = form.querySelector('button[type="submit"]');
 
     // --- ¡IMPORTANTE! Pega aquí la URL de tu nuevo webhook ---
-    const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn ';
+    const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
 
     if (!emailInput.value) {
         alert('Por favor, ingresa un correo electrónico.');
