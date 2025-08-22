@@ -1,0 +1,119 @@
+/* =================================================================== */
+/* CSS Principal para la WebApp ENARMaps                               */
+/* Contiene el layout general y la barra de navegación                 */
+/* =================================================================== */
+
+/* --- VARIABLES Y BASE (Consistente con la marca) --- */
+:root {
+    --color-primary-dark: #0D1B4E; --color-primary-light: #1A5A96;
+    --color-accent-orange: #F5A623; --color-accent-cyan: #00A0B0;
+    --color-text-primary: #212529; --color-text-secondary: #495057;
+    --color-background: #F8F9FA; --color-paper: #FFFFFF; --color-border: #DEE2E6;
+    --font-headings: 'Roboto Slab', serif; --font-body: 'Open Sans', sans-serif;
+    --sidebar-width: 260px; /* Ancho de la barra lateral */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(170deg, #f0f4ff, var(--color-background));
+    color: var(--color-text-primary);
+}
+
+/* --- ESTRUCTURA PRINCIPAL DE LA APP --- */
+.app-layout {
+    display: flex;
+}
+
+.main-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, var(--color-primary-dark), #0a143b);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width); /* Deja espacio para la sidebar */
+    width: calc(100% - var(--sidebar-width));
+    padding: 30px;
+}
+
+/* --- ESTILOS DE LA BARRA LATERAL (SIDEBAR) --- */
+.sidebar-header .logo {
+    max-width: 180px;
+    margin-bottom: 40px;
+}
+
+.main-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-item a.active {
+    background-color: var(--color-primary-light);
+    color: white;
+    box-shadow: 0 4px 10px rgba(26, 90, 150, 0.3);
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* --- PERFIL DE USUARIO EN SIDEBAR --- */
+.sidebar-footer {
+    margin-top: auto; /* Empuja el perfil al final */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-cyan));
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-headings); font-weight: 700;
+    flex-shrink: 0;
+}
+
+.user-info span {
+    display: block;
+    font-weight: 600;
+}
+.user-info small {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
