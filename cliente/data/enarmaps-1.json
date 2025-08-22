@@ -1,0 +1,27 @@
+{
+  "clienteInfo": {
+    "nombre": "Dr. Jesús Carrillo",
+    "especialidadDeseada": "Cardiología",
+    "progresoGeneral": 25
+  },
+  "itinerario": [
+    {
+      "semana": 1,
+      "temaPrincipal": "Cardiopatía Isquémica",
+      "metodologia": "Técnica Feynman",
+      "estado": "completado"
+    },
+    {
+      "semana": 2,
+      "temaPrincipal": "Insuficiencia Cardíaca",
+      "metodologia": "Storytelling",
+      "estado": "en_progreso"
+    },
+    {
+      "semana": 3,
+      "temaPrincipal": "Arritmias Comunes",
+      "metodologia": "Mapa Mental",
+      "estado": "pendiente"
+    }
+  ]
+}
