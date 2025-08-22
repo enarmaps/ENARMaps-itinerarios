@@ -53,7 +53,7 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
     const submitButton = form.querySelector('button[type="submit"]');
 
     // --- ¡IMPORTANTE! Pega aquí la URL de tu nuevo webhook ---
-    const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
+    const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn ';
 
     if (!emailInput.value) {
         alert('Por favor, ingresa un correo electrónico.');
@@ -89,22 +89,4 @@ document.querySelector('.lead-form').addEventListener('submit', function(e) {
         submitButton.textContent = 'Obtener Demo Gratis';
         alert('Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo.');
     });
-});
-// Lógica para la Ventana Modal de Pago
-const modal = document.getElementById('instruccionesModal');
-const abrirBtn = document.getElementById('abrirModalBtn');
-const cerrarBtn = document.querySelector('.modal-close-btn');
-
-abrirBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
-
-cerrarBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target == modal) {
-        modal.style.display = 'none';
-    }
 });
