@@ -34,7 +34,7 @@
                 <div class="user-profile">
                     <div class="avatar">R</div>
                     <div class="user-info">
-                        <span>Dr. René</span>
+                        <span id="nombre-cliente">Dr. René</span>
                         <small>Cerrar Sesión</small>
                     </div>
                 </div>
@@ -45,16 +45,29 @@
             <div class="dashboard-grid">
                 <section class="widget mission-widget">
                     <h2 class="widget-title">🎯 Tu Misión para Hoy: 18 de Agosto, 2025</h2>
-                    <ul class="task-list"></ul>
+                    <table class="itinerary-table">
+                        <thead>
+                            <tr>
+                                <th>Semana</th>
+                                <th>Tema Principal</th>
+                                <th>Metodología Sugerida</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itinerario-container">
+                            </tbody>
+                    </table>
                     <a href="#" class="widget-footer-link">Ver mi Itinerario Completo →</a>
                 </section>
+                
                 <aside class="sidebar">
                     <section class="widget progress-widget">
                         <h2 class="widget-title">📈 Tu Progreso General</h2>
                         <div class="streak-counter"><span class="streak-fire">🔥</span><div class="streak-text"><span class="streak-number">0</span><span>días de racha</span></div></div>
-                        <div class="progress-bar"><div class="progress-bar-fill" style="width: 0%;"></div></div>
-                        <div class="progress-stats"></div>
+                        <div class="progress-bar"><div id="progreso-general-barra" class="progress-bar-fill" style="width: 0%;"></div></div>
+                        <div class="progress-stats" id="progreso-general-texto">0% de avance</div>
                     </section>
+
                     <section class="widget quick-access-widget">
                         <h2 class="widget-title">🚀 Accesos Rápidos</h2>
                         <div class="button-group">
