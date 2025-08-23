@@ -236,4 +236,22 @@ body {
     .dashboard-grid, .sidebar { gap: 20px; }
     .widget { padding: 20px; }
     .user-profile span { display: none; }
+
+}
+.itinerary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.itinerary-table th, .itinerary-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.itinerary-table th {
+    background-color: #f7f9fc;
+    font-weight: 700;
+    color: #333;
 }
