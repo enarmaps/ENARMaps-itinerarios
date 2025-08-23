@@ -19,7 +19,7 @@ async function cargarDatosDeCliente() {
 
     // --- 2. Construir la ruta al archivo JSON ---
     // Asumimos que el dashboard.html está en /cliente/ y los datos en /cliente/data/
-    const dataPath = `data/${clienteId}.json`;
+    const dataPath = `/cliente/data/${clienteId}.json`;
 
     // --- 3. Cargar los datos usando fetch ---
     try {
@@ -78,4 +78,5 @@ function actualizarDashboard(data) {
     }
 
     console.log("Dashboard actualizado con éxito.");
+
 }
