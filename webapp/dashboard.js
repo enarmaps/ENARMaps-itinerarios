@@ -63,11 +63,14 @@ function actualizarDashboard(data) {
         containerItinerario.innerHTML = ''; 
         data.itinerario.forEach(tema => {
             const temaElement = document.createElement('tr');
+            const estadoFormateado = tema.estado.replace('_', ' ');
+            const estadoCapitalizado = estadoFormateado.charAt(0).toUpperCase() + estadoFormateado.slice(1);
+
             temaElement.innerHTML = `
                 <td>Semana ${tema.semana}</td>
                 <td>${tema.temaPrincipal}</td>
-                <td>${tema.metodologia}</td>
-                <td><span class="status-${tema.estado}">${tema.estado.replace('_', ' ')}</span></td>
+                <td>${"accionSugerida" in tema ? tema.accionSugerida : tema.metodologia}</td>
+                <td><span class="status-${tema.estado}">${estadoCapitalizado}</span></td>
             `;
             containerItinerario.appendChild(temaElement);
         });
@@ -75,3 +78,4 @@ function actualizarDashboard(data) {
 
     console.log("Dashboard actualizado con éxito.");
 }
+
