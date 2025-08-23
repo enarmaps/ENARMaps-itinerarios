@@ -255,3 +255,15 @@ body {
     font-weight: 700;
     color: #333;
 }
+.status-completado, .status-en_progreso, .status-pendiente {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.status-completado { background-color: #28a745; } /* Verde */
+.status-en_progreso { background-color: #007bff; } /* Azul */
+.status-pendiente { background-color: #6c757d; } /* Gris */
