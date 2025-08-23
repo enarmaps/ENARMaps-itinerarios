@@ -41,32 +41,28 @@ async function cargarDatosDeCliente() {
 }
 
 // Función para tomar los datos y ponerlos en los elementos HTML.
+// Pega esta versión actualizada de la función en tu dashboard.js
 function actualizarDashboard(data) {
-    // Ejemplo para actualizar el nombre del cliente
-    // Asegúrate de que en tu dashboard.html tengas un elemento con id="nombre-cliente"
     const elementoNombre = document.getElementById('nombre-cliente');
     if (elementoNombre) {
         elementoNombre.textContent = data.clienteInfo.nombre;
     }
 
-    // Ejemplo para actualizar el progreso general
-    // Asegúrate de tener un elemento con id="progreso-general"
-    const elementoProgreso = document.getElementById('progreso-general');
-    if (elementoProgreso) {
-        elementoProgreso.textContent = `${data.clienteInfo.progresoGeneral}%`;
-        // Aquí también podrías actualizar una barra de progreso, etc.
+    const elementoProgresoTexto = document.getElementById('progreso-general-texto');
+    if (elementoProgresoTexto) {
+        elementoProgresoTexto.textContent = `${data.clienteInfo.progresoGeneral}% de avance`;
     }
 
-    // Ejemplo para construir la lista del itinerario
-    // Asegúrate de tener un <tbody> o un <div> con id="itinerario-container"
+    const elementoProgresoBarra = document.getElementById('progreso-general-barra');
+    if (elementoProgresoBarra) {
+        elementoProgresoBarra.style.width = `${data.clienteInfo.progresoGeneral}%`;
+    }
+
     const containerItinerario = document.getElementById('itinerario-container');
     if (containerItinerario) {
-        // Limpiamos cualquier contenido de ejemplo que pueda haber
         containerItinerario.innerHTML = ''; 
-
-        // Creamos una fila de tabla o un div por cada tema del itinerario
         data.itinerario.forEach(tema => {
-            const temaElement = document.createElement('tr'); // O 'div' si no usas tablas
+            const temaElement = document.createElement('tr');
             temaElement.innerHTML = `
                 <td>Semana ${tema.semana}</td>
                 <td>${tema.temaPrincipal}</td>
@@ -78,5 +74,4 @@ function actualizarDashboard(data) {
     }
 
     console.log("Dashboard actualizado con éxito.");
-
 }
