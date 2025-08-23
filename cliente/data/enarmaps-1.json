@@ -2,19 +2,19 @@
   "clienteInfo": {
     "nombre": "Dr. Jesús Carrillo",
     "especialidadDeseada": "Cardiología",
-    "progresoGeneral": 0 
+    "progresoGeneral": 25
   },
   "itinerario": [
     {
       "semana": 1,
       "temaPrincipal": "Cardiopatía Isquémica",
-      "accionSugerida": "Estudiar el capítulo correspondiente en tu Manual AMIR y realizar 20 preguntas del banco de CTO.",
+      "accionSugerida": "Leer Manual AMIR y hacer 15 preguntas.",
       "estado": "pendiente"
     },
     {
       "semana": 2,
       "temaPrincipal": "Diabetes Mellitus Tipo 2",
-      "accionSugerida": "Ver la videoclase de tu curso 'Dr. Prieto' y repasar la GPC.",
+      "accionSugerida": "Ver videoclase de Dr. Prieto y repasar GPC.",
       "estado": "pendiente"
     }
   ]
