@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const STORAGE_KEY_PREFIX = 'enarmaps_progress_';
 
     async function loadClientData(clienteId) {
+        // La ruta es relativa a la carpeta 'webapp' donde está el itinerario.html
         const dataPath = `../cliente/data/${clienteId}.json`;
         try {
             const response = await fetch(dataPath);
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderPage();
         } catch (error) {
             console.error('Error loading client data:', error);
-            container.innerHTML = `<h2>Error al Cargar</h2><p>No se pudo encontrar tu itinerario.</p>`;
+            container.innerHTML = `<h2>Error al Cargar</h2><p>No se pudo encontrar tu itinerario. Verifica la consola (F12) para más detalles.</p>`;
         }
     }
 
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         clientData.itinerarioDetallado.forEach(dia => {
             const dayCard = document.createElement('div');
+            // Aseguramos que la fecha se interprete correctamente como local
             const dayDate = new Date(dia.fecha + 'T00:00:00');
             dayCard.className = 'day-card';
             if (dayDate.getTime() === today.getTime()) {
@@ -47,13 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 dayCard.classList.add('is-special-day');
             }
 
-            
-
+            // LÓGICA UNIFICADA: Siempre esperamos una lista de tareas.
             let contentHtml = '<ul class="tasks-list">';
-            
-            // Verificamos si el día tiene tareas asignadas
             if (dia.tareas && dia.tareas.length > 0) {
-                // Si hay tareas, las recorremos y las creamos
                 dia.tareas.forEach((tarea, index) => {
                     const taskId = `task-${dia.fecha}-${index}`;
                     allTasks.push({ id: taskId, topic: tarea.tema, date: dia.fecha });
@@ -71,11 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         </li>`;
                 });
             } else {
-                // Si un día no tiene tareas, mostramos un mensaje amigable
                 contentHtml += `<p style="text-align:center; padding: 20px;">Día de estudio libre o simulacro programado.</p>`;
             }
             contentHtml += '</ul>';
-            }
             
             const noteId = `note-${dia.fecha}`;
             const savedNote = localStorage.getItem(STORAGE_KEY_PREFIX + noteId) || '';
@@ -91,16 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(dayCard);
         });
         
-        // Enfocar la vista en el día de hoy
         const todayCard = document.querySelector('.is-today');
         if (todayCard) {
             todayCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
 
+    // Listener de eventos SIMPLIFICADO
     container.addEventListener('click', function(event) {
-        // La lógica del botón de repaso se ha eliminado por completo.
-    
         if (event.target.matches('input[type="checkbox"]')) {
             localStorage.setItem(STORAGE_KEY_PREFIX + event.target.id, event.target.checked);
         }
@@ -119,5 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadClientData(clienteId);
     } else {
         headerTitle.textContent = "Error: Falta ID de Cliente";
+        container.innerHTML = `<div class="day-card"><p style="text-align:center;">Asegúrate de que la URL contenga tu ID de cliente. Ejemplo: .../itinerario.html?id=enarmaps-ID</p></div>`;
     }
 });
