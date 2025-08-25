@@ -159,22 +159,24 @@ header p {
 }
 
 #hours-simulation-form {
-    display: flex;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Columna para etiqueta, columna para input */
+    gap: 10px 8px; /* 10px de espacio vertical, 8px horizontal */
     align-items: center;
-    flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 #hours-simulation-form label {
-    font-weight: 500;
+    font-weight: 600;
+    justify-self: start; /* Alinea la etiqueta a la izquierda */
 }
 
 #hours-simulation-form input {
-    width: 60px;
-    padding: 5px 8px;
+    width: 100%; /* El input ocupa todo el espacio de su columna */
+    padding: 8px;
     border-radius: 6px;
     border: 1px solid #d0d5dd;
+    text-align: center;
 }
 
 .timeline {
