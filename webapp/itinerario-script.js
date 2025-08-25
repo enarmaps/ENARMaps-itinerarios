@@ -47,11 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 dayCard.classList.add('is-special-day');
             }
 
-            let contentHtml = '';
-            if (dia.especialidadDelDia.toLowerCase().includes('repaso')) {
-                contentHtml = `<button class="review-button" data-date="${dia.fecha}">Generar Repaso Inteligente</button>`;
-            } else {
-                contentHtml = '<ul class="tasks-list">';
+            
+
+            let contentHtml = '<ul class="tasks-list">';
+            
+            // Verificamos si el día tiene tareas asignadas
+            if (dia.tareas && dia.tareas.length > 0) {
+                // Si hay tareas, las recorremos y las creamos
                 dia.tareas.forEach((tarea, index) => {
                     const taskId = `task-${dia.fecha}-${index}`;
                     allTasks.push({ id: taskId, topic: tarea.tema, date: dia.fecha });
@@ -68,7 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                         </li>`;
                 });
-                contentHtml += '</ul>';
+            } else {
+                // Si un día no tiene tareas, mostramos un mensaje amigable
+                contentHtml += `<p style="text-align:center; padding: 20px;">Día de estudio libre o simulacro programado.</p>`;
+            }
+            contentHtml += '</ul>';
             }
             
             const noteId = `note-${dia.fecha}`;
@@ -93,32 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     container.addEventListener('click', function(event) {
-        if (event.target.classList.contains('review-button')) {
-            const button = event.target;
-            const reviewDate = new Date(button.dataset.date + 'T00:00:00');
-            const oneWeekAgo = new Date(reviewDate);
-            oneWeekAgo.setDate(reviewDate.getDate() - 6);
-
-            const tasksToReview = allTasks.filter(task => {
-                const taskDate = new Date(task.date + 'T00:00:00');
-                return taskDate >= oneWeekAgo && taskDate < reviewDate && localStorage.getItem(STORAGE_KEY_PREFIX + task.id) !== 'true';
-            });
-            
-            let reviewHtml = '<ul class="tasks-list">';
-            if (tasksToReview.length > 0) {
-                reviewHtml += `<p style="margin-bottom:15px; font-weight:600;">Temas pendientes de la semana para reforzar:</p>`;
-                tasksToReview.forEach(task => {
-                    reviewHtml += `<li class="task-item" style="padding-left:15px;"><span class="priority-badge priority-high"></span><div class="task-details"><span class="topic">${task.topic}</span></div></li>`;
-                });
-            } else {
-                reviewHtml += `<p style="text-align:center; font-weight:600; color:var(--color-accent-green);">¡Felicidades! Completaste todos los temas de la semana.</p>`;
-            }
-            reviewHtml += '</ul>';
-            
-            button.insertAdjacentHTML('afterend', reviewHtml);
-            button.style.display = 'none';
-        }
-
+        // La lógica del botón de repaso se ha eliminado por completo.
+    
         if (event.target.matches('input[type="checkbox"]')) {
             localStorage.setItem(STORAGE_KEY_PREFIX + event.target.id, event.target.checked);
         }
