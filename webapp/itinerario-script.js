@@ -56,12 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     const taskId = `task-${dia.fecha}-${index}`;
                     allTasks.push({ id: taskId, topic: tarea.tema, date: dia.fecha });
                     const isChecked = localStorage.getItem(STORAGE_KEY_PREFIX + taskId) === 'true';
+                    
+                    // Mapa para traducir la prioridad del JSON a la clase CSS
+                    const priorityMap = {
+                        'Alta': 'high',
+                        'Media': 'medium',
+                        'Baja': 'low'
+                    };
+                    const priorityClass = priorityMap[tarea.prioridad] || 'medium'; // Usa 'medium' si hay algún error
+
                     contentHtml += `
                         <li class="task-item">
                             <input type="checkbox" id="${taskId}" ${isChecked ? 'checked' : ''}>
                             <label for="${taskId}" class="task-details">
                                 <span class="topic">
-                                    <span class="priority-badge priority-${tarea.prioridad.toLowerCase()}"></span>
+                                    <span class="priority-badge priority-${priorityClass}"></span>
                                     ${tarea.tema}
                                 </span>
                                 <div class="description">${tarea.accionSugerida}</div>
