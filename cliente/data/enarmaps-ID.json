@@ -1,0 +1,260 @@
+{
+  "clienteInfo": {
+    "nombre": "Lizbeth Marín Méndez",
+    "especialidadDeseada": "Anestesiología"
+  },
+  "itinerarioDetallado": [
+    {
+      "dia": "Lunes",
+      "fecha": "2025-08-25",
+      "especialidadDelDia": "Cardiología",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Cardiopatía isquémica", "accionSugerida": "Estudiar con Videoclases Extensas de Dr re y complementar con Manual CTO." },
+        { "prioridad": "Alta", "tema": "Arritmias", "accionSugerida": "Utilizar el Banco de Preguntas de Dr re para este tema." },
+        { "prioridad": "Media", "tema": "Valvulopatías", "accionSugerida": "Repasar con las Flashcards de Dr re." }
+      ]
+    },
+    {
+      "dia": "Martes",
+      "fecha": "2025-08-26",
+      "especialidadDelDia": "Gastroenterología",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Hepatitis viral", "accionSugerida": "Leer la GPC correspondiente y realizar Casos Clínicos Interactivos de Dr re." },
+        { "prioridad": "Baja", "tema": "Hipertensión arterial sistémica", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+      ]
+    },
+    {
+      "dia": "Miércoles",
+      "fecha": "2025-08-27",
+      "especialidadDelDia": "Nefrología y Oncología",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Síndrome nefrótico", "accionSugerida": "Estudiar con Videoclases Extensas de Dr re y complementar con Manual CTO." },
+        { "prioridad": "Alta", "tema": "Cáncer de pulmón", "accionSugerida": "Utilizar el Banco de Preguntas de Dr re para este tema." }
+      ]
+    },
+    {
+      "dia": "Jueves",
+      "fecha": "2025-08-28",
+      "especialidadDelDia": "Pediatría",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Cardiopatías congénitas", "accionSugerida": "Leer la GPC y realizar Simulacro Parcial sobre el tema en Dr re." },
+        { "prioridad": "Alta", "tema": "Soplos cardiacos", "accionSugerida": "Repasar con las Flashcards de Dr re." }
+      ]
+    },
+    {
+      "dia": "Viernes",
+      "fecha": "2025-08-29",
+      "especialidadDelDia": "Ginecología y Obstetricia",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Cáncer de mama", "accionSugerida": "Estudiar con Videoclases de Repaso Rápido de Dr re y complementar con Manual CTO." },
+        { "prioridad": "Baja", "tema": "Endocarditis infecciosa", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+      ]
+    },
+    {
+      "dia": "Sábado",
+      "fecha": "2025-08-30",
+      "especialidadDelDia": "Neurología y Epidemiología",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Estudios epidemiológicos", "accionSugerida": "Utilizar el Banco de Preguntas de Dr re." },
+        { "prioridad": "Media", "tema": "Medidas de asociación", "accionSugerida": "Repasar con las Flashcards de Dr re." }
+      ]
+    },
+    {
+      "dia": "Domingo",
+      "fecha": "2025-08-31",
+      "especialidadDelDia": "Repaso y Oncología",
+      "tareas": [
+        { "prioridad": "Alta", "tema": "Hepatocarcinoma", "accionSugerida": "Realizar Casos Clínicos Interactivos de Dr re." },
+        { "prioridad": "Baja", "tema": "Diabetes mellitus tipo 1 y 2", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+      ]
+    },
+    {
+        "dia": "Lunes",
+        "fecha": "2025-09-01",
+        "especialidadDelDia": "Hematología y Reumatología",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Leucemias", "accionSugerida": "Estudiar con Videoclases Extensas de Dr re y complementar con Manual CTO." },
+            { "prioridad": "Alta", "tema": "Osteoporosis", "accionSugerida": "Utilizar el Banco de Preguntas de Dr re." }
+        ]
+    },
+    {
+        "dia": "Martes",
+        "fecha": "2025-09-02",
+        "especialidadDelDia": "Pediatría",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Tos ferina", "accionSugerida": "Leer la GPC correspondiente y realizar Casos Clínicos Interactivos de Dr re." },
+            { "prioridad": "Alta", "tema": "Parálisis cerebral", "accionSugerida": "Estudiar con el Manual de CTO y las Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Miércoles",
+        "fecha": "2025-09-03",
+        "especialidadDelDia": "Cardiología",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Disección aórtica", "accionSugerida": "Estudiar con Videoclases Extensas de Dr re y utilizar su Banco de Preguntas." },
+            { "prioridad": "Baja", "tema": "Dislipidemias", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Jueves",
+        "fecha": "2025-09-04",
+        "especialidadDelDia": "Psiquiatría y Oftalmología",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Trastornos de ansiedad", "accionSugerida": "Leer la GPC y realizar Simulacro Parcial sobre el tema en Dr re." },
+            { "prioridad": "Alta", "tema": "Retinopatía diabética", "accionSugerida": "Repasar con Videoclases de Repaso Rápido de Dr re." }
+        ]
+    },
+    {
+        "dia": "Viernes",
+        "fecha": "2025-09-05",
+        "especialidadDelDia": "Oncología",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Leucemias y linfomas", "accionSugerida": "Estudio profundo con Manual CTO y Videoclases Extensas de Dr re." },
+            { "prioridad": "Baja", "tema": "Síndrome metabólico", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Sábado",
+        "fecha": "2025-09-06",
+        "especialidadDelDia": "Psiquiatría",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Esquizofrenia", "accionSugerida": "Utilizar el Banco de Preguntas y los Casos Clínicos Interactivos de Dr re." }
+        ]
+    },
+    {
+        "dia": "Domingo",
+        "fecha": "2025-09-07",
+        "especialidadDelDia": "Repaso General",
+        "tareas": [
+            { "prioridad": "Baja", "tema": "Asma", "accionSugerida": "Repaso rápido con Flashcards de Dr re." },
+            { "prioridad": "Baja", "tema": "EPOC", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Lunes",
+        "fecha": "2025-09-08",
+        "especialidadDelDia": "Cardiología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Insuficiencia cardíaca", "accionSugerida": "Realizar Simulacro Parcial en Dr re para evaluar conocimientos." },
+            { "prioridad": "Media", "tema": "Tromboembolia pulmonar", "accionSugerida": "Estudiar con el Manual de CTO." }
+        ]
+    },
+    {
+        "dia": "Martes",
+        "fecha": "2025-09-09",
+        "especialidadDelDia": "Endocrinología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Hiperparatiroidismo y hipoparatiroidismo", "accionSugerida": "Ver Videoclase Extensa de Dr re." },
+            { "prioridad": "Media", "tema": "Acromegalia", "accionSugerida": "Leer GPC y hacer preguntas del banco de Dr re." }
+        ]
+    },
+    {
+        "dia": "Miércoles",
+        "fecha": "2025-09-10",
+        "especialidadDelDia": "Repaso de Debilidades",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Cardiopatía isquémica", "accionSugerida": "Repaso espaciado con Flashcards de Dr re." },
+            { "prioridad": "Alta", "tema": "Síndrome nefrótico", "accionSugerida": "Repaso espaciado con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Jueves",
+        "fecha": "2025-09-11",
+        "especialidadDelDia": "Gastroenterología y Hematología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Cirrosis hepática", "accionSugerida": "Estudiar con el Manual de CTO y ver Videoclase de Repaso Rápido de Dr re." },
+            { "prioridad": "Media", "tema": "Linfomas", "accionSugerida": "Utilizar el Banco de Preguntas de Dr re." }
+        ]
+    },
+    {
+        "dia": "Viernes",
+        "fecha": "2025-09-12",
+        "especialidadDelDia": "Nefrología y Neumología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Enfermedad renal crónica", "accionSugerida": "Realizar Casos Clínicos Interactivos de Dr re." },
+            { "prioridad": "Media", "tema": "Derrame pleural", "accionSugerida": "Leer la GPC y complementar con Manual CTO." }
+        ]
+    },
+    {
+        "dia": "Sábado",
+        "fecha": "2025-09-13",
+        "especialidadDelDia": "Repaso de Dominados",
+        "tareas": [
+            { "prioridad": "Baja", "tema": "Preeclampsia y eclampsia", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Domingo",
+        "fecha": "2025-09-14",
+        "especialidadDelDia": "Repaso de Dominados",
+        "tareas": [
+            { "prioridad": "Baja", "tema": "Apendicitis aguda", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Lunes",
+        "fecha": "2025-09-15",
+        "especialidadDelDia": "Reumatología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Espondiloartritis", "accionSugerida": "Estudiar con el Manual de CTO y las Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Martes",
+        "fecha": "2025-09-16",
+        "especialidadDelDia": "Infectología (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "VIH/SIDA", "accionSugerida": "Leer la GPC y hacer preguntas del banco de Dr re." }
+        ]
+    },
+    {
+        "dia": "Miércoles",
+        "fecha": "2025-09-17",
+        "especialidadDelDia": "Pediatría (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Sepsis neonatal", "accionSugerida": "Estudiar con Videoclases Extensas de Dr re." }
+        ]
+    },
+    {
+        "dia": "Jueves",
+        "fecha": "2025-09-18",
+        "especialidadDelDia": "Ginecología y Obstetricia (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Infecciones de transmisión sexual", "accionSugerida": "Repasar con el Manual de CTO y las Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Viernes",
+        "fecha": "2025-09-19",
+        "especialidadDelDia": "Cirugía General (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Trauma abdominal", "accionSugerida": "Realizar Casos Clínicos Interactivos de Dr re." }
+        ]
+    },
+    {
+        "dia": "Sábado",
+        "fecha": "2025-09-20",
+        "especialidadDelDia": "Salud Pública (Normal)",
+        "tareas": [
+            { "prioridad": "Media", "tema": "Contraindicaciones y reacciones adversas", "accionSugerida": "Estudiar con las Flashcards de Dr re." }
+        ]
+    },
+    {
+        "dia": "Domingo",
+        "fecha": "2025-09-21",
+        "especialidadDelDia": "Repaso General",
+        "tareas": [
+            { "prioridad": "Baja", "tema": " RCP", "accionSugerida": "Repaso rápido con Videoclase de Repaso Rápido de Dr re." }
+        ]
+    },
+    {
+        "dia": "Lunes",
+        "fecha": "2025-09-22",
+        "especialidadDelDia": "Último Repaso de Debilidades",
+        "tareas": [
+            { "prioridad": "Alta", "tema": "Arritmias", "accionSugerida": "Repaso final con Flashcards de Dr re y Manual CTO." },
+            { "prioridad": "Alta", "tema": "Cáncer de mama", "accionSugerida": "Repaso final con Flashcards de Dr re y Manual CTO." }
+        ]
+    }
+  ]
+}
