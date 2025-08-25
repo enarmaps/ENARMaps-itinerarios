@@ -92,7 +92,8 @@ function actualizarDashboard(data) {
 const urlParams = new URLSearchParams(window.location.search);
 const clienteId = urlParams.get('id');
 if (enlaceItinerario && clienteId) {
-    enlaceItinerario.href = `../cliente/itinerario.html?id=${clienteId}`;
+    enlaceItinerario.href = ``itinerario.html?id=${clienteId}`;
 }
 }
+
 
