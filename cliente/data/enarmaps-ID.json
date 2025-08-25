@@ -126,8 +126,8 @@
         "fecha": "2025-09-07",
         "especialidadDelDia": "Repaso General",
         "tareas": [
-            { "prioridad": "Baja", "tema": "Asma", "accionSugerida": "Repaso rápido con Flashcards de Dr re." },
-            { "prioridad": "Baja", "tema": "EPOC", "accionSugerida": "Repaso rápido con Flashcards de Dr re." }
+            { "prioridad": "Media", "tema": "Repaso: Arritmias", "accionSugerida": "Realizar 10 preguntas del banco de Dr re sobre este tema." },
+            { "prioridad": "Media", "tema": "Repaso: Tos ferina", "accionSugerida": "Revisar GPC y notas personales de la semana." }
         ]
     },
     {
@@ -244,6 +244,7 @@
         "fecha": "2025-09-21",
         "especialidadDelDia": "Repaso General",
         "tareas": [
+            { "prioridad": "Media", "tema": "Repaso: Trauma abdominal", "accionSugerida": "Revisar notas y hacer 10 preguntas del banco." },
             { "prioridad": "Baja", "tema": " RCP", "accionSugerida": "Repaso rápido con Videoclase de Repaso Rápido de Dr re." }
         ]
     },
