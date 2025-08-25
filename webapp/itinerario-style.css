@@ -400,3 +400,44 @@ header p {
     border-radius: 16px;
     margin-top: 30px;
 }
+
+/* --- ESTILOS PARA LA GESTIÓN DEL TIEMPO --- */
+.time-management {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+.time-bar-wrapper {
+    margin-bottom: 8px;
+}
+.time-label {
+    font-size: 0.85em;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    display: block;
+}
+.time-bar {
+    height: 8px;
+    border-radius: 8px;
+    background-color: #e9ecef;
+}
+.time-bar > div {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.5s ease;
+}
+.recommended-bar div {
+    background-color: var(--color-primary-light);
+}
+.available-bar div {
+    background-color: var(--color-accent-green);
+}
+.time-suggestion {
+    font-size: 0.85em;
+    text-align: center;
+    color: var(--color-accent-orange);
+    background-color: #fffbeb;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
