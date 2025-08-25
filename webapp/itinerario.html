@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="itinerario-style.css">
 </head>
 <body>
-
     <div class="itinerary-container">
         <header>
             <h1 id="header-title">Cargando tu itinerario...</h1>
-            <p id="header-subtitle">Un momento por favor, estamos preparando tu plan de estudio.</p>
+            <p id="header-subtitle">Un momento por favor...</p>
         </header>
+        
+        <div class="stats-container">
+             </div>
 
         <div class="instructions-container ui-card">
             <div class="instructions-header">
@@ -27,6 +29,15 @@
                 <strong>Nota importante:</strong> Tu progreso (tareas completadas y notas) se guarda localmente en este navegador. No se sincronizará con otros dispositivos.
             </div>
             <div class="instructions-grid">
+                <div class="instruction-item prioridades">
+                    <h3>Prioridades de Estudio</h3>
+                    <p>Cada tarea tiene un indicador de color para que sepas dónde enfocar tu energía:</p>
+                    <ul>
+                        <li><span class="priority-badge priority-high"></span> <strong>Alta:</strong> Temas más rentables y complejos.</li>
+                        <li><span class="priority-badge priority-medium"></span> <strong>Media:</strong> Temas importantes de repaso.</li>
+                        <li><span class="priority-badge priority-low"></span> <strong>Baja:</strong> Repasos rápidos para mantener frescura.</li>
+                    </ul>
+                </div>
                 <div class="instruction-item simula">
                     <h3>Simula tus Horas</h3>
                     <p>El plan te muestra el tiempo recomendado por día. Ajusta tus horas disponibles para ver si necesitas priorizar.</p>
@@ -39,21 +50,10 @@
                         <input type="number" id="sim-horas-domingo" value="2" min="0" max="24">
                     </div>
                 </div>
-                <div class="instruction-item prioridades">
-                    <h3>Prioridades de Estudio</h3>
-                    <ul>
-                        <li><span class="priority-badge priority-high"></span> <strong>Alta:</strong> Temas más rentables.</li>
-                        <li><span class="priority-badge priority-medium"></span> <strong>Media:</strong> Temas importantes.</li>
-                        <li><span class="priority-badge priority-low"></span> <strong>Baja:</strong> Repasos rápidos.</li>
-                    </ul>
-                </div>
             </div>
         </div>
-        
-        <div class="timeline" id="timeline-container">
-            </div>
+        <div class="timeline" id="timeline-container"></div>
     </div>
-
     <script src="itinerario-script.js"></script>
 </body>
 </html>
