@@ -88,15 +88,33 @@ function actualizarDashboard(data) {
     }
 
     console.log(`Dashboard actualizado para la fecha: ${hoyISO}`);
-    const enlaceItinerario = document.getElementById('enlace-itinerario-completo');
-    const urlParams = new URLSearchParams(window.location.search);
+    
+   const urlParams = new URLSearchParams(window.location.search);
     const clienteId = urlParams.get('id');
-    if (enlaceItinerario && clienteId) {
-        enlaceItinerario.href = `itinerario.html?id=${clienteId}`;
+
+    if (clienteId) {
+        // Activar enlace del footer del widget de Misión
+        const enlaceFooterMision = document.getElementById('enlace-itinerario-completo');
+        if (enlaceFooterMision) {
+            enlaceFooterMision.href = `itinerario.html?id=${clienteId}`;
+        }
+
+        // Activar botón de "Ver Itinerario Completo"
+        const enlaceBotonItinerario = document.getElementById('enlace-itinerario');
+        if (enlaceBotonItinerario) {
+            enlaceBotonItinerario.href = `itinerario.html?id=${clienteId}`;
+        }
+
+        // Activar botón de "Ir al Mapa de Progreso"
+        const enlaceBotonMapa = document.getElementById('enlace-mapa-progreso');
+        if (enlaceBotonMapa) {
+            enlaceBotonMapa.href = `../mapa-progreso/temario.html?id=${clienteId}`;
+        }
     }
     
 
 }
+
 
 
 
