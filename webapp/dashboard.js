@@ -88,12 +88,15 @@ function actualizarDashboard(data) {
     }
 
     console.log(`Dashboard actualizado para la fecha: ${hoyISO}`);
-    const enlaceItinerario = document.querySelector('.widget-footer-link');
-const urlParams = new URLSearchParams(window.location.search);
-const clienteId = urlParams.get('id');
-if (enlaceItinerario && clienteId) {
-    enlaceItinerario.href = ``itinerario.html?id=${clienteId}`;
+    const enlaceItinerario = document.getElementById('enlace-itinerario-completo');
+    const urlParams = new URLSearchParams(window.location.search);
+    const clienteId = urlParams.get('id');
+    if (enlaceItinerario && clienteId) {
+        enlaceItinerario.href = `itinerario.html?id=${clienteId}`;
+    }
+    
+
 }
-}
+
 
 
