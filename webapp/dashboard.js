@@ -9,23 +9,18 @@ async function cargarDatosDeCliente() {
     const urlParams = new URLSearchParams(window.location.search);
     const clienteId = urlParams.get('id');
 
-    // Si no hay 'id' en la URL, mostrar un error y detener la ejecución.
     if (!clienteId) {
-        console.error("Error: No se proporcionó un ID de cliente en la URL.");
-        // Aquí podrías mostrar un mensaje de error en la página.
         document.body.innerHTML = "<h1>Error: Acceso no válido. Por favor, use el enlace que recibió por correo.</h1>";
         return;
     }
 
-    // --- 2. Construir la ruta al archivo JSON ---
-    // Asumimos que el dashboard.html está en /cliente/ y los datos en /cliente/data/
+    // --- 2. Construir la ruta al archivo JSON COMPLETO del cliente ---
     const dataPath = `/cliente/data/${clienteId}.json`;
 
     // --- 3. Cargar los datos usando fetch ---
     try {
         const response = await fetch(dataPath);
         if (!response.ok) {
-            // Maneja errores si el archivo no se encuentra (ej. ID incorrecto)
             throw new Error('No se pudo encontrar el archivo de datos del cliente.');
         }
         const data = await response.json();
@@ -35,47 +30,62 @@ async function cargarDatosDeCliente() {
 
     } catch (error) {
         console.error("Error al cargar los datos:", error);
-        // Muestra un mensaje de error más amigable en la página.
-        document.body.innerHTML = `<h1>Error: No pudimos cargar tu información.</h1><p>Por favor, verifica que tu enlace sea correcto o contacta a soporte si el problema persiste. ID buscado: ${clienteId}</p>`;
+        document.body.innerHTML = `<h1>Error: No pudimos cargar tu información.</h1><p>Por favor, verifica que tu enlace sea correcto o contacta a soporte. ID buscado: ${clienteId}</p>`;
     }
 }
 
-// Función para tomar los datos y ponerlos en los elementos HTML.
-// Pega esta versión actualizada de la función en tu dashboard.js
+// Función para tomar los datos, encontrar la misión de HOY y ponerlos en los elementos HTML.
 function actualizarDashboard(data) {
+    // --- Actualizar información general del cliente (sin cambios) ---
     const elementoNombre = document.getElementById('nombre-cliente');
-    if (elementoNombre) {
+    if (elementoNombre && data.clienteInfo) {
         elementoNombre.textContent = data.clienteInfo.nombre;
     }
 
     const elementoProgresoTexto = document.getElementById('progreso-general-texto');
-    if (elementoProgresoTexto) {
-        elementoProgresoTexto.textContent = `${data.clienteInfo.progresoGeneral}% de avance`;
+    if (elementoProgresoTexto && data.clienteInfo) {
+        elementoProgresoTexto.textContent = `${data.clienteInfo.progresoGeneral || 0}% de avance`;
     }
 
     const elementoProgresoBarra = document.getElementById('progreso-general-barra');
-    if (elementoProgresoBarra) {
-        elementoProgresoBarra.style.width = `${data.clienteInfo.progresoGeneral}%`;
+    if (elementoProgresoBarra && data.clienteInfo) {
+        elementoProgresoBarra.style.width = `${data.clienteInfo.progresoGeneral || 0}%`;
     }
 
+    // --- LÓGICA INTELIGENTE PARA ENCONTRAR LA MISIÓN DE HOY ---
     const containerItinerario = document.getElementById('itinerario-container');
-    if (containerItinerario) {
-        containerItinerario.innerHTML = ''; 
-        data.itinerario.forEach(tema => {
-            const temaElement = document.createElement('tr');
-            const estadoFormateado = tema.estado.replace('_', ' ');
-            const estadoCapitalizado = estadoFormateado.charAt(0).toUpperCase() + estadoFormateado.slice(1);
+    const tituloMision = document.querySelector('.mission-widget .widget-title');
 
-            temaElement.innerHTML = `
-                <td>Semana ${tema.semana}</td>
-                <td>${tema.temaPrincipal}</td>
-                <td>${"accionSugerida" in tema ? tema.accionSugerida : tema.metodologia}</td>
-                <td><span class="status-${tema.estado}">${estadoCapitalizado}</span></td>
-            `;
-            containerItinerario.appendChild(temaElement);
-        });
+    // Obtener la fecha de hoy en formato YYYY-MM-DD
+    const hoy = new Date();
+    const hoyISO = hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + '-' + String(hoy.getDate()).padStart(2, '0');
+
+    // Buscar en el itinerario detallado el día que coincida con la fecha de hoy
+    const misionDeHoy = data.itinerarioDetallado.find(dia => dia.fecha === hoyISO);
+
+    if (containerItinerario && tituloMision) {
+        if (misionDeHoy) {
+            // Si encontramos tareas para hoy, las mostramos
+            tituloMision.innerHTML = `🎯 Tu Misión para Hoy: <strong>${misionDeHoy.especialidadDelDia}</strong>`;
+            containerItinerario.innerHTML = ''; 
+            misionDeHoy.tareas.forEach(tarea => {
+                const tareaElement = document.createElement('tr');
+                const prioridadBadge = `<span class="priority-badge priority-${tarea.prioridad.toLowerCase()}"></span>`;
+                
+                tareaElement.innerHTML = `
+                    <td style="text-align: center;">${prioridadBadge}</td>
+                    <td><strong>${tarea.tema}</strong></td>
+                    <td>${tarea.accionSugerida}</td>
+                    <td><span class="status-pendiente">Pendiente</span></td>
+                `;
+                containerItinerario.appendChild(tareaElement);
+            });
+        } else {
+            // Si no hay tareas para hoy (ej. día de descanso o fuera del plan)
+            tituloMision.innerHTML = `🎯 Tu Misión para Hoy`;
+            containerItinerario.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 20px;">¡Felicidades! Hoy no tienes temas nuevos asignados. Es un buen día para un repaso ligero o para descansar.</td></tr>`;
+        }
     }
 
-    console.log("Dashboard actualizado con éxito.");
+    console.log(`Dashboard actualizado para la fecha: ${hoyISO}`);
 }
-
