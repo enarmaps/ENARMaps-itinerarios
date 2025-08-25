@@ -85,6 +85,98 @@ header p {
     color: var(--color-text-secondary);
 }
 
+.instructions-container.ui-card {
+    background-color: var(--color-paper);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 30px;
+    border-left: 6px solid var(--color-primary-light);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.instructions-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.instructions-header img.logo {
+    width: 150px;
+}
+
+.instructions-header h2 {
+    font-family: var(--font-headings);
+    font-size: 1.8em;
+    color: var(--color-primary-dark);
+    margin: 0;
+}
+
+.instructions-container > p {
+    max-width: 700px;
+    margin: 0 auto 24px auto;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.instructions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.instruction-item {
+    background: var(--color-background);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.instruction-item h3 {
+    font-family: var(--font-headings);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--color-primary-dark);
+}
+
+.instruction-item p, .instruction-item ul {
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    list-style: none;
+    padding: 0;
+}
+
+.instruction-item li {
+    margin-bottom: 5px;
+}
+
+#hours-simulation-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#hours-simulation-form label {
+    font-weight: 500;
+}
+
+#hours-simulation-form input {
+    width: 60px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid #d0d5dd;
+}
+
 .timeline {
     display: grid;
     gap: 20px;
@@ -97,6 +189,16 @@ header p {
     border-left: 5px solid transparent;
     padding: 20px;
     transition: all 0.3s ease;
+}
+
+.day-card.is-today {
+    border-left-color: var(--color-accent-orange);
+    box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+    transform: scale(1.02);
+}
+
+.day-card.is-past {
+    opacity: 0.7;
 }
 
 .day-card.is-special-day {
@@ -200,7 +302,6 @@ header p {
     font-size: 0.95em;
     color: var(--color-text-secondary);
     margin-top: 5px;
-    padding-left: 20px;
 }
 
 .priority-badge {
@@ -208,7 +309,7 @@ header p {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 8px;
     flex-shrink: 0;
 }
 
@@ -222,6 +323,31 @@ header p {
 
 .priority-low {
     background-color: var(--priority-low);
+}
+
+.notes-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #d0d5dd;
+}
+
+.notes-section label {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+}
+
+.notes-section textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 60px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d0d5dd;
+    margin-top: 5px;
+    font-family: var(--font-body);
+    resize: vertical;
+    background-color: #f9fafb;
 }
 
 .review-button {
