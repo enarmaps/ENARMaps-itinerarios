@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itinerario Completo - ENARMaps</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="itinerario-style.css">
 </head>
 <body>
+
     <div class="itinerary-container">
         <header>
             <h1 id="header-title">Cargando tu itinerario...</h1>
-            <p id="header-subtitle">Un momento por favor...</p>
+            <p id="header-subtitle">Un momento por favor, estamos preparando tu plan de estudio.</p>
         </header>
         
         <div class="stats-container">
-             </div>
-
+             <div class="progress-section">
+                <span class="progress-label">Progreso Total del Itinerario</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="general-progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+        
         <div class="instructions-container ui-card">
             <div class="instructions-header">
                 <img src="../landing-page/images/logo-enarmaps.png" alt="Logo de ENARMaps" class="logo">
@@ -29,6 +38,15 @@
                 <strong>Nota importante:</strong> Tu progreso (tareas completadas y notas) se guarda localmente en este navegador. No se sincronizará con otros dispositivos.
             </div>
             <div class="instructions-grid">
+                <div class="instruction-item semanal">
+                    <h3>Metodología de Rotación</h3>
+                    <p>
+                        Tu itinerario personaliza la especialidad de cada día aplicando el método de <strong>entrelazado (interleaving)</strong>.
+                    </p>
+                    <p>
+                        Rotar entre diferentes áreas de conocimiento ha demostrado científicamente que fortalece las conexiones neuronales, mejora la retención a largo plazo y te prepara mejor para la naturaleza multidisciplinaria del ENARM.
+                    </p>
+                </div>
                 <div class="instruction-item prioridades">
                     <h3>Prioridades de Estudio</h3>
                     <p>Cada tarea tiene un indicador de color para que sepas dónde enfocar tu energía:</p>
@@ -38,9 +56,13 @@
                         <li><span class="priority-badge priority-low"></span> <strong>Baja:</strong> Repasos rápidos para mantener frescura.</li>
                     </ul>
                 </div>
+                <div class="instruction-item repaso">
+                    <h3>Repaso Inteligente</h3>
+                    <p>El domingo, presiona el botón "Generar Repaso" para crear una lista de tareas basada en los temas que <strong>no marcaste</strong> durante la semana. Así atacas directamente tus debilidades.</p>
+                </div>
                 <div class="instruction-item simula">
                     <h3>Simula tus Horas</h3>
-                    <p>El plan te muestra el tiempo recomendado por día. Ajusta tus horas disponibles para ver si necesitas priorizar.</p>
+                    <p>El plan te muestra el tiempo recomendado por día. Ajusta tus horas disponibles para saber cuándo priorizar.</p>
                     <div id="hours-simulation-form">
                         <label for="sim-horas-lv">L-V:</label>
                         <input type="number" id="sim-horas-lv" value="8" min="0" max="24">
@@ -52,8 +74,11 @@
                 </div>
             </div>
         </div>
-        <div class="timeline" id="timeline-container"></div>
+        
+        <div class="timeline" id="timeline-container">
+            </div>
     </div>
+
     <script src="itinerario-script.js"></script>
 </body>
 </html>
