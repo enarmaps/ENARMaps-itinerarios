@@ -1,1 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolor Torácico: Un Ejercicio de Entrelazado (Interleaving)</title>
+    
+    <link rel="stylesheet" href="../lib/modulos-style.css">
+    
+    <style>
+        /* Estilos específicos para este módulo de quiz */
+        .module-header {
+            text-align: center;
+            padding: 20px;
+            width: 210mm;
+            max-width: 100%;
+            margin: 0 auto 20px auto;
+            background-color: var(--color-paper);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .module-header .module-title {
+            font-size: 28px;
+            margin: 0 0 5px 0;
+            border-bottom: none;
+            color: var(--color-primary-dark);
+        }
+        
+        .module-header .module-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin: 0;
+            border-bottom: none;
+        }
+        .question-block {
+            padding: 25px;
+            border: 1px solid var(--color-border);
+            border-left: 6px solid var(--color-primary-light);
+            border-radius: 8px;
+            background-color: #fafcff;
+            margin-bottom: 25px;
+        }
+        .vignette {
+            font-style: italic;
+            color: var(--color-text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--color-border);
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .mcq-option {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            background-color: var(--color-paper);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        .mcq-option:hover:not(:disabled) {
+            border-color: var(--color-primary-light);
+            background-color: #f0f4ff;
+        }
+        .mcq-option.correct {
+            background-color: #e8f5e9;
+            border-color: var(--color-success);
+            color: var(--color-success);
+            font-weight: 700;
+        }
+        .mcq-option.incorrect {
+            background-color: #ffebee;
+            border-color: var(--color-error);
+            color: var(--color-error);
+            font-weight: 700;
+        }
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #eef2f9;
+            border-radius: 8px;
+        }
+        #quiz-results {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #e3f2fd, #f0f4ff);
+            border: 2px solid var(--color-primary-dark);
+            text-align: center;
+            border-radius: 12px;
+        }
+        #quiz-results h3 {
+            color: var(--color-primary-dark);
+        }
+    </style>
+</head>
+<body class="layout-document">
+
+<div class="module-header">
+    <img src="../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <h1 class="module-title">El Reto del Dolor Torácico</h1>
+    <h2 class="module-subtitle">Método de Entrelazado (Interleaving)</h2>
+</div>
+
+<div class="report-container">
+    <div class="page">
+        <h1>Mini-Simulacro: Diagnóstico Diferencial</h1>
+        <p>A continuación se presentan tres casos clínicos distintos que acuden a urgencias por dolor torácico. Lee cada viñeta, analiza los datos clave y selecciona el diagnóstico más probable. ¡No todos son lo que parecen!</p>
+
+        <div class="question-block" id="q1">
+            <h3>Caso Clínico 1</h3>
+            <p class="vignette">Masculino de 65 años, diabético e hipertenso, acude por dolor torácico opresivo retroesternal de 2 horas de evolución, irradiado a brazo izquierdo, que inició en reposo. Se acompaña de diaforesis y náuseas. TA 160/95 mmHg, FC 110 lpm, FR 22 rpm.</p>
+            <div class="options-container">
+                <button class="mcq-option" data-correct="true">Síndrome coronario agudo</button>
+                <button class="mcq-option">Tromboembolia pulmonar</button>
+                <button class="mcq-option">Pericarditis aguda</button>
+                <button class="mcq-option">Ataque de pánico</button>
+            </div>
+            <div class="explanation">
+                <p><strong>Explicación: ¡Correcto!</strong> La combinación de dolor opresivo, irradiación clásica, síntomas neurovegetativos (diaforesis, náuseas) y, sobre todo, los factores de riesgo cardiovascular (edad, DM, HTA) hacen del SICA el diagnóstico más probable.</p>
+            </div>
+        </div>
+
+        <div class="question-block" id="q2">
+            <h3>Caso Clínico 2</h3>
+            <p class="vignette">Femenina de 35 años, usuaria de anticonceptivos orales, presenta inicio súbito de dolor torácico pleurítico y disnea. Refiere un viaje largo en autobús hace 3 días. A la exploración, se encuentra taquicárdica, taquipneica y con SatO2 de 89% al aire ambiente.</p>
+            <div class="options-container">
+                <button class="mcq-option">Infarto agudo de miocardio</button>
+                <button class="mcq-option">Neumonía adquirida en la comunidad</button>
+                <button class="mcq-option" data-correct="true">Tromboembolia pulmonar</button>
+                <button class="mcq-option">Costocondritis</button>
+            </div>
+            <div class="explanation">
+                <p><strong>Explicación: ¡Correcto!</strong> El inicio súbito de disnea y dolor pleurítico, junto con hipoxemia y factores de riesgo para TVP (anticonceptivos, inmovilización prolongada), forman la presentación clásica de una TEP.</p>
+            </div>
+        </div>
+        
+        <div class="question-block" id="q3">
+            <h3>Caso Clínico 3</h3>
+            <p class="vignette">Masculino de 45 años con obesidad, se queja de dolor "quemante" retroesternal que empeora al acostarse después de comidas abundantes y mejora con antiácidos. Niega irradiaciones o disnea. Exploración física y signos vitales normales.</p>
+            <div class="options-container">
+                <button class="mcq-option">Angina inestable</button>
+                <button class="mcq-option" data-correct="true">Enfermedad por reflujo gastroesofágico</button>
+                <button class="mcq-option">Disección aórtica</button>
+                <button class="mcq-option">Espasmo esofágico difuso</button>
+            </div>
+            <div class="explanation">
+                <p><strong>Explicación: ¡Correcto!</strong> Este es el "gran imitador". El dolor quemante (pirosis) relacionado con la postura y la ingesta, que además responde a antiácidos, es característico de ERGE, una causa muy común de dolor torácico no cardiogénico.</p>
+            </div>
+        </div>
+
+        <div id="quiz-results">
+            <h3>Resultados del Ejercicio</h3>
+            <p id="score-text">Completando...</p>
+            <p>El objetivo del entrelazado es forzarte a cambiar de "chip" mental entre diferentes patologías. Esto fortalece tu habilidad para el diagnóstico diferencial, clave para el ENARM.</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../lib/interleaving-logic.js"></script>
+</body>
+</html>
+
 
