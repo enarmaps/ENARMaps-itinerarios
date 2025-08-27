@@ -99,5 +99,46 @@ function setupLeadCapture() {
 document.addEventListener('DOMContentLoaded', function () {
     setupSceneReveal();
     setupDragAndDrop();
-    setupLeadCapture();
+    setupModuleLeadCapture(); // Cambiamos el nombre de la función aquí
 });
+// --- Script para la Captura de Leads del Módulo ---
+function setupModuleLeadCapture() {
+    const WEBHOOK_URL = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
+    const moduleForm = document.querySelector('.lead-form-interno');
+
+    if (moduleForm) { // <-- Esta línea evita errores en otras páginas
+        moduleForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Procesando...';
+
+            const formData = {
+                nombre: form.querySelector('input[name="nombre"]').value,
+                email: form.querySelector('input[name="email"]').value,
+                whatsapp: form.querySelector('input[name="whatsapp"]').value,
+                source: document.title 
+            };
+
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if(response.ok) {
+                    window.open('../../webapp/boveda.html', '_blank');
+                    form.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Éxito! La Bóveda se ha abierto en una nueva pestaña.</p>';
+                } else { throw new Error('Error en el webhook.'); }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema. Intenta de nuevo.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Acceder a la Bóveda Gratuita';
+            });
+        });
+    }
+}
