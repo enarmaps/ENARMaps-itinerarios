@@ -1,0 +1,97 @@
+/* Estilos específicos para este módulo de quiz */
+.module-header {
+    text-align: center;
+    padding: 20px;
+    width: 210mm;
+    max-width: 100%;
+    margin: 0 auto 20px auto;
+    background-color: var(--color-paper);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.module-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.module-header .module-title {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    border-bottom: none;
+    color: var(--color-primary-dark);
+}
+
+.module-header .module-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin: 0;
+    border-bottom: none;
+}
+.question-block {
+    padding: 25px;
+    border: 1px solid var(--color-border);
+    border-left: 6px solid var(--color-primary-light);
+    border-radius: 8px;
+    background-color: #fafcff;
+    margin-bottom: 25px;
+}
+.vignette {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--color-border);
+}
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mcq-option {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-paper);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+.mcq-option:hover:not(:disabled) {
+    border-color: var(--color-primary-light);
+    background-color: #f0f4ff;
+}
+.mcq-option.correct {
+    background-color: #e8f5e9;
+    border-color: var(--color-success);
+    color: var(--color-success);
+    font-weight: 700;
+}
+.mcq-option.incorrect {
+    background-color: #ffebee;
+    border-color: var(--color-error);
+    color: var(--color-error);
+    font-weight: 700;
+}
+.explanation {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #eef2f9;
+    border-radius: 8px;
+}
+#quiz-results {
+    display: none;
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #e3f2fd, #f0f4ff);
+    border: 2px solid var(--color-primary-dark);
+    text-align: center;
+    border-radius: 12px;
+}
+#quiz-results h3 {
+    color: var(--color-primary-dark);
+}
