@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecanismo de Frank-Starling (Feynman Interactivo)</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../lib/modulos-style.css">
+    
+    <style>
+        /* ====================================================== */
+        /* ESTILOS PARA EL ENCABEZADO DEL MÓDULO          */
+        /* ====================================================== */
+        .module-header {
+            text-align: center;
+            padding: 20px;
+            width: 210mm;
+            max-width: 100%;
+            margin: 0 auto 20px auto;
+            background-color: var(--color-paper);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .module-header .module-title {
+            font-size: 28px;
+            margin: 0 0 5px 0;
+            border-bottom: none;
+            color: var(--color-primary-dark);
+        }
+        
+        .module-header .module-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            margin: 0;
+            border-bottom: none;
+        }
+        .feynman-step {
+            margin-top: 25px; padding: 25px; border: 1px solid var(--color-border);
+            border-left: 6px solid #00695c; border-radius: 8px; background-color: #fafafa;
+        }
+        .feynman-step h3 { color: #00695c; }
+        .analogy-box {
+            background-color: #e0f2f1; border-left: 5px solid #00695c;
+            padding: 20px; margin: 20px 0; border-radius: 4px; font-style: italic;
+        }
+        .summary-box {
+            margin-top: 30px; padding: 25px; background-color: #e8eaf6;
+            border: 2px solid var(--color-primary-dark); text-align: center; border-radius: 8px;
+        }
+        .interactive-simulator .slider-container { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .interactive-simulator .chart-wrapper { height: 200px; position: relative; }
+    </style>
+</head>
+<body class="layout-document">
+<div class="module-header">
+    <img src="../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <h1 class="module-title">Mecanismo de Frank-Starling</h1>
+    <h2 class="module-subtitle">Método Feynman Interactivo</h2>
+</div>
+<div class="report-container">
+    <div class="page">
+        <h1>Entendiendo el Corazón como una Resortera</h1>
+        <p>El Mecanismo de Frank-Starling es uno de los conceptos más fundamentales de la fisiología cardíaca. Usando el Método Feynman, lo desglosaremos en ideas simples y ahora interactivas para asegurar un entendimiento profundo.</p>
 
+        <div class="feynman-step">
+            <h3>Paso 1: La Gran Idea (La Analogía Interactiva)</h3>
+            <p>Imagina que el ventrículo es una <strong>resortera</strong>. La "Precarga" es cuánto estiras esa resortera antes de soltarla. Usa el control deslizante para ver qué sucede con la fuerza de contracción.</p>
+            
+            <div class="interactive-simulator">
+                <h4>Simulador de Precarga vs. Fuerza</h4>
+                <div class="slider-container">
+                    <label for="preload-slider" style="font-weight: 600;">Precarga (Estiramiento)</label>
+                    <input type="range" id="preload-slider" min="10" max="120" value="60" style="flex-grow: 1;">
+                    <span id="preload-value">60</span>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="contractionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <p><strong>Observación:</strong> A medida que aumentas el estiramiento (precarga), la fuerza de la contracción aumenta de forma proporcional, hasta llegar a un punto óptimo. Esto es Frank-Starling: <strong>Más llenado = Más estiramiento = Contracción más fuerte.</strong></p>
+            </div>
+        </div>
+
+        <div class="feynman-step">
+            <h3>Paso 2: Desglosando el Mecanismo</h3>
+            <p>Ahora, traduzcamos la simulación a la fisiología real.</p>
+            <ul>
+                <li><strong>Precarga:</strong> Es el grado de tensión de la pared ventricular al final de la diástole.</li>
+                <li><strong>El Sarcómero:</strong> Es nuestra "resortera" celular. Al estirarse, optimiza la alineación entre actina y miosina, creando más "puentes cruzados" y una contracción más potente.</li>
+            </ul>
+        </div>
+    
+    
+        <div class="feynman-step">
+            <h3>Paso 3: Puntos de Confusión (Pregunta Clave)</h3>
+            <div class="interactive-simulator" id="q1">
+                <h4>Pregunta: ¿Frank-Starling es lo mismo que Contractilidad (Inotropismo)?</h4>
+                <button class="mcq-option" data-correct="true">No, Frank-Starling depende del estiramiento y la contractilidad es la fuerza intrínseca del músculo.</button>
+                <button class="mcq-option">Sí, ambos se refieren a la fuerza de contracción.</button>
+                <div class="explanation">
+                    <p><strong>Explicación: ¡Correcto!</strong> La Contractilidad es la fuerza INTRÍNSECA del músculo. Frank-Starling es una propiedad PASIVA que depende del estiramiento.</p>
+                </div>
+            </div>
+        </div>
+        <div class="summary-box">
+            <h3>Paso 4: Resumen para el Examen</h3>
+            <p>El mecanismo de Frank-Starling es la capacidad del corazón para aumentar su fuerza de contracción en respuesta a un mayor llenado ventricular.</p>
+        </div>
+    </div>
+</div>
+
+<section class="lead-magnet-interno">
+    <div class="container">
+        <h2>¿Listo para más? Accede a la Bóveda Completa.</h2>
+        <p>Obtén acceso inmediato y gratuito a todos nuestros módulos interactivos, mapas mentales y más para potenciar tu estudio.</p>
+        <form class="lead-form-interno" id="module-lead-form">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu mejor email" required>
+            <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (10 dígitos)" required pattern="[0-9]{10}" maxlength="10">
+            <button type="submit" class="btn-interno">Acceder a la Bóveda Gratuita</button>
+        </form>
+    </div>
+</section>
+
+<script src="../lib/feynman-logic.js"></script>
+<script>
+    // JS Específico para este módulo
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('preload-slider');
+        const valueDisplay = document.getElementById('preload-value');
+        const canvas = document.getElementById('contractionChart');
+        if (!slider) return;
+
+        let chart;
+        const ctx = canvas.getContext('2d');
+
+        function createOrUpdateChart(preload) {
+            const force = -0.01 * Math.pow(preload - 90, 2) + 100;
+            if (chart) {
+                chart.data.datasets[0].data[0] = Math.max(0, force);
+                chart.update();
+            } else {
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Fuerza'],
+                        datasets: [{ data: [Math.max(0, force)], backgroundColor: 'rgba(0, 105, 92, 0.6)' }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                        scales: { y: { beginAtZero: true, max: 110, title: { display: true, text: 'Fuerza Relativa' } }, x: { display: false } }
+                    }
+                });
+            }
+        }
+        slider.addEventListener('input', function() {
+            valueDisplay.textContent = this.value;
+            createOrUpdateChart(parseInt(this.value));
+        });
+        createOrUpdateChart(parseInt(slider.value));
+    });
+</script>
+
+</body>
+</html>
