@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Mental: Tratamiento EVC Isquémico (AHA + GPC México)</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+    
+    <link rel="stylesheet" href="../lib/modulos-style.css">
+    <link rel="stylesheet" href="../lib/map-style.css">
+</head>
+<body class="layout-fullscreen">
 
+<div class="main-container">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Mapa Mental: Tratamiento del EVC Isquémico</h1>
+    <p class="description">(Basado en Guías AHA y GPC México)</p>
+    
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
+    </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+
+   <section class="lead-magnet-interno">
+    <div class="container">
+        <h2>¿Listo para más? Accede a la Bóveda Completa.</h2>
+        <p>Obtén acceso inmediato y gratuito a todos nuestros módulos interactivos, mapas mentales y más para potenciar tu estudio.</p>
+        <form class="lead-form-interno" id="module-lead-form">
+            <input type="text" name="nombre" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu mejor email" required>
+            <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (10 dígitos)" required pattern="[0-9]{10}" maxlength="10">
+            <button type="submit" class="btn-interno">Acceder a la Bóveda Gratuita</button>
+        </form>
+    </div>
+</section>
+</div>
+
+<script type="text/template" id="markdown-mapa">
+# Tratamiento EVC Isquémico (AHA + GPC México)
+
+## Fase Aguda (Reperfusión y Manejo Inicial)
+- **Terapia de Reperfusión (Tiempo es Cerebro)**
+  - **Alteplasa (rtPA) Intravenosa (Trombolisis)**
+    - **(GPC México)** Objetivo: Iniciar tratamiento <60 min desde llegada a urgencias.
+    - Indicaciones:
+      - **Ventana Estándar < 3 horas** (Nivel IA).
+      - **Ventana Extendida 3-4.5 horas** (Poblaciones seleccionadas, Nivel IA).
+        - Edad ≤80 años
+        - Sin historia de diabetes y EVC previo
+        - NIHSS ≤25
+        - No anticoagulantes orales
+      - **Ventana > 4.5 horas (Casos Especiales)**
+        - Despertar con EVC o inicio incierto (Criterios de imagen avanzada RM: mismatch DWI-FLAIR).
+    - Criterios de Exclusión Principales (Resumen GPC/AHA):
+      - Hemorragia intracraneal (HIC) actual o previa.
+      - Sangrado interno activo.
+      - TEC grave o EVC en los últimos 3 meses.
+      - **PA >185/110 mmHg persistente** a pesar de tratamiento.
+      - Glucosa <50 mg/dL.
+      - Plaquetas <100,000/mm³.
+      - Uso de ACO con INR >1.7.
+    - Dosis **(Confirmada por GPC México)**:
+      - **0.9 mg/kg** (máximo 90 mg).
+      - 10% en bolo IV en 1 minuto.
+      - 90% restante en infusión IV durante 60 minutos.
+  - **Trombectomía Mecánica (TM)**
+    - Indicaciones (Resumen GPC/AHA):
+      - Oclusión de gran vaso (ACI, ACM-M1).
+      - **(GPC México)** Inicio < 6 horas desde síntomas (Nivel IA).
+      - **Ventana Extendida 6-24 horas** en pacientes seleccionados (criterios DAWN/DEFUSE-3).
+- **Manejo Inicial de Antiplaquetarios**
+  - **Aspirina (si no se tromboliza)**
+    - Dosis: 160-325 mg dentro de las 24-48 horas.
+    - **(GPC México)** Si se administró Alteplasa: iniciar Aspirina 24 horas después, tras TC de control sin hemorragia.
+- **Manejo de Soporte (GPC México)**
+  - **Oxígeno suplementario** si SatO2 <94%.
+  - **Corregir hipovolemia e hipotensión**.
+  - **Tratar fiebre (≥38°C)** con antipiréticos.
+
+## Prevención Secundaria
+- **Terapia Antiplaquetaria (EVC no cardioembólico)**
+  - **Monoterapia (GPC México)**:
+    - **Aspirina** 75-100 mg/día.
+    - **Clopidogrel** 75 mg/día (alternativa).
+  - **Terapia Dual (DAPT) - Corto Plazo:**
+    - **Aspirina + Clopidogrel:**
+      - Indicación: EVC isquémico menor (NIHSS ≤3-5) o AIT de alto riesgo (ABCD² ≥4).
+      - Duración: Iniciar en 24h, continuar por 21-90 días.
+- **AnticoagulACIÓN (EVC Cardioembólico, ej. FA)**
+  - **(GPC México)** Preferir Anticoagulantes Orales Directos (ACODs) sobre Warfarina.
+- **Manejo de Lípidos (Estatinas)**
+  - **(GPC México)** Iniciar estatinas de alta intensidad.
+  - Meta LDL <70 mg/dL.
+- **Control de la Presión Arterial**
+  - **Fase Aguda (GPC México)**:
+    - Si candidato a rtPA: Mantener PA <185/110 mmHg.
+    - **Si NO es candidato a rtPA**: Iniciar tratamiento si PA >220/120 mmHg.
+      - Objetivo: Disminuir 15% en las primeras 24 horas.
+  - **Prevención Secundaria (Crónico - GPC México)**:
+    - Objetivo: <130/80 mmHg.
+- **Control Glucémico (GPC México)**
+  - Objetivo hospitalario: 140-180 mg/dL. Evitar hipoglucemia.
+</script>
+
+<script src="../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').text;
+        renderMarkmap(markdownContent);
+    });
+</script>
+
+</body>
+</html>
