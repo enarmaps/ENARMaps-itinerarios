@@ -17,7 +17,7 @@ function renderMarkmap(markdownContent) {
         autoFit: true,
         colorFreezeLevel: 2,
         duration: 500,
-        initialExpandLevel: 2,
+        initialExpandLevel: 1,
         maxWidth: 300,
     };
 
@@ -58,3 +58,4 @@ function setupLeadCapture() {
 document.addEventListener('DOMContentLoaded', function () {
     setupLeadCapture();
 });
+
