@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // =================================================================== //
-    // BASE DE DATOS DE MÓDULOS (Actualizada)                              //
+    // BASE DE DATOS DE MÓDULOS                                           //
     // =================================================================== //
     const modulesData = [
         // Módulos Originales
@@ -55,15 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Osteoporosis", link: "../modulos/mapa/osteoporosis/index.html", specialty: "Reumatología", method: "Mapa Mental" }
     ];
 
-    // REFERENCIAS AL DOM
     const gridContainer = document.getElementById('modules-grid');
     const viewBySpecialtyBtn = document.getElementById('view-by-specialty');
     const viewByMethodBtn = document.getElementById('view-by-method');
     let currentView = 'method';
 
-    // =================================================================== //
-    // FUNCIONES DE RENDERIZADO (LÓGICA MEJORADA)                          //
-    // =================================================================== //
     function createModuleLink(module) {
         return `<a href="${module.link}" class="module-link" target="_blank"><span>${module.title}</span><span class="arrow">→</span></a>`;
     }
@@ -74,11 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const methodName in methodData) {
             const method = methodData[methodName];
             const relevantModules = modulesData.filter(m => m.method === methodName);
-            if (relevantModules.length === 0) continue; // No mostrar tarjetas de método vacías
+            if (relevantModules.length === 0) continue;
+
+            // Agrupar módulos por especialidad dentro de este método
+            const groupedBySpecialty = relevantModules.reduce((acc, module) => {
+                if (!acc[module.specialty]) acc[module.specialty] = [];
+                acc[module.specialty].push(module);
+                return acc;
+            }, {});
+
+            let accordionHtml = '<div class="specialty-accordion">';
+            for (const specialtyName in groupedBySpecialty) {
+                const specialtyModules = groupedBySpecialty[specialtyName];
+                accordionHtml += `
+                    <details class="specialty-accordion-item">
+                        <summary>${specialtyIcons[specialtyName] || ''} ${specialtyName}</summary>
+                        <div class="module-links-container">
+                            ${specialtyModules.map(createModuleLink).join('')}
+                        </div>
+                    </details>
+                `;
+            }
+            accordionHtml += '</div>';
 
             const methodCard = document.createElement('div');
             methodCard.className = 'method-card';
-            let modulesHtml = relevantModules.map(createModuleLink).join('');
             methodCard.innerHTML = `
                 <div class="method-card-header" style="background-image: url('${method.image}')"></div>
                 <div class="method-card-content">
@@ -86,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="method-card-description">${method.description}</p>
                     <div class="method-card-modules">
                         <h4>Módulos Disponibles:</h4>
-                        ${modulesHtml}
+                        ${accordionHtml}
                     </div>
                 </div>`;
             gridContainer.appendChild(methodCard);
@@ -96,22 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderBySpecialty() {
         gridContainer.innerHTML = '';
         gridContainer.className = 'modules-grid-by-specialty';
-
         const grouped = modulesData.reduce((acc, module) => {
             if (!acc[module.specialty]) acc[module.specialty] = [];
             acc[module.specialty].push(module);
             return acc;
         }, {});
-
         const sortedGroupNames = Object.keys(grouped).sort();
-
         sortedGroupNames.forEach((groupName, index) => {
             const groupWrapper = document.createElement('div');
             const colorClass = `color-theme-${(index % 3) + 1}`;
             groupWrapper.className = `specialty-group ${colorClass}`;
-            
             let modulesHtml = grouped[groupName].map(createModuleLink).join('');
-
             groupWrapper.innerHTML = `
                 <div class="specialty-header">
                     <div class="specialty-icon">${specialtyIcons[groupName] || ''}</div>
@@ -124,9 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =================================================================== //
-    // MANEJO DE EVENTOS Y ESTADO INICIAL                                  //
-    // =================================================================== //
     viewBySpecialtyBtn.addEventListener('click', () => {
         if (currentView !== 'specialty') {
             currentView = 'specialty';
