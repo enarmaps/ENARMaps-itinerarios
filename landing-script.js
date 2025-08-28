@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = 'webapp/boveda.html';
+                    window.location.href = '/webapp/boveda.html';
                 } else {
                     throw new Error('Error en la respuesta del servidor.');
                 }
@@ -98,3 +98,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
