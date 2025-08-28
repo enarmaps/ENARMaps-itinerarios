@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Módulos de Cardiología (Mapas)
         { title: "Angina Estable", link: "../modulos/mapa/angina-estable/index.html", specialty: "Cardiología", method: "Mapa Mental" },
         { title: "Fibrilación Auricular", link: "../modulos/mapa/fibrilacion-auricular/index.html", specialty: "Cardiología", method: "Mapa Mental" },
-        { title: "Infarto Agudo al Miocardio", link: "../modulos/mapa/infarto-agudo-miocardio/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Síndrome Coronario Agudo", link: "../modulos/mapa/sindrome-coronario-agudo/index.html", specialty: "Cardiología", method: "Mapa Mental" },
         { title: "Insuficiencia Cardiaca Aguda", link: "../modulos/mapa/insuficiencia-cardiaca-aguda/index.html", specialty: "Cardiología", method: "Mapa Mental" },
         { title: "Insuficiencia Cardiaca Crónica", link: "../modulos/mapa/insuficiencia-cardiaca-cronica/index.html", specialty: "Cardiología", method: "Mapa Mental" },
         { title: "Hipertensión Arterial Sistémica", link: "../modulos/mapa/HAS/index.html", specialty: "Cardiología", method: "Mapa Mental" },
@@ -154,3 +154,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
     renderByMethod();
 });
+
