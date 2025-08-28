@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Taquicardias Supraventriculares</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/map-style.css">
+</head>
+<body class="layout-fullscreen">
+
+<div class="main-container">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Taquicardias Supraventriculares</h1>
+    <p class="description">Abordaje diagnóstico y terapéutico de las taquicardias regulares de QRS estrecho.</p>
+    <div style="margin-bottom: 25px; text-align: center;">
+      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Regresar a la Bóveda
+      </a>
+  </div>
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
+    </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+
+    </div>
+
+<script type="text/template" id="markdown-mapa">
+  # Taquicardias Supraventriculares (TSV)
+  - Epidemiología y Generalidades
+    - Definición
+      - Arritmias que se originan por encima de la bifurcación del Haz de His.
+      - Se caracterizan por tener un complejo QRS estrecho (<120 ms).
+    - Prevalencia
+      - Son arritmias comunes, a menudo se presentan en gente joven sin cardiopatía estructural.
+    - Tipos Principales
+      - **Taquicardia por Reentrada Nodal (AVNRT):** La más frecuente de las TSV regulares.
+      - **Taquicardia por Reentrada Atrioventricular (AVRT):** Implica una vía accesoria (ej. WPW).
+      - **Taquicardia Auricular:** Originada en un foco ectópico auricular.
+    - Nota Importante
+      - La Fibrilación Auricular es la TSV más común de todas, pero por su manejo y características particulares, se aborda en su propio mapa.
+    - **Clave ENARM**
+      - **La característica electrocardiográfica que define a la mayoría de las TSV es la presencia de una taquicardia regular con un complejo QRS estrecho.**
+  - Diagnóstico
+    - Presentación Clínica
+      - Inicio y término súbito ("en interruptor").
+      - Síntomas
+        - Palpitaciones rápidas y regulares.
+        - Mareo, presíncope o síncope.
+        - Ansiedad, dolor torácico.
+    - **Pilar Diagnóstico: Electrocardiograma (ECG)**
+      - Permite confirmar el diagnóstico y, a menudo, el tipo específico de TSV.
+      - **Hallazgos Clave para Diferenciar Tipos**
+        - **Taquicardia por Reentrada Nodal (AVNRT)**
+          - La más común (~60%).
+          - Ondas P' retrógradas no visibles (ocultas dentro del QRS).
+          - Ocasionalmente se ven como "muescas" al final del QRS (pseudo-R' en V1 o pseudo-S en derivaciones inferiores).
+        - **Taquicardia por Reentrada AV Ortodrómica (AVRT)**
+          - Segundo tipo más común (~30%).
+          - Requiere una vía accesoria (Haz de Kent en WPW).
+          - Onda P' retrógrada visible DESPUÉS del complejo QRS.
+        - **Taquicardia Auricular**
+          - Menos común (~10%).
+          - Ondas P' con una morfología diferente a la sinusal.
+          - Se observa una línea isoeléctrica entre las ondas P'.
+    - Síndrome de Wolff-Parkinson-White (WPW)
+      - Es una preexcitación ventricular por una vía accesoria.
+      - **ECG en Ritmo Sinusal (Basal):**
+        - **Intervalo PR corto** (<120 ms).
+        - **Onda Delta** (empastamiento inicial del QRS).
+        - **Complejo QRS ancho** (>120 ms).
+    - **Clave ENARM**
+      - **Si en el ECG de una TSV no se ve la onda P, lo más probable es que sea una Taquicardia por Reentrada Nodal (AVNRT), ya que la P está oculta en el QRS.**
+  - Tratamiento
+    - **Manejo del Episodio Agudo**
+      - **Paso 1: Evaluar la Estabilidad Hemodinámica**
+        - **Paciente INESTABLE** (Hipotensión, shock, EAP, alteración mental)
+          - **Tratamiento:** **Cardioversión Eléctrica Sincronizada Inmediata.**
+      - **Paso 2: Paciente ESTABLE**
+        - **Primera Línea: Maniobras Vagales**
+          - Maniobra de Valsalva (la más efectiva).
+          - Masaje del seno carotídeo (contraindicado si hay soplos carotídeos).
+        - **Segunda Línea (si las maniobras vagales fallan)**
+          - **Fármaco de Elección: Adenosina IV**
+            - Dosis: 6 mg en bolo intravenoso rápido, seguido de un segundo bolo de 12 mg si es necesario.
+            - Es diagnóstica y terapéutica.
+        - **Tercera Línea (si la adenosina falla o está contraindicada)**
+          - **Calcioantagonistas no DHP IV** (Verapamilo, Diltiazem).
+          - **Betabloqueadores IV** (Metoprolol, Esmolol).
+    - **Manejo a Largo Plazo (Profilaxis)**
+      - Fármacos orales
+        - Betabloqueadores o Calcioantagonistas.
+      - **Tratamiento Curativo**
+        - **Ablación por radiofrecuencia** de la vía lenta del nodo AV (en AVNRT) o de la vía accesoria (en AVRT).
+    - **Clave ENARM**
+      - **El algoritmo de manejo en el paciente estable es secuencial y simple: 1° Maniobras Vagales, 2° Adenosina IV.**
+  - Diagnósticos Diferenciales
+    - Taquicardia Sinusal
+      - Es una respuesta fisiológica (ejercicio, fiebre, ansiedad). El ritmo acelera y desacelera gradualmente. Hay ondas P normales antes de cada QRS.
+    - Flutter Auricular con Conducción 2:1
+      - Puede presentarse como una taquicardia regular a ~150 lpm. Se deben buscar las ondas F "en serrucho" para diferenciarlo.
+    - Taquicardia Ventricular
+      - Principal diferencial si la TSV conduce con aberrancia (QRS ancho). La TV es más probable en pacientes con cardiopatía estructural.
+    - **Clave ENARM**
+      - **La Taquicardia Sinusal no tiene un inicio y fin súbito como las TSV paroxísticas; es una respuesta gradual a un estímulo.**
+  - Complicaciones y Pronóstico
+    - Pronóstico General
+      - Excelente en pacientes sin cardiopatía estructural.
+    - Complicaciones
+      - Síncope (por la frecuencia muy alta).
+      - Taquicardiomiopatía (si la arritmia es incesante o muy frecuente).
+      - **Muerte Súbita**
+        - Es muy rara.
+        - Riesgo principal en pacientes con **WPW que desarrollan Fibrilación Auricular**, ya que la conducción rápida por la vía accesoria puede degenerar en Fibrilación Ventricular.
+    - **Clave ENARM**
+      - **La combinación de Wolff-Parkinson-White y Fibrilación Auricular es una emergencia médica por el riesgo de muerte súbita.**
+  - Perlas para el ENARM
+    - Concepto Indispensable
+      - El tratamiento agudo se basa en bloquear el **Nodo Atrioventricular (AV)**, que es una parte crítica del circuito en la mayoría de las TSV (AVNRT y AVRT).
+    - Pregunta Clásica
+      - Mujer joven llega a urgencias por palpitaciones de inicio súbito. ECG muestra taquicardia regular de QRS estrecho a 180 lpm. Está hemodinámicamente estable. ¿Cuál es el siguiente paso tras el fracaso de las maniobras de Valsalva?
+        - **Respuesta:** Administrar 6 mg de Adenosina IV en bolo.
+    - Mnemotecnia Útil
+      - Para el ECG de WPW en ritmo sinusal: **"El PR es corto porque DELTA-vión va muy rápido y se ensancha al aterrizar (QRS ancho)".**
+    - Error Común
+      - Dar Adenosina lentamente. Su vida media es de segundos, por lo que debe administrarse en bolo rápido seguido de un flush de solución salina.
+    - Dato de Oro
+      - La **Adenosina** puede ser diagnóstica: si frena y termina la arritmia, es una TSV por reentrada. Si solo frena la FC y revela la actividad auricular subyacente (ondas F, P' ectópicas), desenmascara un flutter o taquicardia auricular.
+    - Vademécum
+      - Fármacos CONTRAINDICADOS en un paciente con **FA y WPW conocido**: **Todos los que frenan el nodo AV** (Adenosina, Verapamilo/Diltiazem, Betabloqueadores, Digoxina).
+
+</script>
+
+<script src="../../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').text;
+        renderMarkmap(markdownContent);
+    });
+</script>
+
+</body>
+</html>

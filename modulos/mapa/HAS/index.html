@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hipertensión Arterial Sistémica</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/map-style.css">
+</head>
+<body class="layout-fullscreen">
+
+<div class="main-container">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Hipertensión Arterial Sistémica</h1>
+    <p class="description">Diagnóstico, clasificación, metas y tratamiento según la GPC.</p>
+    <div style="margin-bottom: 25px; text-align: center;">
+      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Regresar a la Bóveda
+      </a>
+  </div>
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
+    </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+
+    </div>
+
+<script type="text/template" id="markdown-mapa">
+  # Hipertensión Arterial Sistémica
+  - Epidemiología y Factores de Riesgo
+    - Prevalencia
+      - Enfermedad crónica de mayor prevalencia a nivel mundial.
+      - En México, afecta aproximadamente a 1 de cada 4 adultos.
+      - Cerca del 40% de los afectados desconocen su diagnóstico.
+    - Clasificación Etiológica
+      - **HAS Primaria o Esencial (90-95%)**
+        - Causa multifactorial, sin una etiología única identificable.
+      - **HAS Secundaria (5-10%)**
+        - Consecuencia de otra patología subyacente.
+    - Factores de Riesgo Modificables
+      - Sobrepeso y Obesidad.
+      - Dieta rica en sodio.
+      - Sedentarismo.
+      - Consumo excesivo de alcohol.
+      - Tabaquismo.
+    - Factores de Riesgo No Modificables
+      - Antecedentes heredofamiliares.
+      - Edad (>65 años).
+      - Etnia.
+    - **Clave ENARM**
+      - **La gran mayoría de los casos de HAS son de tipo Primaria o Esencial. Siempre se debe sospechar una causa secundaria en pacientes muy jóvenes (<30 años) o con hipertensión resistente.**
+  - Diagnóstico
+    - Técnica de Medición Correcta
+      - Paciente sentado, espalda recargada, pies en el suelo, sin cruzar las piernas.
+      - Reposo previo de 5 minutos.
+      - Brazo apoyado a la altura del corazón.
+      - Manguito de tamaño adecuado.
+      - Sin haber fumado, tomado café o hecho ejercicio 30 min antes.
+    - Criterios Diagnósticos
+      - Se requiere el promedio de ≥2 mediciones en ≥2 consultas diferentes.
+      - Cifras de Presión Arterial (PA) ≥140/90 mmHg en el consultorio.
+    - **Clasificación de la PA (ACC/AHA 2017 - Adoptada por GPC)**
+      - **Normal:** <120 / <80 mmHg
+      - **Elevada:** 120-129 / <80 mmHg
+      - **Hipertensión Grado 1:** 130-139 / 80-89 mmHg
+      - **Hipertensión Grado 2:** ≥140 / ≥90 mmHg
+    - Confirmación y Monitoreo fuera del Consultorio
+      - **MAPA (Monitoreo Ambulatorio de la Presión Arterial) de 24h**
+        - Estándar de oro para el diagnóstico.
+      - **AMPA (Automonitoreo de la Presión Arterial)**
+        - El paciente realiza mediciones en casa.
+    - Evaluación Inicial del Paciente
+      - Búsqueda intencionada de daño a órgano blanco.
+      - Laboratorios: BH, QS, EGO, electrolitos, perfil de lípidos.
+      - Gabinete: Electrocardiograma (ECG) en reposo.
+    - **Clave ENARM**
+      - **El diagnóstico no se hace con una sola toma. Se confirma con mediciones repetidas o, idealmente, con un MAPA de 24 horas, que también descarta la "hipertensión de bata blanca".**
+  - Tratamiento
+    - Metas de Control Tensional
+      - **Población General:** <140/90 mmHg.
+      - **Pacientes de Alto Riesgo Cardiovascular (DM, ERC, EVC previo):** <130/80 mmHg.
+    - **Tratamiento No Farmacológico (Piedra Angular)**
+      - **Dieta DASH** (Dietary Approaches to Stop Hypertension).
+      - Restricción de sodio (<2.3 g/día).
+      - Ejercicio aeróbico (150 min/semana).
+      - Limitar consumo de alcohol.
+      - Suspensión del tabaquismo.
+      - Reducción de peso.
+    - **Tratamiento Farmacológico de Primera Línea**
+      - **IECAs** (ej. Enalapril, Lisinopril) o **ARA-II** (ej. Losartán, Valsartán).
+      - **Calcioantagonistas Dihidropiridínicos** (ej. Amlodipino, Nifedipino).
+      - **Diuréticos Tiazídicos** (ej. Hidroclorotiazida, Clortalidona).
+    - Estrategia Terapéutica
+      - **Grado 1:** Iniciar con un fármaco.
+      - **Grado 2:** Iniciar con terapia dual (combinación de dos fármacos de primera línea).
+    - **Crisis Hipertensivas**
+      - **Urgencia Hipertensiva**
+        - PA muy elevada (ej. >180/120 mmHg).
+        - **SIN** daño agudo a órgano blanco.
+        - Manejo: Reducción gradual de la PA en 24-48h con fármacos orales.
+      - **Emergencia Hipertensiva**
+        - PA muy elevada.
+        - **CON** daño agudo a órgano blanco (EVC, IAM, EAP, LRA, disección aórtica).
+        - Manejo: Hospitalización en UCI, reducción inmediata (minutos a horas) de la PA con fármacos IV.
+    - **Clave ENARM**
+      - **La diferencia entre Urgencia y Emergencia hipertensiva es la presencia (Emergencia) o ausencia (Urgencia) de daño AGUDO a órgano blanco, lo cual define el manejo y pronóstico.**
+  - Diagnósticos Diferenciales (Causas de HAS Secundaria)
+    - Causa Renal (La más común)
+      - Enfermedad Renal Crónica, Estenosis de la Arteria Renal.
+    - Causa Endocrina
+      - Hiperaldosteronismo primario (Síndrome de Conn).
+      - Feocromocitoma.
+      - Síndrome de Cushing, Hipo/Hipertiroidismo.
+    - Apnea Obstructiva del Sueño (AOS)
+      - Causa muy frecuente y subdiagnosticada.
+    - Fármacos
+      - AINEs, anticonceptivos orales, esteroides, simpaticomiméticos.
+    - **Clave ENARM**
+      - **La causa más frecuente de HAS secundaria es la Enfermedad Renal Parenquimatosa. Sospechar estenosis de la arteria renal en pacientes con hipokalemia y un soplo abdominal.**
+  - Complicaciones y Pronóstico (Daño a Órgano Blanco)
+    - A nivel Cardiaco
+      - Hipertrofia Ventricular Izquierda (HVI).
+      - Insuficiencia Cardiaca (especialmente con FEVI Preservada).
+      - Cardiopatía Isquémica.
+    - A nivel Cerebral
+      - Evento Vascular Cerebral (EVC), tanto isquémico como hemorrágico.
+      - Demencia vascular.
+    - A nivel Renal
+      - Enfermedad Renal Crónica (Nefroangioesclerosis).
+    - A nivel Ocular
+      - Retinopatía Hipertensiva.
+    - **Clave ENARM**
+      - **El EVC es una de las complicaciones más devastadoras y directamente relacionadas con el mal control de la HAS.**
+  - Perlas para el ENARM
+    - Concepto Indispensable
+      - El tratamiento de la HAS se basa en el **riesgo cardiovascular global**, no solo en la cifra de presión. Se tratan pacientes, no números.
+    - Pregunta Clásica
+      - Paciente con Diabetes tipo 2 e Hipertensión. ¿Cuál es la meta de presión arterial y el fármaco de primera línea de elección?
+        - **Respuesta:** Meta <130/80 mmHg. Fármaco: IECA o ARA-II (por su efecto nefroprotector).
+    - Mnemotecnia Útil
+      - Causas de HAS Secundaria: **"RENAL"** - **R**enal, **E**ndocrina, **N**eurológica, **A**OS (Apnea), **L** fármacos (del inglés "Licit/illicit drugs").
+    - Error Común
+      - Bajar la presión arterial rápidamente en una Urgencia Hipertensiva. La reducción debe ser gradual para evitar hipoperfusión cerebral o coronaria.
+    - Dato de Oro
+      - La **Clortalidona** es un diurético tiazídico más potente y de vida media más larga que la Hidroclorotiazida, siendo preferido en las guías actuales.
+    - Vademécum
+      - **IECAs y ARA-II están absolutamente CONTRAINDICADOS en el embarazo** por sus efectos teratogénicos. Los fármacos de elección en el embarazo son Metildopa, Labetalol y Nifedipino.
+
+</script>
+
+<script src="../../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').text;
+        renderMarkmap(markdownContent);
+    });
+</script>
+
+</body>
+</html>

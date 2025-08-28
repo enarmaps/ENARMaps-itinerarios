@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Diabetes mellitus tipo 1</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/map-style.css">
+</head>
+<body class="layout-fullscreen">
+
+<div class="main-container">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Diabetes mellitus tipo 1</h1>
+    <p class="description">Fisiopatología autoinmune, diagnóstico diferencial y manejo con insulinoterapia intensiva.</p>
+    <div style="margin-bottom: 25px; text-align: center;">
+      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Regresar a la Bóveda
+      </a>
+  </div>
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
+    </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+
+    </div>
+
+<script type="text/template" id="markdown-mapa">
+    # Diabetes Mellitus Tipo 1
+    - Epidemiología y Fisiopatología
+      - Concepto
+        - Enfermedad crónica causada por la **destrucción autoinmune** de las células beta del páncreas.
+        - Conduce a una **deficiencia absoluta de insulina**.
+      - Fisiopatología
+        - Proceso Autoinmune
+          - Linfocitos T autorreactivos atacan y destruyen las células beta productoras de insulina en los islotes de Langerhans.
+        - Desencadenantes
+          - Predisposición genética (Asociación con HLA-DR3 y HLA-DR4).
+          - Factores ambientales (infecciones virales, toxinas) que pueden iniciar la respuesta autoinmune.
+      - Presentación Clásica
+        - Ocurre más frecuentemente en la infancia y adolescencia.
+        - Tiene un pico de incidencia bimodal (4-6 años y 10-14 años).
+      - **Clave ENARM**
+        - **La palabra clave en la fisiopatología de la DM1 es "AUTINMUNE". Esto implica una deficiencia absoluta de insulina que NO responde a hipoglucemiantes orales.**
+    - Diagnóstico
+      - Presentación Clínica
+        - Inicio **súbito y sintomático.**
+        - Síntomas Cardinales ("Las Polis")
+          - Poliuria.
+          - Polidipsia.
+          - Polifagia.
+          - Pérdida de peso inexplicable.
+        - Debut Frecuente
+          - A menudo, el diagnóstico se hace cuando el paciente debuta con **Cetoacidosis Diabética (CAD).**
+      - Criterios de Glucemia
+        - Se utilizan los mismos puntos de corte que en la DM2 (A1c ≥6.5%, Ayuno ≥126, etc.).
+        - La diferencia radica en el contexto clínico agudo y la necesidad de pruebas adicionales.
+      - **Pruebas para Confirmar la Etiología Autoinmune**
+        - **1. Autoanticuerpos Pancreáticos**
+          - **Anti-GAD65** (Decarboxilasa del ácido glutámico): El más común y persistente.
+          - Anti-IA2 (Antígeno de insulinoma 2).
+          - Anti-insulina (IAA).
+        - **2. Péptido C**
+          - Se secreta junto con la insulina endógena.
+          - Resultado en DM1: **Bajo o indetectable**, confirmando la nula producción de insulina.
+      - **Clave ENARM**
+        - **La presencia de autoanticuerpos (principalmente Anti-GAD65) y un Péptido C bajo o indetectable confirman el diagnóstico de DM1 sobre otros tipos de diabetes.**
+    - Tratamiento
+      - **Piedra Angular del Tratamiento: INSULINA**
+        - El tratamiento es el reemplazo de la insulina de por vida.
+        - Los hipoglucemiantes orales son ineficaces.
+      - **Esquema de Elección: Terapia Basal-Bolus**
+        - Es el que mejor imita la secreción fisiológica de insulina.
+        - **Insulina Basal**
+          - Objetivo: Cubrir las necesidades de insulina entre comidas y durante la noche.
+          - Fármacos: Análogos de acción prolongada (Glargina, Degludec) 1-2 veces al día.
+        - **Insulina en Bolos (Prandial)**
+          - Objetivo: Cubrir el pico de glucosa después de cada comida.
+          - Fármacos: Análogos de acción rápida (Lispro, Aspart) administrados antes de comer.
+      - Educación Terapéutica
+        - Es tan importante como la insulina.
+        - Incluye
+          - Automonitoreo de glucosa (glucómetro o monitor continuo).
+          - Conteo de carbohidratos.
+          - Ajuste de dosis de insulina según la actividad física y la alimentación.
+      - **Clave ENARM**
+        - **El tratamiento de la DM1 es SIEMPRE con insulina. El esquema ideal que se debe conocer para el examen es el régimen Basal-Bolus.**
+    - Diagnósticos Diferenciales
+      - Diabetes Mellitus Tipo 2
+        - En adolescentes con obesidad severa. Se diferencia por la ausencia de autoanticuerpos, Péptido C normal o alto (resistencia a la insulina) y fuerte historia familiar de DM2.
+      - Diabetes LADA (Latent Autoimmune Diabetes in Adults)
+        - Es una forma de DM1 de progresión lenta en adultos. Tienen autoanticuerpos positivos, pero no requieren insulina al inicio.
+      - Diabetes Monogénica (MODY)
+        - Herencia autosómica dominante, inicio en la juventud, ausencia de autoanticuerpos.
+      - **Clave ENARM**
+        - **Ante un adulto (>30 años) delgado con diagnóstico "reciente" de DM2 que no responde bien a los fármacos orales, se debe sospechar LADA y solicitar anticuerpos Anti-GAD.**
+    - Complicaciones y Pronóstico
+      - Complicación Aguda Característica
+        - **Cetoacidosis Diabética (CAD)**
+          - Tríada: Hiperglucemia (>250 mg/dL), Cetonemia/Cetonuria, y Acidosis Metabólica (pH <7.3, Bicarbonato <18).
+      - Fase de "Luna de Miel" (Honeymoon)
+        - Periodo transitorio post-diagnóstico donde hay una remisión parcial.
+        - Las necesidades de insulina disminuyen drásticamente debido a una secreción residual por las pocas células beta que quedan.
+        - Es temporal y no significa una cura.
+      - Complicaciones Crónicas
+        - Son las mismas que en la DM2 (micro y macrovasculares).
+        - Suelen aparecer a una edad más temprana debido al mayor tiempo de evolución de la enfermedad.
+      - **Clave ENARM**
+        - **La Cetoacidosis Diabética (CAD) es la complicación aguda que define a la DM1 y es frecuentemente la forma de presentación inicial.**
+    - Perlas para el ENARM
+      - Concepto Indispensable
+        - DM1 es una enfermedad autoinmune que causa una DEFICIENCIA ABSOLUTA de insulina.
+      - Pregunta Clásica
+        - Niño de 10 años llevado a urgencias por dolor abdominal, vómitos y respiración de Kussmaul. Glucosa de 450 mg/dL y cetonas en orina. ¿Cuál es el diagnóstico más probable?
+          - **Respuesta:** Cetoacidosis Diabética como debut de una Diabetes Mellitus Tipo 1.
+      - Mnemotecnia Útil
+        - Para enfermedades autoinmunes asociadas a DM1: **"El diabético TIPO 1 se fue de viaje a CELIA y HACHÍS"** -> Enfermedad **CELÍA**ca y Tiroiditis de **HASHI**moto.
+      - Error Común
+        - Omitir la dosis de insulina basal en un paciente con DM1 que está en ayuno para un procedimiento. ¡Siempre requieren su basal para evitar la cetoacidosis!
+      - Dato de Oro
+        - Se debe realizar un tamizaje activo para otras enfermedades autoinmunes en pacientes con DM1, principalmente **enfermedad tiroidea autoinmune** y **enfermedad celíaca**.
+      - Vademécum
+        - **Péptido C:** Es la herramienta bioquímica clave para diferenciar DM1 (bajo/ausente) de DM2 (normal/alto), ya que refleja la producción endógena de insulina.
+
+</script>
+
+<script src="../../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').text;
+        renderMarkmap(markdownContent);
+    });
+</script>
+
+</body>
+</html>

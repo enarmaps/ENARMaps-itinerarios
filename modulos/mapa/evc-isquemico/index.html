@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Mental: Tratamiento EVC Isquémico (AHA + GPC México)</title>
+    <title>Mapa Mental: Tratamiento EVC Isquémico (Guías AHA)</title>
     
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
@@ -12,36 +12,33 @@
     <link rel="stylesheet" href="../../lib/modulos-style.css">
     <link rel="stylesheet" href="../../lib/map-style.css">
 </head>
-<body class="layout-fullscreen">
+<body>
 
-<div class="main-container">
-    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
-    
-    <h1>Mapa Mental: Tratamiento del EVC Isquémico</h1>
-    <p class="description">(Basado en Guías AHA y GPC México)</p>
+<div class="map-container">
+    <h1>Mapa Mental: Tratamiento del EVC Isquémico (Guías AHA)</h1>
+    <p class="description">Navega este mapa mental interactivo para explorar las guías de tratamiento. Haz clic en los nodos para expandir y contraer las ramas de conocimiento.</p>
     
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
-    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+    <p class="credit">Información basada en guías generales de la AHA. Consulta siempre las guías más recientes y completas.</p>
+</div>
 
-   <section class="lead-magnet-interno">
+<section class="lead-magnet-interno">
     <div class="container">
-        <h2>¿Listo para más? Accede a la Bóveda Completa.</h2>
-        <p>Obtén acceso inmediato y gratuito a todos nuestros módulos interactivos, mapas mentales y más para potenciar tu estudio.</p>
-        <form class="lead-form-interno" id="module-lead-form">
-            <input type="text" name="nombre" placeholder="Tu Nombre" required>
-            <input type="email" name="email" placeholder="Tu mejor email" required>
-            <input type="tel" name="whatsapp" placeholder="Tu WhatsApp (10 dígitos)" required pattern="[0-9]{10}" maxlength="10">
-            <button type="submit" class="btn-interno">Acceder a la Bóveda Gratuita</button>
+        <h2>¿Te gustó este módulo? Esto es solo el comienzo.</h2>
+        <p>Recibe notificaciones cuando lancemos nuevos módulos interactivos y obtén acceso prioritario a la versión completa de ENARMaps. Únete a nuestra comunidad de aspirantes de alto rendimiento.</p>
+        
+        <form class="lead-form-interno" action="#" method="POST">
+            <input type="email" placeholder="Tu mejor email" required>
+            <button type="submit" class="btn-interno">Mantenerme Actualizado</button>
         </form>
     </div>
 </section>
-</div>
 
 <script type="text/template" id="markdown-mapa">
-# Tratamiento EVC Isquémico (AHA + GPC México)
+# Tratamiento EVC Isquémico (GPC México + AHA)
 
 ## Fase Aguda (Reperfusión y Manejo Inicial)
 - **Terapia de Reperfusión (Tiempo es Cerebro)**
@@ -91,7 +88,7 @@
     - **Aspirina + Clopidogrel:**
       - Indicación: EVC isquémico menor (NIHSS ≤3-5) o AIT de alto riesgo (ABCD² ≥4).
       - Duración: Iniciar en 24h, continuar por 21-90 días.
-- **AnticoagulACIÓN (EVC Cardioembólico, ej. FA)**
+- **Anticoagulación (EVC Cardioembólico, ej. FA)**
   - **(GPC México)** Preferir Anticoagulantes Orales Directos (ACODs) sobre Warfarina.
 - **Manejo de Lípidos (Estatinas)**
   - **(GPC México)** Iniciar estatinas de alta intensidad.
@@ -108,9 +105,12 @@
 </script>
 
 <script src="../../lib/map-logic.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Obtenemos el contenido del mapa desde la etiqueta de script
         const markdownContent = document.getElementById('markdown-mapa').text;
+        // Llamamos a la función de renderizado de nuestra librería
         renderMarkmap(markdownContent);
     });
 </script>

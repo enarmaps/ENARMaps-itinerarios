@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Síncope</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.15.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.15.4"></script>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/map-style.css">
+</head>
+<body class="layout-fullscreen">
+
+<div class="main-container">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    
+    <h1>Síncope</h1>
+    <p class="description">Abordaje diagnóstico y estratificación de riesgo para diferenciar causas benignas de las letales.</p>
+    <div style="margin-bottom: 25px; text-align: center;">
+      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Regresar a la Bóveda
+      </a>
+  </div>
+    <div id="mindmap-container">
+        <svg id="markmap-svg" class="markmap"></svg>
+    </div>
+    
+    <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
+
+    </div>
+
+<script type="text/template" id="markdown-mapa">
+# Síncope
+- Epidemiología y Etiología
+  - Definición
+    - Pérdida transitoria de la conciencia (PTC).
+    - Causada por hipoperfusión cerebral global.
+    - Características clave
+      - Inicio rápido.
+      - Duración corta.
+      - Recuperación espontánea y completa.
+  - **Clasificación por Causa (Los 3 Grandes Grupos)**
+    - **1. Síncope Reflejo (Neuromediado)** - El más común.
+      - **Vasovagal:** Desencadenado por miedo, dolor, estrés emocional, bipedestación prolongada.
+      - **Situacional:** Ocurre durante o inmediatamente después de un estímulo (toser, estornudar, defecar, orinar).
+      - **Hipersensibilidad del Seno Carotídeo:** Por compresión del cuello (afeitarse, corbatas apretadas).
+    - **2. Síncope por Hipotensión Ortostática**
+      - Falla del sistema nervioso autónomo para compensar el cambio de postura.
+      - Común en ancianos, diabéticos, y por uso de fármacos (diuréticos, antihipertensivos).
+    - **3. Síncope Cardiogénico** - El menos común, pero el más peligroso.
+      - **Por Arritmias:** Bradiarritmias (bloqueos AV) o Taquiarritmias (TV, TSV).
+      - **Por Cardiopatía Estructural:** Estenosis aórtica severa, miocardiopatía hipertrófica, embolia pulmonar masiva, taponamiento cardiaco.
+  - **Clave ENARM**
+    - **La causa más frecuente de síncope en la población general, especialmente en jóvenes sin comorbilidades, es el síncope reflejo (vasovagal).**
+- Diagnóstico
+  - **Pilar del Abordaje: Anamnesis y Exploración Física**
+    - Resuelven la causa en hasta el 50% de los casos.
+    - Investigar Pródromos
+      - Náusea, diaforesis, palidez, visión borrosa (sugiere síncope reflejo).
+      - Palpitaciones (sugiere arritmia).
+      - Dolor torácico, disnea (sugiere causa estructural o TEP).
+    - Investigar el Contexto
+      - Síncope durante el esfuerzo (bandera roja 🚩).
+      - Síncope al girar el cuello o con cuellos apretados (seno carotídeo).
+      - Síncope postprandial o al levantarse (hipotensión ortostática).
+  - Exploración Física Dirigida
+    - **Medición de la Presión Arterial en Ortostatismo**
+      - Se mide en supino y a los 1 y 3 minutos de pie.
+      - Positiva si cae la PA sistólica >20 mmHg o la diastólica >10 mmHg.
+    - Examen Cardiovascular Completo
+      - Búsqueda de soplos (estenosis aórtica), arritmias.
+  - **Estudio Inicial Básico (Para TODO paciente con síncope)**
+    - **Electrocardiograma (ECG) de 12 derivaciones.**
+      - Su principal objetivo es buscar datos de alto riesgo (causa cardiogénica).
+  - **Estratificación de Riesgo: Búsqueda de Banderas Rojas 🚩**
+    - Síncope durante el ejercicio o en decúbito supino.
+    - Palpitaciones justo antes del evento.
+    - Antecedente familiar de muerte súbita a edad temprana.
+    - Paciente con cardiopatía estructural conocida.
+    - Hallazgos anormales en el ECG
+      - Isquemia, arritmias, bloqueos AV, Brugada, QT largo, signos de hipertrofia.
+  - Estudios Adicionales (Solo si hay sospecha o banderas rojas)
+    - **Monitor Holter de 24-48h:** Si se sospecha arritmia frecuente.
+    - **Ecocardiograma:** Si se sospecha cardiopatía estructural (ej. soplo nuevo).
+    - **Prueba de Mesa Inclinada (Tilt-Table Test):** Para confirmar síncope vasovagal de origen dudoso.
+  - **Clave ENARM**
+    - **El objetivo principal de la evaluación inicial no es tanto confirmar un síncope vasovagal, sino descartar con certeza un síncope cardiogénico mediante la historia clínica y un ECG.**
+- Tratamiento
+  - **Síncope Reflejo (Vasovagal)**
+    - **Educación:** Explicar la naturaleza benigna del cuadro.
+    - **Evitar desencadenantes** e hidratación adecuada.
+    - **Maniobras de Contrapresión**
+      - Cruzar las piernas, apretar puños, tensar brazos.
+      - Se realizan al sentir los pródromos para abortar el episodio.
+  - **Síncope por Hipotensión Ortostática**
+    - Revisar y suspender/ajustar fármacos hipotensores.
+    - Medidas no farmacológicas
+      - Aumentar ingesta de sal y líquidos.
+      - Usar medias de compresión.
+    - Fármacos (raramente usados): Fludrocortisona, Midodrina.
+  - **Síncope Cardiogénico**
+    - **El tratamiento es el de la enfermedad de base.**
+    - Ejemplos
+      - **Marcapasos definitivo:** Para bradiarritmias sintomáticas (Bloqueo AV de alto grado).
+      - **Desfibrilador Automático Implantable (DAI):** Para taquiarritmias ventriculares malignas.
+      - **Reemplazo valvular:** Para estenosis aórtica severa sintomática.
+  - Criterios de Hospitalización
+    - **Cualquier paciente con una bandera roja o sospecha de síncope cardiogénico debe ser hospitalizado.**
+  - **Clave ENARM**
+    - **El tratamiento del síncope vasovagal es la educación y las maniobras de contrapresión; el del síncope cardiogénico es tratar la cardiopatía específica.**
+- Diagnósticos Diferenciales (Otras causas de PTC)
+  - Crisis Convulsivas
+    - Se distingue por: Aura, movimientos tónico-clónicos, mordedura de lengua lateral, relajación de esfínteres, y un estado postictal prolongado (confusión).
+  - Causas Metabólicas
+    - **Hipoglucemia:** La recuperación no es espontánea, requiere administración de glucosa.
+  - Accidente Isquémico Transitorio (AIT)
+    - Usualmente vertebrobasilar. Se acompaña de otros déficits neurológicos focales (diplopía, ataxia, disartria).
+  - Pseudosincope Psicógeno
+    - Ojos cerrados durante el episodio, movimientos extraños, duración prolongada, sin cambios hemodinámicos.
+  - **Clave ENARM**
+    - **La diferencia clave entre síncope y epilepsia es el estado postictal; en el síncope, la recuperación de la conciencia es rápida y completa, mientras que en la epilepsia hay un periodo de confusión.**
+- Complicaciones y Pronóstico
+  - Morbilidad
+    - Traumatismos secundarios a la caída (fracturas, hemorragia intracraneal).
+  - Pronóstico de Mortalidad
+    - **Excelente** para el síncope reflejo y ortostático.
+    - **Malo** para el síncope cardiogénico, con una mortalidad al año que puede superar el 20-30% si no se trata la causa.
+  - **Clave ENARM**
+    - **El síncope en sí mismo no es letal, pero la causa subyacente sí puede serlo. El pronóstico depende enteramente de la etiología.**
+- Perlas para el ENARM
+  - Concepto Indispensable
+    - El abordaje del síncope es un ejercicio de estratificación de riesgo para "encontrar la aguja en el pajar" que es el síncope cardiogénico.
+  - Pregunta Clásica
+    - Paciente que presenta pérdida de la conciencia mientras hacía ejercicio. ¿Cuál es la causa más probable y qué estudio es mandatorio?
+      - **Respuesta:** Causa cardiogénica. Un Ecocardiograma es mandatorio para descartar miocardiopatía hipertrófica o estenosis aórtica.
+  - Mnemotecnia Útil
+    - Para causas de síncope reflejo: **"Las 3 S"** -> **S**ituacional, **S**eno carotídeo, (Va)so-vagal (**S**imple faint).
+  - Error Común
+    - Realizar estudios de neuroimagen (TAC/RM de cráneo) de forma rutinaria. Solo están indicados si la historia clínica sugiere una causa neurológica (ej. AIT, convulsión con traumatismo).
+  - Dato de Oro
+    - La **Prueba de Mesa Inclinada (Tilt Test)** NO es para descartar una causa cardiaca. Su única función es confirmar un diagnóstico de síncope vasovagal cuando la sospecha clínica es alta pero no definitiva.
+  - Vademécum
+    - En un paciente anciano con síncope por hipotensión ortostática, el primer paso es siempre **revisar su lista de medicamentos** en busca de fármacos que puedan estar causando o contribuyendo al problema.
+
+</script>
+
+<script src="../../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').text;
+        renderMarkmap(markdownContent);
+    });
+</script>
+
+</body>
+</html>
