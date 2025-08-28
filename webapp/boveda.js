@@ -9,22 +9,50 @@ document.addEventListener('DOMContentLoaded', () => {
         "Interleaving": { image: "https://i.imgur.com/hrOF9GF.png", description: "Mezcla problemas de diferentes temas en una misma sesión para forzar al cerebro a discriminar y elegir la estrategia correcta." }
     };
     
-    // NUEVO: Mapa de Iconos SVG estilo Lucide para Especialidades
     const specialtyIcons = {
-        "Cardiología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>',
+        "Cardiología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>',
         "Neurología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4.5 4.5 0 0 0-4.5 4.5v1.42A4.5 4.5 0 0 0 12 12a4.5 4.5 0 0 0 4.5-4.08V6.5A4.5 4.5 0 0 0 12 2Z"/><path d="M12 12v1.14A4.5 4.5 0 0 1 7.5 17.5a4.5 4.5 0 0 1-4.49-4.5h0A4.5 4.5 0 0 1 7.5 8.52V8.5"/><path d="M12 12v1.14A4.5 4.5 0 0 0 16.5 17.5a4.5 4.5 0 0 0 4.49-4.5h0A4.5 4.5 0 0 0 16.5 8.52V8.5"/></svg>',
         "Nefrología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0-7-7c-1.35 0-2.6.4-3.6 1.15A2 2 0 0 0 1 18v2a2 2 0 0 0 2 2h1.15A7 7 0 0 0 12 22Z"/><path d="M23 18v2a2 2 0 0 1-2 2h-1.15a7 7 0 0 1-6.85-8.15c.5-1.1 1.2-2.1 2-3A7 7 0 0 1 23 9a7 7 0 0 1-7 7c-1.35 0-2.6-.4-3.6-1.15"/></svg>',
+        "Endocrinología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m15.5 8.5-3 3-3-3"/><path d="m8.5 15.5 3-3 3 3"/></svg>',
+        "Reumatología": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5c-.83-1.25-1.5-2.5-1.5-4.5 0-3 2-5 5-5s5 2 5 5c0 2-1 4-1.5 5.5"/><path d="M19.5 10.5c.83-1.25 1.5-2.5 1.5-4.5 0-3-2-5-5-5s-5 2-5 5c0 2 1 4 1.5 5.5"/><path d="M12 11.5V14l-2 4.5h8L16 14v-2.5"/><path d="m5 21 1-1"/><path d="m19 21-1-1"/></svg>',
         "Diagnóstico Diferencial": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>'
     };
 
     // =================================================================== //
-    // BASE DE DATOS DE MÓDULOS (Sin cambios)                              //
+    // BASE DE DATOS DE MÓDULOS (Actualizada)                              //
     // =================================================================== //
     const modulesData = [
-        { title: "Mecanismo de Frank-Starling", link: "../modulos/feynman-frank-starling/index.html", specialty: "Cardiología", method: "Método Feynman" },
-        { title: "Tratamiento del EVC Isquémico", link: "../modulos/mapa-evc-isquemico/index.html", specialty: "Neurología", method: "Mapa Mental" },
-        { title: "El Eje RAA: Una Historia de Poder", link: "../modulos/storytelling-raa/index.html", specialty: "Nefrología", method: "Storytelling" },
-        { title: "El Reto del Dolor Torácico", link: "../modulos/interleaving-dolor-toracico/index.html", specialty: "Diagnóstico Diferencial", method: "Interleaving" }
+        // Módulos Originales
+        { title: "Mecanismo de Frank-Starling", link: "../modulos/feynman/frank-starling/index.html", specialty: "Cardiología", method: "Método Feynman" },
+        { title: "Potencial de Acción Cardíaco", link: "../modulos/feynman/potencial-accion-cardiaco/index.html", specialty: "Cardiología", method: "Método Feynman" },
+        { title: "El Viaje del Impulso Eléctrico", link: "../modulos/storytelling/impulso-electrico/index.html", specialty: "Cardiología", method: "Storytelling" },
+        { title: "El Eje RAA: Una Historia de Poder", link: "../modulos/storytelling/raa/index.html", specialty: "Nefrología", method: "Storytelling" },
+        { title: "El Reto del Dolor Torácico", link: "../modulos/interleaving/dolor-toracico/index.html", specialty: "Diagnóstico Diferencial", method: "Interleaving" },
+        
+        // Módulos de Neurología
+        { title: "Tratamiento del EVC Isquémico", link: "../modulos/mapa/evc-isquemico/index.html", specialty: "Neurología", method: "Mapa Mental" },
+
+        // Módulos de Cardiología (Mapas)
+        { title: "Angina Estable", link: "../modulos/mapa/angina-estable/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Fibrilación Auricular", link: "../modulos/mapa/fibrilacion-auricular/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Infarto Agudo al Miocardio", link: "../modulos/mapa/infarto-agudo-miocardio/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Insuficiencia Cardiaca Aguda", link: "../modulos/mapa/insuficiencia-cardiaca-aguda/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Insuficiencia Cardiaca Crónica", link: "../modulos/mapa/insuficiencia-cardiaca-cronica/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Hipertensión Arterial Sistémica", link: "../modulos/mapa/HAS/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Taquicardias Supraventriculares", link: "../modulos/mapa/TSV/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Interpretación Sistemática del ECG", link: "../modulos/mapa/EKG/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+        { title: "Síncope", link: "../modulos/mapa/sincope/index.html", specialty: "Cardiología", method: "Mapa Mental" },
+
+        // Módulos de Endocrinología (Mapas)
+        { title: "Cetoacidosis y Estado Hiperosmolar", link: "../modulos/mapa/CAD&EHO/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Diabetes Mellitus Tipo 1", link: "../modulos/mapa/DM1/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Diabetes Mellitus Tipo 2", link: "../modulos/mapa/DM2/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Dislipidemias", link: "../modulos/mapa/dislipidemias/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Hipertiroidismo", link: "../modulos/mapa/hipertiroidismo/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Hipoglucemia", link: "../modulos/mapa/hipoglucemia/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Hipotiroidismo", link: "../modulos/mapa/hipotiroidismo/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Síndrome Metabólico", link: "../modulos/mapa/sindrome-metabolico/index.html", specialty: "Endocrinología", method: "Mapa Mental" },
+        { title: "Osteoporosis", link: "../modulos/mapa/osteoporosis/index.html", specialty: "Reumatología", method: "Mapa Mental" }
     ];
 
     // REFERENCIAS AL DOM
@@ -37,16 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNCIONES DE RENDERIZADO (LÓGICA MEJORADA)                          //
     // =================================================================== //
     function createModuleLink(module) {
-        return `<a href="${module.link}" class="module-link"><span>${module.title}</span><span class="arrow">→</span></a>`;
+        return `<a href="${module.link}" class="module-link" target="_blank"><span>${module.title}</span><span class="arrow">→</span></a>`;
     }
 
     function renderByMethod() {
-        // ... (sin cambios, ya se ve bien)
         gridContainer.innerHTML = '';
         gridContainer.className = 'modules-grid-by-method';
         for (const methodName in methodData) {
             const method = methodData[methodName];
             const relevantModules = modulesData.filter(m => m.method === methodName);
+            if (relevantModules.length === 0) continue; // No mostrar tarjetas de método vacías
+
             const methodCard = document.createElement('div');
             methodCard.className = 'method-card';
             let modulesHtml = relevantModules.map(createModuleLink).join('');
@@ -57,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="method-card-description">${method.description}</p>
                     <div class="method-card-modules">
                         <h4>Módulos Disponibles:</h4>
-                        ${modulesHtml || '<p>Próximamente...</p>'}
+                        ${modulesHtml}
                     </div>
                 </div>`;
             gridContainer.appendChild(methodCard);
@@ -78,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sortedGroupNames.forEach((groupName, index) => {
             const groupWrapper = document.createElement('div');
-            // Asigna una clase de color cíclica para variedad visual
             const colorClass = `color-theme-${(index % 3) + 1}`;
             groupWrapper.className = `specialty-group ${colorClass}`;
             
@@ -99,10 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =================================================================== //
     // MANEJO DE EVENTOS Y ESTADO INICIAL                                  //
     // =================================================================== //
-    viewBySpecialtyBtn.addEventListener('click', () => { /* ... sin cambios ... */ });
-    viewByMethodBtn.addEventListener('click', () => { /* ... sin cambios ... */ });
-    
-    // Asignación de eventos sin cambios
     viewBySpecialtyBtn.addEventListener('click', () => {
         if (currentView !== 'specialty') {
             currentView = 'specialty';
@@ -119,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
             viewBySpecialtyBtn.classList.remove('active');
         }
     });
-
-    // Carga inicial por método (o la que prefieras)
+    
     renderByMethod();
 });
