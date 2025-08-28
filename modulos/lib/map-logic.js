@@ -1,60 +1,60 @@
-/**
- * ENARMaps - Lógica de Renderizado del Mapa Mental
- * Versión: 2.0 (Robusta)
- * Descripción: Este script inicializa la librería Markmap para leer el contenido
- * de un mapa mental desde el HTML y lo renderiza en un elemento SVG.
- * Utiliza el método oficial de "transformar" y luego "crear" para máxima compatibilidad.
- */
+// =================================================================== //
+// LIBRERÍA DE LÓGICA PARA MÓDULOS DE MAPA MENTAL (map-logic.js)      //
+// =================================================================== //
 
-// Se encapsula toda la lógica en una función autoejecutable para no contaminar el scope global.
-(function() {
+function renderMarkmap(markdownContent) {
+    if (!window.markmap || !markdownContent) {
+        console.error("Markmap libraries not loaded or no content provided.");
+        return;
+    }
+
+    const { Transformer, Markmap } = window.markmap;
+    const transformer = new Transformer();
     
-    // Espera a que todo el contenido del HTML (DOM) esté completamente cargado y listo.
-    document.addEventListener('DOMContentLoaded', function() {
+    const { root, features } = transformer.transform(markdownContent);
 
-        // --- 1. REFERENCIAS A LOS ELEMENTOS DEL DOM ---
-        
-        // Busca el elemento <script> que contiene el texto de nuestro mapa mental.
-        const markdownElement = document.getElementById('markdown-mapa');
-        
-        // Busca el elemento <svg> donde se va a dibujar el mapa mental.
-        const svgElement = document.getElementById('markmap-svg');
+    const options = {
+        autoFit: true,
+        colorFreezeLevel: 2,
+        duration: 500,
+        initialExpandLevel: 2,
+        maxWidth: 300,
+    };
 
-        // --- Verificación de Seguridad ---
-        // Si no se encuentra el contenedor del mapa o el SVG, se detiene la ejecución para evitar errores.
-        if (!markdownElement || !svgElement) {
-            console.error("Error: No se encontró el elemento 'markdown-mapa' o 'markmap-svg'. Asegúrate de que existan en tu HTML.");
-            return;
-        }
+    Markmap.create('#markmap-svg', options, root);
+}
 
-        // --- 2. ACCESO A LA LIBRERÍA MARKMAP ---
+// --- Script Genérico para la Captura de Correos ---
+function setupLeadCapture() {
+    const leadForm = document.querySelector('.lead-form-interno');
+    if (!leadForm) return;
 
-        // Las librerías que cargas desde el CDN (markmap-lib y markmap-view) se adjuntan al objeto 'window'.
-        // Aquí las extraemos para usarlas de forma más limpia.
-        const { Transformer } = window.markmap;
-        const { Markmap } = window.markmap;
+    leadForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+        const submitButton = this.querySelector('button[type="submit"]');
+        const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
 
-        // --- 3. LÓGICA DE RENDERIZADO ---
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
 
-        try {
-            // Prepara una instancia del transformador. Este es el "cerebro" que lee el markdown.
-            const transformer = new Transformer();
-
-            // Lee el contenido de texto del mapa. .textContent es la forma estándar y segura de hacerlo.
-            const markdownContent = markdownElement.textContent;
-
-            // Transforma el texto plano de markdown a una estructura de datos (JSON) que Markmap entiende.
-            // Este es el paso clave que fallaba en tu implementación anterior con caracteres especiales.
-            const { root, features } = transformer.transform(markdownContent);
-
-            // Finalmente, crea el mapa mental visual dentro del SVG (#markmap-svg),
-            // pasándole los datos ya transformados (root).
-            Markmap.create(svgElement, undefined, root);
-
-        } catch (error) {
-            // Si algo falla durante el proceso, se mostrará un error detallado en la consola del navegador.
-            console.error("Error al renderizar el mapa mental:", error);
-        }
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput.value, source: window.location.pathname })
+        })
+        .then(response => {
+            if (response.ok) {
+                this.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Gracias! Estás en la lista.</p>';
+            } else { throw new Error('Error en el envío.'); }
+        })
+        .catch(error => { /* ... (manejo de errores) ... */ });
     });
+}
 
-})();
+// --- Inicializador ---
+// Nota: La llamada a renderMarkmap se hará desde el HTML específico,
+// ya que el contenido del mapa (markdownContent) es único para cada módulo.
+document.addEventListener('DOMContentLoaded', function () {
+    setupLeadCapture();
+});
