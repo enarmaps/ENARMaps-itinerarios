@@ -129,7 +129,7 @@ function setupModuleLeadCapture() {
             })
             .then(response => {
                 if(response.ok) {
-                    window.open('../../webapp/boveda.html', '_blank');
+                    window.open('/webapp/boveda.html', '_blank');
                     form.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Éxito! La Bóveda se ha abierto en una nueva pestaña.</p>';
                 } else { throw new Error('Error en el webhook.'); }
             })
@@ -142,3 +142,4 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
