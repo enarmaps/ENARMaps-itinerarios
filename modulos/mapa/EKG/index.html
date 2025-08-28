@@ -36,123 +36,114 @@
 
 <script type="text/template" id="markdown-mapa">
     # Interpretación Sistemática del ECG
-    - Principios Básicos y Derivaciones
-      - ¿Qué es el ECG?
-        - Es el registro gráfico de la actividad eléctrica del corazón.
-      - Ondas, Segmentos e Intervalos
-        - **Onda P:** Despolarización de las aurículas.
-        - **Complejo QRS:** Despolarización de los ventrículos.
-        - **Onda T:** Repolarización de los ventrículos.
-        - **Intervalo PR:** Tiempo de conducción desde la aurícula al ventrículo.
-        - **Segmento ST:** Periodo de inactividad entre la despolarización y repolarización ventricular.
-      - Las 12 Derivaciones (Las "Cámaras" que ven al Corazón)
-        - 
-        - Derivaciones de las Extremidades
-          - Bipolares (DI, DII, DIII).
-          - Monopolares (aVR, aVL, aVF).
-        - Derivaciones Precordiales
-          - V1-V2: Septo interventricular.
-          - V3-V4: Pared anterior.
-          - V5-V6: Pared lateral baja.
-        - Agrupación por Caras
-          - **Cara Inferior:** DII, DIII, aVF.
-          - **Cara Lateral:** DI, aVL, V5, V6.
-          - **Cara Anterior:** V3, V4.
-          - **Cara Septal:** V1, V2.
-      - **Clave ENARM**
-        - **Conocer qué derivaciones ven cada cara del corazón es fundamental para localizar un infarto.**
-    - El Sistema de Lectura (Mnemotecnia: FREC-R-E-O-I-H)
-      - **F - Frecuencia Cardiaca**
-        - ¿Está normal (60-100 lpm), taquicárdico (>100) o bradicárdico (<60)?
-        - Cálculo (Ritmo Regular)
-          - Dividir 1500 entre el número de cuadros pequeños entre dos ondas R.
-        - Cálculo (Ritmo Irregular)
-          - Contar el número de complejos QRS en 6 segundos (30 cuadros grandes) y multiplicar por 10.
-      - **R - Ritmo**
-        - ¿Es un Ritmo Sinusal? (Criterios)
-          - Onda P antes de cada QRS.
-          - Ondas P positivas en DI, DII, aVF y negativas en aVR.
-          - Intervalos RR regulares.
-      - **E - Eje Eléctrico**
-        - ¿Está el eje normal (-30° a +90°)?
-        - Método Rápido del Cuadrante
-          - **QRS positivo en DI y aVF:** Eje Normal.
-          - **QRS positivo en DI y negativo en aVF:** Eje Desviado a la Izquierda.
-          - **QRS negativo en DI y positivo en aVF:** Eje Desviado a la Derecha.
-      - **O - Ondas (Morfología)**
-        - **Onda P:** ¿Normal o sugiere crecimiento auricular?
-        - **Complejo QRS:** ¿Estrecho (<0.12s) o ancho (>0.12s)? ¿Hay ondas Q patológicas?
-        - **Onda T:** ¿Positiva, negativa, picuda, aplanada?
-      - **I - Intervalos**
-        - **Intervalo PR:** ¿Normal (0.12-0.20s), corto o largo?
-        - **Intervalo QT:** ¿Normal o prolongado? (Corregir por frecuencia con fórmula de Bazett: QTc = QT / √RR).
-      - **H - Hipertrofia e I - Isquemia**
-        - Búsqueda intencionada de patrones de crecimiento de cavidades o de cambios isquémicos.
-      - **Clave ENARM**
-        - **Seguir siempre un sistema de lectura previene errores y omisiones. FREC-R-E-O-I-H es una excelente herramienta.**
-    - Patrones de Isquemia, Lesión e Infarto
-      - 
-      - **Isquemia**
-        - Fisiopatología: Aporte de O₂ insuficiente, pero la célula aún es viable.
-        - Hallazgo ECG: Cambios en la onda T.
-          - **Subendocárdica:** Ondas T picudas y simétricas.
-          - **Subepicárdica:** Ondas T aplanadas o invertidas y simétricas.
-      - **Lesión**
-        - Fisiopatología: Isquemia más severa y prolongada, la célula sufre pero aún puede recuperarse.
-        - Hallazgo ECG: Cambios en el segmento ST.
-          - **Subendocárdica:** Descenso del segmento ST (>1 mm).
-          - **Subepicárdica (Transmural):** Elevación del segmento ST (>1 mm).
-      - **Infarto (Necrosis)**
-        - Fisiopatología: Muerte celular irreversible.
-        - Hallazgo ECG: Aparición de Ondas Q patológicas.
-          - Criterios: Duración >0.04s (un cuadro pequeño) o Amplitud >25% de la onda R siguiente.
-      - **Clave ENARM**
-        - **La Elevación del Segmento ST (Lesión Subepicárdica) es el hallazgo que define un IAMCEST y que requiere terapia de reperfusión urgente.**
-    - Crecimiento de Cavidades (Hipertrofias)
-      - Crecimiento Auricular Izquierdo (P Mitrale)
-        - Onda P ancha (>0.12s) y mellada ("en forma de M") en DII.
-      - Crecimiento Auricular Derecho (P Pulmonale)
-        - Onda P alta y picuda (>2.5 mm) en DII.
-      - Hipertrofia Ventricular Izquierda (HVI)
-        - Criterio de Sokolow-Lyon
-          - Suma de la Onda S en V1 + la Onda R en V5 o V6 >35 mm.
-      - Hipertrofia Ventricular Derecha (HVD)
-        - Eje desviado a la derecha (>+90°).
-        - Onda R alta en V1 (R > S).
-      - **Clave ENARM**
-        - **El criterio de Sokolow-Lyon (S en V1 + R en V5/V6 > 35mm) es el más preguntado para diagnosticar Hipertrofia Ventricular Izquierda.**
-    - Trastornos de la Conducción (Bloqueos)
-      - Bloqueos Auriculoventriculares (AV)
-        - **1er Grado:** Intervalo PR consistentemente prolongado (>0.20s).
-        - **2º Grado, Mobitz I (Wenckebach):** El PR se alarga progresivamente hasta que una P se bloquea (no conduce).
-        - **2º Grado, Mobitz II:** El PR es constante, pero súbitamente una P se bloquea. Es más peligroso.
-        - **3er Grado (Completo):** Disociación AV completa. Las P y los QRS van cada uno por su lado.
-      - Bloqueos de Rama
-        - **Bloqueo de Rama Derecha (BRDHH):**
-          - QRS ancho (>0.12s).
-          - Patrón RSR' ("orejas de conejo") en V1-V2.
-          - Onda S ancha y empastada en DI y V6.
-        - **Bloqueo de Rama Izquierda (BRIHH):**
-          - QRS ancho (>0.12s).
-          - Onda R ancha y mellada en DI, aVL, V5-V6.
-          - Ausencia de Q septal en derivaciones laterales.
-      - **Clave ENARM**
-        - **En el Mobitz I el problema empeora progresivamente hasta fallar; en el Mobitz II el fallo es súbito e impredecible (más grave). En el de 3er grado, no hay ninguna comunicación.**
-    - Perlas para el ENARM y Errores Comunes
-      - Concepto Indispensable
-        - El ECG es una foto de la electricidad, no de la mecánica. Un paciente puede tener un ECG normal y estar muriendo (ej. TEP masiva) o tener actividad eléctrica sin pulso.
-      - Pregunta Clásica
-        - ¿Qué alteración hidroelectrolítica se asocia con ondas T picudas y altas?
-          - **Respuesta:** Hiperkalemia.
-      - Mnemotecnia Útil
-        - Para los Bloqueos de Rama: **"Direccionales del Coche"**. Si pones la direccional a la **DERECHA**, la palanca sube al final (R' en V1). Si la pones a la **IZQUIERDA**, la palanca baja al final (S profunda en V1).
-      - Error Común
-        - Confundir las ondas U prominentes de la hipokalemia con ondas P y calcular mal la frecuencia.
-      - Dato de Oro
-        - La "memoria eléctrica" o fenómeno de Chatillon-Lian: un paciente con un marcapasos o un bloqueo de rama puede tener ondas T invertidas en las derivaciones donde el QRS era anormal, incluso después de que el ritmo se normalice.
-      - Vademécum
-        - **Intervalo QT largo:** Aumenta el riesgo de arritmias ventriculares peligrosas (Torsades de Pointes). Fármacos que lo prolongan: antiarrítmicos (amiodarona, sotalol), macrólidos, antipsicóticos.
-</script>
+- Principios Básicos y Derivaciones
+  - ¿Qué es el ECG?
+    - Es el registro gráfico de la actividad eléctrica del corazón.
+  - Ondas, Segmentos e Intervalos
+    - **Onda P:** Despolarización de las aurículas.
+    - **Complejo QRS:** Despolarización de los ventrículos.
+    - **Onda T:** Repolarización de los ventrículos.
+    - **Intervalo PR:** Tiempo de conducción desde la aurícula al ventrículo.
+    - **Segmento ST:** Periodo entre la despolarización y repolarización ventricular.
+  - Las 12 Derivaciones
+    - Derivaciones de las Extremidades
+      - Bipolares (DI, DII, DIII).
+      - Monopolares (aVR, aVL, aVF).
+    - Derivaciones Precordiales
+      - V1-V2: Septo interventricular.
+      - V3-V4: Pared anterior.
+      - V5-V6: Pared lateral baja.
+    - Agrupación por Caras
+      - **Cara Inferior:** DII, DIII, aVF.
+      - **Cara Lateral:** DI, aVL, V5, V6.
+      - **Cara Anterior:** V3, V4.
+      - **Cara Septal:** V1, V2.
+  - **Clave ENARM**
+    - **Conocer qué derivaciones ven cada cara del corazón es fundamental para localizar un infarto.**
+- El Sistema de Lectura (Mnemotecnia: FREC-R-E-O-I-H)
+  - **F - Frecuencia Cardiaca**
+    - ¿Normal (60-100), Taquicardia (>100) o Bradicardia (<60)?
+    - Cálculo (Ritmo Regular)
+      - Dividir 1500 entre el número de cuadros pequeños entre dos ondas R.
+    - Cálculo (Ritmo Irregular)
+      - Contar QRS en 6 segundos y multiplicar por 10.
+  - **R - Ritmo**
+    - ¿Es un Ritmo Sinusal?
+      - Onda P antes de cada QRS.
+      - P positiva en DI, DII, aVF y negativa en aVR.
+      - Intervalos RR regulares.
+  - **E - Eje Eléctrico**
+    - ¿Está el eje normal (-30° a +90°)?
+    - Método Rápido del Cuadrante
+      - **QRS positivo en DI y aVF:** Eje Normal.
+      - **QRS positivo en DI y negativo en aVF:** Eje Desviado a la Izquierda.
+      - **QRS negativo en DI y positivo en aVF:** Eje Desviado a la Derecha.
+  - **O - Ondas (Morfología)**
+    - **Onda P:** ¿Normal o sugiere crecimiento auricular?
+    - **Complejo QRS:** ¿Estrecho (<0.12s) o ancho (>0.12s)? ¿Hay ondas Q patológicas?
+    - **Onda T:** ¿Positiva, negativa, picuda, aplanada?
+  - **I - Intervalos**
+    - **Intervalo PR:** ¿Normal (0.12-0.20s), corto o largo?
+    - **Intervalo QT:** ¿Normal o prolongado? (Corregir con fórmula de Bazett).
+  - **H - Hipertrofia e I - Isquemia**
+    - Búsqueda intencionada de estos patrones.
+  - **Clave ENARM**
+    - **Seguir siempre un sistema de lectura previene errores y omisiones. FREC-R-E-O-I-H es una excelente herramienta.**
+- Patrones de Isquemia, Lesión e Infarto
+  - **Isquemia**
+    - Fisiopatología: Aporte de O₂ insuficiente, célula viable.
+    - Hallazgo ECG: Cambios en la onda T (invertidas o picudas).
+  - **Lesión**
+    - Fisiopatología: Isquemia más severa, célula puede recuperarse.
+    - Hallazgo ECG: Cambios en el segmento ST.
+      - **Subendocárdica:** Descenso del ST.
+      - **Subepicárdica (Transmural):** Elevación del ST.
+  - **Infarto (Necrosis)**
+    - Fisiopatología: Muerte celular irreversible.
+    - Hallazgo ECG: Aparición de Ondas Q patológicas.
+      - Criterios: Duración >0.04s o Amplitud >25% de la onda R.
+  - **Clave ENARM**
+    - **La Elevación del Segmento ST es el hallazgo que define un IAMCEST y requiere reperfusión urgente.**
+- Crecimiento de Cavidades (Hipertrofias)
+  - Crecimiento Auricular Izquierdo (P Mitrale)
+    - Onda P ancha (>0.12s) y mellada ("M") en DII.
+  - Crecimiento Auricular Derecho (P Pulmonale)
+    - Onda P alta y picuda (>2.5 mm) en DII.
+  - Hipertrofia Ventricular Izquierda (HVI)
+    - Criterio de Sokolow-Lyon
+      - Suma de S en V1 + R en V5 o V6 >35 mm.
+  - Hipertrofia Ventricular Derecha (HVD)
+    - Eje desviado a la derecha.
+    - Onda R alta en V1 (R > S).
+  - **Clave ENARM**
+    - **El criterio de Sokolow-Lyon (S en V1 + R en V5/V6 > 35mm) es el más preguntado para HVI.**
+- Trastornos de la Conducción (Bloqueos)
+  - Bloqueos Auriculoventriculares (AV)
+    - **1er Grado:** PR consistentemente prolongado (>0.20s).
+    - **2º Grado, Mobitz I (Wenckebach):** PR se alarga progresivamente hasta que una P se bloquea.
+    - **2º Grado, Mobitz II:** PR constante, pero súbitamente una P se bloquea (más peligroso).
+    - **3er Grado (Completo):** Disociación AV completa.
+  - Bloqueos de Rama
+    - **Bloqueo de Rama Derecha (BRDHH):**
+      - QRS ancho (>0.12s) y patrón RSR' ("orejas de conejo") en V1-V2.
+    - **Bloqueo de Rama Izquierda (BRIHH):**
+      - QRS ancho (>0.12s) y onda R ancha y mellada en V5-V6.
+  - **Clave ENARM**
+    - **En el Mobitz I el problema es progresivo; en el Mobitz II el fallo es súbito. En el de 3er grado no hay comunicación.**
+- Perlas para el ENARM y Errores Comunes
+  - Concepto Indispensable
+    - El ECG es una foto de la electricidad, no de la mecánica.
+  - Pregunta Clásica
+    - ¿Qué alteración electrolítica se asocia con ondas T picudas?
+      - **Respuesta:** Hiperkalemia.
+  - Mnemotecnia Útil
+    - Bloqueos de Rama: **"Direccionales del Coche"**. Derecha -> palanca sube al final (R' en V1). Izquierda -> palanca baja al final (S profunda en V1).
+  - Error Común
+    - Confundir las ondas U de la hipokalemia con ondas P.
+  - Dato de Oro
+    - La "memoria eléctrica": un paciente con marcapasos o bloqueo de rama puede tener ondas T invertidas temporales después de normalizar el ritmo.
+  - Vademécum
+    - **Intervalo QT largo:** Aumenta el riesgo de Torsades de Pointes. Cuidado con fármacos como macrólidos, amiodarona, antipsicóticos.
 
 <script src="../../lib/map-logic.js"></script>
 <script>
@@ -164,4 +155,5 @@
 </body>
 
 </html>
+
 
