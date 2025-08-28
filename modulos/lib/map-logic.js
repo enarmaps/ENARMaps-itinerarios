@@ -1,104 +1,60 @@
-// =================================================================== //
-// LIBRERÍA DE LÓGICA PARA MÓDULOS DE MAPA MENTAL (map-logic.js)      //
-// =================================================================== //
+/**
+ * ENARMaps - Lógica de Renderizado del Mapa Mental
+ * Versión: 2.0 (Robusta)
+ * Descripción: Este script inicializa la librería Markmap para leer el contenido
+ * de un mapa mental desde el HTML y lo renderiza en un elemento SVG.
+ * Utiliza el método oficial de "transformar" y luego "crear" para máxima compatibilidad.
+ */
 
-function renderMarkmap(markdownContent) {
-    if (!window.markmap || !markdownContent) {
-        console.error("Markmap libraries not loaded or no content provided.");
-        return;
-    }
-
-    const { Transformer, Markmap } = window.markmap;
-    const transformer = new Transformer();
+// Se encapsula toda la lógica en una función autoejecutable para no contaminar el scope global.
+(function() {
     
-    const { root, features } = transformer.transform(markdownContent);
+    // Espera a que todo el contenido del HTML (DOM) esté completamente cargado y listo.
+    document.addEventListener('DOMContentLoaded', function() {
 
-    const options = {
-        autoFit: true,
-        colorFreezeLevel: 2,
-        duration: 500,
-        initialExpandLevel: 1, 
-        maxWidth: 300,
-    };
+        // --- 1. REFERENCIAS A LOS ELEMENTOS DEL DOM ---
+        
+        // Busca el elemento <script> que contiene el texto de nuestro mapa mental.
+        const markdownElement = document.getElementById('markdown-mapa');
+        
+        // Busca el elemento <svg> donde se va a dibujar el mapa mental.
+        const svgElement = document.getElementById('markmap-svg');
 
-    Markmap.create('#markmap-svg', options, root);
-}
+        // --- Verificación de Seguridad ---
+        // Si no se encuentra el contenedor del mapa o el SVG, se detiene la ejecución para evitar errores.
+        if (!markdownElement || !svgElement) {
+            console.error("Error: No se encontró el elemento 'markdown-mapa' o 'markmap-svg'. Asegúrate de que existan en tu HTML.");
+            return;
+        }
 
-// --- Script Genérico para la Captura de Correos ---
-function setupLeadCapture() {
-    const leadForm = document.querySelector('.lead-form-interno');
-    if (!leadForm) return;
+        // --- 2. ACCESO A LA LIBRERÍA MARKMAP ---
 
-    leadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        const submitButton = this.querySelector('button[type="submit"]');
-        const webhookUrl = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
+        // Las librerías que cargas desde el CDN (markmap-lib y markmap-view) se adjuntan al objeto 'window'.
+        // Aquí las extraemos para usarlas de forma más limpia.
+        const { Transformer } = window.markmap;
+        const { Markmap } = window.markmap;
 
-        submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
+        // --- 3. LÓGICA DE RENDERIZADO ---
 
-        fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: emailInput.value, source: window.location.pathname })
-        })
-        .then(response => {
-            if (response.ok) {
-                this.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Gracias! Estás en la lista.</p>';
-            } else { throw new Error('Error en el envío.'); }
-        })
-        .catch(error => { /* ... (manejo de errores) ... */ });
+        try {
+            // Prepara una instancia del transformador. Este es el "cerebro" que lee el markdown.
+            const transformer = new Transformer();
+
+            // Lee el contenido de texto del mapa. .textContent es la forma estándar y segura de hacerlo.
+            const markdownContent = markdownElement.textContent;
+
+            // Transforma el texto plano de markdown a una estructura de datos (JSON) que Markmap entiende.
+            // Este es el paso clave que fallaba en tu implementación anterior con caracteres especiales.
+            const { root, features } = transformer.transform(markdownContent);
+
+            // Finalmente, crea el mapa mental visual dentro del SVG (#markmap-svg),
+            // pasándole los datos ya transformados (root).
+            Markmap.create(svgElement, undefined, root);
+
+        } catch (error) {
+            // Si algo falla durante el proceso, se mostrará un error detallado en la consola del navegador.
+            console.error("Error al renderizar el mapa mental:", error);
+        }
     });
-}
 
-// --- Inicializador ---
-// Nota: La llamada a renderMarkmap se hará desde el HTML específico,
-// ya que el contenido del mapa (markdownContent) es único para cada módulo.
-document.addEventListener('DOMContentLoaded', function () {
-    setupModuleLeadCapture(); // Cambiamos el nombre de la función aquí
-});
-
-// --- Script para la Captura de Leads del Módulo ---
-function setupModuleLeadCapture() {
-    const WEBHOOK_URL = 'https://hook.us2.make.com/jokd7c90xlvtq0eypw77wqk2n9386vbn';
-    const moduleForm = document.querySelector('.lead-form-interno');
-
-    if (moduleForm) { // <-- Esta línea evita errores en otras páginas
-        moduleForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const submitButton = form.querySelector('button[type="submit"]');
-
-            submitButton.disabled = true;
-            submitButton.textContent = 'Procesando...';
-
-            const formData = {
-                nombre: form.querySelector('input[name="nombre"]').value,
-                email: form.querySelector('input[name="email"]').value,
-                whatsapp: form.querySelector('input[name="whatsapp"]').value,
-                source: document.title 
-            };
-
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if(response.ok) {
-                    window.open('/webapp/boveda.html', '_blank');
-                    form.innerHTML = '<p style="font-size: 1.2rem; color: white; font-weight: 600;">¡Éxito! La Bóveda se ha abierto en una nueva pestaña.</p>';
-                } else { throw new Error('Error en el webhook.'); }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un problema. Intenta de nuevo.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Acceder a la Bóveda Gratuita';
-            });
-        });
-    }
-}
-
-
+})();
