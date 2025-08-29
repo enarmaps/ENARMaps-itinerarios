@@ -232,3 +232,22 @@
     padding: 5px 10px;
     border-radius: 15px;
 }
+/* AÑADIR ESTO A storytelling-style.css */
+
+.ecg-screen {
+    position: relative; /* Necesario para posicionar la leyenda */
+}
+
+.ecg-legend {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ccc;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 10px;
+    line-height: 1.4;
+    z-index: 10;
+}
