@@ -141,8 +141,7 @@ function setupECGSimulator() {
         ctx.stroke();
     }
 
-    let animationFrameId;
-
+   
     function startECGAnimation(pattern) {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
         
@@ -301,6 +300,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
