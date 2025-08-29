@@ -1,12 +1,3 @@
-/**
- * ENARMaps - Lógica Unificada para Módulos de Storytelling
- * Versión: 3.0 (Integra Simulador ECG, Reveal, Drag&Drop y Lead Capture)
- *
- * Descripción: Este script contiene toda la lógica para los diferentes
- * componentes interactivos de los módulos de storytelling. Cada función
- * es modular y solo se ejecuta si encuentra los elementos HTML necesarios.
- */
-
 // --- INICIALIZADOR PRINCIPAL ---
 // Se ejecuta cuando la página ha cargado por completo.
 document.addEventListener('DOMContentLoaded', function () {
@@ -267,3 +258,4 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
