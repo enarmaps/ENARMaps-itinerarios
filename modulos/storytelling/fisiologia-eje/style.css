@@ -36,15 +36,24 @@
 }
 
 .p-wave {
-    width: 10%;
-    left: 5%;
-    height: 30px;
-    border: 2px solid #00ff00;
-    border-radius: 50% / 100%;
-    border-color: #00ff00 transparent transparent transparent;
-    transform: rotateX(180deg);
-    background-color: transparent;
+    /* Nueva Onda P más realista */
+    width: 25px; /* Ancho ajustado */
+    height: 15px; /* Altura ajustada */
+    left: 10%; /* Posición ligeramente a la derecha */
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 0;
+    background-color: transparent; /* No tiene fondo */
+    box-shadow: none;
+    position: absolute;
+    /* Usaremos clip-path para la forma de la onda P */
+    clip-path: polygon(0% 60%, 20% 40%, 40% 60%, 60% 40%, 80% 60%, 100% 50%, 100% 100%, 0% 100%);
     animation: draw-p-wave 0.5s ease-in-out forwards;
+}
+@keyframes draw-p-wave {
+    from { clip-path: polygon(0% 60%, 0% 60%, 0% 60%, 0% 60%, 0% 60%, 0% 50%, 0% 100%, 0% 100%); }
+    to { clip-path: polygon(0% 60%, 20% 40%, 40% 60%, 60% 40%, 80% 60%, 100% 50%, 100% 100%, 0% 100%); }
 }
 
 .pr-segment {
@@ -56,15 +65,29 @@
 }
 
 .qrs-complex {
-    left: 25%;
-    width: 20%;
-    height: 100px;
+    /* Nuevo QRS más realista */
+    left: 30%; /* Posición ajustada después del PR */
+    width: 40px; /* Ancho de QRS */
+    height: 60px; /* Altura máxima del QRS */
+    top: 50%;
+    transform: translateY(-50%);
     background-color: transparent;
-    animation: draw-qrs 0.7s ease-in-out 1s forwards;
-    clip-path: polygon(0% 50%, 15% 50%, 25% 80%, 40% 10%, 55% 100%, 65% 50%, 100% 50%);
+    box-shadow: none;
+    position: absolute;
+    /* Usaremos SVG path data o múltiples divs para un QRS realista */
+    /* Para simplificar, una forma básica con clip-path */
+    clip-path: polygon(0% 50%, 15% 50%, 25% 90%, 35% 10%, 45% 90%, 55% 10%, 65% 90%, 75% 10%, 85% 90%, 100% 50%);
+    animation: draw-qrs 0.7s ease-in-out 1s forwards; /* Re-anima la duración */
+    opacity: 0; /* Inicialmente oculto, aparece con la animación */
 }
+
 #ecg-strip-3 .qrs-complex {
-     background-color: #00ff00; /* Se hace visible solo cuando se anima */
+    background-color: #00ff00; /* Se hace visible con la animación */
+}
+
+@keyframes draw-qrs {
+    0% { opacity: 0; clip-path: polygon(0% 50%, 0% 50%, 0% 90%, 0% 10%, 0% 90%, 0% 10%, 0% 90%, 0% 10%, 0% 90%, 0% 50%); }
+    100% { opacity: 1; clip-path: polygon(0% 50%, 15% 50%, 25% 90%, 35% 10%, 45% 90%, 55% 10%, 65% 90%, 75% 10%, 85% 90%, 100% 50%); }
 }
 
 
