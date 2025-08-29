@@ -187,12 +187,12 @@ function setupECGSimulator() {
                 }
             }
             // Dibujar T
-            if(qrsAndTVisible){
-                const timeAfterQRS = (blockPattern === 'BAV3') ? qrsTime - qrs : globalTime % vBeatDuration - currentPR - qrs;
-                if(timeAfterQRS > 0.1 && timeAfterQRS < 0.4){
-                     y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
-                }
-            }
+            if(qrsAndTVisible){ // <-- CAMBIO 3: Usamos la nueva variable
+                const timeAfterQRS = (blockPattern === 'BAV3') ? qrsTime - qrs : globalTime % vBeatDuration - currentPR - qrs;
+                if(timeAfterQRS > 0.1 && timeAfterQRS < 0.4){
+                     y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
+                }
+            }
 
             ctx.beginPath();
             ctx.moveTo(x - 2, this.lastY || centerY);
@@ -263,6 +263,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
