@@ -1,11 +1,23 @@
 // =================================================================== //
-// JS Específico para "El Viaje del Impulso Eléctrico" v2.0              //
+// JS Final y Completo para "El Viaje del Impulso Eléctrico"           //
 // =================================================================== //
 document.addEventListener('DOMContentLoaded', function () {
 
-    // REEMPLAZA esta sección en tu script.js
+    // --- LÓGICA PARA REVELAR ESCENAS ---
+    // Esta función es llamada por los botones "onclick" en el HTML
+    window.revealScene = function(sceneId) {
+        const scene = document.getElementById(sceneId);
+        if (scene) {
+            scene.style.display = 'block';
+            // Pequeño delay para que el navegador renderice el display:block antes de la animación de opacidad
+            setTimeout(() => {
+                scene.style.opacity = '1';
+                scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 10);
+        }
+    }
 
-    // --- LÓGICA PARA EL SIMULADOR DEL EJE CARDÍACO v2.0 ---
+    // --- LÓGICA PARA EL SIMULADOR DEL EJE CARDÍACO ---
     const paths = {
         left: document.getElementById('left-branch'),
         right: document.getElementById('right-branch'),
@@ -35,14 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
         switch (blockType) {
             case 'rbbb':
                 paths.right.classList.add('blocked');
-                axisLine.style.transform = 'rotate(75deg)'; // Eje puede estar normal o ligeramente a la derecha
+                axisLine.style.transform = 'rotate(75deg)';
                 axisStatus.textContent = 'Eje Normal o a la Derecha';
                 axisExplanation.innerHTML = "<strong>Bloqueo de Rama Derecha:</strong> La activación del ventrículo derecho es tardía. El eje puede no desviarse mucho, pero el QRS se ensancha (no visible en este simulador).";
                 break;
             case 'lbbb':
                 paths.left.classList.add('blocked');
-                blockages.anterior.classList.remove('active'); // Ocultar bloqueos de fascículos
-                blockages.posterior.classList.remove('active');
+                paths.anterior.classList.add('blocked');
+                paths.posterior.classList.add('blocked');
                 axisLine.style.transform = 'rotate(-60deg)';
                 axisStatus.textContent = 'Eje Desviado a la Izquierda';
                 axisExplanation.innerHTML = "<strong>Bloqueo de Rama Izquierda:</strong> La activación viaja del ventrículo derecho al izquierdo. El eje se desvía marcadamente a la izquierda y el QRS se ensancha.";
@@ -65,24 +77,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function resetAxis() {
+        // Itera sobre el objeto de paths para remover la clase 'blocked'
         for (const key in paths) {
-            paths[key].classList.remove('blocked');
+            if (paths[key]) { // Verifica que el elemento exista antes de manipularlo
+                paths[key].classList.remove('blocked');
+            }
         }
+        // Itera sobre el objeto de blockages para remover la clase 'active'
         for (const key in blockages) {
-            blockages[key].classList.remove('active');
+            if (blockages[key]) {
+                blockages[key].classList.remove('active');
+            }
         }
-        axisLine.style.transform = 'rotate(45deg)'; // Eje normal
-        axisStatus.textContent = 'Eje Normal (+45°)';
-        axisExplanation.innerHTML = 'Haz clic en una rama o fascículo para simular un bloqueo y observar el efecto en el GPS del Reino.';
+
+        // Resetea los elementos visuales del eje
+        if(axisLine) axisLine.style.transform = 'rotate(45deg)'; // Eje normal
+        if(axisStatus) axisStatus.textContent = 'Eje Normal (+45°)';
+        if(axisExplanation) axisExplanation.innerHTML = 'Haz clic en una rama o fascículo para simular un bloqueo y observar el efecto en el GPS del Reino.';
+        
         currentBlocked = null;
     }
     
-    resetBtn.addEventListener('click', resetAxis);
+    // Añade el event listener solo si el botón de reset existe
+    if(resetBtn) {
+        resetBtn.addEventListener('click', resetAxis);
+    }
     
-    // Estado inicial al cargar
+    // Estado inicial del simulador al cargar la página
     resetAxis();
-
-    // Activa la animación del primer ECG al cargar la página
-    document.getElementById('ecg-strip-1').classList.add('active');
-
-    
+});
