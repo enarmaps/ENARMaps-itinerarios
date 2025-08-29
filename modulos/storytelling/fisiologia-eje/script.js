@@ -1,9 +1,30 @@
 // =================================================================== //
-// JS Específico para "El Viaje del Impulso Eléctrico"                 //
+// JS Específico para "El Viaje del Impulso Eléctrico" v2.0              //
 // =================================================================== //
 document.addEventListener('DOMContentLoaded', function () {
-    // --- LÓGICA PARA EL SIMULADOR DEL EJE CARDÍACO ---
 
+    // --- LÓGICA PARA REVELAR ESCENAS Y ACTIVAR ECG ---
+    window.revealScene = function(sceneId) {
+        const scene = document.getElementById(sceneId);
+        if (scene) {
+            scene.style.display = 'block';
+            setTimeout(() => {
+                scene.style.opacity = '1';
+                scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Activa la animación del ECG correspondiente
+                const ecgStrip = scene.querySelector('.ecg-strip');
+                if (ecgStrip) {
+                    ecgStrip.classList.add('active');
+                }
+            }, 10);
+        }
+    }
+
+    // Activa la animación del primer ECG al cargar la página
+    document.getElementById('ecg-strip-1').classList.add('active');
+
+    // --- LÓGICA PARA EL SIMULADOR DEL EJE CARDÍACO (sin cambios) ---
     const anteriorFascicle = document.getElementById('anterior-fascicle');
     const posteriorFascicle = document.getElementById('posterior-fascicle');
     const anteriorBlockage = document.getElementById('anterior-blockage');
@@ -15,20 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentBlocked = null;
 
-    // Hacemos la función global para que el HTML pueda llamarla
     window.blockPath = function(fascicle) {
-        // Resetea visualmente ambos
         anteriorBlockage.classList.remove('active');
         posteriorBlockage.classList.remove('active');
         
         if (currentBlocked === fascicle) {
-            // Si se hace clic en el mismo, se resetea
             resetAxis();
             return;
         }
-
         currentBlocked = fascicle;
-
         if (fascicle === 'anterior') {
             anteriorBlockage.classList.add('active');
             axisLine.style.transform = 'rotate(-45deg)';
@@ -53,6 +69,5 @@ document.addEventListener('DOMContentLoaded', function () {
     
     resetBtn.addEventListener('click', resetAxis);
 
-    // Estado inicial
     resetAxis();
 });
