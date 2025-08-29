@@ -4,11 +4,12 @@
 /* =================================================================== */
 
 /* --- Contenedor del Simulador de ECG --- */
+/* --- Contenedor del Simulador de ECG v4.0 (Estático Progresivo) --- */
 .ecg-simulator-container {
     background-color: #000;
     border: 2px solid #333;
     border-radius: 8px;
-    padding: 10px 0; /* Ajuste de padding */
+    padding: 10px 0;
     margin: 20px 0;
     overflow: hidden;
 }
@@ -26,15 +27,13 @@
 
 .ecg-path {
     fill: none;
-    stroke: #00ff00;
+    stroke: #0aff0a;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
-    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00; /* El brillo se aplica al SVG/contenedor */
-    stroke-dasharray: 250; /* Longitud estimada del path más largo */
-    stroke-dashoffset: 250;
+    /* Efecto de brillo para el neón */
+    filter: drop-shadow(0 0 3px #0aff0a) drop-shadow(0 0 8px #0aff0a);
 }
-
 /* --- Animaciones de Dibujo del ECG --- */
 #ecg-strip-1.active #path-p-wave { animation: draw-ecg 0.3s linear forwards; }
 #ecg-strip-2.active #path-p-wave-2 { animation: draw-ecg 0.3s linear forwards; }
