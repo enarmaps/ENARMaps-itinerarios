@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../lib/feynman-style.css">
     
     <style>
-        /* Estilos específicos para este módulo */
+        /* Estilos específicos y mejorados para este módulo */
         .ion-simulator {
             padding: 25px;
             background-color: #f0f4ff;
@@ -20,6 +20,9 @@
         .ion-chart-container {
             height: 300px;
             margin-bottom: 20px;
+            background-color: var(--color-paper);
+            border-radius: 8px;
+            padding: 10px;
         }
         .ion-controls {
             display: grid;
@@ -61,13 +64,6 @@
 
 <div class="report-container">
     <div class="page">
-        <div style="margin-bottom: 25px;">
-             <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                Regresar a la Bóveda
-            </a>
-        </div>
-
         <h1>La Danza de los Iones que Da Vida al Corazón</h1>
         <p>El potencial de acción cardíaco parece intimidante, pero en realidad es una historia simple sobre iones entrando y saliendo de la célula. Usando el Método Feynman, lo simplificaremos para que no solo lo memorices, sino que lo entiendas de verdad.</p>
 
@@ -99,11 +95,11 @@
         <div class="feynman-step">
             <h3>Paso 3: Poniéndole Nombre a las Fases (La Historia Completa)</h3>
             <ul>
-                <li><strong>Fase 4 (Reposo):</strong> La casa está tranquila. Solo el Potasio (K+) manda adentro. El potencial es de -90mV.</li>
-                <li><strong>Fase 0 (Despolarización):</strong> ¡Se abren las puertas principales! El Sodio (Na+) entra en estampida, haciendo el interior muy positivo (+20mV). <strong>Esto es el complejo QRS en el ECG.</strong></li>
-                <li><strong>Fase 1 (Repolarización Inicial):</strong> Se cierran las puertas del Sodio y se abren unas pocas de Potasio. La casa pierde un poco de positividad.</li>
-                <li><strong>Fase 2 (Meseta):</strong> ¡El momento clave! El Calcio (Ca++) empieza a entrar lentamente, mientras un poco de Potasio (K+) sigue saliendo. Este equilibrio crea una meseta. <strong>Esta fase es la que permite que el corazón se contraiga con fuerza.</strong></li>
-                <li><strong>Fase 3 (Repolarización Final):</strong> Se cierran las puertas del Calcio y se abren todas las del Potasio. El Potasio sale en masa, haciendo que el interior vuelva a ser negativo y la célula descanse. <strong>Esto es la onda T en el ECG.</strong></li>
+                <li><strong>Fase 4 (Reposo):</strong> La casa está tranquila a -90mV, gracias a que las puertas del <strong>Potasio (K+)</strong> están abiertas, permitiendo su salida.</li>
+                <li><strong>Fase 0 (Despolarización):</strong> ¡Se abren las puertas rápidas! El <strong>Sodio (Na+)</strong> entra en estampida, haciendo el interior muy positivo (+20mV). <strong>Corresponde al complejo QRS en el ECG.</strong></li>
+                <li><strong>Fase 1 (Repolarización Inicial):</strong> Se cierran las puertas del Sodio. Unas puertas especiales de <strong>Potasio (K+)</strong> se abren brevemente y lo dejan salir, creando una pequeña "muesca" o caída en el potencial.</li>
+                <li><strong>Fase 2 (Meseta):</strong> ¡El momento clave! El <strong>Calcio (Ca++)</strong> empieza a entrar lentamente, mientras el <strong>Potasio (K+)</strong> sigue saliendo. La entrada de carga positiva (Ca++) se equilibra con la salida (K+), creando una meseta. <strong>Esta fase es la que permite la contracción muscular.</strong></li>
+                <li><strong>Fase 3 (Repolarización Final):</strong> Se cierran las puertas del Calcio. Las puertas principales del <strong>Potasio (K+)</strong> se abren completamente, y el K+ sale en masa, devolviendo la negatividad a la casa. <strong>Corresponde a la onda T en el ECG.</strong></li>
             </ul>
         </div>
     
@@ -111,6 +107,10 @@
             <h3>Paso 4: Resumen para el ENARM</h3>
             <p><strong>Fase 0 = Entrada de Na+ (QRS). Fase 2 = Entrada de Ca++ (Contracción/Segmento ST). Fase 3 = Salida de K+ (Onda T).</strong> Entender qué ion domina cada fase es la clave para razonar la farmacología y las alteraciones del ECG.</p>
         </div>
+        
+        <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+            Finalizar y Volver a la Bóveda
+        </a>
     </div>
 </div>
 
@@ -122,8 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!ctx) return;
 
     let chart;
-    const baseLabels = [0, 5, 150, 300, 350];
-    const baseDataPoints = [-90, 20, 10, -80, -90];
+    // Puntos de datos y tiempo más precisos fisiológicamente
+    const baseLabels = [0, 5, 20, 200, 300, 350]; 
+    const baseDataPoints = [-90, 20, 10, 10, -80, -90];
     
     const getBaseData = () => ({
         labels: [...baseLabels],
@@ -133,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             borderColor: 'var(--color-primary-dark)',
             borderWidth: 4,
             fill: false,
-            tension: 0.4, // Aumentamos la tensión para curvas más suaves
+            tension: 0.4,
             pointRadius: 0
         }]
     });
@@ -143,10 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
         maintainAspectRatio: false,
         scales: {
             y: { min: -100, max: 40, title: { display: true, text: 'Potencial (mV)' } },
-            x: { type: 'linear', title: { display: true, text: 'Tiempo (ms)' } }
+            x: { type: 'linear', min: -10, max: 500, title: { display: true, text: 'Tiempo (ms)' } }
         },
         plugins: { legend: { display: false } },
-        animation: { duration: 500 } // Añadimos una animación suave
+        animation: { duration: 400 }
     };
 
     function createChart() {
@@ -154,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chart = new Chart(ctx, { type: 'line', data: getBaseData(), options: options });
     }
     
-    createChart(); // Gráfica inicial
+    createChart();
 
     const btnBlockNa = document.getElementById('block-na');
     const btnBlockCa = document.getElementById('block-ca');
@@ -163,29 +164,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const allButtons = [btnBlockNa, btnBlockCa, btnBlockK];
 
     function setActiveButton(activeBtn) {
-        allButtons.forEach(btn => btn.classList.remove('active'));
+        allButtons.forEach(btn => { if(btn) btn.classList.remove('active'); });
         if (activeBtn) activeBtn.classList.add('active');
     }
 
     btnBlockNa.addEventListener('click', () => {
         setActiveButton(btnBlockNa);
-        chart.data.datasets[0].data = [-90, -65, -70, -85, -90]; // Aplanar Fase 0
+        const newData = getBaseData();
+        newData.datasets[0].data[1] = -65; // Fase 0 se aplana
+        newData.datasets[0].data[2] = -70;
+        newData.datasets[0].data[3] = -70;
+        chart.data = newData;
         chart.update();
     });
 
     btnBlockCa.addEventListener('click', () => {
         setActiveButton(btnBlockCa);
-        chart.data.datasets[0].data = [-90, 20, -30, -85, -90]; // Acortar Fase 2 (meseta)
+        const newData = getBaseData();
+        newData.datasets[0].data[3] = -50; // La meseta (Fase 2) se acorta y cae rápido
+        chart.data = newData;
         chart.update();
     });
 
     btnBlockK.addEventListener('click', () => {
         setActiveButton(btnBlockK);
-        // Creamos una nueva data para alargar la fase 3
-        const prolongedData = getBaseData();
-        prolongedData.labels = [0, 5, 150, 450, 500]; // Extendemos el tiempo
-        prolongedData.datasets[0].data = [-90, 20, 10, -80, -90];
-        chart.data = prolongedData;
+        const newData = getBaseData();
+        newData.labels = [0, 5, 20, 200, 450, 500]; // El tiempo de repolarización se alarga
+        chart.data = newData;
         chart.update();
     });
 
