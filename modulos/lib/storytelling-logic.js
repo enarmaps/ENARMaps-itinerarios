@@ -163,82 +163,70 @@ function setupECGSimulator() {
         let beatCount = 0;
 
         function draw() {
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight); // 1. Limpia todo el canvas
-            drawGrid(); // 2. Dibuja la cuadrícula en cada frame
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Limpia todo el canvas
+            drawGrid(); // Dibuja la cuadrícula de fondo
 
-            x = (x + 2) % canvasWidth; // La línea avanza y se reinicia
+            x = (x + 1.5) % canvasWidth; // Ralentizamos un poco la velocidad
+
+            const globalTime = (x / canvasWidth) * (vBeatDuration * (canvasWidth / 150));
+            const beatTime = globalTime % vBeatDuration;
+            const currentBeat = Math.floor(globalTime / vBeatDuration);
             
             let y = centerY;
-            
-            // Lógica de dibujo
             let currentPR = pr;
-            let pVisible = false;
-            let qrsAndTVisible = true;
+            let drawQRSAndT = true;
 
+            // --- Lógica de Bloqueos ---
+            if (blockPattern === 'Mobitz1') {
+                const sequence = currentBeat % 4;
+                if (sequence === 3) drawQRSAndT = false; // Bloquea el 4to latido
+                currentPR = pr + (sequence * 0.07);
+            }
+            if (blockPattern === 'Mobitz2') {
+                if (currentBeat % 3 === 2) drawQRSAndT = false; // Bloquea el 3er latido (relación 3:2)
+            }
             if (blockPattern === 'BAV3') {
-                pTime = globalTime % pBeatDuration;
-                qrsTime = globalTime % vBeatDuration;
-                if (pTime < 0.1) pVisible = true;
-                if (qrsTime >= qrs) qrsAndTVisible = false; 
-            } else {
-                let beatTime = globalTime % vBeatDuration;
-                let currentBeat = Math.floor(globalTime / vBeatDuration);
-                pTime = beatTime;
-
-                if (beatTime < 0.1) pVisible = true;
-                qrsVisible = true;
-
-                if (blockPattern === 'Mobitz1') {
-                    const sequence = currentBeat % 4; // Secuencia 3:2
-                    if (sequence === 3) qrsVisible = false;
-                    currentPR = pr + (sequence * 0.07);
+                const pTimeInBeat = globalTime % pBeatDuration;
+                if (pTimeInBeat < 0.12) { // Dibujar Onda P
+                    y -= Math.sin((pTimeInBeat / 0.12) * Math.PI) * (amplitude * 0.15);
                 }
-                if (blockPattern === 'Mobitz2') {
-                    if (currentBeat % 3 === 2) qrsVisible = false; // Secuencia 3:2
+                const qrsTimeInBeat = globalTime % vBeatDuration;
+                if (qrsTimeInBeat < qrs) { // Dibujar QRS
+                     const progress = qrsTimeInBeat / qrs;
+                     y -= Math.sin(progress * Math.PI) * (amplitude * (progress < 0.5 ? -0.5 : 1));
+                     if (progress > 0.45 && progress < 0.55 && !this.beeped) { playBeep(); this.beeped = true; } else if (progress < 0.45 || progress > 0.55) { this.beeped = false; }
                 }
-                if (qrsVisible && beatTime >= currentPR && beatTime < currentPR + qrs) {
-                    // QRS se dibuja
-                } else {
-                    qrsVisible = false;
+            } else { // Lógica para ritmos no disociados (Normal, Mobitz, etc.)
+                // Dibujar Onda P
+                if (beatTime < 0.12) {
+                    y -= Math.sin((beatTime / 0.12) * Math.PI) * (amplitude * 0.15);
                 }
-            }
-
-            // Dibujar P
-            if (pVisible) {
-                y -= Math.sin((pTime / 0.1) * Math.PI) * (amplitude * 0.15);
-            }
-            // Dibujar QRS y Beep
-            if (qrsVisible) {
-                const timeInQRS = (blockPattern === 'BAV3') ? qrsTime : globalTime % vBeatDuration - currentPR;
-                const progress = timeInQRS / qrs;
-                y -= Math.sin(progress * Math.PI) * (amplitude * (progress < 0.5 ? -0.5 : 1));
-                
-                // Beep solo una vez por QRS
-                if (progress > 0.45 && progress < 0.55) {
-                    if (!this.beeped) {
-                        playBeep();
-                        this.beeped = true;
+                if (drawQRSAndT) {
+                    // Dibujar QRS
+                    if (beatTime >= currentPR && beatTime < currentPR + qrs) {
+                        const progress = (beatTime - currentPR) / qrs;
+                        y -= Math.sin(progress * Math.PI) * (amplitude * (progress < 0.5 ? -0.5 : 1));
+                         if (progress > 0.45 && progress < 0.55 && !this.beeped) { playBeep(); this.beeped = true; } else if (progress < 0.45 || progress > 0.55) { this.beeped = false; }
                     }
-                } else {
-                    this.beeped = false;
+                    // Dibujar Onda T
+                    const timeAfterQRS = beatTime - currentPR - qrs;
+                    if (timeAfterQRS > 0.1 && timeAfterQRS < 0.4) {
+                        y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
+                    }
                 }
             }
-            // Dibujar T
-            if(qrsAndTVisible){ // <-- CAMBIO 3: Usamos la nueva variable
-                const timeAfterQRS = (blockPattern === 'BAV3') ? qrsTime - qrs : globalTime % vBeatDuration - currentPR - qrs;
-                if(timeAfterQRS > 0.1 && timeAfterQRS < 0.4){
-                     y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
-                }
-            }
 
+            // --- Lógica de Trazado ---
             ctx.beginPath();
-            ctx.moveTo(x - 2, this.lastY || centerY);
+            ctx.moveTo(x - 1.5, this.lastY || centerY);
             ctx.lineTo(x, y);
             ctx.strokeStyle = '#33ff99';
             ctx.lineWidth = 2.5;
             ctx.stroke();
             this.lastY = y;
             
+            if (x < 2) this.lastY = centerY; // Reinicia el trazo para evitar líneas extrañas
+
             animationFrameId = requestAnimationFrame(draw);
         }
         draw();
@@ -300,6 +288,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
