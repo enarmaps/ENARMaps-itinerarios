@@ -217,18 +217,18 @@ function setupECGSimulator() {
             }
 
             // --- Lógica de Trazado ---
-            ctx.beginPath();
-            ctx.moveTo(x - 1.5, this.lastY || centerY);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = '#33ff99';
-            ctx.lineWidth = 2.5;
-            ctx.stroke();
-            this.lastY = y;
-            
-            if (x < 2) this.lastY = centerY; // Reinicia el trazo para evitar líneas extrañas
+            ctx.beginPath();
+            ctx.moveTo(x - 1.5, draw.lastY || centerY); // Usa draw.lastY
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = '#33ff99';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+            draw.lastY = y; // Guarda la última posición en la propia función
+            
+            if (x < 2) draw.lastY = centerY;
 
-            animationFrameId = requestAnimationFrame(draw);
-        }
+            animationFrameId = requestAnimationFrame(draw);
+        }
         draw();
     }
 
@@ -288,6 +288,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
