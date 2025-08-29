@@ -136,16 +136,17 @@ function setupECGSimulator() {
             // Lógica de dibujo
             let currentPR = pr;
             let pVisible = false;
-            let qrsVisible = false;
+            let qrsAndTVisible = true;
 
             if (blockPattern === 'BAV3') {
                 pTime = globalTime % pBeatDuration;
                 qrsTime = globalTime % vBeatDuration;
                 if (pTime < 0.1) pVisible = true;
-                if (qrsTime < qrs) qrsVisible = true;
+                if (qrsTime >= qrs) qrsAndTVisible = false; 
             } else {
                 let beatTime = globalTime % vBeatDuration;
                 let currentBeat = Math.floor(globalTime / vBeatDuration);
+                pTime = beatTime;
 
                 if (beatTime < 0.1) pVisible = true;
                 qrsVisible = true;
@@ -262,5 +263,6 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
