@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecanismo de Frank-Starling (Feynman Interactivo)</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../../lib/modulos-style.css">
-
-    <style>
-        :root {
-            --color-secondary: #00695c; /* Teal Dark */
-            --color-accent: #bf360c; /* Deep Orange */
-        }
-        .feynman-step {
-            background-color: #fafafa;
-        }
-        .feynman-step h3 {
-            color: var(--color-secondary);
-            border-bottom-color: var(--color-secondary);
-        }
-        .analogy-box {
-            background-color: #e0f2f1;
-            border-left: 5px solid var(--color-secondary);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-            font-style: italic;
-        }
-        .summary-box {
-            background-color: #e8eaf6;
-            border: 2px solid var(--color-primary-dark);
-        }
-        .summary-box h3 {
-            color: var(--color-primary-dark);
-        }
-    </style>
+    <link rel="stylesheet" href="../../lib/feynman-style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="layout-document">
+
+<div class="module-header">
+    <img src="../../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <h1 class="module-title">Mecanismo de Frank-Starling</h1>
+    <h2 class="module-subtitle">Método Feynman Interactivo</h2>
+</div>
+
+<div class="report-container">
+    <div class="page">
+        <h1>Entendiendo el Corazón como una Resortera</h1>
+        <p>El Mecanismo de Frank-Starling es uno de los conceptos más fundamentales de la fisiología cardíaca. Usando el Método Feynman, lo desglosaremos en ideas simples y ahora interactivas para asegurar un entendimiento profundo.</p>
+
+        <div class="feynman-step">
+            <h3>Paso 1: La Gran Idea (La Analogía Interactiva)</h3>
+            <p>Imagina que la fibra muscular del ventrículo es una <strong>resortera</strong>. La "Precarga" es cuánto estiras esa resortera antes de soltarla. Usa el control deslizante para ver qué sucede con la fuerza del "disparo" (la contracción).</p>
+            
+            <div class="interactive-simulator">
+                <h4>Simulador de Precarga vs. Fuerza</h4>
+                <div class="slider-container">
+                    <label for="preload-slider">Precarga (Estiramiento)</label>
+                    <input type="range" id="preload-slider" min="10" max="120" value="60">
+                    <span id="preload-value">60</span>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="contractionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <p><strong>Observación:</strong> A medida que aumentas el estiramiento (precarga), la fuerza de la contracción aumenta de forma proporcional, hasta llegar a un punto óptimo. Esto es Frank-Starling: <strong>Más llenado = Más estiramiento = Contracción más fuerte.</strong></p>
+            </div>
+        </div>
+
+        <div class="feynman-step">
+            <h3>Paso 2: Desglosando el Mecanismo</h3>
+            <p>Ahora, traduzcamos la simulación a la fisiología real.</p>
+            <ul>
+                <li><strong>Precarga:</strong> Es el grado de tensión (estiramiento) de la pared ventricular justo al final del llenado (diástole). Se relaciona directamente con el Volumen Diastólico Final.</li>
+                <li><strong>El Sarcómero:</strong> Es nuestra "resortera" a nivel celular. Al estirarse por el llenado, optimiza la superposición entre los filamentos de actina y miosina. Esto permite que se formen más "puentes cruzados", generando una contracción más potente.</li>
+            </ul>
+        </div>
+    
+        <div class="feynman-step">
+            <h3>Paso 3: Puntos de Confusión (Pregunta Clave)</h3>
+            <div class="interactive-simulator" id="q1">
+                <h4>Pregunta: ¿Frank-Starling es lo mismo que Contractilidad (Inotropismo)?</h4>
+                <div class="mcq-option" data-correct="true">No, Frank-Starling depende del estiramiento; la contractilidad es la fuerza intrínseca del músculo.</div>
+                <div class="mcq-option">Sí, ambos se refieren a la fuerza de contracción del corazón.</div>
+                <div class="explanation">
+                    <p><strong>Explicación: ¡Correcto!</strong> Esta es una distinción crucial. La <strong>Contractilidad</strong> (inotropismo) es la fuerza propia del músculo, independiente del estiramiento (ej. el efecto de la adrenalina). El mecanismo de <strong>Frank-Starling</strong> es una propiedad pasiva que depende únicamente de la longitud inicial de la fibra.</p>
+                </div>
+            </div>
+        </div>
+        <div class="summary-box">
+            <h3>Paso 4: Resumen para el ENARM</h3>
+            <p><strong>El mecanismo de Frank-Starling es la capacidad intrínseca del corazón para adaptar su volumen de eyección a su volumen de llenado.</strong> A mayor retorno venoso, mayor estiramiento de las fibras, y por lo tanto, mayor fuerza de contracción para bombear esa sangre extra.</p>
+        </div>
+
+        <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+            Finalizar y Volver a la Bóveda
+        </a>
+    </div>
+</div>
 
 <script src="../../lib/feynman-logic.js"></script>
-
-<script>
-    // Esta función solo existe en este archivo porque es única para este módulo.
-    function setupFrankStarlingSimulator() {
-        const slider = document.getElementById('preload-slider');
-        const valueDisplay = document.getElementById('preload-value');
-        const canvas = document.getElementById('contractionChart');
-        if (!slider || !valueDisplay || !canvas) { return; }
-
-        const ctx = canvas.getContext('2d');
-        let chart;
-
-        function createOrUpdateChart(preload) {
-            const force = -0.01 * Math.pow(preload - 90, 2) + 100;
-            const data = { /* ... datos del gráfico ... */ };
-            if (chart) {
-                chart.data.datasets[0].data[0] = Math.max(0, force);
-                chart.update();
-            } else {
-                chart = new Chart(ctx, { /* ... configuración del gráfico ... */ });
-            }
-        }
-        slider.addEventListener('input', function() {
-            valueDisplay.textContent = this.value;
-            createOrUpdateChart(parseInt(this.value));
-        });
-        createOrUpdateChart(parseInt(slider.value));
-    }
-
-    // Nos aseguramos de ejecutar esta función específica cuando la página cargue.
-    document.addEventListener('DOMContentLoaded', setupFrankStarlingSimulator);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
