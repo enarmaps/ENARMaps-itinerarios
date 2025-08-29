@@ -140,7 +140,7 @@ ul, ol {
     font-size: 16px;
     font-weight: 700;
     color: white;
-    background-color: var(--color-accent-orange);
+    background-color: var(--color-primary-dark);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -375,6 +375,7 @@ ul, ol {
     margin: 0;
     border-bottom: none; /* Sobreescribe el H2 general */
 }
+
 
 
 
