@@ -24,9 +24,9 @@
             <p>En el gran Reino del Corazón, en la más alta de las cámaras —la aurícula derecha— reside el sabio y rítmico <strong>Rey Nodus Sinoatrialis (Nodo SA)</strong>. Su poder no reside en la fuerza, sino en el tiempo. Con una regularidad infalible, emite un decreto eléctrico que pone en marcha todo el reino. Es el marcapasos natural, el origen de toda vida.</p>
             
             <div class="ecg-simulator-container">
-                <div class="ecg-strip" id="ecg-strip-1">
-                    <div class="p-wave"></div>
-                </div>
+                <svg class="ecg-strip" id="ecg-strip-1" viewBox="0 0 500 100">
+                    <path id="path-p-wave" class="ecg-path" d="M 50 50 C 60 30, 70 30, 80 50" />
+                </svg>
             </div>
             <p class="explanation-box"><strong>Pedagogía:</strong> El automatismo del Nodo SA genera el impulso inicial, creando la <strong>Onda P</strong> en el ECG, que representa la despolarización de las aurículas.</p>
             <button class="reveal-button" onclick="revealScene('scene2')">Ver el siguiente paso...</button>
@@ -37,10 +37,10 @@
             <p>El decreto eléctrico viaja rápido por las aurículas, pero antes de llegar a las poderosas provincias de los ventrículos, debe pasar por una aduana fortificada: el <strong>Nodo Atrioventricular (Nodo AV)</strong>. Aquí, un guardia estricto detiene el impulso deliberadamente por una fracción de segundo.</p>
             
             <div class="ecg-simulator-container">
-                <div class="ecg-strip" id="ecg-strip-2">
-                    <div class="p-wave"></div>
-                    <div class="pr-segment"></div>
-                </div>
+                <svg class="ecg-strip" id="ecg-strip-2" viewBox="0 0 500 100">
+                    <path id="path-p-wave-2" class="ecg-path" d="M 50 50 C 60 30, 70 30, 80 50" />
+                    <path id="path-pr-segment" class="ecg-path" d="M 80 50 L 110 50" />
+                </svg>
             </div>
             <p class="explanation-box"><strong>Pedagogía:</strong> Este <strong>retraso fisiológico</strong> es crucial. Permite que los ventrículos se llenen de sangre por completo antes de contraerse. En el ECG, este retraso es el <strong>Intervalo PR</strong>.</p>
             <button class="reveal-button" onclick="revealScene('scene3')">Entrar a las superautopistas...</button>
@@ -51,11 +51,11 @@
             <p>Una vez que el guardia del Nodo AV da el paso, el impulso es liberado en un sistema de superautopistas: el <strong>Haz de His</strong> y sus <strong>Ramas Derecha e Izquierda</strong>. La señal viaja a una velocidad vertiginosa a través de la red de Purkinje, asegurando que ambas provincias ventriculares se contraigan casi al mismo tiempo, con una fuerza tremenda.</p>
             
             <div class="ecg-simulator-container">
-                <div class="ecg-strip" id="ecg-strip-3">
-                    <div class="p-wave"></div>
-                    <div class="pr-segment"></div>
-                    <div class="qrs-complex"></div>
-                </div>
+                <svg class="ecg-strip" id="ecg-strip-3" viewBox="0 0 500 100">
+                    <path id="path-p-wave-3" class="ecg-path" d="M 50 50 C 60 30, 70 30, 80 50" />
+                    <path id="path-pr-segment-3" class="ecg-path" d="M 80 50 L 110 50" />
+                    <path id="path-qrs-complex" class="ecg-path" d="M 110 50 l 5 5 l 10 -60 l 10 100 l 10 -45 l 5 0" />
+                </svg>
             </div>
             <p class="explanation-box"><strong>Pedagogía:</strong> La rápida y sincronizada despolarización de los ventrículos genera una espiga de alto voltaje en el ECG: el <strong>Complejo QRS</strong>. Su estrechez (<0.12s) es signo de un viaje veloz por las superautopistas.</p>
             <button class="reveal-button" onclick="revealScene('scene4')">Descubrir el destino final...</button>
