@@ -1,0 +1,42 @@
+/* Estilos específicos para el módulo Potencial de Acción */
+.ion-simulator {
+    padding: 25px;
+    background-color: #f0f4ff;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+.ion-chart-container {
+    height: 300px;
+    margin-bottom: 20px;
+    background-color: var(--color-paper);
+    border-radius: 8px;
+    padding: 10px;
+}
+.ion-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.ion-controls button {
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid var(--color-primary-light);
+    background-color: var(--color-paper);
+    color: var(--color-primary-light);
+    transition: all 0.2s ease;
+}
+.ion-controls button:hover {
+    background-color: #e3f2fd;
+}
+.ion-controls button.active {
+    background-color: var(--color-primary-dark);
+    color: white;
+    border-color: var(--color-primary-dark);
+}
+#reset-button {
+    background-color: var(--color-text-secondary);
+    color: white;
+    border-color: var(--color-text-secondary);
+}
