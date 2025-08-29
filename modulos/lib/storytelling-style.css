@@ -81,3 +81,138 @@
     padding: 10px; background-color: var(--color-primary-dark); color: white;
     border-radius: 4px; cursor: grab; margin: 5px; display: inline-block;
 }
+/* ============================================= */
+/* == ESTILOS SIMULADOR CARDÍACO INTERACTIVO === */
+/* ============================================= */
+
+.cardiac-simulator-container {
+    padding: 25px;
+    background-color: #f8f9fa; /* Un fondo ligeramente gris para destacarlo */
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cardiac-simulator-container h3 {
+    text-align: center;
+    margin-top: 0;
+    color: var(--color-primary);
+}
+
+.cardiac-simulator-container p {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.simulator-flex-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.heart-diagram-wrapper {
+    position: relative; /* Clave para posicionar los hotspots */
+    width: 100%;
+    max-width: 350px;
+    flex-shrink: 0; /* Evita que se encoja demasiado */
+}
+
+.heart-svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilos del diagrama SVG */
+.heart-svg .heart-outline {
+    fill: #ffebee; /* Un rojo muy pálido para el fondo del corazón */
+    stroke: #e57373; /* Borde rojo */
+    stroke-width: 2;
+}
+
+.heart-svg .conduction-path {
+    fill: none;
+    stroke: #ffc107; /* Amarillo para las vías */
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.heart-svg .node {
+    fill: #ff9800; /* Naranja para los nodos */
+    stroke: #e65100;
+    stroke-width: 1.5;
+}
+
+.heart-svg .label {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    fill: #424242;
+}
+.heart-svg .label-small { font-size: 10px; font-weight: bold; fill: #424242; }
+.heart-svg .label-tiny { font-size: 8px; font-weight: bold; fill: #424242; }
+
+
+/* --- ESTILOS Y POSICIONAMIENTO DE LOS HOTSPOTS --- */
+.hotspot {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50%; /* Círculos para nodos, rectángulos para vías */
+    /* background-color: rgba(0, 123, 255, 0.3); /* Descomenta esta línea para ver y ajustar las posiciones */
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.hotspot:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+/* --- AJUSTA ESTAS POSICIONES PARA QUE COINCIDAN CON TU SVG --- */
+[data-block="bav1"], [data-block="mobitz1"], [data-block="mobitz2"], [data-block="bav3"] {
+    top: 42%; left: 45%; width: 15%; height: 13%;
+}
+[data-block="brd"] { top: 55%; left: 58%; width: 12%; height: 25%; border-radius: 10px; }
+[data-block="bri"] { top: 55%; left: 30%; width: 12%; height: 25%; border-radius: 10px; }
+[data-block="hbai"] { top: 53%; left: 18%; width: 12%; height: 15%; border-radius: 10px; }
+[data-block="hbpi"] { top: 68%; left: 18%; width: 12%; height: 20%; border-radius: 10px; }
+[data-block="normal"] { top: 3%; left: 3%; width: 15%; height: 10%; border-radius: 10px; }
+
+
+/* --- PANTALLA DEL ECG --- */
+.ecg-display-wrapper {
+    width: 100%;
+    max-width: 500px;
+}
+
+.ecg-screen {
+    background-color: #050505; /* Fondo negro de monitor */
+    border: 5px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    height: 200px; /* Altura fija para el canvas */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ecg-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.ecg-description-box {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #eef2f9;
+    border-radius: 8px;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    min-height: 50px; /* Para evitar que salte al cambiar el texto */
+    text-align: center;
+}
