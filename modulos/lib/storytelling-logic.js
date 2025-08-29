@@ -187,7 +187,7 @@ function setupECGSimulator() {
                 }
             }
             // Dibujar T
-            if(qrsVisible){
+            if(qrsAndTVisible){
                 const timeAfterQRS = (blockPattern === 'BAV3') ? qrsTime - qrs : globalTime % vBeatDuration - currentPR - qrs;
                 if(timeAfterQRS > 0.1 && timeAfterQRS < 0.4){
                      y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
@@ -263,6 +263,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
