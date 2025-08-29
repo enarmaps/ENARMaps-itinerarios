@@ -89,20 +89,29 @@
 
         <div id="scene6" class="story-step hidden-scene">
             <h3>Capítulo 6: El GPS del Corazón</h3>
-            <p>La dirección promedio del viaje eléctrico se conoce como el <strong>Eje Cardíaco</strong>. Es como el GPS del Reino, y normalmente apunta hacia la provincia más grande y fuerte: el Ventrículo Izquierdo. Sin embargo, si una de las "superautopistas" de la Rama Izquierda se bloquea, el GPS se desvía.</p>
+            <p>La dirección promedio del viaje eléctrico se conoce como el <strong>Eje Cardíaco</strong>. Es como el GPS del Reino, y normalmente apunta hacia la provincia más grande y fuerte: el Ventrículo Izquierdo. Sin embargo, si una de las "superautopistas" se bloquea, el GPS se desvía.</p>
             
             <div class="axis-simulator">
                 <div class="heart-diagram">
-                    <h4>Haz de His - Rama Izquierda</h4>
+                    <h4>Sistema de Conducción Ventricular</h4>
                     <div class="path his-bundle">Haz de His</div>
-                    <div class="path left-branch-main">Rama Izquierda</div>
-                    <div class="path fascicle anterior" id="anterior-fascicle" onclick="blockPath('anterior')">
-                        <span>Fascículo Anterior</span>
-                        <div class="blockage" id="anterior-blockage"></div>
-                    </div>
-                    <div class="path fascicle posterior" id="posterior-fascicle" onclick="blockPath('posterior')">
-                        <span>Fascículo Posterior</span>
-                        <div class="blockage" id="posterior-blockage"></div>
+                    <div class="conduction-branches">
+                        <div class="branch-container left">
+                            <div class="path branch main" id="left-branch" onclick="blockPath('lbbb')">Rama Izquierda</div>
+                            <div class="fascicle-group">
+                                <div class="path fascicle anterior" id="anterior-fascicle" onclick="blockPath('lafb')">
+                                    <span>F. Anterior</span>
+                                    <div class="blockage" id="anterior-blockage"></div>
+                                </div>
+                                <div class="path fascicle posterior" id="posterior-fascicle" onclick="blockPath('lpfb')">
+                                    <span>F. Posterior</span>
+                                    <div class="blockage" id="posterior-blockage"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="branch-container right">
+                             <div class="path branch main" id="right-branch" onclick="blockPath('rbbb')">Rama Derecha</div>
+                        </div>
                     </div>
                 </div>
                 <div class="axis-diagram">
@@ -117,7 +126,7 @@
                     <div class="axis-status" id="axis-status">Eje Normal (-30° a +90°)</div>
                 </div>
             </div>
-            <p id="axis-explanation" class="explanation-box">Haz clic en un fascículo para simular un bloqueo y observar cómo se desvía el eje del Reino.</p>
+            <p id="axis-explanation" class="explanation-box">Haz clic en una rama o fascículo para simular un bloqueo y observar el efecto en el GPS del Reino.</p>
             <button class="reveal-button" id="reset-axis-btn">Reiniciar GPS</button>
         </div>
     </div>
