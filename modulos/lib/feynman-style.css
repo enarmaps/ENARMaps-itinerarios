@@ -44,3 +44,22 @@
 }
 .interactive-simulator .slider-container { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
 .interactive-simulator .chart-wrapper { height: 200px; position: relative; }
+/* --- ESTILOS COMPARTIDOS PARA BOTONES DE ACCIÓN --- */
+.reveal-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    background-color: var(--color-primary-dark); /* Color azul oscuro principal */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reveal-button:hover {
+    transform: translateY(-2px);
+    background-color: var(--color-primary-light); /* Azul más claro en hover */
+}
