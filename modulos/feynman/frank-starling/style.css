@@ -1,0 +1,36 @@
+/* Estilos específicos para el simulador de Frank-Starling */
+.interactive-simulator {
+    padding: 20px;
+    background-color: #f0f4ff;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.interactive-simulator h4 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--color-primary-dark);
+}
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.slider-container label {
+    font-weight: 600;
+}
+.slider-container input[type="range"] {
+    flex-grow: 1;
+}
+.slider-container span {
+    font-weight: 700;
+    font-family: var(--font-headings);
+    color: var(--color-primary-light);
+    min-width: 30px;
+    text-align: center;
+}
+.chart-wrapper {
+    height: 200px;
+    position: relative;
+}
