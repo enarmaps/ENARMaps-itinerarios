@@ -102,6 +102,46 @@ function setupECGSimulator() {
     };
 
     let animationFrameId;
+    function drawGrid() {
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const squareSize = 10; // Tamaño en píxeles de un cuadro pequeño (1mm)
+
+        ctx.beginPath();
+        ctx.strokeStyle = '#2c3e50'; // Color oscuro para la cuadrícula
+        ctx.lineWidth = 0.5; // Líneas delgadas
+
+        // Líneas verticales
+        for (let x = 0; x <= canvasWidth; x += squareSize) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvasHeight);
+        }
+        // Líneas horizontales
+        for (let y = 0; y <= canvasHeight; y += squareSize) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvasWidth, y);
+        }
+        ctx.stroke();
+
+        // Cuadrícula más gruesa (cada 5 cuadros)
+        ctx.beginPath();
+        ctx.strokeStyle = '#34495e'; // Un poco más visible
+        ctx.lineWidth = 1;
+
+        // Líneas verticales gruesas
+        for (let x = 0; x <= canvasWidth; x += (squareSize * 5)) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvasHeight);
+        }
+        // Líneas horizontales gruesas
+        for (let y = 0; y <= canvasHeight; y += (squareSize * 5)) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvasWidth, y);
+        }
+        ctx.stroke();
+    }
+
+    let animationFrameId;
 
     function startECGAnimation(pattern) {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
@@ -124,12 +164,10 @@ function setupECGSimulator() {
         let beatCount = 0;
 
         function draw() {
-            x = (x + 2) % canvasWidth; // La línea avanza y se reinicia
-            if (x === 0) ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            
-            ctx.clearRect(x, 0, 40, canvasHeight); // Borra por delante
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight); // 1. Limpia todo el canvas
+            drawGrid(); // 2. Dibuja la cuadrícula en cada frame
 
-            const globalTime = (x / canvasWidth) * (vBeatDuration * (canvasWidth / 150));
+            x = (x + 2) % canvasWidth; // La línea avanza y se reinicia
             
             let y = centerY;
             
@@ -263,6 +301,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
