@@ -62,7 +62,33 @@
         </div>
 
         <div id="scene4" class="story-step hidden-scene">
-            <h3>Capítulo 4: El GPS del Corazón</h3>
+            <h3>Capítulo 4: El Momento de la Calma</h3>
+            <p>Tras la violenta contracción, hay una paz momentánea en el Reino. Es un período de calma eléctrica donde todas las células ventriculares están despolarizadas al mismo tiempo. Este es el momento en que se revisan los daños de la batalla y se prepara la recuperación.</p>
+            
+            <div class="ecg-simulator-container">
+                <svg class="ecg-strip" id="ecg-strip-4" viewBox="0 0 500 100">
+                    <path class="ecg-path" d="M 20 50 L 50 50 C 60 30, 70 30, 80 50 L 110 50 l 5 5 l 10 -60 l 10 100 l 10 -45 L 160 50 L 220 50" />
+                </svg>
+            </div>
+            <p class="explanation-box"><strong>Pedagogía:</strong> El punto exacto donde termina el QRS y comienza esta calma se llama <strong>Punto J</strong>. La línea que le sigue es el <strong>Segmento ST</strong>, que debe ser isoeléctrico (plano). Su elevación o depresión es un signo clave de isquemia o lesión.</p>
+            <button class="reveal-button" onclick="revealScene('scene5')">Ver la recarga final...</button>
+        </div>
+        
+        <div id="scene5" class="story-step hidden-scene">
+            <h3>Capítulo 5: La Recarga del Reino</h3>
+            <p>Finalmente, las provincias ventriculares deben "recargarse" eléctricamente para estar listas para el próximo decreto del Rey. Este proceso de repolarización es ordenado y se manifiesta como una última onda positiva, una señal de que el Reino está listo para el siguiente latido.</p>
+            
+            <div class="ecg-simulator-container">
+                <svg class="ecg-strip" id="ecg-strip-5" viewBox="0 0 500 100">
+                    <path class="ecg-path" d="M 20 50 L 50 50 C 60 30, 70 30, 80 50 L 110 50 l 5 5 l 10 -60 l 10 100 l 10 -45 L 160 50 L 220 50 C 230 70, 240 70, 250 50 L 280 50" />
+                </svg>
+            </div>
+            <p class="explanation-box"><strong>Pedagogía:</strong> Esta "recarga" o repolarización ventricular se inscribe en el ECG como la <strong>Onda T</strong>. Con esto, el ciclo cardíaco eléctrico ha terminado.</p>
+            <button class="reveal-button" onclick="revealScene('scene6')">Ver el GPS del Corazón...</button>
+        </div>
+
+        <div id="scene4" class="story-step hidden-scene">
+            <h3>Capítulo 6: El GPS del Corazón</h3>
             <p>La dirección promedio del viaje eléctrico se conoce como el <strong>Eje Cardíaco</strong>. Es como el GPS del Reino, y normalmente apunta hacia la provincia más grande y fuerte: el Ventrículo Izquierdo. Sin embargo, si una de las "superautopistas" de la Rama Izquierda se bloquea, el GPS se desvía.</p>
             
             <div class="axis-simulator">
