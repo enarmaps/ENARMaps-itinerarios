@@ -341,6 +341,41 @@ ul, ol {
     }
 }
 
+/* =================================================================== */
+/* CSS PARA EL ENCABEZADO ESTÁNDAR DE MÓDULOS (Añadido)                */
+/* =================================================================== */
+
+.module-header {
+    text-align: center; /* Centra todo el contenido del header */
+    padding: 20px;
+    width: 210mm; /* Ancho similar a una hoja A4 */
+    max-width: 100%; /* Asegura responsividad */
+    margin: 0 auto 30px auto; /* Centra el bloque y le da espacio inferior */
+    background-color: var(--color-paper);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.module-logo {
+    width: 150px; /* Tamaño controlado para el logo */
+    height: auto;
+    margin-bottom: 15px; /* Espacio entre logo y título */
+}
+
+.module-header .module-title {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    border-bottom: none; /* Sobreescribe el H1 general */
+    color: var(--color-primary-dark);
+}
+
+.module-header .module-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin: 0;
+    border-bottom: none; /* Sobreescribe el H2 general */
+}
+
 
 
 
