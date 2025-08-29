@@ -71,6 +71,7 @@ function setupECGSimulator() {
     const ctx = canvas.getContext('2d');
     const descriptionBox = document.getElementById('ecg-description');
     const hotspots = document.querySelectorAll('.hotspot');
+    const resetButton = document.getElementById('reset-ecg-button'); 
     let audioCtx;
 
     function playBeep() {
@@ -214,7 +215,10 @@ function setupECGSimulator() {
             }
         });
     });
-
+    resetButton.addEventListener('click', function() {
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        startECGAnimation(ecgPatterns.normal);
+    });   
     startECGAnimation(ecgPatterns.normal); // Iniciar con el ritmo normal
 }
 
@@ -258,4 +262,5 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
