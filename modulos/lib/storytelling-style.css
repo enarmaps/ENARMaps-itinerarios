@@ -216,3 +216,19 @@
     min-height: 50px; /* Para evitar que salte al cambiar el texto */
     text-align: center;
 }
+.simulator-instructions {
+    list-style: none;
+    padding: 0;
+    margin: 15px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    max-width: 500px;
+}
+.simulator-instructions li {
+    background-color: #eef2f9;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
