@@ -9,12 +9,52 @@
     <link rel="stylesheet" href="../../lib/modulos-style.css">
     <link rel="stylesheet" href="../../lib/feynman-style.css">
     
-   
+    <style>
+        /* Estilos específicos para este módulo */
+        .ion-simulator {
+            padding: 25px;
+            background-color: #f0f4ff;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .ion-chart-container {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .ion-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .ion-controls button {
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid var(--color-primary-light);
+            background-color: var(--color-paper);
+            color: var(--color-primary-light);
+            transition: all 0.2s ease;
+        }
+        .ion-controls button:hover {
+            background-color: #e3f2fd;
+        }
+        .ion-controls button.active {
+            background-color: var(--color-primary-dark);
+            color: white;
+            border-color: var(--color-primary-dark);
+        }
+        #reset-button {
+            background-color: var(--color-text-secondary);
+            color: white;
+            border-color: var(--color-text-secondary);
+        }
+    </style>
 </head>
 <body class="layout-document">
 
 <div class="module-header">
-    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <img src="../../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
     <h1 class="module-title">Potencial de Acción Cardíaco</h1>
     <h2 class="module-subtitle">Método Feynman Interactivo</h2>
 </div>
@@ -22,7 +62,7 @@
 <div class="report-container">
     <div class="page">
         <div style="margin-bottom: 25px;">
-             <a href="../../webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+             <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 Regresar a la Bóveda
             </a>
@@ -41,7 +81,7 @@
 
         <div class="feynman-step">
             <h3>Paso 2: El Simulador Interactivo de Fases</h3>
-            <p>Usa los botones para "bloquear" los canales iónicos y ver en tiempo real cómo afectan a la forma del potencial de acción. Esto es la base de la farmacología antiarrítmica.</p>
+            <p>Usa los botones para "bloquear" los canales iónicos y ver en tiempo real cómo afectan a la forma del potencial de acción. Esta es la base de la farmacología antiarrítmica.</p>
             
             <div class="ion-simulator">
                 <div class="ion-chart-container">
@@ -82,93 +122,80 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!ctx) return;
 
     let chart;
-    const baseData = {
-        labels: [-10, 0, 100, 300, 400], // Time points
+    const baseLabels = [0, 5, 150, 300, 350];
+    const baseDataPoints = [-90, 20, 10, -80, -90];
+    
+    const getBaseData = () => ({
+        labels: [...baseLabels],
         datasets: [{
             label: 'Potencial de Membrana (mV)',
-            data: [-90, 20, 10, 0, -90], // Voltage points
+            data: [...baseDataPoints],
             borderColor: 'var(--color-primary-dark)',
             borderWidth: 4,
             fill: false,
-            tension: 0.1,
+            tension: 0.4, // Aumentamos la tensión para curvas más suaves
             pointRadius: 0
         }]
-    };
+    });
 
     const options = {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-            y: {
-                min: -100,
-                max: 40,
-                title: { display: true, text: 'Potencial (mV)' }
-            },
-            x: {
-                title: { display: true, text: 'Tiempo (ms)' }
-            }
+            y: { min: -100, max: 40, title: { display: true, text: 'Potencial (mV)' } },
+            x: { type: 'linear', title: { display: true, text: 'Tiempo (ms)' } }
         },
-        plugins: {
-            legend: { display: false }
-        }
+        plugins: { legend: { display: false } },
+        animation: { duration: 500 } // Añadimos una animación suave
     };
 
-    function createChart(data) {
-        if (chart) {
-            chart.destroy();
-        }
-        chart = new Chart(ctx, { type: 'line', data: data, options: options });
+    function createChart() {
+        if (chart) { chart.destroy(); }
+        chart = new Chart(ctx, { type: 'line', data: getBaseData(), options: options });
     }
     
-    createChart(JSON.parse(JSON.stringify(baseData))); // Initial chart
+    createChart(); // Gráfica inicial
 
     const btnBlockNa = document.getElementById('block-na');
     const btnBlockCa = document.getElementById('block-ca');
     const btnBlockK = document.getElementById('block-k');
     const btnReset = document.getElementById('reset-button');
+    const allButtons = [btnBlockNa, btnBlockCa, btnBlockK];
 
-    function updateChart(modifier) {
-        let newData = JSON.parse(JSON.stringify(baseData));
-        modifier(newData);
-        createChart(newData);
-    }
-    
     function setActiveButton(activeBtn) {
-        [btnBlockNa, btnBlockCa, btnBlockK].forEach(btn => btn.classList.remove('active'));
-        if(activeBtn) activeBtn.classList.add('active');
+        allButtons.forEach(btn => btn.classList.remove('active'));
+        if (activeBtn) activeBtn.classList.add('active');
     }
 
     btnBlockNa.addEventListener('click', () => {
         setActiveButton(btnBlockNa);
-        updateChart(data => {
-            data.datasets[0].data[1] = -60; // Aplanar Fase 0
-        });
+        chart.data.datasets[0].data = [-90, -65, -70, -85, -90]; // Aplanar Fase 0
+        chart.update();
     });
 
     btnBlockCa.addEventListener('click', () => {
         setActiveButton(btnBlockCa);
-        updateChart(data => {
-            data.datasets[0].data[2] = -30; // Acortar Fase 2 (meseta)
-            data.datasets[0].data[3] = 150; 
-        });
+        chart.data.datasets[0].data = [-90, 20, -30, -85, -90]; // Acortar Fase 2 (meseta)
+        chart.update();
     });
 
     btnBlockK.addEventListener('click', () => {
         setActiveButton(btnBlockK);
-        updateChart(data => {
-            data.datasets[0].labels[4] = 600; // Prolongar Fase 3
-            data.datasets[0].data[4] = -90;
-        });
+        // Creamos una nueva data para alargar la fase 3
+        const prolongedData = getBaseData();
+        prolongedData.labels = [0, 5, 150, 450, 500]; // Extendemos el tiempo
+        prolongedData.datasets[0].data = [-90, 20, 10, -80, -90];
+        chart.data = prolongedData;
+        chart.update();
     });
 
     btnReset.addEventListener('click', () => {
         setActiveButton(null);
-        createChart(JSON.parse(JSON.stringify(baseData)));
+        chart.data = getBaseData();
+        chart.update();
     });
 });
 </script>
 
 </body>
-
 </html>
-
