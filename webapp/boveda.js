@@ -25,7 +25,7 @@
         // Módulos Originales
         { title: "Mecanismo de Frank-Starling", link: "../modulos/feynman/frank-starling/index.html", specialty: "Cardiología", method: "Método Feynman" },
         { title: "Potencial de Acción Cardíaco", link: "../modulos/feynman/potencial-accion-cardiaco/index.html", specialty: "Cardiología", method: "Método Feynman" },
-        { title: "El Viaje del Impulso Eléctrico: Fisiología y Eje", link: "../modulos/storytelling/fisiologia-eje/index.html", specialty: "Cardiología", method: "Storytelling" },
+        { title: "El Viaje del Impulso Eléctrico: Fisiología", link: "../modulos/storytelling/fisiologia-eje/index.html", specialty: "Cardiología", method: "Storytelling" },
         { title: "El Eje RAA: Una Historia de Poder", link: "../modulos/storytelling/raa/index.html", specialty: "Nefrología", method: "Storytelling" },
         { title: "El Reto del Dolor Torácico", link: "../modulos/interleaving/dolor-toracico/index.html", specialty: "Diagnóstico Diferencial", method: "Interleaving" },
         
@@ -154,6 +154,7 @@
     
     renderByMethod();
 });
+
 
 
 
