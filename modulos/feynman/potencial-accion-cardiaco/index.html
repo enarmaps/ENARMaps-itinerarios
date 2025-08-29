@@ -8,51 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../../lib/modulos-style.css">
     <link rel="stylesheet" href="../../lib/feynman-style.css">
+    <link rel="stylesheet" href="style.css">
     
-    <style>
-        /* Estilos específicos y mejorados para este módulo */
-        .ion-simulator {
-            padding: 25px;
-            background-color: #f0f4ff;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-        .ion-chart-container {
-            height: 300px;
-            margin-bottom: 20px;
-            background-color: var(--color-paper);
-            border-radius: 8px;
-            padding: 10px;
-        }
-        .ion-controls {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
-        .ion-controls button {
-            padding: 12px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid var(--color-primary-light);
-            background-color: var(--color-paper);
-            color: var(--color-primary-light);
-            transition: all 0.2s ease;
-        }
-        .ion-controls button:hover {
-            background-color: #e3f2fd;
-        }
-        .ion-controls button.active {
-            background-color: var(--color-primary-dark);
-            color: white;
-            border-color: var(--color-primary-dark);
-        }
-        #reset-button {
-            background-color: var(--color-text-secondary);
-            color: white;
-            border-color: var(--color-text-secondary);
-        }
-    </style>
 </head>
 <body class="layout-document">
 
@@ -115,92 +72,7 @@
 </div>
 
 <script src="../../lib/feynman-logic.js"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('actionPotentialChart');
-    if (!ctx) return;
-
-    let chart;
-    // Puntos de datos y tiempo más precisos fisiológicamente
-    const baseLabels = [0, 5, 20, 200, 300, 350]; 
-    const baseDataPoints = [-90, 20, 10, 10, -80, -90];
-    
-    const getBaseData = () => ({
-        labels: [...baseLabels],
-        datasets: [{
-            label: 'Potencial de Membrana (mV)',
-            data: [...baseDataPoints],
-            borderColor: 'var(--color-primary-dark)',
-            borderWidth: 4,
-            fill: false,
-            tension: 0.4,
-            pointRadius: 0
-        }]
-    });
-
-    const options = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            y: { min: -100, max: 40, title: { display: true, text: 'Potencial (mV)' } },
-            x: { type: 'linear', min: -10, max: 500, title: { display: true, text: 'Tiempo (ms)' } }
-        },
-        plugins: { legend: { display: false } },
-        animation: { duration: 400 }
-    };
-
-    function createChart() {
-        if (chart) { chart.destroy(); }
-        chart = new Chart(ctx, { type: 'line', data: getBaseData(), options: options });
-    }
-    
-    createChart();
-
-    const btnBlockNa = document.getElementById('block-na');
-    const btnBlockCa = document.getElementById('block-ca');
-    const btnBlockK = document.getElementById('block-k');
-    const btnReset = document.getElementById('reset-button');
-    const allButtons = [btnBlockNa, btnBlockCa, btnBlockK];
-
-    function setActiveButton(activeBtn) {
-        allButtons.forEach(btn => { if(btn) btn.classList.remove('active'); });
-        if (activeBtn) activeBtn.classList.add('active');
-    }
-
-    btnBlockNa.addEventListener('click', () => {
-        setActiveButton(btnBlockNa);
-        const newData = getBaseData();
-        newData.datasets[0].data[1] = -65; // Fase 0 se aplana
-        newData.datasets[0].data[2] = -70;
-        newData.datasets[0].data[3] = -70;
-        chart.data = newData;
-        chart.update();
-    });
-
-    btnBlockCa.addEventListener('click', () => {
-        setActiveButton(btnBlockCa);
-        const newData = getBaseData();
-        newData.datasets[0].data[3] = -50; // La meseta (Fase 2) se acorta y cae rápido
-        chart.data = newData;
-        chart.update();
-    });
-
-    btnBlockK.addEventListener('click', () => {
-        setActiveButton(btnBlockK);
-        const newData = getBaseData();
-        newData.labels = [0, 5, 20, 200, 450, 500]; // El tiempo de repolarización se alarga
-        chart.data = newData;
-        chart.update();
-    });
-
-    btnReset.addEventListener('click', () => {
-        setActiveButton(null);
-        chart.data = getBaseData();
-        chart.update();
-    });
-});
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
