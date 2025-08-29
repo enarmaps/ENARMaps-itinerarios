@@ -144,92 +144,113 @@ function setupECGSimulator() {
    
     function startECGAnimation(pattern) {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
-        
+
         let { desc, pr, qrs, rate, pattern: blockPattern } = pattern;
         descriptionBox.textContent = desc;
 
         const canvasWidth = canvas.width = canvas.clientWidth;
         const canvasHeight = canvas.height = canvas.clientHeight;
         const centerY = canvasHeight / 2;
-        const amplitude = canvasHeight / 3;
+        const amplitude = canvasHeight / 3.5; // Ajustamos la amplitud para que no se salga
+        const speed = 1.5; // Velocidad del trazado en píxeles por frame
+        const samplingRate = 0.02; // Cuántos segundos avanza el tiempo en cada frame
+
+        const tracePoints = []; // Array para guardar los puntos de la línea Y
+        let time = 0; // Tiempo global del ECG en segundos
         
-        let x = 0;
-        let pTime = 0;
-        let qrsTime = 0;
-        const pRate = 75; // Frecuencia auricular constante para BAV3
-        const pBeatDuration = 60 / pRate;
-        const vBeatDuration = 60 / rate;
-        
-        let beatCount = 0;
+        // Inicializa el trazo con puntos planos para evitar un "salto" al inicio
+        for (let i = 0; i < canvasWidth / speed; i++) {
+            tracePoints.push(centerY);
+        }
 
         function draw() {
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Limpia todo el canvas
-            drawGrid(); // Dibuja la cuadrícula de fondo
+            // 1. Limpiar y dibujar fondo
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            drawGrid();
 
-            x = (x + 1.5) % canvasWidth; // Ralentizamos un poco la velocidad
-
-            const globalTime = (x / canvasWidth) * (vBeatDuration * (canvasWidth / 150));
-            const beatTime = globalTime % vBeatDuration;
-            const currentBeat = Math.floor(globalTime / vBeatDuration);
+            // 2. Calcular la nueva posición Y para el punto actual
+            const vBeatDuration = 60 / rate; // Duración de un latido ventricular
+            const pBeatDuration = 60 / 75; // Duración de un latido auricular (para P en BAV3)
             
-            let y = centerY;
-            let currentPR = pr;
-            let drawQRSAndT = true;
+            let y = centerY; // Posición Y predeterminada (línea plana)
+            let currentPR = pr; // Intervalo PR actual
+            let drawQRSAndT = true; // Flag para dibujar QRS y T
 
-            // --- Lógica de Bloqueos ---
+            const globalTime = time; // El tiempo actual en segundos
+            const beatTime = globalTime % vBeatDuration; // Tiempo dentro del ciclo de latido actual
+            const currentBeat = Math.floor(globalTime / vBeatDuration); // Número de latido
+            
+            // --- Lógica de Bloqueos (afecta drawQRSAndT y currentPR) ---
             if (blockPattern === 'Mobitz1') {
-                const sequence = currentBeat % 4;
-                if (sequence === 3) drawQRSAndT = false; // Bloquea el 4to latido
-                currentPR = pr + (sequence * 0.07);
+                const sequence = currentBeat % 4; // Por ejemplo, un ciclo de 4 latidos
+                if (sequence === 3) drawQRSAndT = false; // Bloquea el 4to latido (3:2)
+                currentPR = pr + (sequence * 0.07); // PR se alarga progresivamente
             }
             if (blockPattern === 'Mobitz2') {
-                if (currentBeat % 3 === 2) drawQRSAndT = false; // Bloquea el 3er latido (relación 3:2)
+                if (currentBeat % 3 === 2) drawQRSAndT = false; // Bloquea el 3er latido (3:2)
             }
+
+            // --- Lógica de Dibujo de Ondas (calcula la 'y' del punto actual) ---
             if (blockPattern === 'BAV3') {
+                // Onda P (independiente del QRS)
                 const pTimeInBeat = globalTime % pBeatDuration;
-                if (pTimeInBeat < 0.12) { // Dibujar Onda P
-                    y -= Math.sin((pTimeInBeat / 0.12) * Math.PI) * (amplitude * 0.15);
-                }
+                if (pTimeInBeat < 0.12) y -= Math.sin((pTimeInBeat / 0.12) * Math.PI) * (amplitude * 0.15);
+                
+                // QRS (independiente de la P)
                 const qrsTimeInBeat = globalTime % vBeatDuration;
-                if (qrsTimeInBeat < qrs) { // Dibujar QRS
+                if (qrsTimeInBeat < qrs) {
                      const progress = qrsTimeInBeat / qrs;
                      y -= Math.sin(progress * Math.PI) * (amplitude * (progress < 0.5 ? -0.5 : 1));
-                     if (progress > 0.45 && progress < 0.55 && !this.beeped) { playBeep(); this.beeped = true; } else if (progress < 0.45 || progress > 0.55) { this.beeped = false; }
+                     // Beep
+                     if (progress > 0.45 && progress < 0.55 && !draw.beeped) { playBeep(); draw.beeped = true; } 
+                     else if (progress < 0.45 || progress > 0.55) { draw.beeped = false; }
                 }
-            } else { // Lógica para ritmos no disociados (Normal, Mobitz, etc.)
-                // Dibujar Onda P
-                if (beatTime < 0.12) {
+            } else { // Para todos los demás ritmos (Normal, BAV1, Bloqueos de Rama, Hemibloqueos, Mobitz)
+                // Onda P
+                if (beatTime < 0.12) { // La Onda P ocurre en los primeros 0.12s del beat
                     y -= Math.sin((beatTime / 0.12) * Math.PI) * (amplitude * 0.15);
                 }
-                if (drawQRSAndT) {
-                    // Dibujar QRS
+                
+                if (drawQRSAndT) { // Si el latido no está bloqueado (Mobitz)
+                    // QRS
                     if (beatTime >= currentPR && beatTime < currentPR + qrs) {
-                        const progress = (beatTime - currentPR) / qrs;
+                        const progress = (beatTime - currentPR) / qrs; // Progreso dentro del QRS
                         y -= Math.sin(progress * Math.PI) * (amplitude * (progress < 0.5 ? -0.5 : 1));
-                         if (progress > 0.45 && progress < 0.55 && !this.beeped) { playBeep(); this.beeped = true; } else if (progress < 0.45 || progress > 0.55) { this.beeped = false; }
+                        // Beep
+                        if (progress > 0.45 && progress < 0.55 && !draw.beeped) { playBeep(); draw.beeped = true; } 
+                        else if (progress < 0.45 || progress > 0.55) { draw.beeped = false; }
                     }
-                    // Dibujar Onda T
+                    // Onda T (después del QRS)
                     const timeAfterQRS = beatTime - currentPR - qrs;
                     if (timeAfterQRS > 0.1 && timeAfterQRS < 0.4) {
                         y -= Math.sin(((timeAfterQRS - 0.1) / 0.3) * Math.PI) * (amplitude * 0.3);
                     }
                 }
             }
+            
+            // 3. Añadir el nuevo punto Y al final de la traza
+            tracePoints.push(y);
+            // Si la traza es más larga que el ancho del canvas, elimina el punto más antiguo
+            if (tracePoints.length * speed > canvasWidth) {
+                tracePoints.shift();
+            }
 
-            // --- Lógica de Trazado ---
-            ctx.beginPath();
-            ctx.moveTo(x - 1.5, draw.lastY || centerY); // Usa draw.lastY
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = '#33ff99';
-            ctx.lineWidth = 2.5;
-            ctx.stroke();
-            draw.lastY = y; // Guarda la última posición en la propia función
-            
-            if (x < 2) draw.lastY = centerY;
+            // 4. Dibujar la línea completa uniendo todos los puntos en el array
+            ctx.beginPath();
+            ctx.moveTo(0, tracePoints[0]); // Empieza desde el primer punto
+            for (let i = 1; i < tracePoints.length; i++) {
+                ctx.lineTo(i * speed, tracePoints[i]); // Conecta al siguiente punto
+            }
+            ctx.strokeStyle = '#33ff99'; // Color del trazo ECG
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
 
-            animationFrameId = requestAnimationFrame(draw);
-        }
-        draw();
+            time += samplingRate; // Avanza el tiempo global
+            animationFrameId = requestAnimationFrame(draw); // Solicita el siguiente frame
+        }
+
+        draw.beeped = false; // Reinicia el flag del beep al iniciar una nueva animación
+        draw(); // Inicia el primer frame del dibujo
     }
 
     hotspots.forEach(hotspot => {
@@ -288,6 +309,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
