@@ -16,7 +16,7 @@
 <body class="layout-fullscreen">
 
 <div class="main-container">
-    <img src="../../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
+    <img src="/landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="map-logo">
     
     <h1>Diabetes Mellitus Tipo 1</h1>
     <p class="description">Fisiopatología autoinmune, diagnóstico diferencial y manejo con insulinoterapia intensiva.</p>
@@ -131,6 +131,12 @@
 </script>
 
 <script src="../../lib/map-logic.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownContent = document.getElementById('markdown-mapa').textContent; // Usamos .textContent
+        renderMarkmap(markdownContent);
+    });
+</script>
 
 </body>
 </html>
