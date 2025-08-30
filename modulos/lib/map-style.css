@@ -1,10 +1,9 @@
 /* =================================================================== */
-/* CSS ESPECÍFICO PARA MÓDULOS DE MAPA MENTAL (en /lib/)        */
-/* Versión 2.0 - Diseño Centrado y Limpio                        */
+/* CSS ESPECÍFICO PARA MÓDULOS DE MAPA MENTAL (v2.1 - Mejorado)      */
 /* =================================================================== */
 
 body.layout-fullscreen {
-    padding: 30px 20px;
+    padding: 20px; /* Reducido para mejor ajuste inicial */
     box-sizing: border-box;
 }
 
@@ -33,7 +32,14 @@ body.layout-fullscreen {
     font-size: 1.1rem;
     color: var(--color-text-secondary);
     max-width: 800px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* --- NUEVO: Contenedor para el botón de regresar --- */
+.map-header-actions {
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -53,8 +59,34 @@ body.layout-fullscreen {
     height: 100%;
 }
 
+/* --- NUEVO: Unifica la tipografía dentro del mapa --- */
+.markmap text {
+    font-family: var(--font-body) !important;
+    font-size: 14px !important;
+}
+
 .layout-fullscreen .credit {
     font-size: 0.8rem;
     color: #b0b0b0;
     margin-top: 15px;
+}
+
+/* --- NUEVO: Media Query para Responsividad --- */
+@media (max-width: 768px) {
+    body.layout-fullscreen {
+        padding: 15px;
+    }
+
+    .layout-fullscreen h1 {
+        font-size: 1.8rem; /* Título más pequeño en móviles */
+    }
+
+    .layout-fullscreen .description {
+        font-size: 1rem; /* Descripción más pequeña */
+    }
+
+    .layout-fullscreen #mindmap-container {
+        height: 70vh; /* Un poco menos de altura en móviles */
+        min-height: 500px;
+    }
 }
