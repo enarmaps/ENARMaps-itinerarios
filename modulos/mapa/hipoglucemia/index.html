@@ -20,129 +20,122 @@
     
     <h1>Hipoglucemia</h1>
     <p class="description">Diagnóstico y manejo de la complicación más frecuente del tratamiento de la diabetes.</p>
-    <div style="margin-bottom: 25px; text-align: center;">
-      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          Regresar a la Bóveda
-      </a>
-  </div>
+    
+    <div class="map-header-actions">
+        <a href="/webapp/boveda.html" class="ui-button button-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Regresar a la Bóveda
+        </a>
+    </div>
+
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
     <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
-
-    </div>
+</div>
 
 <script type="text/template" id="markdown-mapa">
-    # Hipoglucemia
-    - Epidemiología y Fisiología
-      - Definición
-        - Disminución de la concentración de glucosa en sangre a un nivel que puede causar daño neurológico.
-        - Se considera un valor de alerta **≤ 70 mg/dL**.
-      - Tríada de Whipple (Para confirmar hipoglucemia verdadera)
-        - 1. Síntomas consistentes con hipoglucemia.
-        - 2. Una concentración baja de glucosa plasmática.
-        - 3. Alivio de los síntomas después de que la glucosa sube a un nivel normal.
-      - Fisiología de la Contrarregulación
-        - Respuesta normal a la baja de glucosa:
-          - Primero: Disminuye la secreción de insulina.
-          - Después: Aumenta la secreción de Glucagón y Adrenalina.
-          - Más tarde: Aumenta Cortisol y Hormona del Crecimiento.
-      - Causas Principales
-        - **Relacionadas a la Diabetes (la más común):**
-          - Dosis excesiva de insulina o sulfonilureas.
-          - Ayuno prolongado o saltarse comidas.
-          - Ejercicio no planificado.
-          - Consumo de alcohol.
-        - **No relacionadas a la Diabetes:**
-          - Insulinoma, insuficiencia suprarrenal, sepsis, insuficiencia hepática.
-      - **Clave ENARM**
-        - **En un paciente diabético, la causa más común de hipoglucemia es el tratamiento con insulina o secretagogos (sulfonilureas).**
-    - Diagnóstico
-      - Clasificación por Severidad
-        - **Nivel 1 (Alerta):** ≤ 70 mg/dL. El paciente puede tratarse a sí mismo.
-        - **Nivel 2 (Clínicamente Significativa):** < 54 mg/dL. Riesgo neuroglucopénico.
-        - **Nivel 3 (Severa):** Sin un valor de glucosa específico. Se define por la necesidad de asistencia de otra persona para su recuperación.
-      - **Manifestaciones Clínicas (Síntomas)**
-        - **Neurogénicos (Autonómicos - la primera defensa)**
-          - **Adrenérgicos:** Palpitaciones, temblor, ansiedad (por adrenalina).
-          - **Colinérgicos:** Diaforesis, hambre, parestesias.
-        - **Neuroglucopénicos (Por falta de glucosa en el cerebro)**
-          - Confusión, debilidad.
-          - Visión borrosa, dificultad para hablar.
-          - Convulsiones, coma.
-      - Hipoglucemia Inadvertida (Unawareness)
-        - Falla de la respuesta autonómica.
-        - El paciente no presenta los síntomas de alerta (adrenérgicos) y pasa directamente a los neuroglucopénicos.
-        - Es una condición peligrosa, común en pacientes con DM1 de larga evolución.
-      - **Clave ENARM**
-        - **Los síntomas iniciales (temblor, palpitaciones, sudoración) son ADRENÉRGICOS. Los síntomas tardíos y graves (confusión, convulsiones) son NEUROGLUCOPÉNICOS.**
-    - Tratamiento
-      - **Paciente Consciente y Capaz de Deglutir**
-        - **"La Regla de los 15"**
-          - **Paso 1:** Administrar **15 gramos de carbohidratos** de acción rápida.
-            - Ejemplos: Media taza de jugo o refresco regular, 3-4 tabletas de glucosa.
-          - **Paso 2:** Esperar **15 minutos** y volver a medir la glucosa.
-          - **Paso 3:** Si la glucosa sigue ≤ 70 mg/dL, repetir el paso 1.
-          - **Paso 4:** Una vez que la glucosa se normalice, consumir un snack con carbohidratos complejos y proteína para prevenir recurrencias.
-      - **Paciente Inconsciente o Incapaz de Deglutir**
-        - **Manejo Extrahospitalario**
-          - **Glucagón Intramuscular o Intranasal.**
-            - Es el tratamiento de elección para cuidadores o familiares.
-        - **Manejo Intrahospitalario**
-          - **Glucosa Intravenosa**
-            - Administrar 25g de Glucosa al 50% (50 ml) en bolo IV.
-      - **Clave ENARM**
-        - **El tratamiento de elección en hipoglucemia severa con un paciente inconsciente y sin acceso IV es el Glucagón IM. Con acceso IV, es la Glucosa al 50%.**
-    - Diagnósticos Diferenciales (en no diabéticos)
-      - Insulinoma
-        - Tumor neuroendocrino del páncreas que produce insulina de forma autónoma.
-        - Causa hipoglucemia en ayuno.
-        - Diagnóstico: Péptido C e insulina elevados durante la hipoglucemia.
-      - Sepsis Severa
-        - Aumento del consumo de glucosa por los tejidos y disminución de la gluconeogénesis hepática.
-      - Insuficiencia Suprarrenal (Enfermedad de Addison)
-        - Deficiencia de cortisol, una hormona contrarreguladora clave.
-      - Insuficiencia Hepática Aguda o Crónica Severa
-        - El hígado es el principal productor de glucosa en ayuno.
-      - **Clave ENARM**
-        - **Para diferenciar un insulinoma de una hipoglucemia facticia (inyección de insulina exógena), se mide el Péptido C: estará ALTO en el insulinoma y BAJO (suprimido) en la facticia.**
-    - Complicaciones y Pronóstico
-      - Complicaciones a Corto Plazo
-        - Arritmias cardiacas (por la descarga adrenérgica).
-        - Traumatismos por caídas o accidentes.
-        - Convulsiones.
-      - Complicaciones a Largo Plazo
-        - Daño neurológico permanente (si es severa y prolongada).
-        - Desarrollo de hipoglucemia inadvertida.
-        - Aumento del riesgo de demencia en ancianos.
-      - Pronóstico
-        - Generalmente bueno si se trata a tiempo.
-        - La hipoglucemia severa es una emergencia médica y puede ser fatal.
-      - **Clave ENARM**
-        - **La hipoglucemia severa puede provocar arritmias letales debido a la activación simpática masiva y a los cambios en el potasio intracelular.**
-    - Perlas para el ENARM
-      - Concepto Indispensable
-        - Los betabloqueadores pueden enmascarar los síntomas de alerta adrenérgicos de la hipoglucemia (palpitaciones, temblor), excepto la diaforesis (que es colinérgica).
-      - Pregunta Clásica
-        - Paciente diabético en tratamiento con insulina es encontrado diaforético y confundido. Glucosa capilar de 45 mg/dL. ¿Cuál es el manejo inicial más apropiado?
-          - **Respuesta:** Si puede deglutir, 15g de carbohidratos. Si no puede, Glucosa IV o Glucagón IM.
-      - Mnemotecnia Útil
-        - Para recordar la "Regla de los 15": **"15 gramos te suben, en 15 minutos lo sabes".**
-      - Error Común
-        - Tratar una hipoglucemia con chocolate o leche. La grasa que contienen retrasa la absorción de los carbohidratos. Se debe usar un carbohidrato simple y de acción rápida.
-      - Dato de Oro
-        - En la **hipoglucemia por sulfonilureas** (ej. Glibenclamida), el paciente requiere hospitalización y monitoreo prolongado (24-48h) porque el efecto del fármaco es muy largo y la hipoglucemia puede recurrir. Se puede usar Octreotide en estos casos.
-      - Vademécum
-        - **15 gramos de carbohidratos equivalen a:** 1/2 vaso (120 ml) de jugo de naranja, 1 cucharada de azúcar o miel, 3-4 tabletas de glucosa.
-
+# Hipoglucemia
+- Epidemiologia y Fisiologia
+  - Definicion
+    - Disminucion de la glucosa en sangre a un nivel que puede causar dano neurologico.
+    - Se considera un valor de alerta menor o igual a 70 mg sobre dL.
+  - Triada de Whipple
+    - 1. Sintomas consistentes con hipoglucemia.
+    - 2. Una concentracion baja de glucosa plasmatica.
+    - 3. Alivio de los sintomas despues de que la glucosa sube a nivel normal.
+  - Fisiologia de la Contrarregulacion
+    - Respuesta normal a la baja de glucosa:
+      - Primero disminuye la secrecion de insulina.
+      - Despues aumenta la secrecion de Glucagon y Adrenalina.
+      - Mas tarde aumenta Cortisol y Hormona del Crecimiento.
+  - Causas Principales
+    - Relacionadas a la Diabetes (la mas comun):
+      - Dosis excesiva de insulina o sulfonilureas.
+      - Ayuno prolongado o saltarse comidas.
+      - Ejercicio no planificado.
+      - Consumo de alcohol.
+    - No relacionadas a la Diabetes:
+      - Insulinoma, insuficiencia suprarrenal, sepsis, insuficiencia hepatica.
+  - **Clave ENARM**
+    - **En un paciente diabetico, la causa mas comun de hipoglucemia es el tratamiento con insulina o secretagogos (sulfonilureas).**
+- Diagnostico
+  - Clasificacion por Severidad
+    - Nivel 1 (Alerta): Menor o igual a 70 mg sobre dL. El paciente puede autotratarse.
+    - Nivel 2 (Clinicamente Significativa): Menor a 54 mg sobre dL. Riesgo neuroglucopenico.
+    - Nivel 3 (Severa): Necesidad de asistencia de otra persona para su recuperacion.
+  - Manifestaciones Clinicas
+    - Sintomas Neurogenicos (Autonomicos)
+      - Adrenergicos: Palpitaciones, temblor, ansiedad.
+      - Colinergicos: Diaforesis, hambre, parestesias.
+    - Sintomas Neuroglucopenicos (Cerebrales)
+      - Confusion, debilidad.
+      - Vision borrosa, dificultad para hablar.
+      - Convulsiones, coma.
+  - Hipoglucemia Inadvertida (Unawareness)
+    - Falla de la respuesta autonomica.
+    - El paciente no presenta los sintomas de alerta y pasa directo a los neuroglucopenicos.
+  - **Clave ENARM**
+    - **Los sintomas iniciales (temblor, sudoracion) son AUTONOMICOS. Los sintomas tardios y graves (confusion, convulsiones) son NEUROGLUCOPENICOS.**
+- Tratamiento
+  - Paciente Consciente y Capaz de Deglutir
+    - La Regla de los 15
+      - Paso 1: Administrar 15 gramos de carbohidratos de accion rapida.
+      - Paso 2: Esperar 15 minutos y volver a medir la glucosa.
+      - Paso 3: Si la glucosa sigue baja, repetir el paso 1.
+      - Paso 4: Una vez normal, consumir un snack con carbohidratos complejos.
+  - Paciente Inconsciente o Incapaz de Deglutir
+    - Manejo Extrahospitalario
+      - Glucagon Intramuscular o Intranasal.
+    - Manejo Intrahospitalario
+      - Glucosa Intravenosa (ej. 25g de Glucosa al 50 por ciento).
+  - **Clave ENARM**
+    - **El tratamiento de eleccion en hipoglucemia severa sin acceso IV es Glucagon IM. Con acceso IV, es Glucosa IV.**
+- Diagnosticos Diferenciales (en no diabeticos)
+  - Insulinoma
+    - Tumor que produce insulina de forma autonoma.
+    - Causa hipoglucemia en ayuno.
+    - Diagnostico: Peptido C e insulina elevados durante la hipoglucemia.
+  - Sepsis Severa
+    - Aumento del consumo de glucosa y disminucion de la produccion hepatica.
+  - Insuficiencia Suprarrenal (Addison)
+    - Deficiencia de cortisol, una hormona contrarreguladora.
+  - Insuficiencia Hepatica Severa
+    - El higado es el principal productor de glucosa en ayuno.
+  - **Clave ENARM**
+    - **Para diferenciar un insulinoma de una inyeccion de insulina exogena, se mide el Peptido C: estara ALTO en el insulinoma y BAJO en la facticia.**
+- Complicaciones y Pronostico
+  - Complicaciones a Corto Plazo
+    - Arritmias cardiacas, traumatismos por caidas, convulsiones.
+  - Complicaciones a Largo Plazo
+    - Dano neurologico permanente, desarrollo de hipoglucemia inadvertida, aumento del riesgo de demencia.
+  - Pronostico
+    - Bueno si se trata a tiempo. La hipoglucemia severa es una emergencia medica.
+  - **Clave ENARM**
+    - **La hipoglucemia severa puede provocar arritmias letales debido a la activacion simpatica masiva.**
+- Perlas para el ENARM
+  - Concepto Indispensable
+    - Los betabloqueadores pueden enmascarar los sintomas de alerta adrenergicos (palpitaciones, temblor), pero no la diaforesis.
+  - Pregunta Clasica
+    - Paciente diabetico diaforetico y confundido con glucosa de 45. El manejo inicial es 15g de carbohidratos si deglute, o Glucosa IV si no.
+  - Mnemotecnia Util
+    - Regla de los 15: "15 gramos te suben, en 15 minutos lo sabes".
+  - Error Comun
+    - Tratar una hipoglucemia con chocolate o leche. La grasa retrasa la absorcion de los carbohidratos.
+  - Dato de Oro
+    - La hipoglucemia por sulfonilureas (ej. Glibenclamida) requiere hospitalizacion y monitoreo prolongado porque su efecto es muy largo.
+  - Vademecum
+    - 15 gramos de carbohidratos equivalen a medio vaso de jugo, una cucharada de azucar, o 3 a 4 tabletas de glucosa.
 </script>
 
 <script src="../../lib/map-logic.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const markdownContent = document.getElementById('markdown-mapa').text;
+        const markdownContent = document.getElementById('markdown-mapa').textContent;
         renderMarkmap(markdownContent);
     });
 </script>
