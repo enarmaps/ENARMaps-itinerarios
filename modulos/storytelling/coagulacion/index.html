@@ -7,112 +7,131 @@
     
     <link rel="stylesheet" href="../../lib/modulos-style.css">
     <link rel="stylesheet" href="../../lib/storytelling-style.css">
-
-    <style>
-        .mcq-option {
-            width: 100%; padding: 15px; text-align: left;
-            border: 2px solid var(--color-border); border-radius: 8px;
-            background-color: var(--color-paper); cursor: pointer;
-            transition: all 0.2s ease; font-size: 1rem;
-        }
-        .mcq-option:hover:not(:disabled) {
-            border-color: var(--color-primary-light); background-color: #f0f4ff;
-        }
-        .mcq-option.correct {
-            background-color: #e8f5e9; border-color: var(--color-success);
-            color: var(--color-success); font-weight: 700;
-        }
-        .mcq-option.incorrect {
-            background-color: #ffebee; border-color: var(--color-error);
-            color: var(--color-error); font-weight: 700;
-        }
-        .explanation { display: none; margin-top: 15px; padding: 15px; background-color: #eef2f9; border-radius: 8px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="layout-document">
 
 <div class="module-header">
-    <img src="../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <img src="../../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
     <h1 class="module-title">La Cascada de la Coagulación</h1>
     <h2 class="module-subtitle">Método Storytelling Interactivo</h2>
 </div>
 
 <div class="report-container">
     <div class="page">
-        <div style="margin-bottom: 25px;">
-             <a href="../../webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                Regresar a la Bóveda
-            </a>
-        </div>
-
-        <h1>Capítulo 1: La Herida</h1>
-        <p>En la bulliciosa ciudad de la "Circulación Sanguínea", la vida transcurre en paz. Pero de repente, ocurre una catástrofe: un vaso sanguíneo se rompe. Suena una alarma silenciosa, y dos equipos de élite, entrenados para esta emergencia, se activan de inmediato.</p>
+        <h1>Capítulo 1: La Alarma Silenciosa</h1>
+        <p>En la bulliciosa ciudad de la "Circulación Sanguínea", ocurre una catástrofe: un vaso se rompe. Suena una alarma silenciosa que activa a dos equipos de élite. Tu misión es guiar su respuesta. <strong>Haz clic en el primer factor de cada vía para iniciar la cascada.</strong></p>
         
-        <div class="story-step">
-            <h3>Equipo 1: La Vía Extrínseca (El Equipo Rápido)</h3>
-            <p>Este es el equipo de respuesta inmediata. La propia lesión tisular libera una señal clave, el <strong>Factor Tisular (Factor III)</strong>. Este factor activa inmediatamente al <strong>Factor VII</strong>. Juntos, forman un complejo que activa directamente al protagonista de nuestra historia: el <strong>Factor X</strong>. Es una vía corta y explosiva, diseñada para iniciar el coágulo rápidamente.</p>
-            <button class="reveal-button" onclick="revealScene('scene2')">Conocer al otro equipo...</button>
+        <div class="coagulation-simulator">
+            <svg id="cascade-svg" viewBox="0 0 400 500">
+                <g id="extrinsic-path">
+                    <text x="50" y="30" class="path-title">Vía Extrínseca (Rápida)</text>
+                    <g class="factor" id="factor-3" data-step="1">
+                        <rect x="20" y="50" width="60" height="30" rx="5"/>
+                        <text x="50" y="70">FT (III)</text>
+                    </g>
+                    <line x1="50" y1="80" x2="50" y2="100" class="arrow" id="arrow-3-7"/>
+                    <g class="factor" id="factor-7" data-step="1">
+                        <rect x="20" y="100" width="60" height="30" rx="5"/>
+                        <text x="50" y="120">VIIa</text>
+                    </g>
+                    <line x1="80" y1="115" x2="170" y2="205" class="arrow" id="arrow-7-10"/>
+                </g>
+                <g id="intrinsic-path">
+                    <text x="350" y="30" class="path-title">Vía Intrínseca (Amplificación)</text>
+                    <g class="factor clickable" id="factor-12" data-step="2">
+                        <rect x="320" y="50" width="60" height="30" rx="5"/>
+                        <text x="350" y="70">XII</text>
+                    </g>
+                    <line x1="350" y1="80" x2="350" y2="100" class="arrow" id="arrow-12-11"/>
+                    <g class="factor" id="factor-11" data-step="3">
+                        <rect x="320" y="100" width="60" height="30" rx="5"/>
+                        <text x="350" y="120">XI</text>
+                    </g>
+                    <line x1="350" y1="130" x2="350" y2="150" class="arrow" id="arrow-11-9"/>
+                    <g class="factor" id="factor-9" data-step="4">
+                        <rect x="320" y="150" width="60" height="30" rx="5"/>
+                        <text x="350" y="170">IX</text>
+                    </g>
+                    <g class="factor cofactor" id="factor-8">
+                         <rect x="250" y="150" width="60" height="30" rx="5"/>
+                         <text x="280" y="170">VIII</text>
+                    </g>
+                    <line x1="320" y1="165" x2="230" y2="205" class="arrow" id="arrow-9-10"/>
+                </g>
+                <g id="common-path">
+                    <text x="200" y="180" class="path-title common">Vía Común</text>
+                    <g class="factor" id="factor-10" data-step="5">
+                        <rect x="170" y="200" width="60" height="30" rx="5"/>
+                        <text x="200" y="220">X</text>
+                    </g>
+                     <g class="factor cofactor" id="factor-5">
+                         <rect x="100" y="200" width="60" height="30" rx="5"/>
+                         <text x="130" y="220">V</text>
+                    </g>
+                    <line x1="200" y1="230" x2="200" y2="250" class="arrow" id="arrow-10-2"/>
+                    <g class="factor" id="factor-2" data-step="6">
+                        <rect x="150" y="250" width="100" height="30" rx="5"/>
+                        <text x="200" y="270">Protrombina (II)</text>
+                    </g>
+                    <line x1="200" y1="280" x2="200" y2="300" class="arrow" id="arrow-2-2a"/>
+                    <g class="factor" id="factor-2a" data-step="7">
+                        <rect x="160" y="300" width="80" height="30" rx="5"/>
+                        <text x="200" y="320">Trombina</text>
+                    </g>
+                    <line x1="200" y1="330" x2="200" y2="350" class="arrow" id="arrow-2a-1"/>
+                    <g class="factor" id="factor-1" data-step="8">
+                        <rect x="150" y="350" width="100" height="30" rx="5"/>
+                        <text x="200" y="370">Fibrinógeno (I)</text>
+                    </g>
+                    <line x1="200" y1="380" x2="200" y2="400" class="arrow" id="arrow-1-1a"/>
+                    <g class="factor final" id="factor-1a" data-step="9">
+                        <rect x="150" y="400" width="100" height="30" rx="5"/>
+                        <text x="200" y="420">Malla de Fibrina</text>
+                    </g>
+                </g>
+            </svg>
+            <div id="explanation-box" class="explanation-box">
+                La lesión tisular activa la Vía Extrínseca, el primer paso para detener el sangrado.
+            </div>
         </div>
 
-        <div id="scene2" class="story-step hidden-scene">
-            <h3>Equipo 2: La Vía Intrínseca (El Equipo de Amplificación)</h3>
-            <p>Este equipo se activa cuando la sangre entra en contacto con el colágeno expuesto del vaso dañado. Es una cascada más larga: El <strong>Factor XII</strong> activa al <strong>XI</strong>, el XI activa al <strong>IX</strong>, y el IX, junto a su compañero el <strong>Factor VIII</strong>, también activa al <strong>Factor X</strong>. Aunque más lenta, esta vía es crucial para amplificar y sostener la formación del coágulo.</p>
-            <button class="reveal-button" onclick="revealScene('scene3')">¿Qué pasa cuando los equipos se unen?</button>
-        </div>
-
-        <div id="scene3" class="story-step hidden-scene">
-            <h3>Capítulo 2: El Camino Común y la Malla de Fibrina</h3>
-            <p>Ambos caminos, el extrínseco y el intrínseco, tienen un solo objetivo: activar al <strong>Factor X</strong>. Una vez activado, el Factor X, junto a su ayudante el <strong>Factor V</strong>, convierte la <strong>Protrombina (Factor II)</strong> en su forma activa, la poderosa <strong>Trombina (Factor IIa)</strong>.</p>
-            <p>La Trombina es la verdadera heroína: toma el <strong>Fibrinógeno (Factor I)</strong> soluble que flota en la sangre y lo convierte en hebras insolubles de <strong>Fibrina</strong>. Estas hebras forman una red o "malla" que atrapa plaquetas y glóbulos rojos, creando el coágulo estable que sella la herida.</p>
-            <button class="reveal-button" onclick="revealScene('scene4')">Epílogo: Los Saboteadores del ENARM</button>
-        </div>
-
-        <div id="scene4" class="story-step hidden-scene">
+        <div id="epilogue" class="story-step hidden-scene">
             <h3>Epílogo: Los Saboteadores Farmacológicos</h3>
             <p>Los anticoagulantes son "saboteadores" de esta cascada, un tema fundamental en el ENARM. Demuestra tu conocimiento:</p>
             
             <div class="interactive-simulator" id="q1" style="margin-top:20px;">
-                <h4>Pregunta ENARM: Un paciente toma un fármaco que requiere monitorización con el TTPa (Tiempo de Tromboplastina Parcial activada). ¿Qué "equipo" o vía está siendo saboteado principalmente?</h4>
-                <div style="display:flex; flex-direction:column; gap:10px;">
-                    <button class="mcq-option" data-correct="true">La Vía Intrínseca (El equipo de amplificación)</button>
-                    <button class="mcq-option">La Vía Extrínseca (El equipo rápido)</button>
-                    <button class="mcq-option">La formación final de Fibrina</button>
+                <h4>Pregunta ENARM: Un paciente toma un fármaco que requiere monitorización con el TTPa. ¿Qué "equipo" o vía está siendo saboteado principalmente?</h4>
+                <div class="mcq-options-container">
+                    <button class="mcq-option" data-correct="true">La Vía Intrínseca</button>
+                    <button class="mcq-option">La Vía Extrínseca</button>
+                    <button class="mcq-option">La Vía Común</button>
                 </div>
                 <div class="explanation">
-                    <p><strong>Explicación: ¡Correcto!</strong> El TTPa mide la integridad de la Vía Intrínseca (Factores XII, XI, IX, VIII). Fármacos como la Heparina actúan potenciando a la Antitrombina III, que inhibe a varios factores de esta vía.</p>
+                    <p><strong>Explicación: ¡Correcto!</strong> El TTPa (Tiempo de Tromboplastina Parcial activada) mide la integridad de la Vía Intrínseca (Factores XII, XI, IX, VIII). Fármacos como la Heparina actúan aquí.</p>
                 </div>
             </div>
 
             <div class="interactive-simulator" id="q2" style="margin-top:20px;">
-                <h4>Pregunta ENARM: La Warfarina sabotea la producción de factores dependientes de Vitamina K. ¿Cuál de los siguientes factores NO se ve afectado por la Warfarina?</h4>
-                <div style="display:flex; flex-direction:column; gap:10px;">
+                <h4>Pregunta ENARM: La Warfarina sabotea la producción de factores dependientes de Vitamina K. ¿Cuál de los siguientes factores NO se ve afectado?</h4>
+                <div class="mcq-options-container">
                     <button class="mcq-option">Factor II (Protrombina)</button>
                     <button class="mcq-option">Factor VII</button>
                     <button class="mcq-option" data-correct="true">Factor VIII</button>
                 </div>
                 <div class="explanation">
-                    <p><strong>Explicación: ¡Correcto!</strong> Los factores dependientes de Vitamina K son el II, VII, IX y X (y las proteínas C y S). El Factor VIII no depende de la Vitamina K para su síntesis.</p>
+                    <p><strong>Explicación: ¡Correcto!</strong> Los factores K-dependientes son el II, VII, IX y X. El Factor VIII no depende de la Vitamina K para su síntesis.</p>
                 </div>
             </div>
+            <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+                Finalizar y Volver a la Bóveda
+            </a>
         </div>
     </div>
 </div>
 
 <script src="../../lib/storytelling-logic.js"></script>
-<script>
-    // Se necesita que esta función sea global para que el `onclick` del HTML la encuentre.
-    function revealScene(sceneId) {
-        const scene = document.getElementById(sceneId);
-        if (scene) {
-            scene.style.display = 'block';
-            setTimeout(() => {
-                scene.style.opacity = '1';
-                scene.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 10);
-        }
-    }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
