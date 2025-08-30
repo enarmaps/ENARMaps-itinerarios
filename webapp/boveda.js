@@ -26,6 +26,7 @@
         { title: "Mecanismo de Frank-Starling", link: "../modulos/feynman/frank-starling/index.html", specialty: "Cardiología", method: "Método Feynman" },
         { title: "Potencial de Acción Cardíaco", link: "../modulos/feynman/potencial-accion-cardiaco/index.html", specialty: "Cardiología", method: "Método Feynman" },
         { title: "El Viaje del Impulso Eléctrico: Fisiología", link: "../modulos/storytelling/fisiologia-eje/index.html", specialty: "Cardiología", method: "Storytelling" },
+        { title: "La Cáscada de la Coagulación", link: "../modulos/storytelling/coagulacion/index.html", specialty: "Cardiología", method: "Storytelling" },
         { title: "El GPS del Corazón: Dominando el Eje Cardíaco", link: "../modulos/feynman/eje-cardiaco/index.html", specialty: "Cardiología", method: "Método Feynman" },
         { title: "El Eje RAA: Una Historia de Poder", link: "../modulos/storytelling/raa/index.html", specialty: "Nefrología", method: "Storytelling" },
         { title: "El Reto del Dolor Torácico", link: "../modulos/interleaving/dolor-toracico/index.html", specialty: "Diagnóstico Diferencial", method: "Interleaving" },
@@ -155,6 +156,7 @@
     
     renderByMethod();
 });
+
 
 
 
