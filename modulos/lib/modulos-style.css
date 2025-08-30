@@ -376,6 +376,46 @@ ul, ol {
     border-bottom: none; /* Sobreescribe el H2 general */
 }
 
+/* ============================================= */
+/* == ESTILOS BASE PARA BOTONES (UI-BUTTON)    === */
+/* ============================================= */
+
+.ui-button {
+    /* Estilos de layout y alineación */
+    display: inline-flex;       /* Permite alinear el icono y el texto */
+    align-items: center;        /* Centra verticalmente el contenido */
+    justify-content: center;    /* Centra horizontalmente el contenido */
+    gap: 8px;                   /* Espacio entre el icono y el texto */
+    
+    /* Estilos de apariencia */
+    padding: 10px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 220px; /* Ancho mínimo para consistencia */
+}
+
+/* Estilo para el icono SVG dentro de cualquier botón */
+.ui-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Estilo para el botón secundario */
+.button-secondary {
+    background-color: var(--color-paper);
+    color: var(--color-primary);
+    border-color: var(--color-border);
+}
+
+.button-secondary:hover {
+    background-color: #f8f9fa; /* Un gris muy ligero */
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
 
 
 
