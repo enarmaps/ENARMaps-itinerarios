@@ -20,125 +20,120 @@
     
     <h1>Síndrome Metabólico</h1>
     <p class="description">Criterios diagnósticos, fisiopatología y su impacto en el riesgo cardiovascular y diabético.</p>
-    <div style="margin-bottom: 25px; text-align: center;">
-      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          Regresar a la Bóveda
-      </a>
-  </div>
+    
+    <div class="map-header-actions">
+        <a href="/webapp/boveda.html" class="ui-button button-primary">
+            <svg xmlns="http://www.w.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Regresar a la Bóveda
+        </a>
+    </div>
+
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
     <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
-
-    </div>
+</div>
 
 <script type="text/template" id="markdown-mapa">
-    # Síndrome Metabólico
-    - Epidemiología y Fisiopatología
-      - Concepto
-        - Constelación de factores de riesgo metabólicos interrelacionados.
-        - Su presencia aumenta significativamente el riesgo de desarrollar Diabetes Mellitus 2 y Enfermedad Cardiovascular.
-      - Prevalencia
-        - Muy alta y en aumento, paralela a la epidemia de obesidad y sedentarismo.
-      - **Fisiopatología Central**
-        - **Resistencia a la Insulina**
-          - Es el defecto fisiopatológico fundamental que unifica los componentes del síndrome.
-          - La insulina no puede ejercer sus efectos de forma eficiente en los tejidos (músculo, hígado, tejido adiposo).
-          - El páncreas compensa con un **hiperinsulinismo**, lo que a largo plazo agrava los problemas.
-      - Consecuencias de la Resistencia a la Insulina
-        - Aumento de la producción hepática de glucosa -> Hiperglucemia.
-        - Aumento de la lipólisis -> Aumento de ácidos grasos libres y Triglicéridos.
-        - Disminución de HDL.
-        - Retención de sodio y activación simpática -> Hipertensión.
-      - **Clave ENARM**
-        - **La Resistencia a la Insulina es el eje fisiopatológico del Síndrome Metabólico. La mayoría de sus componentes son una consecuencia directa de este problema.**
-    - Diagnóstico
-      - **Criterios Diagnósticos (ATP III Modificados)**
-        - Se requiere la presencia de **3 o más de los siguientes 5 criterios**:
-        - **1. Obesidad Abdominal**
-          - Circunferencia de cintura:
-            - Hombres: **> 102 cm**
-            - Mujeres: **> 88 cm**
-            - (Nota: algunas guías usan puntos de corte étnicos, ej. >90cm en hombres latinos).
-        - **2. Hipertrigliceridemia**
-          - Triglicéridos (TG) **≥ 150 mg/dL**
-          - O en tratamiento farmacológico para TG elevados.
-        - **3. Colesterol HDL Bajo**
-          - Colesterol HDL:
-            - Hombres: **< 40 mg/dL**
-            - Mujeres: **< 50 mg/dL**
-        - **4. Hipertensión Arterial**
-          - Presión Arterial (PA) **≥ 130/85 mmHg**
-          - O en tratamiento farmacológico para hipertensión.
-        - **5. Glucosa en Ayuno Elevada**
-          - Glucosa plasmática en ayuno (GPA) **≥ 100 mg/dL**
-          - O en tratamiento farmacológico para hiperglucemia (diabetes).
-      - Exploración Física
-        - Medición de la circunferencia abdominal.
-        - Búsqueda de **Acantosis Nigricans**: signo cutáneo de resistencia a la insulina.
-      - **Clave ENARM**
-        - **Debes memorizar los 5 criterios de la ATP III y sus puntos de corte. El diagnóstico se establece con la presencia de 3 o más de ellos.**
-    - Tratamiento
-      - **Piedra Angular y Tratamiento MÁS Efectivo**
-        - **Modificaciones Intensivas del Estilo de Vida**
-          - **Pérdida de Peso:** Objetivo del 7-10% del peso corporal en el primer año.
-          - **Actividad Física:** Mínimo 150 minutos/semana de ejercicio moderado (ej. caminata rápida).
-          - **Plan de Alimentación:** Dieta tipo Mediterránea o DASH, rica en frutas, verduras y granos enteros, y baja en grasas saturadas.
-      - **Manejo Farmacológico (Dirigido a cada componente)**
-        - El síndrome como tal no tiene un fármaco único. Se tratan sus partes por separado.
-        - **Dislipidemia:**
-          - **Estatinas** si el riesgo cardiovascular calculado lo justifica (según metas de c-LDL).
-        - **Hipertensión Arterial:**
-          - **IECAs o ARA-II** son a menudo de elección por sus beneficios metabólicos.
-          - Tratar para alcanzar metas (<130/80 mmHg).
-        - **Hiperglucemia / Resistencia a la Insulina:**
-          - **Metformina** es el fármaco de elección para la prediabetes o diabetes inicial asociada.
-      - **Clave ENARM**
-        - **La intervención inicial más importante y efectiva para el Síndrome Metabólico es la pérdida de peso a través de dieta y ejercicio.**
-    - Diagnósticos Diferenciales
-      - Síndrome de Ovario Poliquístico (SOP)
-        - Comparte muchas características (obesidad, resistencia a la insulina), pero se distingue por el hiperandrogenismo clínico o bioquímico.
-      - Síndrome de Cushing
-        - Causa obesidad central, HTA y diabetes, pero se acompaña de signos específicos como estrías rojo-vinosas, facies de luna llena y miopatía proximal.
-      - Hipotiroidismo
-        - Puede causar aumento de peso, dislipidemia e hipertensión diastólica. Se descarta con una TSH.
-      - **Clave ENARM**
-        - **El Síndrome de Ovario Poliquístico (SOP) y el Síndrome Metabólico están fuertemente interrelacionados; muchas pacientes con SOP también cumplen criterios para Síndrome Metabólico.**
-    - Complicaciones y Pronóstico
-      - **Significado Clínico**
-        - Es un estado pro-inflamatorio y pro-trombótico.
-      - **Aumento del Riesgo de Enfermedades Futuras**
-        - **Diabetes Mellitus Tipo 2:** Aumenta el riesgo hasta 5 veces.
-        - **Enfermedad Cardiovascular Aterosclerótica (ASCVD):** Duplica o triplica el riesgo de infartos y EVC.
-      - **Otras Complicaciones Asociadas**
-        - **Enfermedad por Hígado Graso No Alcohólico (EHGNA):** Es la manifestación hepática del síndrome metabólico.
-        - **Apnea Obstructiva del Sueño (AOS).**
-        - Síndrome de Ovario Poliquístico (SOP).
-      - **Clave ENARM**
-        - **Tener Síndrome Metabólico es un predictor muy potente de desarrollar Diabetes tipo 2 y sufrir un evento cardiovascular en el futuro.**
-    - Perlas para el ENARM
-      - Concepto Indispensable
-        - El Síndrome Metabólico no es una enfermedad única, sino un conjunto de factores de riesgo que señalan la presencia de resistencia a la insulina y un alto riesgo cardiovascular.
-      - Pregunta Clásica
-        - Se presentan los datos de un paciente (circunferencia de cintura, PA, TG, HDL, glucosa) y se pregunta el diagnóstico.
-          - **Respuesta:** Si cumple ≥3 criterios, es Síndrome Metabólico.
-      - Mnemotecnia Útil
-        - Criterios ATP III: **"La OBesa con 3 HIPER y 1 HIPO"**. **OB**esidad abdominal, **HIPER**trigliceridemia, **HIPER**tensión, **HIPER**glucemia e **HIPO**-HDL.
-      - Error Común
-        - Centrarse en un solo componente. El manejo debe ser integral, abordando todos los factores de riesgo y, sobre todo, la causa raíz (exceso de peso y sedentarismo).
-      - Dato de Oro
-        - La **Acantosis Nigricans** (hiperpigmentación aterciopelada en cuello, axilas e ingles) es el signo cutáneo más característico de la resistencia a la insulina severa.
-      - Vademécum
-        - **La circunferencia de cintura** es una medida más importante que el Índice de Masa Corporal (IMC) para evaluar el riesgo metabólico, ya que refleja la adiposidad visceral, que es la más peligrosa.
-
+# Sindrome Metabolico
+- Epidemiologia y Fisiopatologia
+  - Concepto
+    - Constelacion de factores de riesgo metabolicos interrelacionados.
+    - Aumenta el riesgo de desarrollar Diabetes Mellitus 2 y Enfermedad Cardiovascular.
+  - Prevalencia
+    - Muy alta y en aumento, paralela a la epidemia de obesidad.
+  - Fisiopatologia Central
+    - Resistencia a la Insulina.
+    - Es el defecto fundamental que unifica los componentes del sindrome.
+    - El pancreas compensa con un hiperinsulinismo, lo que agrava los problemas.
+  - Consecuencias de la Resistencia a la Insulina
+    - Aumento de produccion hepatica de glucosa, causando Hiperglucemia.
+    - Aumento de lipolisis, causando Aumento de Trigliceridos.
+    - Disminucion de HDL.
+    - Retencion de sodio y activacion simpatica, causando Hipertension.
+  - **Clave ENARM**
+    - **La Resistencia a la Insulina es el eje fisiopatologico del Sindrome Metabolico.**
+- Diagnostico
+  - Criterios Diagnosticos (ATP III Modificados)
+    - Se requiere la presencia de 3 o mas de los siguientes 5 criterios:
+    - 1. Obesidad Abdominal
+      - Circunferencia de cintura:
+        - Hombres: Mayor a 102 cm.
+        - Mujeres: Mayor a 88 cm.
+    - 2. Hipertrigliceridemia
+      - Trigliceridos (TG) mayor o igual a 150 mg sobre dL.
+      - O en tratamiento para TG elevados.
+    - 3. Colesterol HDL Bajo
+      - Colesterol HDL:
+        - Hombres: Menor a 40 mg sobre dL.
+        - Mujeres: Menor a 50 mg sobre dL.
+    - 4. Hipertension Arterial
+      - Presion Arterial mayor o igual a 130 sobre 85 mmHg.
+      - O en tratamiento para hipertension.
+    - 5. Glucosa en Ayuno Elevada
+      - Glucosa plasmatica en ayuno (GPA) mayor o igual a 100 mg sobre dL.
+      - O en tratamiento para hiperglucemia.
+  - Exploracion Fisica
+    - Medicion de la circunferencia abdominal.
+    - Busqueda de Acantosis Nigricans, un signo cutaneo de resistencia a la insulina.
+  - **Clave ENARM**
+    - **Debes memorizar los 5 criterios de la ATP III. El diagnostico se establece con 3 o mas de ellos.**
+- Tratamiento
+  - Piedra Angular y Tratamiento MAS Efectivo
+    - Modificaciones Intensivas del Estilo de Vida.
+      - Perdida de Peso del 7 al 10 por ciento del peso corporal.
+      - Actividad Fisica de 150 minutos a la semana.
+      - Plan de Alimentacion tipo Mediterranea o DASH.
+  - Manejo Farmacologico (Dirigido a cada componente)
+    - El sindrome no tiene un farmaco unico. Se tratan sus partes por separado.
+    - Dislipidemia: Estatinas si el riesgo cardiovascular lo justifica.
+    - Hipertension Arterial: IECAs o ARA-II son a menudo de eleccion.
+    - Hiperglucemia o Resistencia a la Insulina: Metformina es el farmaco de eleccion.
+  - **Clave ENARM**
+    - **La intervencion inicial mas importante para el Sindrome Metabolico es la perdida de peso.**
+- Diagnosticos Diferenciales
+  - Sindrome de Ovario Poliquistico (SOP)
+    - Comparte caracteristicas, pero se distingue por el hiperandrogenismo.
+  - Sindrome de Cushing
+    - Causa obesidad central, HTA y diabetes, pero con signos especificos como estrias rojo-vinosas.
+  - Hipotiroidismo
+    - Puede causar aumento de peso y dislipidemia. Se descarta con una TSH.
+  - **Clave ENARM**
+    - **El SOP y el Sindrome Metabolico estan fuertemente interrelacionados.**
+- Complicaciones y Pronostico
+  - Significado Clinico
+    - Es un estado pro-inflamatorio y pro-trombotico.
+  - Aumento del Riesgo de Enfermedades Futuras
+    - Diabetes Mellitus Tipo 2 (riesgo aumenta 5 veces).
+    - Enfermedad Cardiovascular (riesgo se duplica o triplica).
+  - Otras Complicaciones Asociadas
+    - Enfermedad por Higado Graso No Alcoholico (EHGNA).
+    - Apnea Obstructiva del Sueno (AOS).
+  - **Clave ENARM**
+    - **Tener Sindrome Metabolico es un predictor muy potente de desarrollar Diabetes tipo 2 y eventos cardiovasculares.**
+- Perlas para el ENARM
+  - Concepto Indispensable
+    - El Sindrome Metabolico es un conjunto de factores de riesgo que senalan resistencia a la insulina.
+  - Pregunta Clasica
+    - Se presentan los datos de un paciente y se pregunta el diagnostico. Si cumple 3 o mas criterios, es Sindrome Metabolico.
+  - Mnemotecnia Util
+    - Criterios ATP III: "La OBesa con 3 HIPER y 1 HIPO". OBesidad, HIPERtrigliceridemia, HIPERtension, HIPERglucemia e HIPO-HDL.
+  - Error Comun
+    - Centrarse en un solo componente. El manejo debe ser integral.
+  - Dato de Oro
+    - La Acantosis Nigricans es el signo cutaneo mas caracteristico de la resistencia a la insulina severa.
+  - Vademecum
+    - La circunferencia de cintura es una medida mas importante que el IMC para evaluar el riesgo metabolico.
 </script>
 
 <script src="../../lib/map-logic.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const markdownContent = document.getElementById('markdown-mapa').text;
+        const markdownContent = document.getElementById('markdown-mapa').textContent;
         renderMarkmap(markdownContent);
     });
 </script>
