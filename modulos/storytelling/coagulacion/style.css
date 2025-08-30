@@ -1,0 +1,85 @@
+/* Estilos específicos para el simulador de la Cascada de Coagulación */
+.coagulation-simulator {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+}
+
+#cascade-svg {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+    font-family: var(--font-body);
+}
+
+.path-title {
+    font-size: 14px;
+    font-weight: 700;
+    fill: var(--color-primary-dark);
+    text-anchor: middle;
+}
+.path-title.common {
+    font-size: 16px;
+}
+
+.factor rect {
+    fill: #e3f2fd;
+    stroke: var(--color-primary-light);
+    stroke-width: 1.5;
+    transition: all 0.3s ease;
+}
+
+.factor text {
+    fill: var(--color-primary-dark);
+    font-size: 12px;
+    font-weight: 600;
+    text-anchor: middle;
+    pointer-events: none; /* Para que el clic pase al grupo 'g' */
+}
+
+.factor.cofactor rect {
+    fill: #fff9c4;
+    stroke: #fdd835;
+}
+
+.factor.final rect {
+    fill: #ffebee;
+    stroke: var(--color-error);
+}
+
+.factor.clickable {
+    cursor: pointer;
+}
+.factor.clickable:hover rect {
+    fill: #bbdefb;
+}
+
+.factor.active rect {
+    fill: var(--color-accent-green);
+    stroke: var(--color-success);
+}
+.factor.active text {
+    fill: white;
+}
+
+.arrow {
+    stroke: var(--color-border);
+    stroke-width: 2;
+    marker-end: url(#arrowhead);
+    opacity: 0.3;
+    transition: all 0.5s ease;
+}
+
+.arrow.active {
+    stroke: var(--color-accent-orange);
+    opacity: 1;
+}
+
+#explanation-box {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+}
