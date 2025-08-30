@@ -20,12 +20,12 @@
 <div class="report-container">
     <div class="page">
         <h1>Capítulo 1: La Alarma Silenciosa</h1>
-        <p>En la bulliciosa ciudad de la "Circulación Sanguínea", ocurre una catástrofe: un vaso se rompe. Suena una alarma silenciosa que activa a dos equipos de élite. Tu misión es guiar su respuesta. <strong>Haz clic en el primer factor de cada vía para iniciar la cascada.</strong></p>
+        <p>En la bulliciosa ciudad de la "Circulación Sanguínea", ocurre una catástrofe: un vaso se rompe. Suena una alarma silenciosa que activa a dos equipos de élite. Tu misión es guiar su respuesta. <strong>Haz clic en el primer factor de la Vía Intrínseca para continuar la cascada.</strong></p>
         
         <div class="coagulation-simulator">
             <svg id="cascade-svg" viewBox="0 0 400 500">
                 <g id="extrinsic-path">
-                    <text x="50" y="30" class="path-title">Vía Extrínseca (Rápida)</text>
+                    <text x="20" y="30" class="path-title" text-anchor="start">Vía Extrínseca (Rápida)</text>
                     <g class="factor" id="factor-3" data-step="1">
                         <rect x="20" y="50" width="60" height="30" rx="5"/>
                         <text x="50" y="70">FT (III)</text>
@@ -38,7 +38,7 @@
                     <line x1="80" y1="115" x2="170" y2="205" class="arrow" id="arrow-7-10"/>
                 </g>
                 <g id="intrinsic-path">
-                    <text x="350" y="30" class="path-title">Vía Intrínseca (Amplificación)</text>
+                    <text x="380" y="30" class="path-title" text-anchor="end">Vía Intrínseca (Amplif.)</text>
                     <g class="factor clickable" id="factor-12" data-step="2">
                         <rect x="320" y="50" width="60" height="30" rx="5"/>
                         <text x="350" y="70">XII</text>
@@ -92,38 +92,39 @@
                 </g>
             </svg>
             <div id="explanation-box" class="explanation-box">
-                La lesión tisular activa la Vía Extrínseca, el primer paso para detener el sangrado.
+                La Vía Extrínseca se ha activado. Haz clic en el Factor XII para iniciar la Vía Intrínseca.
             </div>
+            <button id="reset-cascade-btn" class="reveal-button" style="margin: 20px auto 0; display: block; background-color: var(--color-primary-light);">Reiniciar Cascada</button>
         </div>
 
         <div id="epilogue" class="story-step hidden-scene">
             <h3>Epílogo: Los Saboteadores Farmacológicos</h3>
-            <p>Los anticoagulantes son "saboteadores" de esta cascada, un tema fundamental en el ENARM. Demuestra tu conocimiento:</p>
+            <p>Demuestra tu conocimiento sobre los "saboteadores" de esta cascada.</p>
             
-            <div class="interactive-simulator" id="q1" style="margin-top:20px;">
-                <h4>Pregunta ENARM: Un paciente toma un fármaco que requiere monitorización con el TTPa. ¿Qué "equipo" o vía está siendo saboteado principalmente?</h4>
+            <div class="interactive-simulator" id="q1">
+                <h4>Pregunta ENARM: Un paciente usa Heparina, que se monitoriza con TTPa. ¿Qué vía está siendo saboteada?</h4>
                 <div class="mcq-options-container">
                     <button class="mcq-option" data-correct="true">La Vía Intrínseca</button>
                     <button class="mcq-option">La Vía Extrínseca</button>
                     <button class="mcq-option">La Vía Común</button>
                 </div>
                 <div class="explanation">
-                    <p><strong>Explicación: ¡Correcto!</strong> El TTPa (Tiempo de Tromboplastina Parcial activada) mide la integridad de la Vía Intrínseca (Factores XII, XI, IX, VIII). Fármacos como la Heparina actúan aquí.</p>
+                    <p><strong>Explicación: ¡Correcto!</strong> El TTPa mide la Vía Intrínseca. La Heparina potencia a la Antitrombina III, que inhibe factores de esta vía (como el IXa y el Xa).</p>
                 </div>
             </div>
 
-            <div class="interactive-simulator" id="q2" style="margin-top:20px;">
-                <h4>Pregunta ENARM: La Warfarina sabotea la producción de factores dependientes de Vitamina K. ¿Cuál de los siguientes factores NO se ve afectado?</h4>
+            <div class="interactive-simulator" id="q2">
+                <h4>Pregunta ENARM: La Warfarina inhibe los factores K-dependientes. ¿Cuál de los siguientes NO es afectado?</h4>
                 <div class="mcq-options-container">
                     <button class="mcq-option">Factor II (Protrombina)</button>
                     <button class="mcq-option">Factor VII</button>
                     <button class="mcq-option" data-correct="true">Factor VIII</button>
                 </div>
                 <div class="explanation">
-                    <p><strong>Explicación: ¡Correcto!</strong> Los factores K-dependientes son el II, VII, IX y X. El Factor VIII no depende de la Vitamina K para su síntesis.</p>
+                    <p><strong>Explicación: ¡Correcto!</strong> Los factores K-dependientes son el II, VII, IX y X. El Factor VIII no depende de la Vitamina K.</p>
                 </div>
             </div>
-            <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+            <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin: 40px auto 0; display: block;">
                 Finalizar y Volver a la Bóveda
             </a>
         </div>
