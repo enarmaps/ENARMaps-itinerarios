@@ -377,47 +377,71 @@ ul, ol {
 }
 
 /* ============================================= */
-/* == ESTILOS BASE PARA BOTONES (UI-BUTTON)    === */
+/* == ESTILOS BASE PARA BOTONES                === */
 /* ============================================= */
 
 .ui-button {
-    /* Estilos de layout y alineación */
-    display: inline-flex;       /* Permite alinear el icono y el texto */
-    align-items: center;        /* Centra verticalmente el contenido */
-    justify-content: center;    /* Centra horizontalmente el contenido */
-    gap: 8px;                   /* Espacio entre el icono y el texto */
+    /* Layout y alineación */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     
-    /* Estilos de apariencia */
-    padding: 10px 20px;
-    font-weight: 600;
+    /* Apariencia */
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 700;
     text-decoration: none;
     border-radius: 8px;
     border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 220px; /* Ancho mínimo para consistencia */
+    min-width: 220px;
+    margin-top: 20px;
 }
 
-/* Estilo para el icono SVG dentro de cualquier botón */
 .ui-button svg {
     width: 18px;
     height: 18px;
 }
 
-/* Estilo para el botón secundario */
-.button-secondary {
+/* --- Estilo Primario (Botones de acción principal) --- */
+.ui-button.button-primary {
+    background-color: var(--color-primary-dark);
+    color: white;
+    border-color: var(--color-primary-dark);
+}
+
+.ui-button.button-primary:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+
+/* --- Estilo Secundario (Botones de regreso o menos importantes) --- */
+.ui-button.button-secondary {
     background-color: var(--color-paper);
     color: var(--color-primary);
     border-color: var(--color-border);
 }
 
-.button-secondary:hover {
-    background-color: #f8f9fa; /* Un gris muy ligero */
+.ui-button.button-secondary:hover {
+    background-color: #f8f9fa;
     border-color: var(--color-primary);
     color: var(--color-primary-dark);
 }
 
+/* --- Estilo Terciario (Botones de reset o acciones menores) --- */
+.ui-button.button-tertiary {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border-color: transparent;
+    min-width: auto; /* Ancho automático */
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
 
-
-
-
+.ui-button.button-tertiary:hover {
+    background-color: #eef2f9;
+    color: var(--color-primary-dark);
+}
