@@ -20,135 +20,130 @@
     
     <h1>Hipertiroidismo</h1>
     <p class="description">Diagnóstico etiológico y manejo de la tirotoxicosis.</p>
-    <div style="margin-bottom: 25px; text-align: center;">
-      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          Regresar a la Bóveda
-      </a>
-  </div>
+    
+    <div class="map-header-actions">
+        <a href="/webapp/boveda.html" class="ui-button button-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Regresar a la Bóveda
+        </a>
+    </div>
+
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
     <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
-
-    </div>
+</div>
 
 <script type="text/template" id="markdown-mapa">
-    # Hipertiroidismo
-    - Epidemiología y Etiología
-      - Concepto
-        - Síndrome clínico resultado de la exposición de los tejidos a concentraciones excesivas de hormonas tiroideas.
-        - **Tirotoxicosis:** Es el estado clínico. **Hipertiroidismo:** Es el resultado de una producción endógena excesiva.
-      - Prevalencia
-        - Al igual que el hipotiroidismo, es mucho más frecuente en mujeres.
-      - **Principales Causas**
-        - **1. Enfermedad de Graves (60-80%)**
-          - Causa más común de hipertiroidismo primario.
-          - Etiología: Autoinmune, por producción de anticuerpos estimulantes del receptor de TSH (TSI o TRAb).
-        - **2. Bocio Multinodular Tóxico**
-          - Nódulos tiroideos autónomos que producen hormona de forma independiente.
-          - Común en ancianos.
-        - **3. Adenoma Tóxico**
-          - Un solo nódulo autónomo ("caliente").
-        - **4. Tiroiditis (Subaguda, Postparto, Silente)**
-          - Causa tirotoxicosis por liberación de hormona preformada debido a la destrucción de la glándula, NO por hiperproducción.
-      - **Clave ENARM**
-        - **La Enfermedad de Graves es la causa más frecuente de hipertiroidismo. Su fisiopatología es autoinmune, mediada por anticuerpos que "imitan" a la TSH.**
-    - Diagnóstico
-      - Manifestaciones Clínicas
-        - Síntomas (Estado Hipermetabólico)
-          - Nerviosismo, irritabilidad, ansiedad.
-          - Palpitaciones, taquicardia.
-          - Intolerancia al calor, sudoración excesiva.
-          - Pérdida de peso con aumento del apetito (polifagia).
-          - Temblor fino distal, hiperreflexia.
-          - Hiperdefecación o diarrea.
-        - **Signos Específicos de la Enfermedad de Graves (Patognomónicos)**
-          - **Oftalmopatía / Orbitopatía:** Exoftalmos, proptosis, retracción palpebral, edema periorbitario.
-          - **Dermopatía:** Mixedema pretibial (piel engrosada en la cara anterior de las piernas).
-          - **Acropaquia:** Dedos en palillo de tambor.
-      - **Abordaje de Laboratorio (Perfil Tiroideo)**
-        - **Prueba Inicial:** **TSH** (estará suprimida).
-        - **Pruebas de Confirmación:** **T4 Libre (T4L) y T3 Total o Libre** (estarán elevadas).
-      - **Interpretación de Resultados**
-        - **Hipertiroidismo Primario (Falla la tiroides)**
-          - **TSH BAJA, T4L/T3 ALTAS.**
-        - **Hipertiroidismo Subclínico**
-          - **TSH BAJA, T4L/T3 NORMALES.**
-        - **Hipertiroidismo Secundario (Falla la hipófisis)** - Muy raro.
-          - **TSH ALTA o NORMAL, T4L/T3 ALTAS.**
-      - **Diagnóstico Etiológico (Para encontrar la causa)**
-        - **1. Anticuerpos Anti-Receptor de TSH (TSI o TRAb)**
-          - Si son positivos, confirman Enfermedad de Graves.
-        - **2. Gammagrama Tiroideo con Yodo-123 o Tc-99**
-          - **Hipercaptación difusa y homogénea:** Enfermedad de Graves.
-          - **Múltiples zonas de hipercaptación:** Bocio Multinodular Tóxico.
-          - **Una sola zona de hipercaptación ("nódulo caliente"):** Adenoma Tóxico.
-          - **Captación BAJA o ausente:** Tiroiditis.
-      - **Clave ENARM**
-        - **Ante un paciente con hipertiroidismo primario (TSH baja, T4L alta), el siguiente paso para determinar la causa es solicitar anticuerpos (TSI/TRAb) o realizar un gammagrama tiroideo.**
-    - Tratamiento
-      - **1. Tratamiento Sintomático (Para todos los pacientes)**
-        - **Betabloqueadores**
-          - **Propranolol** es el de elección.
-          - Controlan los síntomas adrenérgicos (palpitaciones, temblor, ansiedad).
-      - **2. Tratamiento Antitiroideo (Las 3 Opciones Definitivas)**
-        - **A. Fármacos Antitiroideos (Tionamidas)**
-          - **Metimazol:** Fármaco de elección en la mayoría de los casos.
-          - **Propiltiouracilo (PTU):** Reservado para dos situaciones: **1er trimestre del embarazo** y **Tormenta Tiroidea.**
-          - Mecanismo: Inhiben la síntesis de hormonas tiroideas.
-        - **B. Yodo Radioactivo (I-131)**
-          - Terapia ablativa que destruye el tejido tiroideo.
-          - Es el tratamiento de elección en muchos centros para Graves y bocios tóxicos.
-          - Consecuencia: La mayoría de los pacientes desarrollará hipotiroidismo permanente.
-          - **Contraindicaciones:** Embarazo, lactancia, oftalmopatía severa.
-        - **C. Cirugía (Tiroidectomía)**
-          - Indicaciones: Bocio muy grande con síntomas compresivos, sospecha de malignidad, fracaso de otros tratamientos.
-      - **Clave ENARM**
-        - **El tratamiento se basa en 3 pilares: Fármacos (Metimazol/PTU), Radioyodo o Cirugía. Los Betabloqueadores son solo para controlar los síntomas.**
-    - Diagnósticos Diferenciales
-      - Trastornos de Ansiedad o Pánico
-        - Comparten síntomas como palpitaciones, temblor y nerviosismo.
-      - Feocromocitoma
-        - Produce catecolaminas, causando crisis de HTA, taquicardia y sudoración.
-      - Abuso de Sustancias
-        - Cocaína, anfetaminas o consumo exógeno de hormona tiroidea (tirotoxicosis facticia).
-      - **Clave ENARM**
-        - **La pérdida de peso a pesar de un aumento del apetito (polifagia) es un dato clínico clave que orienta hacia hipertiroidismo sobre un trastorno de ansiedad.**
-    - Complicaciones y Pronóstico
-      - **Tormenta Tiroidea**
-        - Es la forma más severa de tirotoxicosis, una emergencia endocrina mortal.
-        - Desencadenada por estrés (infección, cirugía, trauma).
-        - Clínica: Fiebre alta, taquicardia desproporcionada, alteración del estado mental (delirio, coma), disfunción gastrointestinal.
-      - Complicaciones Cardiovasculares
-        - **Fibrilación Auricular:** La arritmia más común asociada al hipertiroidismo.
-        - Insuficiencia Cardiaca de Alto Gasto.
-      - Otras Complicaciones
-        - Osteoporosis (por aumento del recambio óseo).
-      - **Clave ENARM**
-        - **La Tormenta Tiroidea es la complicación más grave. Sospecharla en un paciente con hipertiroidismo conocido que presenta fiebre alta y delirio.**
-    - Perlas para el ENARM
-      - Concepto Indispensable
-        - Los signos oculares (exoftalmos) y cutáneos (mixedema pretibial) son EXCLUSIVOS de la Enfermedad de Graves y no se ven en otras causas de hipertiroidismo.
-      - Pregunta Clásica
-        - Mujer de 30 años con pérdida de peso, palpitaciones y exoftalmos. TSH suprimida y T4L elevada. ¿Cuál es el diagnóstico más probable?
-          - **Respuesta:** Enfermedad de Graves.
-      - Mnemotecnia Útil
-        - Para las 3 opciones de tratamiento: **"Pastillas, Poción o Bisturí"** (Fármacos, Radioyodo, Cirugía).
-      - Error Común
-        - Dar Metimazol en el primer trimestre del embarazo. Causa un defecto congénito llamado "aplasia cutis". El fármaco de elección es el Propiltiouracilo (PTU).
-      - Dato de Oro
-        - El **Propranolol** no solo bloquea los receptores beta-adrenérgicos para controlar los síntomas, sino que a dosis altas también inhibe la conversión periférica de T4 a T3 (la forma más activa).
-      - Vademécum
-        - Efectos adversos graves de las tionamidas: **Agranulocitosis** (fiebre y dolor de garganta son datos de alarma) y **Hepatotoxicidad** (más común con PTU).
-
+# Hipertiroidismo
+- Epidemiologia y Etiologia
+  - Concepto
+    - Sindrome clinico por exposicion a concentraciones excesivas de hormonas tiroideas.
+    - Tirotoxicosis es el estado clinico, Hipertiroidismo es la hiperproduccion endogena.
+  - Prevalencia
+    - Mucho mas frecuente en mujeres.
+  - Principales Causas
+    - 1. Enfermedad de Graves
+      - Causa mas comun, etiologia autoinmune por anticuerpos estimulantes del receptor de TSH (TSI o TRAb).
+    - 2. Bocio Multinodular Toxico
+      - Nodulos tiroideos autonomos que producen hormona. Comun en ancianos.
+    - 3. Adenoma Toxico
+      - Un solo nodulo autonomo o "caliente".
+    - 4. Tiroiditis (Subaguda, Postparto, Silente)
+      - Causa tirotoxicosis por liberacion de hormona preformada, no por hiperproduccion.
+  - **Clave ENARM**
+    - **La Enfermedad de Graves es la causa mas frecuente de hipertiroidismo. Su fisiopatologia es autoinmune.**
+- Diagnostico
+  - Manifestaciones Clinicas
+    - Sintomas (Estado Hipermetabolico)
+      - Nerviosismo, irritabilidad, ansiedad.
+      - Palpitaciones, taquicardia.
+      - Intolerancia al calor, sudoracion excesiva.
+      - Perdida de peso con aumento del apetito.
+    - Signos Especificos de la Enfermedad de Graves
+      - Oftalmopatia u Orbitopatia: Exoftalmos, proptosis.
+      - Dermopatia: Mixedema pretibial.
+      - Acropaquia: Dedos en palillo de tambor.
+  - Abordaje de Laboratorio (Perfil Tiroideo)
+    - Prueba Inicial: TSH (estara suprimida).
+    - Pruebas de Confirmacion: T4 Libre y T3 (estaran elevadas).
+  - Interpretacion de Resultados
+    - Hipertiroidismo Primario
+      - TSH BAJA, T4L y T3 ALTAS.
+    - Hipertiroidismo Subclinico
+      - TSH BAJA, T4L y T3 NORMALES.
+    - Hipertiroidismo Secundario (raro)
+      - TSH ALTA o NORMAL, T4L y T3 ALTAS.
+  - Diagnostico Etiologico
+    - 1. Anticuerpos Anti-Receptor de TSH (TSI o TRAb)
+      - Si son positivos, confirman Enfermedad de Graves.
+    - 2. Gammagrama Tiroideo
+      - Hipercaptacion difusa: Enfermedad de Graves.
+      - Multiples zonas de hipercaptacion: Bocio Multinodular Toxico.
+      - Una sola zona de hipercaptacion: Adenoma Toxico.
+      - Captacion BAJA o ausente: Tiroiditis.
+  - **Clave ENARM**
+    - **Ante un hipertiroidismo primario, el siguiente paso es solicitar anticuerpos (TSI o TRAb) o realizar un gammagrama.**
+- Tratamiento
+  - 1. Tratamiento Sintomatico
+    - Betabloqueadores
+      - Propranolol es el de eleccion.
+      - Controlan palpitaciones, temblor y ansiedad.
+  - 2. Tratamiento Antitiroideo (Las 3 Opciones Definitivas)
+    - A. Farmacos Antitiroideos (Tionamidas)
+      - Metimazol: Farmaco de eleccion en la mayoria de los casos.
+      - Propiltiouracilo (PTU): Reservado para 1er trimestre del embarazo y Tormenta Tiroidea.
+    - B. Yodo Radioactivo (I-131)
+      - Terapia ablativa que destruye el tejido tiroideo.
+      - Causa hipotiroidismo permanente.
+      - Contraindicado en embarazo, lactancia, oftalmopatia severa.
+    - C. Cirugia (Tiroidectomia)
+      - Indicada en bocios muy grandes, sospecha de malignidad o fracaso de otros tratamientos.
+  - **Clave ENARM**
+    - **El tratamiento se basa en 3 pilares: Farmacos, Radioyodo o Cirugia. Los Betabloqueadores son solo para los sintomas.**
+- Diagnosticos Diferenciales
+  - Trastornos de Ansiedad o Panico
+    - Comparten sintomas como palpitaciones y temblor.
+  - Feocromocitoma
+    - Produce catecolaminas, causando crisis de HTA y taquicardia.
+  - Abuso de Sustancias
+    - Cocaina, anfetaminas o consumo exogeno de hormona tiroidea.
+  - **Clave ENARM**
+    - **La perdida de peso a pesar de un aumento del apetito es un dato clave que orienta hacia hipertiroidismo.**
+- Complicaciones y Pronostico
+  - Tormenta Tiroidea
+    - Es la forma mas severa de tirotoxicosis, una emergencia mortal.
+    - Clinica: Fiebre alta, taquicardia desproporcionada, alteracion del estado mental.
+  - Complicaciones Cardiovasculares
+    - Fibrilacion Auricular, es la arritmia mas comun asociada.
+    - Insuficiencia Cardiaca de Alto Gasto.
+  - Otras Complicaciones
+    - Osteoporosis.
+  - **Clave ENARM**
+    - **La Tormenta Tiroidea es la complicacion mas grave. Sospecharla en un paciente con hipertiroidismo que presenta fiebre alta y delirio.**
+- Perlas para el ENARM
+  - Concepto Indispensable
+    - Los signos oculares (exoftalmos) y cutaneos (mixedema pretibial) son EXCLUSIVOS de la Enfermedad de Graves.
+  - Pregunta Clasica
+    - Mujer con perdida de peso, palpitaciones y exoftalmos, TSH suprimida y T4L elevada. El diagnostico es Enfermedad de Graves.
+  - Mnemotecnia Util
+    - Para las 3 opciones de tratamiento: "Pastillas, Pocion o Bisturi" (Farmacos, Radioyodo, Cirugia).
+  - Error Comun
+    - Dar Metimazol en el primer trimestre del embarazo. Causa aplasia cutis. Se debe usar Propiltiouracilo (PTU).
+  - Dato de Oro
+    - El Propranolol, ademas de controlar sintomas, inhibe la conversion periferica de T4 a T3.
+  - Vademecum
+    - Efectos adversos graves de las tionamidas: Agranulocitosis (fiebre y dolor de garganta son datos de alarma) y Hepatotoxicidad.
 </script>
 
 <script src="../../lib/map-logic.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const markdownContent = document.getElementById('markdown-mapa').text;
+        const markdownContent = document.getElementById('markdown-mapa').textContent;
         renderMarkmap(markdownContent);
     });
 </script>
