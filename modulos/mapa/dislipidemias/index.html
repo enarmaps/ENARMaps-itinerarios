@@ -20,128 +20,118 @@
     
     <h1>Dislipidemias</h1>
     <p class="description">Metas de control de lípidos basadas en el riesgo cardiovascular y manejo con estatinas.</p>
-    <div style="margin-bottom: 25px; text-align: center;">
-      <a href="/webapp/boveda.html" class="ui-button button-secondary" style="min-width: 250px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          Regresar a la Bóveda
-      </a>
-  </div>
+    
+    <div class="map-header-actions">
+        <a href="/webapp/boveda.html" class="ui-button button-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Regresar a la Bóveda
+        </a>
+    </div>
+
     <div id="mindmap-container">
         <svg id="markmap-svg" class="markmap"></svg>
     </div>
     
     <p class="credit">Información para fines educativos. Consulta siempre las guías oficiales más recientes.</p>
-
-    </div>
+</div>
 
 <script type="text/template" id="markdown-mapa">
-    # Dislipidemias
-    - Epidemiología y Fisiología
-      - Concepto
-        - Alteración en las concentraciones de lípidos (colesterol, triglicéridos) en la sangre.
-        - Es uno de los principales factores de riesgo cardiovascular modificables.
-      - Lipoproteínas Principales
-        - **LDL (Lipoproteína de Baja Densidad):** "Colesterol Malo". Su principal función es transportar colesterol a los tejidos. Es la lipoproteína más aterogénica.
-        - **HDL (Lipoproteína de Alta Densidad):** "Colesterol Bueno". Realiza el transporte reverso del colesterol, desde los tejidos hacia el hígado.
-        - **Triglicéridos (TG):** Forma de almacenamiento de energía. Se transportan principalmente en los VLDL.
-      - Etiología
-        - **Primarias:** De origen genético (ej. Hipercolesterolemia Familiar).
-        - **Secundarias:** Consecuencia de otras condiciones o fármacos.
-          - **Causas:** Diabetes Mellitus, Hipotiroidismo, Síndrome Nefrótico, Colestasis.
-          - **Fármacos:** Tiazidas, Betabloqueadores, Corticoides, Antirretrovirales.
-      - **Clave ENARM**
-        - **El Colesterol LDL (c-LDL) es el objetivo primario del tratamiento en la prevención de la enfermedad cardiovascular aterosclerótica (ASCVD).**
-    - Diagnóstico
-      - Tamizaje (Screening)
-        - Se recomienda solicitar un **perfil de lípidos en ayuno** en todos los adultos >20 años como parte de la evaluación del riesgo cardiovascular.
-        - El ayuno es principalmente para medir los Triglicéridos de forma precisa.
-      - Perfil de Lípidos
-        - Mide: Colesterol Total, Colesterol HDL, Triglicéridos.
-        - El Colesterol LDL se calcula con la **Fórmula de Friedewald** (válida si TG <400 mg/dL):
-          - **LDL = Colesterol Total - HDL - (Triglicéridos / 5)**
-      - **Clasificación (Según el tipo de lípido elevado)**
-        - **Hipercolesterolemia Aislada:** Elevación del c-LDL.
-        - **Hipertrigliceridemia Aislada:** Elevación de los TG.
-        - **Hiperlipidemia Mixta:** Elevación tanto de c-LDL como de TG.
-      - **Paso Fundamental: Estratificación del Riesgo Cardiovascular**
-        - Antes de iniciar tratamiento, se debe calcular el riesgo de un evento cardiovascular a 10 años.
-        - Se utilizan calculadoras de riesgo como la de la **AHA/ACC (ASCVD Risk Estimator)** o la **Globorisk** en México.
-      - **Clave ENARM**
-        - **El tratamiento de las dislipidemias NO se basa en los valores de lípidos de forma aislada, sino en el RIESGO CARDIOVASCULAR GLOBAL del paciente.**
-    - Tratamiento
-      - **Pilar del Tratamiento: Cambios en el Estilo de Vida**
-        - Dieta saludable (tipo Mediterránea o DASH).
-        - Reducción de grasas saturadas y trans.
-        - Aumento de la actividad física.
-        - Suspensión del tabaquismo.
-        - Reducción de peso.
-      - **Tratamiento Farmacológico: Estatinas**
-        - Son los fármacos de primera línea y los únicos que han demostrado reducir consistentemente la mortalidad cardiovascular.
-        - Mecanismo de acción: Inhiben la HMG-CoA reductasa, el paso limitante en la síntesis de colesterol.
-      - **Intensidad del Tratamiento con Estatinas (Basado en el Riesgo)**
-        - **Estatina de ALTA Intensidad (Reduce LDL >50%)**
-          - **Atorvastatina 40-80 mg**
-          - **Rosuvastatina 20-40 mg**
-          - **Indicación:** Pacientes de MUY ALTO RIESGO (ej. prevención secundaria, con ASCVD ya establecida).
-        - **Estatina de MODERADA Intensidad (Reduce LDL 30-49%)**
-          - Atorvastatina 10-20 mg, Rosuvastatina 5-10 mg, Simvastatina 20-40 mg.
-          - **Indicación:** Pacientes con riesgo intermedio o alto, DM sin otros factores de riesgo.
-        - **Estatina de BAJA Intensidad (Reduce LDL <30%)**
-          - Pravastatina 10-20 mg, Lovastatina 20 mg.
-          - Se usan con menos frecuencia.
-      - **Metas de Control de c-LDL**
-        - **Riesgo Extremadamente Alto (ej. ASCVD + múltiples factores):** < 55 mg/dL.
-        - **Riesgo Muy Alto (ej. Prevención Secundaria, ASCVD establecida):** < 70 mg/dL.
-        - **Riesgo Alto:** < 100 mg/dL.
-      - **Otros Fármacos (Se añaden a la estatina si no se alcanza la meta)**
-        - **Ezetimibe:** Inhibe la absorción de colesterol en el intestino.
-        - **Inhibidores de la PCSK9 (iPCSK9):** Potentes fármacos inyectables que aumentan la depuración de LDL.
-      - **Manejo de la Hipertrigliceridemia Severa (>500 mg/dL)**
-        - El objetivo principal es **prevenir la pancreatitis aguda.**
-        - **Fármacos de Elección:** **Fibratos** (Gemfibrozilo, Fenofibrato).
-      - **Clave ENARM**
-        - **Debes saber qué estatinas y a qué dosis son de ALTA intensidad (Atorvastatina ≥40 mg, Rosuvastatina ≥20 mg). El tratamiento se basa en la intensidad, no en titular la dosis.**
-    - Diagnósticos Diferenciales (Causas Secundarias)
-      - Hipotiroidismo
-        - Causa clásica de hipercolesterolemia. Siempre descartarlo antes de iniciar tratamiento.
-      - Síndrome Nefrótico
-        - Causa hiperlipidemia mixta severa debido a la pérdida de proteínas y el aumento compensatorio de la síntesis hepática.
-      - Diabetes Mellitus no controlada
-        - Típicamente causa hipertrigliceridemia y un nivel bajo de HDL.
-      - Colestasis (Obstrucción biliar)
-        - Eleva el colesterol total.
-      - **Clave ENARM**
-        - **Siempre se debe solicitar un perfil tiroideo (TSH) antes de catalogar una dislipidemia como primaria.**
-    - Complicaciones y Pronóstico
-      - Complicaciones
-        - **Aterosclerosis:** La principal consecuencia, llevando a cardiopatía isquémica, EVC y enfermedad arterial periférica.
-        - **Pancreatitis Aguda:** Complicación de la hipertrigliceridemia severa (>500-1000 mg/dL).
-        - **Xantomas y Xantelasmas:** Depósitos cutáneos de lípidos.
-      - Pronóstico
-        - El tratamiento adecuado con estatinas en pacientes de alto riesgo mejora significativamente el pronóstico cardiovascular.
-      - **Clave ENARM**
-        - **El objetivo de tratar la hipercolesterolemia es prevenir la aterosclerosis. El objetivo de tratar la hipertrigliceridemia MUY severa es prevenir la pancreatitis.**
-    - Perlas para el ENARM
-      - Concepto Indispensable
-        - El lema del tratamiento es **"Mientras más bajo (el LDL), mejor"**, especialmente en pacientes de alto riesgo.
-      - Pregunta Clásica
-        - Paciente que sufrió un infarto hace 6 meses. ¿Qué tratamiento hipolipemiante debe recibir de por vida?
-          - **Respuesta:** Una estatina de ALTA intensidad (ej. Atorvastatina 80 mg).
-      - Mnemotecnia Útil
-        - Estatinas de ALTA intensidad: **"Atrapa y Rosba a los Malos"** (LDL) con sus dosis más altas: **Ato**rvastatina 40-80, **Ros**uvastatina 20-40.
-      - Error Común
-        - Usar fibratos como monoterapia para reducir el riesgo cardiovascular. Su principal indicación es la hipertrigliceridemia severa para prevenir pancreatitis.
-      - Dato de Oro
-        - El efecto adverso más común de las estatinas son las **mialgias**. El más temido (aunque raro) es la **rabdomiólisis**. Siempre se debe preguntar al paciente por dolor muscular.
-      - Vademécum
-        - **No se recomienda combinar estatinas con Gemfibrozilo** por el alto riesgo de miopatía. Se prefiere la combinación con Fenofibrato si es necesario.
-
+# Dislipidemias
+- Epidemiologia y Fisiologia
+  - Concepto
+    - Alteracion en las concentraciones de lipidos en la sangre.
+    - Es uno de los principales factores de riesgo cardiovascular modificables.
+  - Lipoproteinas Principales
+    - LDL o Colesterol Malo: Transporta colesterol a los tejidos, es la mas aterogenica.
+    - HDL o Colesterol Bueno: Realiza el transporte reverso del colesterol hacia el higado.
+    - Trigliceridos (TG): Forma de almacenamiento de energia.
+  - Etiologia
+    - Primarias: De origen genetico.
+    - Secundarias: Consecuencia de otras condiciones o farmacos.
+      - Causas: Diabetes, Hipotiroidismo, Sindrome Nefrotico, Colestasis.
+      - Farmacos: Tiazidas, Betabloqueadores, Corticoides.
+  - **Clave ENARM**
+    - **El Colesterol LDL es el objetivo primario del tratamiento en la prevencion de enfermedad cardiovascular.**
+- Diagnostico
+  - Tamizaje
+    - Se recomienda un perfil de lipidos en ayuno en adultos mayores de 20 anios.
+  - Perfil de Lipidos
+    - Mide: Colesterol Total, Colesterol HDL, Trigliceridos.
+    - El Colesterol LDL se calcula con la Formula de Friedewald.
+  - Clasificacion
+    - Hipercolesterolemia Aislada: Elevacion del LDL.
+    - Hipertrigliceridemia Aislada: Elevacion de los TG.
+    - Hiperlipidemia Mixta: Elevacion de ambos, LDL y TG.
+  - Paso Fundamental
+    - Estratificacion del Riesgo Cardiovascular a 10 anios.
+  - **Clave ENARM**
+    - **El tratamiento de las dislipidemias NO se basa en valores aislados, sino en el RIESGO CARDIOVASCULAR GLOBAL del paciente.**
+- Tratamiento
+  - Pilar del Tratamento
+    - Cambios en el Estilo de Vida (Dieta y Ejercicio).
+  - Tratamiento Farmacologico: Estatinas
+    - Son los farmacos de primera linea, reducen la mortalidad cardiovascular.
+    - Mecanismo de accion: Inhiben la HMG-CoA reductasa.
+  - Intensidad del Tratamiento con Estatinas
+    - Estatina de ALTA Intensidad (Reduce LDL mas del 50 por ciento)
+      - Atorvastatina 40 a 80 mg.
+      - Rosuvastatina 20 a 40 mg.
+      - Indicacion: Pacientes de MUY ALTO RIESGO.
+    - Estatina de MODERADA Intensidad (Reduce LDL 30 a 49 por ciento)
+      - Atorvastatina 10 a 20 mg, Rosuvastatina 5 a 10 mg.
+      - Indicacion: Pacientes con riesgo intermedio o alto.
+  - Metas de Control de LDL
+    - Riesgo Extremadamente Alto: Menor a 55 mg sobre dL.
+    - Riesgo Muy Alto: Menor a 70 mg sobre dL.
+    - Riesgo Alto: Menor a 100 mg sobre dL.
+  - Otros Farmacos (Se anaden a la estatina si no se alcanza la meta)
+    - Ezetimibe: Inhibe la absorcion de colesterol.
+    - Inhibidores de la PCSK9: Potentes farmacos inyectables.
+  - Manejo de Hipertrigliceridemia Severa (mayor a 500)
+    - Objetivo principal: Prevenir la pancreatitis aguda.
+    - Farmacos de Eleccion: Fibratos (Gemfibrozilo, Fenofibrato).
+  - **Clave ENARM**
+    - **Debes saber que estatinas y a que dosis son de ALTA intensidad. El tratamiento se basa en la intensidad.**
+- Diagnosticos Diferenciales (Causas Secundarias)
+  - Hipotiroidismo
+    - Causa clasica de hipercolesterolemia. Siempre descartarlo.
+  - Sindrome Nefrotico
+    - Causa hiperlipidemia mixta severa.
+  - Diabetes Mellitus no controlada
+    - Causa hipertrigliceridemia y un nivel bajo de HDL.
+  - **Clave ENARM**
+    - **Siempre se debe solicitar un perfil tiroideo (TSH) antes de catalogar una dislipidemia como primaria.**
+- Complicaciones y Pronostico
+  - Complicaciones
+    - Aterosclerosis: La principal consecuencia.
+    - Pancreatitis Aguda: Complicacion de la hipertrigliceridemia severa.
+    - Xantomas y Xantelasmas: Depositos cutaneos de lipidos.
+  - Pronostico
+    - El tratamiento adecuado con estatinas en pacientes de alto riesgo mejora el pronostico.
+  - **Clave ENARM**
+    - **El objetivo de tratar la hipercolesterolemia es prevenir la aterosclerosis. El de tratar la hipertrigliceridemia MUY severa es prevenir la pancreatitis.**
+- Perlas para el ENARM
+  - Concepto Indispensable
+    - El lema del tratamiento es "Mientras mas bajo el LDL, mejor".
+  - Pregunta Clasica
+    - Paciente que sufrio un infarto. Tratamiento hipolipemiante de por vida es una estatina de ALTA intensidad.
+  - Mnemotecnia Util
+    - Estatinas de ALTA intensidad: "Atrapa y Rosba a los Malos" (LDL) con sus dosis mas altas: Atorvastatina 40-80, Rosuvastatina 20-40.
+  - Error Comun
+    - Usar fibratos para reducir el riesgo cardiovascular. Su indicacion principal es la hipertrigliceridemia severa para prevenir pancreatitis.
+  - Dato de Oro
+    - El efecto adverso mas comun de las estatinas son las mialgias. El mas temido es la rabdomiolisis.
+  - Vademecum
+    - No se recomienda combinar estatinas con Gemfibrozilo por el alto riesgo de miopatia.
 </script>
 
 <script src="../../lib/map-logic.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const markdownContent = document.getElementById('markdown-mapa').text;
+        const markdownContent = document.getElementById('markdown-mapa').textContent;
         renderMarkmap(markdownContent);
     });
 </script>
