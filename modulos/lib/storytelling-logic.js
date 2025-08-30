@@ -25,11 +25,13 @@ function setupSceneReveal() {
 }
 
 
-// --- MÓDULO 2: LÓGICA DE DRAG AND DROP ---
+// --- Función para la lógica de Drag and Drop (MEJORADA) ---
 function setupDragAndDrop() {
     const dragItems = document.querySelectorAll('.drag-item');
     const dropZones = document.querySelectorAll('.drop-zone');
-    if (!dragItems.length || !dropZones.length) return; // Si no hay elementos, no hace nada.
+    const dragOptionsContainer = document.getElementById('drag-options');
+    const resetButton = document.getElementById('reset-drag-button'); // << Obtener referencia al botón
+    if (!dragItems.length || !dropZones.length) return;
 
     let draggedItem = null;
 
@@ -45,21 +47,46 @@ function setupDragAndDrop() {
 
     dropZones.forEach(zone => {
         zone.addEventListener('dragover', e => e.preventDefault());
-        zone.addEventListener('dragenter', e => { e.preventDefault(); zone.classList.add('hovered'); });
-        zone.addEventListener('dragleave', () => { zone.classList.remove('hovered'); });
+        zone.addEventListener('dragenter', e => { e.preventDefault(); zone.classList.add('dragover'); });
+        zone.addEventListener('dragleave', () => { zone.classList.remove('dragover'); });
         zone.addEventListener('drop', function(e) {
             e.preventDefault();
-            this.classList.remove('hovered');
+            this.classList.remove('dragover');
+
             if (draggedItem && this.dataset.target === draggedItem.dataset.target && !this.querySelector('.drag-item')) {
+                // Acción si el drop es CORRECTO
                 this.appendChild(draggedItem);
-                draggedItem.classList.add('correct');
+                draggedItem.style.backgroundColor = 'var(--color-success)'; // Color verde de éxito
                 draggedItem.setAttribute('draggable', 'false');
             } else if (draggedItem) {
-                draggedItem.classList.add('incorrect');
-                setTimeout(() => { draggedItem.classList.remove('incorrect'); }, 500);
+                // << NUEVO: Acción si el drop es INCORRECTO
+                draggedItem.style.backgroundColor = 'var(--color-error)'; // Color rojo de error
+                // Devuelve el color original después de un momento
+                setTimeout(() => {
+                    if (draggedItem) {
+                       draggedItem.style.backgroundColor = 'var(--color-primary-dark)';
+                    }
+                }, 500);
             }
         });
     });
+
+    // << NUEVO: Lógica para el botón de reiniciar
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            // Devuelve todos los items a su contenedor original
+            dragItems.forEach(item => {
+                if (dragOptionsContainer) dragOptionsContainer.appendChild(item);
+                // Restablece los estilos y la capacidad de ser arrastrado
+                item.style.backgroundColor = 'var(--color-primary-dark)';
+                item.setAttribute('draggable', 'true');
+            });
+            // Limpia el texto de las zonas de drop (si lo hubiéramos modificado)
+            dropZones.forEach(zone => {
+                // (Opcional) Si en el futuro pusiéramos texto dentro de la zona
+            });
+        });
+    }
 }
 
 
@@ -309,6 +336,7 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
 
 
