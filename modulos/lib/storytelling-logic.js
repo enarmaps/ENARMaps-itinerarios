@@ -337,6 +337,44 @@ function setupModuleLeadCapture() {
     }
 }
 
+// --- FUNCIÓN AÑADIDA PARA MANEJAR QUIZZES DE OPCIÓN MÚLTIPLE ---
+function setupMCQ() {
+    const questions = document.querySelectorAll('.interactive-simulator');
+    if (!questions.length) return;
+
+    questions.forEach(question => {
+        const options = question.querySelectorAll('.mcq-option');
+
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                if (question.dataset.answered) return;
+                question.dataset.answered = 'true';
+
+                const explanation = question.querySelector('.explanation');
+                options.forEach(btn => btn.disabled = true);
+
+                if (this.dataset.correct === 'true') {
+                    this.classList.add('correct');
+                } else {
+                    this.classList.add('incorrect');
+                    const correctOption = question.querySelector('[data-correct="true"]');
+                    if (correctOption) correctOption.classList.add('correct');
+                }
+
+                if (explanation) explanation.style.display = 'block';
+            });
+        });
+    });
+}
+
+// --- CÓDIGO EXISTENTE (MODIFICADO PARA LLAMAR A LA NUEVA FUNCIÓN) ---
+document.addEventListener('DOMContentLoaded', function () {
+    setupSceneReveal();
+    setupDragAndDrop();
+    setupMCQ(); // <-- Añade esta línea para activar la lógica del quiz
+    setupModuleLeadCapture();
+});
+
 
 
 
