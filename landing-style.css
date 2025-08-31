@@ -490,7 +490,7 @@ p { font-size: 1.1rem; color: var(--color-text-secondary); }
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     border: 1px solid var(--color-border);
-    border-left: 5px solid var(--color-accent-orange);
+    
 }
 
 .post-card:hover {
@@ -537,6 +537,45 @@ p { font-size: 1.1rem; color: var(--color-text-secondary); }
     color: var(--color-primary-dark);
 }
 
+/* --- ESTILOS REFINADOS PARA TARJETAS DE ARTÍCULO SIN IMAGEN --- */
+.post-card-icon {
+    /* Mantenemos el fondo blanco como las otras tarjetas */
+    background: var(--color-paper);
+    padding: 30px; /* Añadimos padding uniforme */
+}
+
+.post-card-icon .card-icon-wrapper {
+    /* Eliminamos el padding extra ya que está en el padre */
+    padding: 0 0 20px 0; 
+    text-align: left; /* Alineamos el icono a la izquierda */
+    border-bottom: 1px solid var(--color-border); /* Separador sutil */
+    margin-bottom: 20px;
+}
+
+.post-card-icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary-light); /* Usamos el azul corporativo */
+    opacity: 1; /* Opacidad completa */
+}
+
+/* Devolvemos los colores de texto originales para fondo blanco */
+.post-card-icon h3 {
+    color: var(--color-primary-dark);
+}
+
+.post-card-icon .date {
+    color: var(--color-accent-orange);
+}
+
+.post-card-icon p {
+    color: var(--color-text-secondary);
+}
+
+.post-card-icon .read-more {
+    color: var(--color-primary-light);
+    font-weight: 600;
+}
 /* === OFFER SECTION === */
 .offer-section {
     padding: 100px 0;
@@ -816,6 +855,7 @@ p { font-size: 1.1rem; color: var(--color-text-secondary); }
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
+
 
 
 
