@@ -123,4 +123,76 @@ body { font-family: var(--font-body); background: linear-gradient(170deg, #f0f4f
 }
 .module-link .arrow { transition: transform 0.2s ease; }
 .module-link:hover .arrow { transform: translateX(5px); }
+
 .module-link:last-child { margin-bottom: 0; }
+
+/* =================================================================== */
+/* === CSS RESPONSIVO PARA LA WEBAPP (VISTA MÓVIL) ===               */
+/* =================================================================== */
+
+@media (max-width: 768px) {
+    .app-layout {
+        flex-direction: column; /* Cambia el layout a vertical */
+    }
+
+    .main-sidebar {
+        position: relative; /* Deja de estar fija */
+        width: 100%;
+        height: auto;
+        flex-direction: row; /* Pone los elementos en horizontal */
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .sidebar-header .logo {
+        max-width: 150px;
+        margin-bottom: 0;
+    }
+
+    .main-nav {
+        display: none; /* Ocultamos la navegación principal por ahora para simplicidad */
+    }
+
+    .sidebar-footer {
+        margin-top: 0;
+    }
+    
+    .user-profile {
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .user-info span {
+        display: none; /* Oculta el nombre en móvil para ahorrar espacio */
+    }
+     .user-info small {
+        display: none; /* Oculta el "Cerrar Sesión" */
+    }
+
+    .main-content {
+        margin-left: 0; /* Elimina el margen de la sidebar */
+        width: 100%;
+        padding: 20px 15px; /* Ajusta el padding para móviles */
+    }
+}
+
+/* =================================================================== */
+/* === CSS RESPONSIVO PARA LA BÓVEDA (VISTA MÓVIL) ===               */
+/* =================================================================== */
+
+@media (max-width: 768px) {
+    .modules-grid-by-method {
+        /* Cambia a una sola columna en móviles */
+        grid-template-columns: 1fr;
+    }
+
+    .vault-header .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .vault-header .subtitle {
+        font-size: 1rem;
+    }
+}
