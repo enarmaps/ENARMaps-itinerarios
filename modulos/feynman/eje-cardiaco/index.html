@@ -38,20 +38,20 @@
                     <div class="path his-bundle">Haz de His</div>
                     <div class="conduction-branches">
                         <div class="branch-container left">
-                            <div class="path branch main" id="left-branch" onclick="blockPath('lbbb')">Rama Izquierda</div>
+                            <div aria-label="Simular bloqueo de rama izquierda" class="path branch main" id="left-branch" onclick="blockPath('lbbb')">Rama Izquierda</div>
                             <div class="fascicle-group">
-                                <div class="path fascicle anterior" id="anterior-fascicle" onclick="blockPath('lafb')">
+                                <div aria-label="Simular bloqueo del fascículo anterior izquierdo" class="path fascicle anterior" id="anterior-fascicle" onclick="blockPath('lafb')">
                                     <span>F. Anterior</span>
                                     <div class="blockage" id="anterior-blockage"></div>
                                 </div>
-                                <div class="path fascicle posterior" id="posterior-fascicle" onclick="blockPath('lpfb')">
+                                <div aria-label="Simular bloqueo del fascículo posterior izquierdo" class="path fascicle posterior" id="posterior-fascicle" onclick="blockPath('lpfb')">
                                     <span>F. Posterior</span>
                                     <div class="blockage" id="posterior-blockage"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="branch-container right">
-                             <div class="path branch main" id="right-branch" onclick="blockPath('rbbb')">Rama Derecha</div>
+                            <div aria-label="Simular bloqueo de rama derecha" class="path branch main" id="right-branch" onclick="blockPath('rbbb')">Rama Derecha</div>
                         </div>
                     </div>
                 </div>
@@ -64,10 +64,10 @@
                         <span class="degree pos-90">+90°</span>
                         <span class="degree pos-180">180°</span>
                     </div>
-                    <div class="axis-status" id="axis-status">Eje Normal (-30° a +90°)</div>
+                    <div class="axis-status" id="axis-status">Eje Normal (+45°, rango -30° a +90°, no hay valor único)</div>
                 </div>
             </div>
-            <p id="axis-explanation" class="explanation-box">Haz clic en una rama o fascículo para simular un bloqueo y observar el efecto en el GPS del Reino.</p>
+            <p id="axis-explanation" class="explanation-box">Este simulador muestra cómo un "derrumbe" (bloqueo parcial) en las autopistas ventriculares desvía el GPS del corazón fuera de su rango normal (-30° a +90°). Haz clic en una rama o fascículo para explorar los efectos básicos en el eje.</p>
             <button class="reveal-button" id="reset-axis-btn" style="background-color: var(--color-primary-light);">Reiniciar GPS</button>
         </div>
         
