@@ -13,15 +13,23 @@ function setupMCQ() {
 
         options.forEach(option => {
             option.addEventListener('click', function() {
-                options.forEach(btn => btn.disabled = true);
+                // No deshabilitar opciones, permitir clics múltiples
                 if (this.dataset.correct === 'true') {
                     this.classList.add('correct');
+                    if (explanation) {
+                        explanation.style.display = 'block';
+                        explanation.innerHTML = `<p><strong>Explicación: ¡Correcto!</strong> ${this.textContent} puede causar un eje a -60° como desvío inicial. Este módulo explora direcciones; detalles como QRS se cubrirán en un módulo futuro.</p>`;
+                    }
                 } else {
                     this.classList.add('incorrect');
-                    const correctOption = container.querySelector('[data-correct="true"]');
-                    if (correctOption) correctOption.classList.add('correct');
+                    const correctOptions = container.querySelectorAll('[data-correct="true"]');
+                    correctOptions.forEach(correct => correct.classList.add('correct'));
+                    if (explanation) {
+                        explanation.style.display = 'block';
+                        explanation.innerHTML = `<p><strong>Explicación:</strong> ${this.textContent} no es la mejor opción inicial. Las correctas son ${Array.from(correctOptions).map(opt => opt.textContent).join(' y ')}. Este módulo se enfoca en ejes.</p>`;
+                    }
                 }
-                if (explanation) explanation.style.display = 'block';
+                // Mantener opciones habilitadas
             });
         });
     });
@@ -103,4 +111,5 @@ function setupModuleLeadCapture() {
         });
     }
 }
+
 
