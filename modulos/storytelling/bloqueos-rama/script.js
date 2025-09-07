@@ -78,12 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
         resetSimulator();
         btnRBBB.classList.add('active');
         rightBranch.classList.add('blocked');
-        explanationBox.innerHTML = "<strong>Bloqueo de Rama Derecha:</strong> El impulso baja rápido por la izquierda, pero debe viajar 'a pie' por el músculo para llegar al ventrículo derecho, causando un retraso.";
-        
-        // Animamos la rama izquierda rápido y la derecha no se anima
-        animatePulse(leftBranch, 800);
-        animatePulse(leftAnterior, 800);
-        animatePulse(leftPosterior, 800);
+        explanationBox.innerHTML = "<strong>Bloqueo de Rama Derecha:</strong> El impulso baja rápido por la izquierda (despolarizando el VI), pero debe viajar 'a pie' por el músculo para llegar al ventrículo derecho, causando un retraso.";
+    
+        // 1. Animamos la despolarización normal de toda la rama izquierda.
+        animatePulse(leftBranch, 600);
+        animatePulse(leftAnterior, 600);
+        animatePulse(leftPosterior, 600);
+    
+        // 2. Después de un breve retraso, animamos la rama derecha para simular la conducción lenta.
+        //    Le damos una duración más larga (1200ms) para que se vea más lenta.
+        setTimeout(() => {
+            animatePulse(rightBranch, 1200);
+        }, 400); 
     });
 
     btnLBBB.addEventListener('click', () => {
