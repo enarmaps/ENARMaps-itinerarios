@@ -92,6 +92,15 @@
     transform: translate(-50%, -50%);
 }
 
+/* Ajuste para posicionar el ícono 'X' correctamente */
+.branch:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Evita interferencia con clics */
+}
+
 #pulse {
     /* El pulso será controlado por JS, aquí definimos su apariencia */
     filter: drop-shadow(0 0 3px yellow) drop-shadow(0 0 5px orange);
@@ -107,9 +116,43 @@
     margin: 10px 0;
 }
 
+.ecg-simulator-container {
+    background-color: #000;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 10px 0;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.ecg-strip {
+    width: 100%;
+    height: 100px;
+    background-image:
+        linear-gradient(rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(rgba(0, 255, 0, 0.4) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.4) 2px, transparent 2px);
+    background-size: 10px 10px, 10px 10px, 50px 50px, 50px 50px;
+}
+
+.ecg-path {
+    fill: none;
+    stroke: #0aff0a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* Efecto de brillo para el neón */
+    filter: drop-shadow(0 0 3px #0aff0a) drop-shadow(0 0 8px #0aff0a);
+}
+
 /* --- Responsividad --- */
 @media (max-width: 600px) {
     .bundle-branch-simulator {
         grid-template-columns: 1fr;
+    }
+    .ecg-simulator-container {
+        width: 100%;
+        overflow-x: auto;
     }
 }
