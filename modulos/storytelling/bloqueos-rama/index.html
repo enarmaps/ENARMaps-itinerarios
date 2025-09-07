@@ -37,18 +37,24 @@
             <div class="bundle-branch-simulator">
                 <div class="heart-svg-container">
                     <svg viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
-                        <path id="right-atrium" d="M 150 50 Q 220 50, 220 100 L 220 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
-                        <path id="left-atrium" d="M 150 50 Q 80 50, 80 100 L 80 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
-                        <path id="right-ventricle" d="M 150 150 L 220 150 L 220 250 Q 150 320, 80 250 L 80 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2" transform="scale(0.95) translate(8, 8)"/>
-                        <path id="left-ventricle" d="M 150 150 L 80 150 L 80 250 Q 150 320, 220 250 L 220 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2"/>
-                        <circle id="sa-node" cx="190" cy="80" r="8" fill="var(--color-accent-orange)"/>
+                        <path id="left-atrium" d="M 150 50 Q 220 50, 220 100 L 220 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
+                        <path id="right-atrium" d="M 150 50 Q 80 50, 80 100 L 80 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
+                        <path id="left-ventricle" d="M 150 150 L 220 150 L 220 250 Q 150 320, 80 250 L 80 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2"/>
+                        <path id="right-ventricle" d="M 150 150 L 80 150 L 80 250 Q 150 320, 220 250 L 220 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2" transform="scale(0.95) translate(8, 8)"/>
+                    
+                        <circle id="sa-node" cx="110" cy="80" r="8" fill="var(--color-accent-orange)"/>
                         <circle id="av-node" cx="150" cy="140" r="8" fill="var(--color-accent-orange)"/>
+                    
                         <g id="conduction-system" stroke-width="4" stroke-linecap="round" fill="none">
                             <path id="bundle-of-his" d="M 150 148 V 170" stroke="var(--color-primary-dark)"/>
-                            <path id="right-bundle-branch" class="branch" d="M 150 170 C 160 180, 180 200, 190 250" stroke="var(--color-primary-light)"/>
-                            <path id="left-bundle-branch" class="branch" d="M 150 170 C 140 180, 120 190, 110 200" stroke="var(--color-primary-light)"/>
-                            <path id="left-anterior-fascicle" class="branch" d="M 110 200 C 90 200, 90 220, 100 240" stroke="var(--color-primary-light)"/>
-                            <path id="left-posterior-fascicle" class="branch" d="M 110 200 C 120 220, 120 240, 130 260" stroke="var(--color-primary-light)"/>
+                    
+                            <path id="right-bundle-branch" class="branch" d="M 150 170 C 140 180, 120 200, 110 250" stroke="var(--color-primary-light)"/>
+                    
+                            <path id="left-bundle-branch" class="branch" d="M 150 170 C 160 180, 180 190, 190 200" stroke="var(--color-primary-light)"/>
+                    
+                            <path id="left-anterior-fascicle" class="branch" d="M 190 200 C 210 200, 210 220, 200 240" stroke="var(--color-primary-light)"/>
+                    
+                            <path id="left-posterior-fascicle" class="branch" d="M 190 200 C 180 220, 180 240, 170 260" stroke="var(--color-primary-light)"/>
                         </g>
                         <circle id="pulse" r="5" fill="yellow" style="opacity:0;"></circle>
                     </svg>
