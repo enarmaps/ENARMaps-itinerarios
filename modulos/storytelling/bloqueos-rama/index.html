@@ -21,10 +21,10 @@
     <div class="page">
         <div class="story-step" id="scene1">
             <h3>Capítulo 1: Viaje a Velocidad de la Luz</h3>
-            <p>Recordemos nuestro Reino del Corazón. Una vez que el impulso pasa la "aduana" del Nodo AV, se divide en dos superautopistas: la <strong>Rama Derecha</strong> y la <strong>Rama Izquierda</strong>. En un reino sano, el impulso viaja por ambas a la vez, garantizando una contracción ventricular rápida, potente y sincronizada.</p>
+            <p>El viaje comienza en el Nodo SA, pasa por el Nodo AV, y se divide en el Haz de His. En un reino sano, el impulso eléctrico viaja simultáneamente por la <strong>Rama Derecha</strong> y la <strong>Rama Izquierda</strong>, garantizando una contracción ventricular rápida, potente y sincronizada.</p>
             
             <div class="analogy-box">
-                <p><strong>Recuerda:</strong> Este viaje veloz y simultáneo es lo que produce un <strong>Complejo QRS estrecho</strong> (<0.12s) en el electrocardiograma.</p>
+                <p><strong>Recuerda:</strong> Este viaje veloz y simultáneo produce un <strong>Complejo QRS estrecho</strong> (<0.12s) en el electrocardiograma (GPC México/CENETEC).</p>
             </div>
             
             <button class="reveal-button" onclick="revealScene('scene2')">¿Qué pasa si hay un derrumbe?</button>
@@ -32,7 +32,7 @@
 
         <div id="scene2" class="story-step hidden-scene">
             <h3>Capítulo 2: El Simulador de Bloqueos</h3>
-            <p>A continuación, puedes simular un "derrumbe" en cualquiera de las dos superautopistas. Observa cómo el impulso se ve forzado a tomar un camino alterno y más lento.</p>
+            <p>A continuación, simula un "derrumbe" en las superautopistas. Observa cómo el impulso se desvía y afecta el QRS. Haz clic en las opciones para explorar.</p>
             
             <div class="bundle-branch-simulator">
                 <div class="heart-svg-container">
@@ -64,6 +64,8 @@
                     <button class="sim-button" id="btn-normal">Ritmo Normal</button>
                     <button class="sim-button" id="btn-rbbb">Bloqueo de Rama Derecha</button>
                     <button class="sim-button" id="btn-lbbb">Bloqueo de Rama Izquierda</button>
+                    <button class="sim-button" id="btn-lafh">Hemibloqueo Anterior</button>
+                    <button class="sim-button" id="btn-lpfh">Hemibloqueo Posterior</button>
                     <div id="explanation-box" class="explanation-box">
                         Selecciona una opción para ver la animación y la explicación.
                     </div>
@@ -75,14 +77,16 @@
 
         <div id="scene3" class="story-step hidden-scene">
             <h3>Capítulo 3: Resumen de Alto Rendimiento para el ENARM</h3>
-            <p>Entender los bloqueos de rama es clave para interpretar correctamente un EKG.</p>
+            <p>Entender los bloqueos de rama es clave para interpretar un EKG. A continuación, ejemplos de EKGs basados en guías (GPC México/CENETEC, AHA 2022).</p>
             <ul>
-                <li><strong>QRS Estrecho (<0.12s):</strong> Ambas superautopistas funcionan. La despolarización es rápida y eficiente.</li>
-                <li><strong>QRS Ancho (>0.12s):</strong> Una de las superautopistas está bloqueada. El impulso debe tomar una "ruta rural" más lenta a través del músculo, retrasando la despolarización total.</li>
-                <li><strong>Bloqueo de Rama Derecha (BCRD):</strong> El retraso ocurre en el ventrículo derecho. Busca el patrón <strong>RSR' ("orejas de conejo")</strong> en la derivación V1.</li>
-                <li><strong>Bloqueo de Rama Izquierda (BCRI):</strong> El retraso ocurre en el ventrículo izquierdo. Busca una <strong>onda R ancha y mellada</strong> en las derivaciones V5-V6.</li>
+                <li><strong>QRS Estrecho (<0.12s):</strong> Ambas ramas funcionan. Sin desviación significativa (GPC México/CENETEC).</li>
+                <li><strong>QRS Ancho (>0.12s):</strong> Indica bloqueo. El impulso toma rutas lentas (GPC México/CENETEC).</li>
+                <li><strong>Bloqueo de Rama Derecha (BCRD):</strong> Retraso en VD. EKG: rSR' en V1-V2, S profunda en I/aVL/V5-V6 (AHA 2022). <img src="ekg-bcrd.jpg" alt="EKG BCRD mostrando rSR' en V1" class="ekg-example"></li>
+                <li><strong>Bloqueo de Rama Izquierda (BCRI):</strong> Retraso en VI. EKG: onda R ancha en V5-V6, eje a -30° o menos (AHA 2022). <img src="ekg-bcri.jpg" alt="EKG BCRI con onda R ancha en V6" class="ekg-example"></li>
+                <li><strong>Hemibloqueo Anterior Izquierdo (HBAI):</strong> Retraso en fascículo anterior. EKG: qR en I/aVL, rS en II/III/aVF, eje <-30° (AHA 2022). <img src="ekg-hbai.jpg" alt="EKG HBAI con qR en aVL" class="ekg-example"></li>
+                <li><strong>Hemibloqueo Posterior Izquierdo (HBPI):</strong> Retraso en fascículo posterior. EKG: qR en II/III/aVF, rS en I/aVL, eje >+90° (AHA 2022). <img src="ekg-hbpi.jpg" alt="EKG HBPI con qR en III" class="ekg-example"></li>
             </ul>
-             <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+            <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
                 Finalizar y Volver a la Bóveda
             </a>
         </div>
@@ -96,7 +100,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-ZPPYVH6MTY');
 </script>
 
