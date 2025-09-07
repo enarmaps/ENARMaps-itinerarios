@@ -32,33 +32,39 @@ document.addEventListener('DOMContentLoaded', function() {
      * Anima el pulso a lo largo de un camino SVG.
      * @param {SVGPathElement} pathElement - El elemento <path> a seguir.
      * @param {number} duration - La duración de la animación en milisegundos.
+     * @returns {Promise} Resuelve cuando la animación termina.
      */
     function animatePulse(pathElement, duration) {
-        try {
-            let startTime = null;
-            const pathLength = pathElement.getTotalLength();
-            pulse.style.opacity = '1';
+        return new Promise((resolve) => {
+            try {
+                let startTime = null;
+                const pathLength = pathElement.getTotalLength();
+                pulse.style.opacity = '1';
 
-            function animationStep(timestamp) {
-                if (!startTime) startTime = timestamp;
-                const progress = (timestamp - startTime) / duration;
-                
-                if (progress < 1) {
-                    const point = pathElement.getPointAtLength(progress * pathLength);
-                    pulse.setAttribute('cx', point.x);
-                    pulse.setAttribute('cy', point.y);
-                    currentAnimation = requestAnimationFrame(animationStep);
-                } else {
-                    const finalPoint = pathElement.getPointAtLength(pathLength);
-                    pulse.setAttribute('cx', finalPoint.x);
-                    pulse.setAttribute('cy', finalPoint.y);
-                    pulse.style.opacity = '0';
+                function animationStep(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = (timestamp - startTime) / duration;
+                    
+                    if (progress < 1) {
+                        const point = pathElement.getPointAtLength(progress * pathLength);
+                        pulse.setAttribute('cx', point.x);
+                        pulse.setAttribute('cy', point.y);
+                        currentAnimation = requestAnimationFrame(animationStep);
+                    } else {
+                        const finalPoint = pathElement.getPointAtLength(pathLength);
+                        pulse.setAttribute('cx', finalPoint.x);
+                        pulse.setAttribute('cy', finalPoint.y);
+                        pulse.style.opacity = '0';
+                        resolve();
+                    }
                 }
+                currentAnimation = requestAnimationFrame(animationStep);
+            } catch (e) {
+                console.error('Animación fallida:', e);
+                pulse.style.opacity = '0';
+                resolve();
             }
-            currentAnimation = requestAnimationFrame(animationStep);
-        } catch (e) {
-            console.error('Animación fallida:', e);
-        }
+        });
     }
 
     /**
@@ -79,13 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
         btnNormal.classList.add('active');
         explanationBox.innerHTML = "<strong>Ritmo Normal:</strong> El impulso viaja simultáneamente por ambas ramas, asegurando un QRS estrecho (<0.12s) (GPC México/CENETEC).";
         
-        // Animaciones sincronizadas con retraso
+        // Animaciones sincronizadas
         animatePulse(leftBranch, 800).then(() => {
             Promise.all([
                 animatePulse(leftAnterior, 800),
                 animatePulse(leftPosterior, 800),
                 animatePulse(rightBranch, 800)
-            ]);
+            ]).then(() => {
+                setTimeout(() => explanationBox.innerHTML += ' (Animación completada)', 0);
+                setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Animación completada)', ''), 3000);
+            });
         });
     });
 
@@ -103,10 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
             ]).then(() => {
                 setTimeout(() => animatePulse(rightBranch, 1200), 400);
             });
+        }).then(() => {
+            setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+            setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
         });
-        // Feedback temporal
-        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
-        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
     });
 
     btnLBBB.addEventListener('click', () => {
@@ -117,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
         leftPosterior.classList.add('blocked');
         explanationBox.innerHTML = "<strong>Bloqueo de Rama Izquierda:</strong> El impulso baja por la derecha y se retrasa hacia la izquierda, causando QRS ancho (>0.12s) con R ancha en V5-V6 (AHA 2022).";
         
-        animatePulse(rightBranch, 1000);
-        // Feedback temporal
-        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
-        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
+        animatePulse(rightBranch, 1000).then(() => {
+            setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+            setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
+        });
     });
 
     btnLAFH.addEventListener('click', () => {
@@ -133,10 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
             animatePulse(leftPosterior, 600).then(() => {
                 setTimeout(() => animatePulse(leftAnterior, 1200), 400);
             });
+        }).then(() => {
+            setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+            setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
         });
-        // Feedback temporal
-        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
-        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
     });
 
     btnLPFH.addEventListener('click', () => {
@@ -149,10 +158,10 @@ document.addEventListener('DOMContentLoaded', function() {
             animatePulse(leftAnterior, 600).then(() => {
                 setTimeout(() => animatePulse(leftPosterior, 1200), 400);
             });
+        }).then(() => {
+            setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+            setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
         });
-        // Feedback temporal
-        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
-        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
     });
 
     resetSimulator();
