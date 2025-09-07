@@ -1,0 +1,77 @@
+/* =================================================================== */
+/* CSS Específico para "Superautopistas Interrumpidas"                 */
+/* =================================================================== */
+
+.bundle-branch-simulator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f4ff;
+    border-radius: 12px;
+}
+
+.heart-svg-container {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-paper);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.simulator-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.simulator-controls p {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.sim-button {
+    width: 100%;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid var(--color-primary-light);
+    background-color: var(--color-paper);
+    color: var(--color-primary-light);
+    transition: all 0.2s ease;
+}
+
+.sim-button:hover {
+    background-color: #e3f2fd;
+}
+
+.sim-button.active {
+    background-color: var(--color-primary-dark);
+    color: white;
+    border-color: var(--color-primary-dark);
+}
+
+#explanation-box {
+    margin-top: 10px;
+    min-height: 80px; /* Para evitar que el layout salte al cambiar el texto */
+}
+
+/* --- Estilos para la Animación del SVG --- */
+
+.branch {
+    transition: stroke 0.3s ease;
+}
+
+.branch.blocked {
+    stroke: var(--color-error);
+    stroke-dasharray: 5 5; /* Línea punteada para indicar bloqueo */
+}
+
+#pulse {
+    /* El pulso será controlado por JS, aquí definimos su apariencia */
+    filter: drop-shadow(0 0 3px yellow) drop-shadow(0 0 5px orange);
+    transition: opacity 0.2s ease;
+}
