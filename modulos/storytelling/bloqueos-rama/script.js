@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnNormal = document.getElementById('btn-normal');
     const btnRBBB = document.getElementById('btn-rbbb');
     const btnLBBB = document.getElementById('btn-lbbb');
-    const allButtons = [btnNormal, btnRBBB, btnLBBB];
+    const btnLAFH = document.getElementById('btn-lafh');
+    const btnLPFH = document.getElementById('btn-lpfh');
+    const allButtons = [btnNormal, btnRBBB, btnLBBB, btnLAFH, btnLPFH];
 
     const explanationBox = document.getElementById('explanation-box');
     
@@ -18,6 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const pulse = document.getElementById('pulse');
     let currentAnimation; // Para controlar la animación en curso
 
+    // --- VALIDACIÓN DOM ---
+    if (!btnNormal || !btnRBBB || !btnLBBB || !btnLAFH || !btnLPFH || !explanationBox || !rightBranch || !leftBranch || !leftAnterior || !leftPosterior || !pulse) {
+        console.warn('Algunos elementos DOM no se encontraron. Verifique el HTML.');
+        return;
+    }
+
     // --- LÓGICA DE LA ANIMACIÓN ---
 
     /**
@@ -26,27 +34,31 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {number} duration - La duración de la animación en milisegundos.
      */
     function animatePulse(pathElement, duration) {
-        let startTime = null;
-        const pathLength = pathElement.getTotalLength();
-        pulse.style.opacity = '1';
+        try {
+            let startTime = null;
+            const pathLength = pathElement.getTotalLength();
+            pulse.style.opacity = '1';
 
-        function animationStep(timestamp) {
-            if (!startTime) startTime = timestamp;
-            const progress = (timestamp - startTime) / duration;
-            
-            if (progress < 1) {
-                const point = pathElement.getPointAtLength(progress * pathLength);
-                pulse.setAttribute('cx', point.x);
-                pulse.setAttribute('cy', point.y);
-                currentAnimation = requestAnimationFrame(animationStep);
-            } else {
-                const finalPoint = pathElement.getPointAtLength(pathLength);
-                pulse.setAttribute('cx', finalPoint.x);
-                pulse.setAttribute('cy', finalPoint.y);
-                pulse.style.opacity = '0';
+            function animationStep(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = (timestamp - startTime) / duration;
+                
+                if (progress < 1) {
+                    const point = pathElement.getPointAtLength(progress * pathLength);
+                    pulse.setAttribute('cx', point.x);
+                    pulse.setAttribute('cy', point.y);
+                    currentAnimation = requestAnimationFrame(animationStep);
+                } else {
+                    const finalPoint = pathElement.getPointAtLength(pathLength);
+                    pulse.setAttribute('cx', finalPoint.x);
+                    pulse.setAttribute('cy', finalPoint.y);
+                    pulse.style.opacity = '0';
+                }
             }
+            currentAnimation = requestAnimationFrame(animationStep);
+        } catch (e) {
+            console.error('Animación fallida:', e);
         }
-        currentAnimation = requestAnimationFrame(animationStep);
     }
 
     /**
@@ -65,31 +77,36 @@ document.addEventListener('DOMContentLoaded', function() {
     btnNormal.addEventListener('click', () => {
         resetSimulator();
         btnNormal.classList.add('active');
-        explanationBox.innerHTML = "<strong>Ritmo Normal:</strong> El impulso viaja simultáneamente por ambas ramas, asegurando una contracción rápida y sincronizada.";
+        explanationBox.innerHTML = "<strong>Ritmo Normal:</strong> El impulso viaja simultáneamente por ambas ramas, asegurando un QRS estrecho (<0.12s) (GPC México/CENETEC).";
         
-        // Animamos ambas ramas al mismo tiempo
-        animatePulse(rightBranch, 1000);
-        animatePulse(leftBranch, 800);
-        animatePulse(leftAnterior, 800);
-        animatePulse(leftPosterior, 800);
+        // Animaciones sincronizadas con retraso
+        animatePulse(leftBranch, 800).then(() => {
+            Promise.all([
+                animatePulse(leftAnterior, 800),
+                animatePulse(leftPosterior, 800),
+                animatePulse(rightBranch, 800)
+            ]);
+        });
     });
 
     btnRBBB.addEventListener('click', () => {
         resetSimulator();
         btnRBBB.classList.add('active');
         rightBranch.classList.add('blocked');
-        explanationBox.innerHTML = "<strong>Bloqueo de Rama Derecha:</strong> El impulso baja rápido por la izquierda (despolarizando el VI), pero debe viajar 'a pie' por el músculo para llegar al ventrículo derecho, causando un retraso.";
+        explanationBox.innerHTML = "<strong>Bloqueo de Rama Derecha:</strong> El impulso baja rápido por la izquierda, pero se retrasa en el VD, causando QRS ancho (>0.12s) con rSR' en V1 (AHA 2022).";
     
-        // 1. Animamos la despolarización normal de toda la rama izquierda.
-        animatePulse(leftBranch, 600);
-        animatePulse(leftAnterior, 600);
-        animatePulse(leftPosterior, 600);
-    
-        // 2. Después de un breve retraso, animamos la rama derecha para simular la conducción lenta.
-        //    Le damos una duración más larga (1200ms) para que se vea más lenta.
-        setTimeout(() => {
-            animatePulse(rightBranch, 1200);
-        }, 400); 
+        // Animación con retraso en la rama derecha
+        animatePulse(leftBranch, 600).then(() => {
+            Promise.all([
+                animatePulse(leftAnterior, 600),
+                animatePulse(leftPosterior, 600)
+            ]).then(() => {
+                setTimeout(() => animatePulse(rightBranch, 1200), 400);
+            });
+        });
+        // Feedback temporal
+        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
     });
 
     btnLBBB.addEventListener('click', () => {
@@ -98,10 +115,45 @@ document.addEventListener('DOMContentLoaded', function() {
         leftBranch.classList.add('blocked');
         leftAnterior.classList.add('blocked');
         leftPosterior.classList.add('blocked');
-        explanationBox.innerHTML = "<strong>Bloqueo de Rama Izquierda:</strong> El impulso baja por la derecha y luego viaja lentamente a través del músculo hacia la izquierda. Es un retraso significativo.";
+        explanationBox.innerHTML = "<strong>Bloqueo de Rama Izquierda:</strong> El impulso baja por la derecha y se retrasa hacia la izquierda, causando QRS ancho (>0.12s) con R ancha en V5-V6 (AHA 2022).";
         
-        // Animamos solo la rama derecha
         animatePulse(rightBranch, 1000);
+        // Feedback temporal
+        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
     });
 
+    btnLAFH.addEventListener('click', () => {
+        resetSimulator();
+        btnLAFH.classList.add('active');
+        leftAnterior.classList.add('blocked');
+        explanationBox.innerHTML = "<strong>Hemibloqueo Anterior Izquierdo:</strong> El impulso se retrasa en el fascículo anterior, desviando el eje a -60° con QRS estrecho, qR en I/aVL (AHA 2022).";
+        
+        animatePulse(leftBranch, 600).then(() => {
+            animatePulse(leftPosterior, 600).then(() => {
+                setTimeout(() => animatePulse(leftAnterior, 1200), 400);
+            });
+        });
+        // Feedback temporal
+        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
+    });
+
+    btnLPFH.addEventListener('click', () => {
+        resetSimulator();
+        btnLPFH.classList.add('active');
+        leftPosterior.classList.add('blocked');
+        explanationBox.innerHTML = "<strong>Hemibloqueo Posterior Izquierdo:</strong> El impulso se retrasa en el fascículo posterior, desviando el eje a +120° con QRS estrecho, qR en II/III/aVF (AHA 2022).";
+        
+        animatePulse(leftBranch, 600).then(() => {
+            animatePulse(leftAnterior, 600).then(() => {
+                setTimeout(() => animatePulse(leftPosterior, 1200), 400);
+            });
+        });
+        // Feedback temporal
+        setTimeout(() => explanationBox.innerHTML += ' (Retraso visible por 3s)', 0);
+        setTimeout(() => explanationBox.innerHTML = explanationBox.innerHTML.replace(' (Retraso visible por 3s)', ''), 3000);
+    });
+
+    resetSimulator();
 });
