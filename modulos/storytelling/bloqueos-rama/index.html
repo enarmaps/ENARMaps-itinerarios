@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superautopistas Interrumpidas: Bloqueos de Rama</title>
+    
+    <link rel="stylesheet" href="../../lib/modulos-style.css">
+    <link rel="stylesheet" href="../../lib/storytelling-style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="layout-document">
+
+<div class="module-header">
+    <img src="../../../landing-page/images/logo-enarmaps.png" alt="Logo ENARMaps" class="module-logo">
+    <h1 class="module-title">Superautopistas Interrumpidas</h1>
+    <h2 class="module-subtitle">Una Historia de Bloqueos de Rama</h2>
+</div>
+
+<div class="report-container">
+    <div class="page">
+        <div class="story-step" id="scene1">
+            <h3>Capítulo 1: Viaje a Velocidad de la Luz</h3>
+            <p>Recordemos nuestro Reino del Corazón. Una vez que el impulso pasa la "aduana" del Nodo AV, se divide en dos superautopistas: la <strong>Rama Derecha</strong> y la <strong>Rama Izquierda</strong>. En un reino sano, el impulso viaja por ambas a la vez, garantizando una contracción ventricular rápida, potente y sincronizada.</p>
+            
+            <div class="analogy-box">
+                <p><strong>Recuerda:</strong> Este viaje veloz y simultáneo es lo que produce un <strong>Complejo QRS estrecho</strong> (<0.12s) en el electrocardiograma.</p>
+            </div>
+            
+            <button class="reveal-button" onclick="revealScene('scene2')">¿Qué pasa si hay un derrumbe?</button>
+        </div>
+
+        <div id="scene2" class="story-step hidden-scene">
+            <h3>Capítulo 2: El Simulador de Bloqueos</h3>
+            <p>A continuación, puedes simular un "derrumbe" en cualquiera de las dos superautopistas. Observa cómo el impulso se ve forzado a tomar un camino alterno y más lento.</p>
+            
+            <div class="bundle-branch-simulator">
+                <div class="heart-svg-container">
+                    <svg viewBox="0 0 300 350" xmlns="http://www.w3.org/2000/svg">
+                        <path id="right-atrium" d="M 150 50 Q 220 50, 220 100 L 220 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
+                        <path id="left-atrium" d="M 150 50 Q 80 50, 80 100 L 80 150 L 150 150 Z" fill="#a0c4ff" stroke="#6b7b8c" stroke-width="2"/>
+                        <path id="right-ventricle" d="M 150 150 L 220 150 L 220 250 Q 150 320, 80 250 L 80 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2" transform="scale(0.95) translate(8, 8)"/>
+                        <path id="left-ventricle" d="M 150 150 L 80 150 L 80 250 Q 150 320, 220 250 L 220 150 Z" fill="#ffadad" stroke="#6b7b8c" stroke-width="2"/>
+                        <circle id="sa-node" cx="190" cy="80" r="8" fill="var(--color-accent-orange)"/>
+                        <circle id="av-node" cx="150" cy="140" r="8" fill="var(--color-accent-orange)"/>
+                        <g id="conduction-system" stroke-width="4" stroke-linecap="round" fill="none">
+                            <path id="bundle-of-his" d="M 150 148 V 170" stroke="var(--color-primary-dark)"/>
+                            <path id="right-bundle-branch" class="branch" d="M 150 170 C 160 180, 180 200, 190 250" stroke="var(--color-primary-light)"/>
+                            <path id="left-bundle-branch" class="branch" d="M 150 170 C 140 180, 120 190, 110 200" stroke="var(--color-primary-light)"/>
+                            <path id="left-anterior-fascicle" class="branch" d="M 110 200 C 90 200, 90 220, 100 240" stroke="var(--color-primary-light)"/>
+                            <path id="left-posterior-fascicle" class="branch" d="M 110 200 C 120 220, 120 240, 130 260" stroke="var(--color-primary-light)"/>
+                        </g>
+                        <circle id="pulse" r="5" fill="yellow" style="opacity:0;"></circle>
+                    </svg>
+                </div>
+                <div class="simulator-controls">
+                    <p><strong>Selecciona una simulación:</strong></p>
+                    <button class="sim-button" id="btn-normal">Ritmo Normal</button>
+                    <button class="sim-button" id="btn-rbbb">Bloqueo de Rama Derecha</button>
+                    <button class="sim-button" id="btn-lbbb">Bloqueo de Rama Izquierda</button>
+                    <div id="explanation-box" class="explanation-box">
+                        Selecciona una opción para ver la animación y la explicación.
+                    </div>
+                </div>
+            </div>
+            
+            <button class="reveal-button" onclick="revealScene('scene3')">Ver el Resumen para el ENARM</button>
+        </div>
+
+        <div id="scene3" class="story-step hidden-scene">
+            <h3>Capítulo 3: Resumen de Alto Rendimiento para el ENARM</h3>
+            <p>Entender los bloqueos de rama es clave para interpretar correctamente un EKG.</p>
+            <ul>
+                <li><strong>QRS Estrecho (<0.12s):</strong> Ambas superautopistas funcionan. La despolarización es rápida y eficiente.</li>
+                <li><strong>QRS Ancho (>0.12s):</strong> Una de las superautopistas está bloqueada. El impulso debe tomar una "ruta rural" más lenta a través del músculo, retrasando la despolarización total.</li>
+                <li><strong>Bloqueo de Rama Derecha (BCRD):</strong> El retraso ocurre en el ventrículo derecho. Busca el patrón <strong>RSR' ("orejas de conejo")</strong> en la derivación V1.</li>
+                <li><strong>Bloqueo de Rama Izquierda (BCRI):</strong> El retraso ocurre en el ventrículo izquierdo. Busca una <strong>onda R ancha y mellada</strong> en las derivaciones V5-V6.</li>
+            </ul>
+             <a href="../../../webapp/boveda.html" class="reveal-button" style="text-decoration: none; text-align: center; margin-top: 30px;">
+                Finalizar y Volver a la Bóveda
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="../../lib/storytelling-logic.js"></script>
+<script src="script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPPYVH6MTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZPPYVH6MTY');
+</script>
+
+</body>
+</html>
